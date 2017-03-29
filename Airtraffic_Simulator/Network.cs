@@ -6,20 +6,22 @@ using System.Threading.Tasks;
 
 namespace Airtraffic_Simulator
 {
-    class Network
+    public class Network
     {
         public Regions Region;
 
         private List<Airplane> Airplanes;
         private List<Airport> Airports;
         private List<Flight> Flights;
+        private List<Queue> Queues;
 
-        public Network(Regions region)
+        public Network(Regions region, List<Airplane> airplanes, List<Airport> airports, List<Flight> flights, List<Queue> Queues)
         {
             this.Region = region;
             this.Airplanes = new List<Airplane>();
             this.Airports = new List<Airport>();
             this.Flights = new List<Flight>();
+            this.Queues = new List<Queue>();
         }
 
         public bool AddFlight(Flight flight)

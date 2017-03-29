@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Airtraffic_Simulator
 {
-    class Airplane
+    public class Airplane
     {
         private string id;
         private int capacity;
