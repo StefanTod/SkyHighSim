@@ -13,6 +13,14 @@ namespace Airtraffic_Simulator
         private int capacity;
         private Point location;
         private int lanes;
+
+        public Airport(string name, int cap, Point location, int lanes)
+        {
+            this.name = name;
+            this.capacity = cap;
+            this.location = location;
+            this.lanes = lanes;
+        }
         
         public bool AddToQueue(Airplane p)
         {
