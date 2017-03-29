@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Airtraffic_Simulator
 {
-    class Queue
+    public class Queue
     {
         private Airport airport;
 

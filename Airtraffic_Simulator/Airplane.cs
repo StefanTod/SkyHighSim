@@ -1,20 +1,23 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Airtraffic_Simulator
 {
-    class Airplane
+    public class Airplane
     {
         private string id;
         private int capacity;
         private double speed;
         private double fuel;
-        private Status status = Status.LANDED;
+        public Status status = Status.LANDED;
         private int counterTicks = 0;
         private Flight flight;
+        public Point CurrentLocation { get; set; }
+        public Bitmap Image { get; set; }
         public string Id
         {
             get
