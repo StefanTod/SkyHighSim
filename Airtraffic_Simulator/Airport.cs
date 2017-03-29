@@ -41,15 +41,6 @@ namespace Airtraffic_Simulator
             return true;
         }
 
-        public bool AddToQueue(Airplane p)
-        {
-            return true;
-        }
-
-        public bool RemoveFromQueue(Airplane p)
-        {
-            return true;
-        }
 
         public bool AddFlight(Flight f)
         {

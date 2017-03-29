@@ -150,7 +150,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Airtraffic_Simulator.Properties.Resources.plane;
+            //this.pictureBox1.Image = global::Airtraffic_Simulator.Properties.Resources.plane;
             this.pictureBox1.Location = new System.Drawing.Point(895, 2);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
