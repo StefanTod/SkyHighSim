@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Airtraffic_Simulator
 {
-    class AirplaneCargo
+    class AirplaneCargo : Airplane
     {
+        
     }
 }
