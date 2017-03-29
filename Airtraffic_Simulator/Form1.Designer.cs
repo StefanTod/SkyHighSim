@@ -139,10 +139,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Airtraffic_Simulator.Properties.Resources.plane;
-            this.pictureBox1.Location = new System.Drawing.Point(905, 6);
+            this.pictureBox1.Location = new System.Drawing.Point(895, 2);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(37, 41);
+            this.pictureBox1.Size = new System.Drawing.Size(63, 45);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
