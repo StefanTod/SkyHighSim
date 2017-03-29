@@ -8,5 +8,8 @@ namespace Airtraffic_Simulator
 {
     class AirplanePassanger : Airplane
     {
+        public AirplanePassanger(string id, int capacity, double speed, double fuel) : base(id, capacity, speed, fuel)
+        {
+        }
     }
 }

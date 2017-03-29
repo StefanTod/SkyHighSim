@@ -14,9 +14,9 @@ namespace Airtraffic_Simulator
         private Point location;
         private int lanes;
 
-<<<<<<< HEAD
+
         //TODO add access to list
-=======
+
         public Airport(string name, int cap, Point location, int lanes)
         {
             this.name = name;
@@ -24,17 +24,17 @@ namespace Airtraffic_Simulator
             this.location = location;
             this.lanes = lanes;
         }
->>>>>>> master
-        
-        public bool AddToQueue(Airplane p)
-        {
-            return true;
-        }
 
-        public bool RemoveFromQueue(Airplane p)
-        {
-            return true;
-        }
+//        
+//        public bool AddToQueue(Airplane p)
+//        {
+//            return true;
+//        }
+//
+//        public bool RemoveFromQueue(Airplane p)
+//        {
+//            return true;
+//        }
 
         public bool AddFlight(Flight f)
         {

@@ -33,6 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.searchBtn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btFastForward = new System.Windows.Forms.Button();
             this.btStop = new System.Windows.Forms.Button();
@@ -63,7 +64,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.btUpdate = new System.Windows.Forms.Button();
-            this.searchBtn = new System.Windows.Forms.Button();
+            this.fakeStart = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelNameLocation.SuspendLayout();
@@ -75,7 +76,7 @@
             // tbSearch
             // 
             this.tbSearch.Location = new System.Drawing.Point(151, 16);
-            this.tbSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSearch.Margin = new System.Windows.Forms.Padding(2);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(158, 20);
             this.tbSearch.TabIndex = 0;
@@ -131,16 +132,25 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(9, 10);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(960, 49);
             this.panel1.TabIndex = 4;
+            // 
+            // searchBtn
+            // 
+            this.searchBtn.Location = new System.Drawing.Point(314, 13);
+            this.searchBtn.Name = "searchBtn";
+            this.searchBtn.Size = new System.Drawing.Size(67, 28);
+            this.searchBtn.TabIndex = 8;
+            this.searchBtn.Text = "Search";
+            this.searchBtn.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Airtraffic_Simulator.Properties.Resources.plane;
             this.pictureBox1.Location = new System.Drawing.Point(895, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(63, 45);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -152,7 +162,7 @@
             this.btFastForward.BackColor = System.Drawing.Color.Khaki;
             this.btFastForward.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.btFastForward.Location = new System.Drawing.Point(752, 9);
-            this.btFastForward.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btFastForward.Margin = new System.Windows.Forms.Padding(2);
             this.btFastForward.Name = "btFastForward";
             this.btFastForward.Size = new System.Drawing.Size(116, 32);
             this.btFastForward.TabIndex = 7;
@@ -164,7 +174,7 @@
             this.btStop.BackColor = System.Drawing.Color.OrangeRed;
             this.btStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.btStop.Location = new System.Drawing.Point(683, 9);
-            this.btStop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btStop.Margin = new System.Windows.Forms.Padding(2);
             this.btStop.Name = "btStop";
             this.btStop.Size = new System.Drawing.Size(65, 32);
             this.btStop.TabIndex = 7;
@@ -176,7 +186,7 @@
             this.btStart.BackColor = System.Drawing.Color.LimeGreen;
             this.btStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.btStart.Location = new System.Drawing.Point(614, 9);
-            this.btStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btStart.Margin = new System.Windows.Forms.Padding(2);
             this.btStart.Name = "btStart";
             this.btStart.Size = new System.Drawing.Size(65, 32);
             this.btStart.TabIndex = 6;
@@ -203,7 +213,7 @@
             this.panelNameLocation.Controls.Add(this.label6);
             this.panelNameLocation.Controls.Add(this.label5);
             this.panelNameLocation.Location = new System.Drawing.Point(9, 63);
-            this.panelNameLocation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelNameLocation.Margin = new System.Windows.Forms.Padding(2);
             this.panelNameLocation.Name = "panelNameLocation";
             this.panelNameLocation.Size = new System.Drawing.Size(188, 98);
             this.panelNameLocation.TabIndex = 5;
@@ -271,7 +281,7 @@
             this.panelDetails.Controls.Add(this.label8);
             this.panelDetails.Controls.Add(this.label7);
             this.panelDetails.Location = new System.Drawing.Point(9, 167);
-            this.panelDetails.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelDetails.Margin = new System.Windows.Forms.Padding(2);
             this.panelDetails.Name = "panelDetails";
             this.panelDetails.Size = new System.Drawing.Size(188, 97);
             this.panelDetails.TabIndex = 6;
@@ -384,7 +394,7 @@
             this.panelTime.Controls.Add(this.label11);
             this.panelTime.Controls.Add(this.label15);
             this.panelTime.Location = new System.Drawing.Point(9, 268);
-            this.panelTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelTime.Margin = new System.Windows.Forms.Padding(2);
             this.panelTime.Name = "panelTime";
             this.panelTime.Size = new System.Drawing.Size(188, 81);
             this.panelTime.TabIndex = 7;
@@ -445,7 +455,7 @@
             this.btAdvanced.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.btAdvanced.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btAdvanced.Location = new System.Drawing.Point(9, 354);
-            this.btAdvanced.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btAdvanced.Margin = new System.Windows.Forms.Padding(2);
             this.btAdvanced.Name = "btAdvanced";
             this.btAdvanced.Size = new System.Drawing.Size(188, 32);
             this.btAdvanced.TabIndex = 8;
@@ -460,7 +470,7 @@
             this.panelAdvanced.Controls.Add(this.label12);
             this.panelAdvanced.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panelAdvanced.Location = new System.Drawing.Point(9, 392);
-            this.panelAdvanced.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelAdvanced.Margin = new System.Windows.Forms.Padding(2);
             this.panelAdvanced.Name = "panelAdvanced";
             this.panelAdvanced.Size = new System.Drawing.Size(188, 81);
             this.panelAdvanced.TabIndex = 9;
@@ -507,27 +517,28 @@
             this.btUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.btUpdate.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btUpdate.Location = new System.Drawing.Point(9, 478);
-            this.btUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.btUpdate.Name = "btUpdate";
             this.btUpdate.Size = new System.Drawing.Size(188, 46);
             this.btUpdate.TabIndex = 10;
             this.btUpdate.Text = "Update";
             this.btUpdate.UseVisualStyleBackColor = false;
             // 
-            // searchBtn
+            // fakeStart
             // 
-            this.searchBtn.Location = new System.Drawing.Point(314, 13);
-            this.searchBtn.Name = "searchBtn";
-            this.searchBtn.Size = new System.Drawing.Size(67, 28);
-            this.searchBtn.TabIndex = 8;
-            this.searchBtn.Text = "Search";
-            this.searchBtn.UseVisualStyleBackColor = true;
+            this.fakeStart.Location = new System.Drawing.Point(1100, 634);
+            this.fakeStart.Name = "fakeStart";
+            this.fakeStart.Size = new System.Drawing.Size(152, 35);
+            this.fakeStart.TabIndex = 11;
+            this.fakeStart.Text = "Start Proof Of Concept";
+            this.fakeStart.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(978, 535);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.fakeStart);
             this.Controls.Add(this.btUpdate);
             this.Controls.Add(this.panelAdvanced);
             this.Controls.Add(this.btAdvanced);
@@ -535,7 +546,9 @@
             this.Controls.Add(this.panelDetails);
             this.Controls.Add(this.panelNameLocation);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(1280, 720);
+            this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "Form1";
             this.Text = "SkyHighSim";
             this.panel1.ResumeLayout(false);
@@ -591,6 +604,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btUpdate;
         private System.Windows.Forms.Button searchBtn;
+        private System.Windows.Forms.Button fakeStart;
     }
 }
 
