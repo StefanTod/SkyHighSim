@@ -13,6 +13,7 @@ namespace Airtraffic_Simulator
         public List<Airplane> Airplanes;
         public List<Airport> Airports;
         public List<Flight> Flights;
+        public List<Queue> Queues;
 
         public Network(Regions region, List<Airplane> airplanes, List<Airport> airports, List<Flight> flights, List<Queue> Queues)
         {
