@@ -12,6 +12,9 @@ namespace Airtraffic_Simulator
         private int capacity;
         private double speed;
         private double fuel;
+        private Status status = Status.LANDED;
+        private int counterTicks = 0;
+        private Flight flight;
         public string Id
         {
             get
@@ -42,11 +45,39 @@ namespace Airtraffic_Simulator
         }
         public void Update()
         {
-
+            switch (this.status)
+            {
+                case Status.LANDED:
+                    //if check flight timing then we take off
+                    // check if lanes are free
+                    status = Status.TAKINGOFF;
+                    break;
+                case Status.INAIR:
+                    UpdateMovement();
+                    break;
+                case Status.LANDING:
+                    counterTicks++;
+                    if (counterTicks >= 2)
+                    {
+                        status = Status.LANDED;
+                        //add plane into destination airport
+                    }
+                    break;
+                case Status.TAKINGOFF:
+                    counterTicks++;
+                    if (counterTicks >= 2)
+                    {
+                        status = Status.INAIR;
+                        // remove plane from airport 
+                        counterTicks = 0;
+                        
+                    }
+                    break;
+            }
         }
         public void UpdateMovement()
         {
-
+            // calculations of movement
         }
     }
 }

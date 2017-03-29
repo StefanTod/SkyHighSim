@@ -15,7 +15,8 @@ namespace Airtraffic_Simulator
         private DateTime departureTime;
         private DateTime arrivalTime;
 
-      
+        public Airport DepartureAirport { get; set; }
+        public Airport DestinationAirport { get; set; }
 
        public Flight(String Id, Airport DepartureAirport, Airport DestinationAirport,
            TimeSpan EstimatedDuration, DateTime DepartureTime, DateTime ArrivalTime)

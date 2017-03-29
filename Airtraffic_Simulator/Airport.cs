@@ -7,12 +7,14 @@ using System.Drawing;
 
 namespace Airtraffic_Simulator
 {
-    class Airport
+    public class Airport
     {
         private string name;
         private int capacity;
         private Point location;
         private int lanes;
+
+        //TODO add access to list
         
         public bool AddToQueue(Airplane p)
         {
