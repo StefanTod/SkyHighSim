@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Airtraffic_Simulator
 {
+    //fligt class
    public class Flight
     {
         private String id;
