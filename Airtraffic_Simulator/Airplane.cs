@@ -48,7 +48,7 @@ namespace Airtraffic_Simulator
         {
 
         }
-        public Airport(string id,int capacity,double speed, double fuel)
+        public Airplane(string id,int capacity,double speed, double fuel)
         {
             this.capacity=capacity;
             this.speed=speed;
