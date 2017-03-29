@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Airtraffic_Simulator
 {
-    class Flight
+   public class Flight
     {
         private String id;
         private Airport departudeAirport;
@@ -14,5 +14,18 @@ namespace Airtraffic_Simulator
         private TimeSpan estimatedDuration;
         private DateTime departureTime;
         private DateTime arrivalTime;
+
+      
+
+       public Flight(String Id, Airport DepartureAirport, Airport DestinationAirport,
+           TimeSpan EstimatedDuration, DateTime DepartureTime, DateTime ArrivalTime)
+       {
+           this.id = Id;
+           this.departudeAirport = DepartureAirport;
+           this.departudeAirport = DestinationAirport;
+           this.estimatedDuration = EstimatedDuration;
+           this.departureTime = DepartureTime;
+           this.arrivalTime = ArrivalTime;
+       }
     }
 }
