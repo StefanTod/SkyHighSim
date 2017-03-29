@@ -43,7 +43,7 @@ namespace Airtraffic_Simulator
         }
         public void DrawFlightPath(Flight flightToDraw)
         {
-            
+            Graphics.DrawLine(Pens.Yellow, flightToDraw.DepartureAirport.Location, flightToDraw.DestinationAirport.Location);
         }
     }
 }

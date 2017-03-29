@@ -25,7 +25,7 @@ namespace Airtraffic_Simulator
         {
             this.name = name;
             this.capacity = cap;
-            this.location = location;
+            this.Location = location;
             this.lanes = lanes;
         }
 
@@ -35,16 +35,11 @@ namespace Airtraffic_Simulator
             return true;
         }
 
-//        
-//        public bool AddToQueue(Airplane p)
-//        {
-//            return true;
-//        }
-//
-//        public bool RemoveFromQueue(Airplane p)
-//        {
-//            return true;
-//        }
+
+        public bool RemoveFromQueue(Airplane p)
+        {
+            return true;
+        }
 
         public bool AddToQueue(Airplane p)
         {
