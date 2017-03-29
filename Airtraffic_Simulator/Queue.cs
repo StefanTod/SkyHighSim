@@ -8,5 +8,11 @@ namespace Airtraffic_Simulator
 {
     class Queue
     {
+        private Airport airport;
+
+        public void ProcessAirplane(Airplane airplane, Airport airport)
+        {
+           
+        }
     }
 }
