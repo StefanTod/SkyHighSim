@@ -10,10 +10,9 @@ namespace Airtraffic_Simulator
     {
         public Regions Region;
 
-        private List<Airplane> Airplanes;
-        private List<Airport> Airports;
-        private List<Flight> Flights;
-        private List<Queue> Queues;
+        public List<Airplane> Airplanes;
+        public List<Airport> Airports;
+        public List<Flight> Flights;
 
         public Network(Regions region, List<Airplane> airplanes, List<Airport> airports, List<Flight> flights, List<Queue> Queues)
         {
