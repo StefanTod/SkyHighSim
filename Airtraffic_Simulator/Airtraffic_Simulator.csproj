@@ -92,13 +92,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Airplane.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plane-icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\plane.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\map.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\map1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
