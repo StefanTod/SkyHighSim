@@ -11,13 +11,17 @@ namespace Airtraffic_Simulator
     {
         private string name;
         private int capacity;
-        private Point location;
+        public Point Location;
         private int lanes;
-
-
+        private Queue landingQueue;
+        private Queue takingOffQueue;
+        private List<Problem> problems;
+        private List<Flight> listOfFlights;
+        public Bitmap Image;
         //TODO add access to list
 
-        public Airport(string name, int cap, Point location, int lanes)
+        public Airport(string name, int cap, Point location, int lanes, Queue landingQueue,Queue takingOffQueue,
+            List<Problem> problem,List<Flight> listOfFlights)
         {
             this.name = name;
             this.capacity = cap;
@@ -25,6 +29,22 @@ namespace Airtraffic_Simulator
             this.lanes = lanes;
         }
 
+        
+        public bool AddToQueue(Airplane p)
+        {
+            return true;
+        }
+
+//        
+//        public bool AddToQueue(Airplane p)
+//        {
+//            return true;
+//        }
+//
+//        public bool RemoveFromQueue(Airplane p)
+//        {
+//            return true;
+//        }
 
         public bool AddToQueue(Airplane p)
         {

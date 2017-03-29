@@ -39,7 +39,7 @@ namespace Airtraffic_Simulator
         }
         public void DrawAirport(Airport airportToDraw)
         {
-
+            Graphics.DrawImage(airportToDraw.Image, airportToDraw.Location);
         }
         public void DrawFlightPath(Flight flightToDraw)
         {
