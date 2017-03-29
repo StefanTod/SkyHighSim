@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,6 +47,12 @@ namespace Airtraffic_Simulator
         public void UpdateMovement()
         {
 
+        }
+        public Airport(string id,int capacity,double speed, double fuel)
+        {
+            this.capacity=capacity;
+            this.speed=speed;
+            this.fuel=fuel;
         }
     }
 }
