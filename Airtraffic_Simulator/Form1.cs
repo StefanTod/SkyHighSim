@@ -40,6 +40,11 @@ namespace Airtraffic_Simulator
         {
             StartSimulation();
         }
+
+        private void btStop_Click(object sender, EventArgs e)
+        {
+            timer.Stop();
+        }
     }
 }
 
