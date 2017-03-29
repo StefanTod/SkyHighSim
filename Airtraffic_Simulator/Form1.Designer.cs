@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,6 +66,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.btUpdate = new System.Windows.Forms.Button();
             this.fakeStart = new System.Windows.Forms.Button();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelNameLocation.SuspendLayout();
@@ -192,6 +194,7 @@
             this.btStart.TabIndex = 6;
             this.btStart.Text = "START";
             this.btStart.UseVisualStyleBackColor = false;
+            this.btStart.Click += new System.EventHandler(this.btStart_Click);
             // 
             // label4
             // 
@@ -533,6 +536,10 @@
             this.fakeStart.Text = "Start Proof Of Concept";
             this.fakeStart.UseVisualStyleBackColor = true;
             // 
+            // timer
+            // 
+            this.timer.Interval = 2000;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -605,6 +612,7 @@
         private System.Windows.Forms.Button btUpdate;
         private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.Button fakeStart;
+        private System.Windows.Forms.Timer timer;
     }
 }
 
