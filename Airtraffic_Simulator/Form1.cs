@@ -21,6 +21,8 @@ namespace Airtraffic_Simulator
         {
             InitializeComponent();
             airNetwork = new Network(Regions.EUROPE,airplanes,airports,flights,queues);
+            lbPlaneName.Visible = true;
+            lbPlaneName.Text = airNetwork.RemoveAirplane("100").ToString();
         }
         
 

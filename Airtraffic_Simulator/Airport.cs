@@ -18,6 +18,8 @@ namespace Airtraffic_Simulator
         private List<Problem> problems;
         private List<Flight> listOfFlights;
         public Bitmap Image;
+        public string Name { get; set; }
+
         //TODO add access to list
 
         public Airport(string name, int cap, Point location, int lanes, Queue landingQueue,Queue takingOffQueue,
@@ -30,9 +32,9 @@ namespace Airtraffic_Simulator
         }
 
         
-        public bool AddToQueue(Airplane p)
+        public void AddToQueue(Airplane p)
         {
-            return true;
+            
         }
 
 
@@ -42,14 +44,10 @@ namespace Airtraffic_Simulator
         }
 
 
-        public bool AddFlight(Flight f)
+        public void CreateProblem(int id, string type, TimeSpan duration)
         {
-            return true;
-        }
-
-        public bool CreateProblem(int id, string type, TimeSpan duration)
-        {
-            return true;
+            Problem proble = new Problem(id, type, duration);
+            problems.Add(proble);
         }
     }
 }

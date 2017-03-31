@@ -84,6 +84,7 @@ namespace Airtraffic_Simulator
         }
         public Airplane(string id,int capacity,double speed, double fuel)
         {
+            this.id = id;
             this.capacity=capacity;
             this.speed=speed;
             this.fuel=fuel;

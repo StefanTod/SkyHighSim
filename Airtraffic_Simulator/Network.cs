@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace Airtraffic_Simulator
 {
@@ -24,34 +25,91 @@ namespace Airtraffic_Simulator
             this.Queues = new List<Queue>();
         }
 
-        public bool AddFlight(Flight flight)
+        public void AddFlight(String Id, Airport DepartureAirport, Airport DestinationAirport,
+           TimeSpan EstimatedDuration, DateTime DepartureTime, DateTime ArrivalTime)
         {
-            return false;
+            Flight f = new Flight(Id, DepartureAirport, DestinationAirport, EstimatedDuration, DepartureTime, ArrivalTime);
+            Flights.Add(f);
         }
 
-        public bool RemoveFlight(Flight flight)
+
+        public bool RemoveFlight(String id)
         {
-            return false;
+           if (findFlight(id) == null)
+            {
+                return false;
+            }
+            Flights.Remove(findFlight(id));
+            return true;
         }
-        public bool AddAirplane(Airplane airplane)
+        public void AddAirplane(string id,int capacity, double speed, double fuel)
         {
-            return false;
+                Airplane airplane = new Airplane(id, capacity, speed, fuel);
+                Airplanes.Add(airplane);     
         }
-        public bool RemoveAirplane(Airplane airplane)
+        public bool RemoveAirplane(string id)
         {
-            return false;
+            if (findAirplane(id) == null)
+            {
+                return false;
+            }
+            Airplanes.Remove(findAirplane(id));
+            return true;
         }
-        public bool AddAirport(Airport airport)
+        public void AddAirport(string name, int cap, Point location, int lanes, Queue landingQueue, Queue takingOffQueue,
+            List<Problem> problem, List<Flight> listOfFlights)
         {
-            return false;
+            Airport airport = new Airport(name, cap, location, lanes, landingQueue, takingOffQueue,
+             problem, listOfFlights);
+
+            Airports.Add(airport);
         }
-        public bool RemoveAirport(Airport airport)
+        public bool RemoveAirport(string name)
         {
-            return false;
+            if (findAirport(name) == null)
+            {
+                return false;
+            }
+            Airports.Remove(findAirport(name));
+            return true;
         }
-        public bool CreateProblem(string id, string type, TimeSpan duration)
+        public void AddProblem(Airport a, int id, string type, TimeSpan duration)
         {
-            return false;
+            a.CreateProblem(id, type, duration);
+        }
+
+        public Flight findFlight(string id)
+        {
+            foreach(Flight f in Flights)
+            {
+                if(f.Id==id)
+                {
+                    return f;
+                }
+            }
+            return null;
+        }
+        public Airplane findAirplane(string id)
+        {
+            foreach (Airplane a in Airplanes)
+            {
+                if (a.Id == id)
+                {
+                    return a;
+                }
+            }
+            return null;
+        }
+        public Airport findAirport(string name)
+        {
+            foreach (Airport a in Airports)
+            {
+                if (a.Name == name)
+                {
+                    return a;
+                }
+            }
+            return null;
         }
 
     }

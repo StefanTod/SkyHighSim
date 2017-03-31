@@ -9,13 +9,13 @@ namespace Airtraffic_Simulator
     //fligt class
    public class Flight
     {
-        private String id;
+        private string id;
         private Airport departudeAirport;
         private Airport destinationAirport;
         private TimeSpan estimatedDuration;
         private DateTime departureTime;
         private DateTime arrivalTime;
-
+        public string Id {get; set;}
         public Airport DepartureAirport { get; set; }
         public Airport DestinationAirport { get; set; }
 

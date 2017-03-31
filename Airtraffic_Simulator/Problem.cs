@@ -11,5 +11,11 @@ namespace Airtraffic_Simulator
         private int id;
         private string type;
         private TimeSpan duration;
+        public Problem(int id, string type, TimeSpan duration)
+        {
+            this.id = id;
+            this.type = type;
+            this.duration = duration;
+        }
     }
 }
