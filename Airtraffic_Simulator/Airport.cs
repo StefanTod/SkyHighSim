@@ -35,6 +35,11 @@ namespace Airtraffic_Simulator
             this.capacity = cap;
             this.Location = location;
             this.lanes = lanes;
+            landingQueue = new Queue();
+            takingOffQueue = new Queue();
+            problem = new List<Problem>();
+            listOfFlights = new List<Flight>();
+            this.Image = new Bitmap ("../../Resources/airport_terminal.png");
         }
 
         

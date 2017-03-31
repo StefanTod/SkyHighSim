@@ -9,8 +9,8 @@ namespace Airtraffic_Simulator
     //fligt class
    public class Flight
     {
+        private Airport departureAirport;
         private string id;
-        private Airport departudeAirport;
         private Airport destinationAirport;
         private TimeSpan estimatedDuration;
         private DateTime departureTime;
@@ -23,8 +23,8 @@ namespace Airtraffic_Simulator
            TimeSpan EstimatedDuration, DateTime DepartureTime, DateTime ArrivalTime)
        {
            this.id = Id;
-           this.departudeAirport = DepartureAirport;
-           this.departudeAirport = DestinationAirport;
+           this.DepartureAirport = DepartureAirport;
+           this.DestinationAirport = DestinationAirport;
            this.estimatedDuration = EstimatedDuration;
            this.departureTime = DepartureTime;
            this.arrivalTime = ArrivalTime;
