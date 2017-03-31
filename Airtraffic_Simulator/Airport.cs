@@ -37,7 +37,7 @@ namespace Airtraffic_Simulator
             takingOffQueue = new Queue();
             problems = new List<Problem>();
             listOfFlights = new List<Flight>();
-            this.Image = new Bitmap (Airtraffic_Simulator.Properties.Resources.plane);
+            this.Image = new Bitmap (Airtraffic_Simulator.Properties.Resources.аirport);
         }
 
         
