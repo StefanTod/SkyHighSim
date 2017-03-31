@@ -23,8 +23,8 @@ namespace Airtraffic_Simulator
            TimeSpan EstimatedDuration, DateTime DepartureTime, DateTime ArrivalTime)
        {
            this.id = Id;
-           this.DepartureAirport = DepartureAirport;
-           this.DestinationAirport = DestinationAirport;
+           this.departureAirport = DepartureAirport;
+           this.destinationAirport = DestinationAirport;
            this.estimatedDuration = EstimatedDuration;
            this.departureTime = DepartureTime;
            this.arrivalTime = ArrivalTime;

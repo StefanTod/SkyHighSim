@@ -18,6 +18,7 @@ namespace Airtraffic_Simulator
         List<Queue> queues;
         Network airNetwork;
         Painter painter;
+        Graphics gr;
         public Form1()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace Airtraffic_Simulator
             Point p = new Point(50,50);
             //Airport arp1 = new Airport("Schiphol",100,p,2,arp1.landingQueue,arp1.takingOffQueue,arp1.problems,arp1.listOfFlights);
             airNetwork.AddAirport("Schiphol", 100, p, 2);
+            gr = this.panel2.CreateGraphics();
         }
         
 
@@ -38,8 +40,7 @@ namespace Airtraffic_Simulator
             timer.Start();
             foreach (Airport a in airNetwork.Airports)
             {
-                painter.DrawAirport(a);
-                panel2.Invalidate();
+                painter.DrawAirport(gr,a);
             }
         }
 
@@ -49,15 +50,16 @@ namespace Airtraffic_Simulator
             foreach (Airplane a in airNetwork.Airplanes)
             {
                 a.UpdateMovement();
-                painter.DrawAirplane(a);
-                panel2.Invalidate();
+                painter.DrawAirplane(gr,a);
+                //panel2.Invalidate();
             }
             //call painter
         }
         private void btStart_Click(object sender, EventArgs e)
         {
-            painter.DrawNetwork(airNetwork);
+            painter.DrawNetwork(gr,airNetwork);
             StartSimulation();
+
         }
 
         private void btStop_Click(object sender, EventArgs e)
@@ -71,10 +73,7 @@ namespace Airtraffic_Simulator
             btUpdate.Visible = true;
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-           
-        }
+   
     }
 }
 

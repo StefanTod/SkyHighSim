@@ -9,49 +9,50 @@ namespace Airtraffic_Simulator
 {
     class Painter
     {
-        private Graphics graphics { get; set; }
+       // private Graphics graphics { get; set; }
+        
     
-       // public Painter(Graphics gr)
-       // {
-         //   this.graphics = gr;
-       // }
-        public void DrawNetwork(Network n)
+        //public Painter(Graphics gr)
+        //{
+        //   this.graphics = gr;
+        //}
+        public void DrawNetwork(Graphics gr,Network n)
         {
             foreach (Airplane a in n.Airplanes)
             {
-                this.DrawAirplane(a);
+                this.DrawAirplane(gr,a);
             }
             foreach(Airport a in n.Airports)
             {
-                this.DrawAirport(a);
+                this.DrawAirport(gr,a);
             }
             foreach(Flight f in n.Flights)
             {
-                this.DrawFlightPath(f);
+                this.DrawFlightPath(gr,f);
             }
         }
 
-        public void RedrawAirplanes(Network n)
+        public void RedrawAirplanes(Graphics gr,Network n)
         {
             foreach (Airplane a in n.Airplanes)
             {
-                this.DrawAirplane(a);
+                this.DrawAirplane(gr,a);
             }
         }
-        public void DrawAirplane(Airplane airplaneToDraw)
+        public void DrawAirplane(Graphics gr,Airplane airplaneToDraw)
         {
             if(airplaneToDraw.status != Status.LANDED)
             {
-                graphics.DrawImage(airplaneToDraw.Image, airplaneToDraw.CurrentLocation);
+                gr.DrawImage(airplaneToDraw.Image, airplaneToDraw.CurrentLocation);
             }
         }
-        public void DrawAirport(Airport airportToDraw)
+        public void DrawAirport(Graphics gr,Airport airportToDraw)
         {
-            graphics.DrawImage(airportToDraw.Image, airportToDraw.Location);
+            gr.DrawImage(airportToDraw.Image, airportToDraw.Location);
         }
-        public void DrawFlightPath(Flight flightToDraw)
+        public void DrawFlightPath(Graphics gr,Flight flightToDraw)
         {
-            graphics.DrawLine(Pens.Yellow, flightToDraw.DepartureAirport.Location, flightToDraw.DestinationAirport.Location);
+            gr.DrawLine(Pens.Yellow, flightToDraw.DepartureAirport.Location, flightToDraw.DestinationAirport.Location);
         }
     }
 }
