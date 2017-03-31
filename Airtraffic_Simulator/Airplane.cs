@@ -15,37 +15,15 @@ namespace Airtraffic_Simulator
         private double fuel;
         public Status status = Status.LANDED;
         private int counterTicks = 0;
-        public Flight flight;
+        private Flight flight;
+
         public Point CurrentLocation { get; set; }
         public Bitmap Image { get; set; }
-        public string Id
-        {
-            get
-            {
-                return id;
-            }
-        }
-        public int Capacity
-        {
-            get
-            {
-                return capacity;
-            }
-        }
-        public double Speed
-        {
-            get
-            {
-                return speed;
-            }
-        }
-        public double Fuel
-        {
-            get
-            {
-                return fuel;
-            }
-        }
+        public string Id { get; }
+        public int Capacity { get; }
+        public double Speed { get; }
+        public double Fuel { get; }
+
         public void Update()
         {
             switch (this.status)
@@ -53,8 +31,15 @@ namespace Airtraffic_Simulator
                 case Status.LANDED:
                     //if check flight timing then we take off
                     // check if lanes are free
-                    status = Status.TAKINGOFF;
-                    break;
+                    if(flight.DepartureAirport.LanesTaken < flight.DepartureAirport.Lanes) {
+                        status = Status.TAKINGOFF;
+                        break;
+                    }
+                    else {
+                        //add to queue to take off
+                       break;
+                    }
+                    
                 case Status.INAIR:
                     UpdateMovement();
                     break;
@@ -73,6 +58,7 @@ namespace Airtraffic_Simulator
                         status = Status.INAIR;
                         // remove plane from airport 
                         counterTicks = 0;
+                        // release lane
                         
                     }
                     break;
@@ -117,6 +103,7 @@ namespace Airtraffic_Simulator
          }
         public Airplane(string id,int capacity,double speed, double fuel)
         {
+            this.id = id;
             this.capacity=capacity;
             this.speed=speed;
             this.fuel=fuel;
