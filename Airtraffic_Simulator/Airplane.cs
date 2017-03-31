@@ -19,10 +19,10 @@ namespace Airtraffic_Simulator
 
         public Point CurrentLocation { get; set; }
         public Bitmap Image { get; set; }
-        public string Id { get; }
-        public int Capacity { get; }
-        public double Speed { get; }
-        public double Fuel { get; }
+        public string Id { get; set; }
+        public int Capacity { get; set; }
+        public double Speed { get; set; }
+        public double Fuel { get; set; }
 
         public void Update()
         {
@@ -75,25 +75,43 @@ namespace Airtraffic_Simulator
             int yCurrent = this.CurrentLocation.Y;
             // calculations of movement
             double currentdistance = Math.Sqrt(Math.Pow(xCurrent - x1, 2) + Math.Pow(yCurrent - y1, 2));
-            double distancepassed = (20 * 30 / 60); // Distance = speed * time  --> speed = 20px/hour time = 20 minutes 
-            int A = (y1 - y2);
-            int B = (x1 - x2);
+            double distancepassed = (20 * 30 / 60); // Distance = speed * time  --> speed = 20px/hour time = 30 minutes 
+            int A = (y2 - y1);
+            int B = (x2 - x1);
             if(B!=0 && A!=0) // calculate new point based on distance passed and current location
             {
                 double slope = A / B;
                 double k = distancepassed / Math.Sqrt(1 + Math.Pow(slope, 2));
+                if(B<0)
+                {
+                    k = -k;
+                }
                 int xNew = (int)Math.Round(xCurrent + k * 1);
+                k = -k;
+                if(A<0)
+                {
+                    k = -k;
+                }
                 int yNew = (int)Math.Round(yCurrent + k * slope);
                 this.CurrentLocation = new Point(xNew, yNew);
             }
-            else if (A==0) //then y stays the same, add distance to x
+            else if (A==0) //then y stays the same, add distance/substract distance to x
             {
+                if(B<0)
+                {
+                    distancepassed = -distancepassed;
+                }
                 int xNew = (int)Math.Round(distancepassed) + xCurrent;
                 int yNew = yCurrent;
                 this.CurrentLocation = new Point(xNew, yNew);
             }
-            else //x stays the same, add distance to y
+            else //x stays the same, add distance/substract distance to y
             {
+                if(A<0)
+                {
+
+                    distancepassed = -distancepassed;
+                }
                 int xNew = xCurrent;
                 int yNew = (int)Math.Round(distancepassed) + yCurrent;
                 this.CurrentLocation = new Point(xNew, yNew);
