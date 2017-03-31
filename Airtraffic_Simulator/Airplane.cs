@@ -19,10 +19,10 @@ namespace Airtraffic_Simulator
 
         public Point CurrentLocation { get; set; }
         public Bitmap Image { get; set; }
-        public string Id { get; }
-        public int Capacity { get; }
-        public double Speed { get; }
-        public double Fuel { get; }
+        public string Id { get; private set; }
+        public int Capacity { get; private set; }
+        public double Speed { get; private set; }
+        public double Fuel { get; private set; }
 
         public void Update()
         {

@@ -9,12 +9,12 @@ namespace Airtraffic_Simulator
 {
     class Painter
     {
-        private Graphics Graphics { get; set; }
-
-        public Painter(Graphics gr)
-        {
-            this.Graphics = gr;
-        }
+        private Graphics graphics { get; set; }
+    
+       // public Painter(Graphics gr)
+       // {
+         //   this.graphics = gr;
+       // }
         public void DrawNetwork(Network n)
         {
             foreach (Airplane a in n.Airplanes)
@@ -42,16 +42,16 @@ namespace Airtraffic_Simulator
         {
             if(airplaneToDraw.status != Status.LANDED)
             {
-                Graphics.DrawImage(airplaneToDraw.Image, airplaneToDraw.CurrentLocation);
+                graphics.DrawImage(airplaneToDraw.Image, airplaneToDraw.CurrentLocation);
             }
         }
         public void DrawAirport(Airport airportToDraw)
         {
-            Graphics.DrawImage(airportToDraw.Image, airportToDraw.Location);
+            graphics.DrawImage(airportToDraw.Image, airportToDraw.Location);
         }
         public void DrawFlightPath(Flight flightToDraw)
         {
-            Graphics.DrawLine(Pens.Yellow, flightToDraw.DepartureAirport.Location, flightToDraw.DestinationAirport.Location);
+            graphics.DrawLine(Pens.Yellow, flightToDraw.DepartureAirport.Location, flightToDraw.DestinationAirport.Location);
         }
     }
 }

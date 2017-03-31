@@ -553,6 +553,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1064, 621);
             this.panel2.TabIndex = 12;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // Form1
             // 
@@ -568,7 +569,7 @@
             this.Controls.Add(this.panelDetails);
             this.Controls.Add(this.panelNameLocation);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(1280, 720);
             this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "Form1";
