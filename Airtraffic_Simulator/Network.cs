@@ -56,11 +56,9 @@ namespace Airtraffic_Simulator
             Airplanes.Remove(findAirplane(id));
             return true;
         }
-        public void AddAirport(string name, int cap, Point location, int lanes, Queue landingQueue, Queue takingOffQueue,
-            List<Problem> problem, List<Flight> listOfFlights)
+        public void AddAirport(string name, int cap, Point location, int lanes)
         {
-            Airport airport = new Airport(name, cap, location, lanes, landingQueue, takingOffQueue,
-             problem, listOfFlights);
+            Airport airport = new Airport(name, cap, location, lanes);
 
             Airports.Add(airport);
         }

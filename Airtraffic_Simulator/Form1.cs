@@ -27,12 +27,20 @@ namespace Airtraffic_Simulator
             queues  = new List<Queue>();
             airNetwork = new Network(Regions.EUROPE, airplanes, airports, flights, queues);
             painter = new Painter();
+            Point p = new Point(50,50);
+            //Airport arp1 = new Airport("Schiphol",100,p,2,arp1.landingQueue,arp1.takingOffQueue,arp1.problems,arp1.listOfFlights);
+            airNetwork.AddAirport("Schiphol", 100, p, 2);
         }
         
 
         private void StartSimulation()
         {
             timer.Start();
+            foreach (Airport a in airNetwork.Airports)
+            {
+                painter.DrawAirport(a);
+                panel2.Invalidate();
+            }
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -61,6 +69,11 @@ namespace Airtraffic_Simulator
         {
             panelAdvanced.Visible = true;
             btUpdate.Visible = true;
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+           
         }
     }
 }

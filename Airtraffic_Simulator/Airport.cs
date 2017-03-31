@@ -23,13 +23,11 @@ namespace Airtraffic_Simulator
 
         //TODO add access to list
 
-        public int Lanes { get; }
+        public int Lanes { get; private set; }
         public int LanesTaken { get; set; }
         public int Capacity { get; set; }
-        public string Name { get; }
 
-        public Airport(string name, int cap, Point location, int lanes, Queue landingQueue,Queue takingOffQueue,
-            List<Problem> problem,List<Flight> listOfFlights)
+        public Airport(string name, int cap, Point location, int lanes)
         {
             this.name = name;
             this.capacity = cap;
@@ -37,9 +35,9 @@ namespace Airtraffic_Simulator
             this.lanes = lanes;
             landingQueue = new Queue();
             takingOffQueue = new Queue();
-            problem = new List<Problem>();
+            problems = new List<Problem>();
             listOfFlights = new List<Flight>();
-            this.Image = new Bitmap ("../../Resources/airport_terminal.png");
+            this.Image = new Bitmap (Airtraffic_Simulator.Properties.Resources.plane_icon);
         }
 
         
