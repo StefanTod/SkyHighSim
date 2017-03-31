@@ -551,16 +551,16 @@
             this.panel2.Location = new System.Drawing.Point(202, 60);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(991, 597);
+            this.panel2.Size = new System.Drawing.Size(1064, 621);
             this.panel2.TabIndex = 12;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(948, 553);
-            this.Controls.Add(this.panel2);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.fakeStart);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.btUpdate);
             this.Controls.Add(this.panelAdvanced);
             this.Controls.Add(this.btAdvanced);
@@ -568,9 +568,9 @@
             this.Controls.Add(this.panelDetails);
             this.Controls.Add(this.panelNameLocation);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximumSize = new System.Drawing.Size(964, 592);
-            this.MinimumSize = new System.Drawing.Size(964, 592);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximumSize = new System.Drawing.Size(1280, 720);
+            this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "Form1";
             this.Text = "SkyHighSim";
             this.panel1.ResumeLayout(false);

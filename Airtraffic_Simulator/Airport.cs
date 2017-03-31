@@ -13,14 +13,20 @@ namespace Airtraffic_Simulator
         private int capacity;
         public Point Location;
         private int lanes;
-        private Queue landingQueue;
-        private Queue takingOffQueue;
-        private List<Problem> problems;
-        private List<Flight> listOfFlights;
+        private int lanesTaken;
+        public Queue landingQueue;
+        public Queue takingOffQueue;
+        public List<Problem> problems;
+        public List<Flight> listOfFlights;
         public Bitmap Image;
         public string Name { get; set; }
 
         //TODO add access to list
+
+        public int Lanes { get; }
+        public int LanesTaken { get; set; }
+        public int Capacity { get; set; }
+        public string Name { get; }
 
         public Airport(string name, int cap, Point location, int lanes, Queue landingQueue,Queue takingOffQueue,
             List<Problem> problem,List<Flight> listOfFlights)
