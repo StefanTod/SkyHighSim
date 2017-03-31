@@ -22,6 +22,8 @@ namespace Airtraffic_Simulator
             InitializeComponent();
             airNetwork = new Network(Regions.EUROPE,airplanes,airports,flights,queues);
         }
+        
+
         private void StartSimulation()
         {
             timer.Start();
@@ -44,6 +46,12 @@ namespace Airtraffic_Simulator
         private void btStop_Click(object sender, EventArgs e)
         {
             timer.Stop();
+        }
+
+        private void btAdvanced_Click(object sender, EventArgs e)
+        {
+            panelAdvanced.Visible = true;
+            btUpdate.Visible = true;
         }
     }
 }
