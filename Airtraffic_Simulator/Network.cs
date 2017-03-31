@@ -33,7 +33,7 @@ namespace Airtraffic_Simulator
         {
             return false;
         }
-        public bool CreateAirplane(Airplane airplane)
+        public bool AddAirplane(Airplane airplane)
         {
             return false;
         }

@@ -30,6 +30,14 @@ namespace Airtraffic_Simulator
                 this.DrawFlightPath(f);
             }
         }
+
+        public void RedrawAirplanes(Network n)
+        {
+            foreach (Airplane a in n.Airplanes)
+            {
+                this.DrawAirplane(a);
+            }
+        }
         public void DrawAirplane(Airplane airplaneToDraw)
         {
             if(airplaneToDraw.status != Status.LANDED)
