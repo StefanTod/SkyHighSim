@@ -8,14 +8,14 @@ namespace Airtraffic_Simulator
 {
     public class Problem
     {
-        private int id;
-        private string type;
-        private TimeSpan duration;
+        public int Id { get; private set; }
+        public string Type { get; private set; }
+        public TimeSpan Duration { get; private set; }
         public Problem(int id, string type, TimeSpan duration)
         {
-            this.id = id;
-            this.type = type;
-            this.duration = duration;
+            this.Id = id;
+            this.Type = type;
+            this.Duration = duration;
         }
     }
 }

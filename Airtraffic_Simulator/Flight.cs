@@ -7,27 +7,24 @@ using System.Threading.Tasks;
 namespace Airtraffic_Simulator
 {
     //fligt class
-   public class Flight
+    public class Flight
     {
-        private Airport departureAirport;
-        private string id;
-        private Airport destinationAirport;
-        private TimeSpan estimatedDuration;
-        private DateTime departureTime;
-        private DateTime arrivalTime;
-        public string Id {get; set;}
-        public Airport DepartureAirport { get; set; }
-        public Airport DestinationAirport { get; set; }
+        public TimeSpan EstimatedDuration { get; private set; }
+        public DateTime DepartureTime { get; private set; }
+        public DateTime ArrivalTime { get; private set; }
+        public string Id { get; private set; }
+        public Airport DepartureAirport { get; private set; }
+        public Airport DestinationAirport { get; private set; }
 
-       public Flight(String Id, Airport DepartureAirport, Airport DestinationAirport,
-           TimeSpan EstimatedDuration, DateTime DepartureTime, DateTime ArrivalTime)
-       {
-           this.id = Id;
-           this.departureAirport = DepartureAirport;
-           this.destinationAirport = DestinationAirport;
-           this.estimatedDuration = EstimatedDuration;
-           this.departureTime = DepartureTime;
-           this.arrivalTime = ArrivalTime;
-       }
+        public Flight(String id, Airport departureAirport, Airport destinationAirport,
+            TimeSpan estimatedDuration, DateTime departureTime, DateTime arrivalTime)
+        {
+            this.Id = id;
+            this.DepartureAirport = departureAirport;
+            this.DestinationAirport = destinationAirport;
+            this.EstimatedDuration = estimatedDuration;
+            this.DepartureTime = departureTime;
+            this.ArrivalTime = arrivalTime;
+        }
     }
 }

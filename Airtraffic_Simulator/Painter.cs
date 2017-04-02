@@ -41,7 +41,7 @@ namespace Airtraffic_Simulator
         }
         public void DrawAirplane(Graphics gr,Airplane airplaneToDraw)
         {
-            if(airplaneToDraw.status != Status.LANDED)
+            if(airplaneToDraw.Status != Status.LANDED)
             {
                 gr.DrawImage(airplaneToDraw.Image, airplaneToDraw.CurrentLocation);
             }

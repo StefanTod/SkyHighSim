@@ -8,7 +8,12 @@ namespace Airtraffic_Simulator
 {
     public class Queue
     {
-        private Airport airport;
+        public Airport Airport { get; private set; }
+
+        public Queue(Airport airport)
+        {
+            this.Airport = airport;
+        }
 
         public void ProcessAirplane(Airplane airplane, Airport airport)
         {

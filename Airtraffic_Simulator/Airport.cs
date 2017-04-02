@@ -9,34 +9,28 @@ namespace Airtraffic_Simulator
 {
     public class Airport
     {
-        private string name;
-        private int capacity;
-        public Point Location;
-        private int lanes;
-        private int lanesTaken;
-        public Queue landingQueue;
-        public Queue takingOffQueue;
-        public List<Problem> problems;
-        public List<Flight> listOfFlights;
-        public Bitmap Image;
-        public string Name { get; set; }
-
-        //TODO add access to list
+        public Point Location { get; private set; }
+        public Queue LandingQueue { get; private set; }
+        public Queue TakingOffQueue { get; private set; }
+        public List<Problem> Problems { get; private set; }
+        public List<Flight> listOfFlights { get; private set; }
+        public Bitmap Image { get; private set; }
+        public string Name { get; private set; }
 
         public int Lanes { get; private set; }
-        public int LanesTaken { get; set; }
-        public int Capacity { get; set; }
+        public int LanesTaken { get;  private set; }
+        public int Capacity { get; private set; }
 
         public Airport(string name, int cap, Point location, int lanes)
         {
-            this.name = name;
-            this.capacity = cap;
+            this.Name = name;
+            this.Capacity = cap;
             this.Location = location;
-            this.lanes = lanes;
-            landingQueue = new Queue();
-            takingOffQueue = new Queue();
-            problems = new List<Problem>();
-            listOfFlights = new List<Flight>();
+            this.Lanes = lanes;
+            this.LandingQueue = new Queue(this);
+            this.TakingOffQueue = new Queue(this);
+            this.Problems = new List<Problem>();
+            this.listOfFlights = new List<Flight>();
             this.Image = new Bitmap (Airtraffic_Simulator.Properties.Resources.аirport);
         }
 
@@ -55,8 +49,8 @@ namespace Airtraffic_Simulator
 
         public void CreateProblem(int id, string type, TimeSpan duration)
         {
-            Problem proble = new Problem(id, type, duration);
-            problems.Add(proble);
+            Problem problem = new Problem(id, type, duration);
+            Problems.Add(problem);
         }
     }
 }

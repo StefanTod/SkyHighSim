@@ -11,10 +11,10 @@ namespace Airtraffic_Simulator
     {
         public Regions Region;
 
-        public List<Airplane> Airplanes;
-        public List<Airport> Airports;
-        public List<Flight> Flights;
-        public List<Queue> Queues;
+        public List<Airplane> Airplanes { get; private set; }
+        public List<Airport> Airports { get; private set; }
+        public List<Flight> Flights { get; private set; }
+        public List<Queue> Queues { get; private set; }
 
         public Network(Regions region, List<Airplane> airplanes, List<Airport> airports, List<Flight> flights, List<Queue> Queues)
         {
@@ -35,11 +35,12 @@ namespace Airtraffic_Simulator
 
         public bool RemoveFlight(String id)
         {
-           if (findFlight(id) == null)
+            Flight flightToRemove = this.FindFlight(id);
+            if (flightToRemove == null)
             {
                 return false;
             }
-            Flights.Remove(findFlight(id));
+            Flights.Remove(flightToRemove);
             return true;
         }
         public void AddAirplane(string id,int capacity, double speed, double fuel)
@@ -49,11 +50,12 @@ namespace Airtraffic_Simulator
         }
         public bool RemoveAirplane(string id)
         {
-            if (findAirplane(id) == null)
+            Airplane airplaneToRemove = this.FindAirplane(id);
+            if (airplaneToRemove == null)
             {
                 return false;
             }
-            Airplanes.Remove(findAirplane(id));
+            Airplanes.Remove(airplaneToRemove);
             return true;
         }
         public void AddAirport(string name, int cap, Point location, int lanes)
@@ -64,11 +66,12 @@ namespace Airtraffic_Simulator
         }
         public bool RemoveAirport(string name)
         {
-            if (findAirport(name) == null)
+            Airport airportToRemove = FindAirport(name);
+            if (airportToRemove == null)
             {
                 return false;
             }
-            Airports.Remove(findAirport(name));
+            Airports.Remove(airportToRemove);
             return true;
         }
         public void AddProblem(Airport a, int id, string type, TimeSpan duration)
@@ -76,7 +79,7 @@ namespace Airtraffic_Simulator
             a.CreateProblem(id, type, duration);
         }
 
-        public Flight findFlight(string id)
+        public Flight FindFlight(string id)
         {
             foreach(Flight f in Flights)
             {
@@ -87,7 +90,7 @@ namespace Airtraffic_Simulator
             }
             return null;
         }
-        public Airplane findAirplane(string id)
+        public Airplane FindAirplane(string id)
         {
             foreach (Airplane a in Airplanes)
             {
@@ -98,7 +101,7 @@ namespace Airtraffic_Simulator
             }
             return null;
         }
-        public Airport findAirport(string name)
+        public Airport FindAirport(string name)
         {
             foreach (Airport a in Airports)
             {
