@@ -169,6 +169,7 @@
             this.btFastForward.TabIndex = 7;
             this.btFastForward.Text = "FAST FORWARD";
             this.btFastForward.UseVisualStyleBackColor = false;
+            this.btFastForward.Click += new System.EventHandler(this.btFastForward_Click);
             // 
             // btStop
             // 
