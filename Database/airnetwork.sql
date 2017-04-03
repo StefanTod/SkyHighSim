@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2017 at 12:37 PM
--- Server version: 10.1.9-MariaDB
--- PHP Version: 5.6.15
+-- Generation Time: Apr 03, 2017 at 07:45 PM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.6.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -39,16 +39,16 @@ CREATE TABLE `airplane` (
 --
 
 INSERT INTO `airplane` (`idAirplane`, `Capacity`, `Speed`, `Fuel`, `Location`) VALUES
-(1, 100, 700, 3, '10,10'),
-(2, 150, 800, 6, '50,50'),
-(3, 90, 750, 7, '64,56'),
-(4, 85, 600, 4, '85,45'),
-(5, 50, 650, 10, '85,14'),
-(6, 150, 700, 3, '45,45'),
-(7, 90, 500, 9, '77,58'),
-(8, 200, 700, 10, '33,54'),
-(9, 120, 500, 5, '88,65'),
-(10, 90, 800, 15, '25,36');
+(1, 100, 700, 3, '480,390'),
+(2, 150, 800, 6, '250,150'),
+(3, 90, 750, 7, '270,540'),
+(4, 85, 600, 4, '780,380'),
+(5, 50, 650, 10, '250,150'),
+(6, 150, 700, 3, '675,500'),
+(7, 90, 500, 9, '270,540'),
+(8, 200, 700, 10, '780,380'),
+(9, 120, 500, 5, '270,540'),
+(10, 90, 800, 15, '675,500');
 
 -- --------------------------------------------------------
 
@@ -77,7 +77,7 @@ CREATE TABLE `airplanepassenger` (
 --
 
 CREATE TABLE `airport` (
-  `idAirport` int(10) NOT NULL,
+  `IdAirport` int(10) NOT NULL,
   `Name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Capacity` int(11) DEFAULT NULL,
   `Location` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -89,12 +89,12 @@ CREATE TABLE `airport` (
 -- Dumping data for table `airport`
 --
 
-INSERT INTO `airport` (`idAirport`, `Name`, `Capacity`, `Location`, `NbOfLanes`, `Region_idRegion`) VALUES
-(1, 'London', 10, '50,50', 6, 1),
-(2, 'Paris', 15, '80,80', 9, 1),
-(3, 'Berlin', 15, '100,100', 5, 1),
-(4, 'Sofia', 5, '10,20', 2, 1),
-(5, 'Eindhoven', 20, '65.35', 5, 1);
+INSERT INTO `airport` (`IdAirport`, `Name`, `Capacity`, `Location`, `NbOfLanes`, `Region_idRegion`) VALUES
+(1, 'Germany', 100, '480,390', 2, 1),
+(2, 'Bulgaria', 100, '675,500', 4, 1),
+(3, 'Ukraine', 100, '780,380', 2, 1),
+(4, 'Iceland', 100, '270,540', 3, 1),
+(5, 'Spain', 100, '250,150', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -106,9 +106,9 @@ CREATE TABLE `flight` (
   `idFlight` int(10) NOT NULL,
   `LandsTo` int(10) NOT NULL,
   `NbOfPassengers` int(11) DEFAULT NULL,
-  `EstimatedDuration` timestamp(2) NULL DEFAULT NULL,
-  `DepartureTime` datetime DEFAULT NULL,
-  `ArrivalTime` datetime DEFAULT NULL,
+  `EstimatedDuration` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `DepartureTime` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ArrivalTime` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Airplane_idAirplane` int(10) NOT NULL,
   `takesOffFrom` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -118,16 +118,16 @@ CREATE TABLE `flight` (
 --
 
 INSERT INTO `flight` (`idFlight`, `LandsTo`, `NbOfPassengers`, `EstimatedDuration`, `DepartureTime`, `ArrivalTime`, `Airplane_idAirplane`, `takesOffFrom`) VALUES
-(1, 1, 50, '2017-03-01 01:00:00.00', '2017-03-01 13:00:00', '2017-03-01 15:00:00', 2, 2),
-(2, 4, 100, '2017-04-29 01:00:00.00', '2017-04-29 02:00:00', '2017-04-29 05:00:00', 1, 2),
-(3, 3, 150, '2017-04-08 08:00:00.00', '2017-04-08 06:00:00', '2017-04-08 16:00:00', 10, 1),
-(4, 5, 90, '2017-03-14 04:00:00.00', '2017-03-14 12:00:00', '2017-03-14 17:00:00', 6, 3),
-(5, 4, 120, '2017-03-17 03:00:00.00', '2017-03-17 14:00:00', '2017-03-17 18:00:00', 4, 3),
-(6, 2, 111, '2017-05-05 05:00:00.00', '2017-05-05 05:00:00', '2017-05-05 12:00:00', 8, 1),
-(7, 2, 150, '2017-04-08 01:00:00.00', '2017-04-08 13:00:00', '2017-04-08 16:00:00', 3, 5),
-(8, 4, 90, '2017-03-11 05:00:00.00', '2017-03-11 10:00:00', '2017-03-11 16:00:00', 9, 2),
-(9, 2, 120, '2017-04-17 04:00:00.00', '2017-04-17 14:00:00', '2017-04-17 20:00:00', 5, 1),
-(10, 4, 89, '2017-05-17 01:00:00.00', '2017-05-17 18:00:00', '2017-05-17 21:00:00', 2, 3);
+(1, 2, 50, '2017-03-01 02:00:00.00', '2017-03-01 13:00:00', '2017-03-01 15:00:00', 2, 1),
+(2, 3, 100, '2017-04-29 03:00:00.00', '2017-04-29 02:00:00', '2017-04-29 05:00:00', 1, 1),
+(3, 1, 150, '2017-04-08 10:00:00.00', '2017-04-08 06:00:00', '2017-04-08 16:00:00', 10, 2),
+(4, 3, 90, '2017-03-14 05:00:00.00', '2017-03-14 12:00:00', '2017-03-14 17:00:00', 6, 2),
+(5, 1, 120, '2017-03-17 04:00:00.00', '2017-03-17 14:00:00', '2017-03-17 18:00:00', 4, 3),
+(6, 4, 111, '2017-05-05 07:00:00.00', '2017-05-05 05:00:00', '2017-05-05 12:00:00', 8, 3),
+(7, 1, 150, '2017-04-08 03:00:00.00', '2017-04-08 13:00:00', '2017-04-08 16:00:00', 3, 4),
+(8, 2, 90, '2017-03-11 06:00:00.00', '2017-03-11 10:00:00', '2017-03-11 16:00:00', 9, 4),
+(9, 3, 120, '2017-04-17 06:00:00.00', '2017-04-17 14:00:00', '2017-04-17 20:00:00', 5, 5),
+(10, 4, 89, '2017-05-17 03:00:00.00', '2017-05-17 18:00:00', '2017-05-17 21:00:00', 2, 5);
 
 -- --------------------------------------------------------
 
@@ -187,7 +187,7 @@ ALTER TABLE `airplanepassenger`
 -- Indexes for table `airport`
 --
 ALTER TABLE `airport`
-  ADD PRIMARY KEY (`idAirport`,`Region_idRegion`),
+  ADD PRIMARY KEY (`IdAirport`,`Region_idRegion`),
   ADD KEY `fk_Airport_Region1_idx` (`Region_idRegion`);
 
 --
@@ -225,7 +225,7 @@ ALTER TABLE `airplane`
 -- AUTO_INCREMENT for table `airport`
 --
 ALTER TABLE `airport`
-  MODIFY `idAirport` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `IdAirport` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `flight`
 --
