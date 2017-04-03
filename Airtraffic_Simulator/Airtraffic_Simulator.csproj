@@ -110,6 +110,8 @@
     <None Include="Resources\17690445_1295816210486897_1577073800_n.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\airplane_flying.png" />
+    <None Include="Resources\airplane_inQueue.png" />
     <Content Include="Resources\planeObjectIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
