@@ -41,16 +41,17 @@ namespace Airtraffic_Simulator
 
         private void StartSimulation()
         {
-            
-            foreach (Airport a in airNetwork.Airports)
-            {
-                painter.DrawAirport(gr,a);
-            }
+
+            panelDrawing.Invalidate();
             timer.Start();
         }
 
         private void timer_Tick(object sender, EventArgs e)
-        {         
+        {
+            foreach (Airplane a in airNetwork.Airplanes)
+            {
+                a.Update();
+            }
             panelDrawing.Invalidate();
             
             //call painter
@@ -76,10 +77,6 @@ namespace Airtraffic_Simulator
 
         private void panelDrawing_Paint(object sender, PaintEventArgs e)
         {
-            foreach (Airplane a in airNetwork.Airplanes)
-            {
-                a.Update();
-            }
             painter.DrawNetwork(e.Graphics, airNetwork);
         }
 
