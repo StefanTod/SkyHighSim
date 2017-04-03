@@ -12,7 +12,7 @@ namespace Airtraffic_Simulator
     {
         public Status Status { get; private set; }
         public Flight Flight { get; set; }
-        public Point CurrentLocation { get; set; }
+        public PointF CurrentLocation { get; set; }
         public Bitmap Image { get; set; }
         public string Id { get; private set; }
         public int Capacity { get; private set; }
@@ -73,13 +73,13 @@ namespace Airtraffic_Simulator
         }
         public void UpdateMovement()
         {
-            int x1 = this.Flight.DepartureAirport.Location.X;
-            int x2 = this.Flight.DestinationAirport.Location.X;
-            int y1 = this.Flight.DepartureAirport.Location.Y;
-            int y2 = this.Flight.DestinationAirport.Location.Y;
+            float x1 = this.Flight.DepartureAirport.Location.X;
+            float x2 = this.Flight.DestinationAirport.Location.X;
+            float y1 = this.Flight.DepartureAirport.Location.Y;
+            float y2 = this.Flight.DestinationAirport.Location.Y;
 
-            int xCurrent = this.CurrentLocation.X;
-            int yCurrent = this.CurrentLocation.Y;
+            float xCurrent = this.CurrentLocation.X;
+            float yCurrent = this.CurrentLocation.Y;
             // calculations of movement
             double totaldistance = Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
             double currentdistance = Math.Sqrt(Math.Pow(xCurrent - x1, 2) + Math.Pow(yCurrent - y1, 2));
@@ -87,8 +87,8 @@ namespace Airtraffic_Simulator
             double A = (y2 - y1);
             double B = (x2 - x1);
 
-            int xNew;
-            int yNew;
+            float xNew;
+            float yNew;
             if (B != 0 && A != 0) // calculate new point based on distance passed and current location
             {
                 double slope = A / B;
@@ -97,13 +97,14 @@ namespace Airtraffic_Simulator
                 {
                     k = -k;
                 }
-                xNew = (int)Math.Round(xCurrent + k * 1);
+                xNew = (float)(xCurrent + k * 1);
+                
                 k = Math.Abs(k);
                 if (A < 0)
                 {
                     k = -k;
                 }
-                yNew = (int)Math.Round(yCurrent + k * Math.Abs(slope));
+                yNew = (float)(yCurrent + k * Math.Abs(slope));
             }
             else if (A == 0) //then y stays the same, add distance/substract distance to x
             {
@@ -111,7 +112,7 @@ namespace Airtraffic_Simulator
                 {
                     distancepassed = -distancepassed;
                 }
-                xNew = (int)Math.Round(distancepassed) + xCurrent;
+                xNew = (float)(distancepassed + xCurrent);
                 yNew = yCurrent;
             }
             else //x stays the same, add distance/substract distance to y
@@ -121,7 +122,7 @@ namespace Airtraffic_Simulator
                     distancepassed = -distancepassed;
                 }
                 xNew = xCurrent;
-                yNew = (int)Math.Round(distancepassed) + yCurrent;
+                yNew = (float)distancepassed + yCurrent;
             }
             if (totaldistance < currentdistance + distancepassed)
             {
@@ -129,7 +130,7 @@ namespace Airtraffic_Simulator
                 yNew = this.Flight.DestinationAirport.Location.Y;
                 this.Status = Status.LANDING;
             }
-            this.CurrentLocation = new Point(xNew, yNew);
+            this.CurrentLocation = new PointF(xNew, yNew);
         }
 
         public void AddFlight(Flight f)
@@ -137,10 +138,10 @@ namespace Airtraffic_Simulator
             this.Flight = f;
             this.CurrentLocation = f.DepartureAirport.Location;
 
-            int x1 = this.Flight.DepartureAirport.Location.X;
-            int x2 = this.Flight.DestinationAirport.Location.X;
-            int y1 = this.Flight.DepartureAirport.Location.Y;
-            int y2 = this.Flight.DestinationAirport.Location.Y;
+            float x1 = this.Flight.DepartureAirport.Location.X;
+            float x2 = this.Flight.DestinationAirport.Location.X;
+            float y1 = this.Flight.DepartureAirport.Location.Y;
+            float y2 = this.Flight.DestinationAirport.Location.Y;
 
 
 

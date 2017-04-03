@@ -46,16 +46,10 @@ namespace Airtraffic_Simulator
             airNetwork.AddAirplane("02", 1, 1, 1);
             airNetwork.AddAirplane("03", 1, 1, 1);
 
-            airNetwork.FindAirplane("00").Flight = airNetwork.FindFlight("1");
-            airNetwork.FindAirplane("01").Flight = airNetwork.FindFlight("2");
-            airNetwork.FindAirplane("02").Flight = airNetwork.FindFlight("3");
-            airNetwork.FindAirplane("03").Flight = airNetwork.FindFlight("4");
-
-            airNetwork.FindAirplane("00").CurrentLocation = airNetwork.FindAirport("Germany").Location;
-            airNetwork.FindAirplane("01").CurrentLocation = airNetwork.FindAirport("Iceland").Location;
-            airNetwork.FindAirplane("02").CurrentLocation = airNetwork.FindAirport("Ukraine").Location;
-            airNetwork.FindAirplane("03").CurrentLocation = airNetwork.FindAirport("Bulgaria").Location;
-
+            airNetwork.FindAirplane("00").AddFlight(airNetwork.FindFlight("1"));
+            airNetwork.FindAirplane("01").AddFlight(airNetwork.FindFlight("2"));
+            airNetwork.FindAirplane("02").AddFlight(airNetwork.FindFlight("3"));
+            airNetwork.FindAirplane("03").AddFlight(airNetwork.FindFlight("4"));
             gr = this.panelDrawing.CreateGraphics();
         }
         

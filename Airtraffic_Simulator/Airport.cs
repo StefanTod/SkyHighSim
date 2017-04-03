@@ -9,7 +9,7 @@ namespace Airtraffic_Simulator
 {
     public class Airport
     {
-        public Point Location { get; private set; }
+        public PointF Location { get; private set; }
         public Queue LandingQueue { get; private set; }
         public Queue TakingOffQueue { get; private set; }
         public List<Problem> Problems { get; private set; }
