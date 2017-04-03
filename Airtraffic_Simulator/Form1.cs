@@ -19,11 +19,15 @@ namespace Airtraffic_Simulator
         Network airNetwork;
         Painter painter;
         Graphics gr;
+
+        DataHelper helper;
         public Form1()
         {
             InitializeComponent();
+            helper = new DataHelper();
             airplanes = new List<Airplane>();
-            airports = new List<Airport>();
+            airports = helper.GetAllAirports();
+            
             flights = new List<Flight>();
             queues  = new List<Queue>();
             airNetwork = new Network(Regions.EUROPE, airplanes, airports, flights, queues);
@@ -41,6 +45,13 @@ namespace Airtraffic_Simulator
             airNetwork.AddFlight("3", airNetwork.FindAirport("Ukraine"), airNetwork.FindAirport("Iceland"), TimeSpan.Zero, DateTime.Now, DateTime.Now);
             airNetwork.AddFlight("4", airNetwork.FindAirport("Bulgaria"), airNetwork.FindAirport("Spain"), TimeSpan.Zero, DateTime.Now, DateTime.Now);
 
+            foreach (Airport a in airports)
+            {
+                airNetwork.AddAirport(a.Name,a.Capacity,a.Location,a.Lanes);
+            }
+            airNetwork.AddAirport("Schiphol", 100, new Point(480,390), 2);
+            airNetwork.AddAirport("Test", 100, new Point(770,520), 4);
+            airNetwork.AddFlight("1", airNetwork.FindAirport("Schiphol"), airNetwork.FindAirport("Test"), TimeSpan.Zero, DateTime.Now, DateTime.Now);
             airNetwork.AddAirplane("00", 1, 1, 1);
             airNetwork.AddAirplane("01", 1, 1, 1);
             airNetwork.AddAirplane("02", 1, 1, 1);
@@ -51,6 +62,7 @@ namespace Airtraffic_Simulator
             airNetwork.FindAirplane("02").AddFlight(airNetwork.FindFlight("3"));
             airNetwork.FindAirplane("03").AddFlight(airNetwork.FindFlight("4"));
             gr = this.panelDrawing.CreateGraphics();
+            Invalidate();
         }
         
 
