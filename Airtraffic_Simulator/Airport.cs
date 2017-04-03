@@ -21,7 +21,7 @@ namespace Airtraffic_Simulator
         public int LanesTaken { get;  private set; }
         public int Capacity { get; private set; }
 
-        public Airport(string name, int cap, Point location, int lanes)
+        public Airport(string name, int cap, PointF location, int lanes)
         {
             this.Name = name;
             this.Capacity = cap;
