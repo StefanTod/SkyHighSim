@@ -95,16 +95,7 @@
     <None Include="Resources\plane.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\map.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\map1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\europemap.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\airport-terminal.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\airportТerminal.png" />

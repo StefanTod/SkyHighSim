@@ -48,7 +48,7 @@ namespace Airtraffic_Simulator
         }
         public void DrawAirport(Graphics gr,Airport airportToDraw)
         {
-            gr.DrawImage(airportToDraw.Image, airportToDraw.Location);
+            gr.DrawImage(airportToDraw.Image, new Point(airportToDraw.Location.X-7,airportToDraw.Location.Y-7));
         }
         public void DrawFlightPath(Graphics gr,Flight flightToDraw)
         {
