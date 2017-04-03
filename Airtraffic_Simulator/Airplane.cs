@@ -25,8 +25,7 @@ namespace Airtraffic_Simulator
             this.Capacity = capacity;
             this.Speed = speed;
             this.Fuel = fuel;
-            this.CurrentLocation = currentLocation;
-            this.Image = new Bitmap(Airtraffic_Simulator.Properties.Resources.planeObjectIcon);
+            this.Image = new Bitmap(Airtraffic_Simulator.Properties.Resources.airplane_flying);
             this.Image = new Bitmap(Image, 25, 25);
 
         }
@@ -148,7 +147,14 @@ namespace Airtraffic_Simulator
 
             float xDiff = x1 - x2;
             float yDiff = y1 - y2;
-            float rotationAngle = (float)Math.Atan2(yDiff, xDiff) * (float)(180 + 60/ Math.PI);
+           // float rotationAngle = (float)Math.Atan2(yDiff, xDiff) * (float)(240/ Math.PI);
+
+            float rotationAngle = (float)toDegree((float)Math.Atan2(yDiff, xDiff)) + 180;
+            if (rotationAngle < 0)
+            {
+                rotationAngle += 360;
+            }
+
             //create an empty Bitmap image
             Bitmap bmp = new Bitmap(Image.Width, Image.Height);
 
@@ -177,6 +183,9 @@ namespace Airtraffic_Simulator
             Image = bmp;
         }
 
-
+        private double toDegree(double angle)
+        {
+            return angle * (180.0 / Math.PI);
+        }
     }
 }
