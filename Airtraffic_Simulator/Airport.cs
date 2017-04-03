@@ -31,7 +31,7 @@ namespace Airtraffic_Simulator
             this.TakingOffQueue = new Queue(this);
             this.Problems = new List<Problem>();
             this.listOfFlights = new List<Flight>();
-            this.Image = new Bitmap("../../Resources/airportТerminal.png");
+            this.Image = new Bitmap(Airtraffic_Simulator.Properties.Resources.airportТerminal);
             this.Image = new Bitmap(Image, 25, 25);
         }
 
