@@ -78,6 +78,7 @@ namespace Airtraffic_Simulator
             int xCurrent = this.CurrentLocation.X;
             int yCurrent = this.CurrentLocation.Y;
             // calculations of movement
+            double totaldistance = Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
             double currentdistance = Math.Sqrt(Math.Pow(xCurrent - x1, 2) + Math.Pow(yCurrent - y1, 2));
             double distancepassed = (20 * 30 / 60); // Distance = speed * time  --> speed = 20px/hour time = 30 minutes 
             int A = (y2 - y1);
@@ -99,7 +100,7 @@ namespace Airtraffic_Simulator
                 {
                     k = -k;
                 }
-                yNew = (int)Math.Round(yCurrent + k * slope);
+                yNew = (int)Math.Round(yCurrent + k * Math.Abs(slope));
             }
             else if (A==0) //then y stays the same, add distance/substract distance to x
             {
@@ -118,6 +119,12 @@ namespace Airtraffic_Simulator
                 }
                 xNew = xCurrent;
                 yNew = (int)Math.Round(distancepassed) + yCurrent;
+            }
+            if(totaldistance < currentdistance + distancepassed)
+            {
+                xNew = this.Flight.DestinationAirport.Location.X;
+                yNew = this.Flight.DestinationAirport.Location.Y;
+                this.Status = Status.LANDING;
             }
             this.CurrentLocation = new Point(xNew, yNew);
            
