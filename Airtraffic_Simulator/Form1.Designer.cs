@@ -35,6 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.searchBtn = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btFastForward = new System.Windows.Forms.Button();
             this.btStop = new System.Windows.Forms.Button();
             this.btStart = new System.Windows.Forms.Button();
@@ -65,14 +66,13 @@
             this.label12 = new System.Windows.Forms.Label();
             this.btUpdate = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelDrawing = new Airtraffic_Simulator.DrawingPanel();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelNameLocation.SuspendLayout();
             this.panelDetails.SuspendLayout();
             this.panelTime.SuspendLayout();
             this.panelAdvanced.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tbSearch
@@ -148,6 +148,16 @@
             this.searchBtn.Text = "Search";
             this.searchBtn.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(895, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(63, 45);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // btFastForward
             // 
             this.btFastForward.BackColor = System.Drawing.Color.Khaki;
@@ -159,6 +169,7 @@
             this.btFastForward.TabIndex = 7;
             this.btFastForward.Text = "FAST FORWARD";
             this.btFastForward.UseVisualStyleBackColor = false;
+            this.btFastForward.Click += new System.EventHandler(this.btFastForward_Click);
             // 
             // btStop
             // 
@@ -522,17 +533,8 @@
             // 
             // timer
             // 
+            this.timer.Interval = 500;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(895, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(63, 45);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
             // 
             // panelDrawing
             // 
@@ -549,7 +551,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 682);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.panelDrawing);
             this.Controls.Add(this.btUpdate);
             this.Controls.Add(this.panelAdvanced);
@@ -565,6 +567,7 @@
             this.Text = "SkyHighSim";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelNameLocation.ResumeLayout(false);
             this.panelNameLocation.PerformLayout();
             this.panelDetails.ResumeLayout(false);
@@ -573,7 +576,6 @@
             this.panelTime.PerformLayout();
             this.panelAdvanced.ResumeLayout(false);
             this.panelAdvanced.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

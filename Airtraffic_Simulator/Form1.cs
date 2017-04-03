@@ -58,6 +58,7 @@ namespace Airtraffic_Simulator
         private void btStart_Click(object sender, EventArgs e)
         {
             painter.DrawNetwork(gr,airNetwork);
+            timer.Interval = 500;
             StartSimulation();
 
         }
@@ -80,6 +81,11 @@ namespace Airtraffic_Simulator
                 a.Update();
             }
             painter.DrawNetwork(e.Graphics, airNetwork);
+        }
+
+        private void btFastForward_Click(object sender, EventArgs e)
+        {
+            timer.Interval = 100;
         }
     }
 }
