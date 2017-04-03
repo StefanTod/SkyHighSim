@@ -33,11 +33,11 @@ namespace Airtraffic_Simulator
             airNetwork = new Network(Regions.EUROPE, airplanes, airports, flights, queues);
             painter = new Painter();
             //Airport arp1 = new Airport("Schiphol",100,p,2,arp1.landingQueue,arp1.takingOffQueue,arp1.problems,arp1.listOfFlights);
-            airNetwork.AddAirport("Germany", 100, new PointF(480,390), 2);
-            airNetwork.AddAirport("Bulgaria", 100, new PointF(675,500), 4);
-            airNetwork.AddAirport("Ukraine", 100, new PointF(780,380), 2);
-            airNetwork.AddAirport("Iceland", 100, new PointF(270,540), 3);
-            airNetwork.AddAirport("Spain", 100, new PointF(250,150), 1);
+            //airNetwork.AddAirport("Germany", 100, new PointF(480,390), 2);
+            //airNetwork.AddAirport("Bulgaria", 100, new PointF(675,500), 4);
+            //airNetwork.AddAirport("Ukraine", 100, new PointF(780,380), 2);
+            //airNetwork.AddAirport("Iceland", 100, new PointF(270,540), 3);
+            //airNetwork.AddAirport("Spain", 100, new PointF(250,150), 1);
 
             foreach (Airport a in airports)
             {

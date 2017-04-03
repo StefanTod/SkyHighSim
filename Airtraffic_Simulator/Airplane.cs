@@ -25,6 +25,7 @@ namespace Airtraffic_Simulator
             this.Capacity = capacity;
             this.Speed = speed;
             this.Fuel = fuel;
+            this.CurrentLocation = currentLocation;
             this.Image = new Bitmap(Airtraffic_Simulator.Properties.Resources.airplane_flying);
             this.Image = new Bitmap(Image, 25, 25);
 
