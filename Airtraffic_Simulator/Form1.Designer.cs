@@ -65,9 +65,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.btUpdate = new System.Windows.Forms.Button();
-            this.fakeStart = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelDrawing = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelNameLocation.SuspendLayout();
@@ -531,36 +530,27 @@
             this.btUpdate.UseVisualStyleBackColor = false;
             this.btUpdate.Visible = false;
             // 
-            // fakeStart
-            // 
-            this.fakeStart.Location = new System.Drawing.Point(1100, 634);
-            this.fakeStart.Name = "fakeStart";
-            this.fakeStart.Size = new System.Drawing.Size(152, 35);
-            this.fakeStart.TabIndex = 11;
-            this.fakeStart.Text = "Start Proof Of Concept";
-            this.fakeStart.UseVisualStyleBackColor = true;
-            // 
             // timer
             // 
-            this.timer.Interval = 2000;
+            this.timer.Interval = 500;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // panel2
+            // panelDrawing
             // 
-            this.panel2.BackgroundImage = global::Airtraffic_Simulator.Properties.Resources.europemap;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Location = new System.Drawing.Point(202, 60);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1064, 621);
-            this.panel2.TabIndex = 12;
+            this.panelDrawing.BackgroundImage = global::Airtraffic_Simulator.Properties.Resources.europemap;
+            this.panelDrawing.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelDrawing.Location = new System.Drawing.Point(202, 60);
+            this.panelDrawing.Margin = new System.Windows.Forms.Padding(2);
+            this.panelDrawing.Name = "panelDrawing";
+            this.panelDrawing.Size = new System.Drawing.Size(1064, 621);
+            this.panelDrawing.TabIndex = 12;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.fakeStart);
-            this.Controls.Add(this.panel2);
+            this.ClientSize = new System.Drawing.Size(1264, 682);
+            this.Controls.Add(this.panelDrawing);
             this.Controls.Add(this.btUpdate);
             this.Controls.Add(this.panelAdvanced);
             this.Controls.Add(this.btAdvanced);
@@ -626,9 +616,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btUpdate;
         private System.Windows.Forms.Button searchBtn;
-        private System.Windows.Forms.Button fakeStart;
         private System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelDrawing;
     }
 }
 

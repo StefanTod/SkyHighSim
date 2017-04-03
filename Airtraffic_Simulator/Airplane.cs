@@ -10,7 +10,7 @@ namespace Airtraffic_Simulator
     public class Airplane
     {
         public Status Status { get; private set; }
-        private Flight Flight { get; set; }
+        public Flight Flight { get; set; }
         public Point CurrentLocation { get; set; }
         public Bitmap Image { get; set; }
         public string Id { get; private set; }
@@ -18,7 +18,15 @@ namespace Airtraffic_Simulator
         public double Speed { get; private set; }
         public double Fuel { get; private set; }
         private int counterTicks = 0;
+        public Airplane(string id, int capacity, double speed, double fuel)
+        {
+            this.Id = id;
+            this.Capacity = capacity;
+            this.Speed = speed;
+            this.Fuel = fuel;
+            //this.Image = new Bitmap("../../");
 
+        }
         public void Update()
         {
             switch (this.Status)
@@ -113,13 +121,5 @@ namespace Airtraffic_Simulator
             this.CurrentLocation = new Point(xNew, yNew);
            
          }
-        public Airplane(string id,int capacity,double speed, double fuel)
-        {
-            this.Id = id;
-            this.Capacity = capacity;
-            this.Speed = speed;
-            this.Fuel = fuel;
-
-        }
     }
 }

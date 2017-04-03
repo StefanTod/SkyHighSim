@@ -31,28 +31,33 @@ namespace Airtraffic_Simulator
             Point p = new Point(50,50);
             //Airport arp1 = new Airport("Schiphol",100,p,2,arp1.landingQueue,arp1.takingOffQueue,arp1.problems,arp1.listOfFlights);
             airNetwork.AddAirport("Schiphol", 100, p, 2);
-            gr = this.panel2.CreateGraphics();
+            airNetwork.AddAirport("Test", 100, new Point(600, 600), 4);
+            airNetwork.AddFlight("1", airNetwork.FindAirport("Schiphol"), airNetwork.FindAirport("Test"), TimeSpan.Zero, DateTime.Now, DateTime.Now);
+            airNetwork.AddAirplane("00", 1, 1, 1);
+            airNetwork.FindAirplane("00").Flight = airNetwork.FindFlight("1");
+            airNetwork.FindAirplane("00").CurrentLocation = new Point(50, 50);
+            gr = this.panelDrawing.CreateGraphics();
         }
         
 
         private void StartSimulation()
         {
-            timer.Start();
+            
             foreach (Airport a in airNetwork.Airports)
             {
                 painter.DrawAirport(gr,a);
             }
+            timer.Start();
         }
 
         private void timer_Tick(object sender, EventArgs e)
-        {
-
+        {         
+            panelDrawing.Invalidate();
             foreach (Airplane a in airNetwork.Airplanes)
             {
                 a.UpdateMovement();
-                painter.DrawAirplane(gr,a);
-                //panel2.Invalidate();
             }
+            painter.DrawNetwork(gr, airNetwork);
             //call painter
         }
         private void btStart_Click(object sender, EventArgs e)
