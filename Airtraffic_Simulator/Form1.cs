@@ -19,16 +19,24 @@ namespace Airtraffic_Simulator
         Network airNetwork;
         Painter painter;
         Graphics gr;
+
+        DataHelper helper;
         public Form1()
         {
             InitializeComponent();
+            helper = new DataHelper();
             airplanes = new List<Airplane>();
-            airports = new List<Airport>();
+            airports = helper.GetAllAirports();
+            
             flights = new List<Flight>();
             queues  = new List<Queue>();
             airNetwork = new Network(Regions.EUROPE, airplanes, airports, flights, queues);
             painter = new Painter();
             //Airport arp1 = new Airport("Schiphol",100,p,2,arp1.landingQueue,arp1.takingOffQueue,arp1.problems,arp1.listOfFlights);
+            foreach (Airport a in airports)
+            {
+                airNetwork.AddAirport(a.Name,a.Capacity,a.Location,a.Lanes);
+            }
             airNetwork.AddAirport("Schiphol", 100, new Point(480,390), 2);
             airNetwork.AddAirport("Test", 100, new Point(770,520), 4);
             airNetwork.AddFlight("1", airNetwork.FindAirport("Schiphol"), airNetwork.FindAirport("Test"), TimeSpan.Zero, DateTime.Now, DateTime.Now);
@@ -36,6 +44,7 @@ namespace Airtraffic_Simulator
             airNetwork.FindAirplane("00").Flight = airNetwork.FindFlight("1");
             airNetwork.FindAirplane("00").CurrentLocation = new Point(480, 390);
             gr = this.panelDrawing.CreateGraphics();
+            Invalidate();
         }
         
 

@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>.\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,6 +51,7 @@
     <Compile Include="AirplaneCargo.cs" />
     <Compile Include="AirplanePassanger.cs" />
     <Compile Include="Airport.cs" />
+    <Compile Include="DataHelper.cs" />
     <Compile Include="DrawingPanel.cs">
       <SubType>Component</SubType>
     </Compile>
