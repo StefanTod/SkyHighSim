@@ -29,12 +29,11 @@ namespace Airtraffic_Simulator
             airNetwork = new Network(Regions.EUROPE, airplanes, airports, flights, queues);
             painter = new Painter();
             //Airport arp1 = new Airport("Schiphol",100,p,2,arp1.landingQueue,arp1.takingOffQueue,arp1.problems,arp1.listOfFlights);
-            airNetwork.AddAirport("Schiphol", 100, new Point(480,390), 2);
-            airNetwork.AddAirport("Test", 100, new Point(770,520), 4);
+            airNetwork.AddAirport("Schiphol", 100, new Point(780,380), 2);
+            airNetwork.AddAirport("Test", 100, new Point(270,540), 4);
             airNetwork.AddFlight("1", airNetwork.FindAirport("Schiphol"), airNetwork.FindAirport("Test"), TimeSpan.Zero, DateTime.Now, DateTime.Now);
             airNetwork.AddAirplane("00", 1, 1, 1);
-            airNetwork.FindAirplane("00").Flight = airNetwork.FindFlight("1");
-            airNetwork.FindAirplane("00").CurrentLocation = new Point(480, 390);
+            airNetwork.FindAirplane("00").AddFlight(airNetwork.FindFlight("1"));
             gr = this.panelDrawing.CreateGraphics();
         }
         
