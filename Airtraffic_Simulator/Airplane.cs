@@ -74,70 +74,72 @@ namespace Airtraffic_Simulator
         }
         public void UpdateMovement()
         {
-            float x1 = this.Flight.DepartureAirport.Location.X;
-            float x2 = this.Flight.DestinationAirport.Location.X;
-            float y1 = this.Flight.DepartureAirport.Location.Y;
-            float y2 = this.Flight.DestinationAirport.Location.Y;
+            if (this.Flight != null)
+            {
+                float x1 = this.Flight.DepartureAirport.Location.X;
+                float x2 = this.Flight.DestinationAirport.Location.X;
+                float y1 = this.Flight.DepartureAirport.Location.Y;
+                float y2 = this.Flight.DestinationAirport.Location.Y;
 
-            float xCurrent = this.CurrentLocation.X;
-            float yCurrent = this.CurrentLocation.Y;
-            // calculations of movement
-            double totaldistance = Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
-            double currentdistance = Math.Sqrt(Math.Pow(xCurrent - x1, 2) + Math.Pow(yCurrent - y1, 2));
-            double distancepassed = (20 * 30 / 60); // Distance = speed * time  --> speed = 20px/hour time = 30 minutes 
-            double A = (y2 - y1);
-            double B = (x2 - x1);
+                float xCurrent = this.CurrentLocation.X;
+                float yCurrent = this.CurrentLocation.Y;
+                // calculations of movement
+                double totaldistance = Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
+                double currentdistance = Math.Sqrt(Math.Pow(xCurrent - x1, 2) + Math.Pow(yCurrent - y1, 2));
+                double distancepassed = (20 * 30 / 60); // Distance = speed * time  --> speed = 20px/hour time = 30 minutes 
+                double A = (y2 - y1);
+                double B = (x2 - x1);
 
-            float xNew;
-            float yNew;
-            if (B != 0 && A != 0) // calculate new point based on distance passed and current location
-            {
-                double slope = A / B;
-                double k = distancepassed / Math.Sqrt(1 + Math.Pow(slope, 2));
-                if (B < 0)
+                float xNew;
+                float yNew;
+                if (B != 0 && A != 0) // calculate new point based on distance passed and current location
                 {
-                    k = -k;
+                    double slope = A / B;
+                    double k = distancepassed / Math.Sqrt(1 + Math.Pow(slope, 2));
+                    if (B < 0)
+                    {
+                        k = -k;
+                    }
+                    xNew = (float)(xCurrent + k * 1);
+
+                    k = Math.Abs(k);
+                    if (A < 0)
+                    {
+                        k = -k;
+                    }
+                    yNew = (float)(yCurrent + k * Math.Abs(slope));
                 }
-                xNew = (float)(xCurrent + k * 1);
-                
-                k = Math.Abs(k);
-                if (A < 0)
+                else if (A == 0) //then y stays the same, add distance/substract distance to x
                 {
-                    k = -k;
+                    if (B < 0)
+                    {
+                        distancepassed = -distancepassed;
+                    }
+                    xNew = (float)(distancepassed + xCurrent);
+                    yNew = yCurrent;
                 }
-                yNew = (float)(yCurrent + k * Math.Abs(slope));
-            }
-            else if (A == 0) //then y stays the same, add distance/substract distance to x
-            {
-                if (B < 0)
+                else //x stays the same, add distance/substract distance to y
                 {
-                    distancepassed = -distancepassed;
+                    if (A < 0)
+                    {
+                        distancepassed = -distancepassed;
+                    }
+                    xNew = xCurrent;
+                    yNew = (float)distancepassed + yCurrent;
                 }
-                xNew = (float)(distancepassed + xCurrent);
-                yNew = yCurrent;
-            }
-            else //x stays the same, add distance/substract distance to y
-            {
-                if (A < 0)
+                if (totaldistance < currentdistance + distancepassed)
                 {
-                    distancepassed = -distancepassed;
+                    xNew = this.Flight.DestinationAirport.Location.X;
+                    yNew = this.Flight.DestinationAirport.Location.Y;
+                    this.Status = Status.LANDING;
                 }
-                xNew = xCurrent;
-                yNew = (float)distancepassed + yCurrent;
+                this.CurrentLocation = new PointF(xNew, yNew);
             }
-            if (totaldistance < currentdistance + distancepassed)
-            {
-                xNew = this.Flight.DestinationAirport.Location.X;
-                yNew = this.Flight.DestinationAirport.Location.Y;
-                this.Status = Status.LANDING;
-            }
-            this.CurrentLocation = new PointF(xNew, yNew);
         }
 
         public void AddFlight(Flight f)
         {
             this.Flight = f;
-            this.CurrentLocation = f.DepartureAirport.Location;
 
             float x1 = this.Flight.DepartureAirport.Location.X;
             float x2 = this.Flight.DestinationAirport.Location.X;

@@ -24,13 +24,12 @@ namespace Airtraffic_Simulator
         public Form1()
         {
             InitializeComponent();
-            helper = new DataHelper();  
-            airports = helper.GetAllAirports();
-            airplanes = helper.GetAllAirplanes();
-            
-            flights = new List<Flight>();
-            queues  = new List<Queue>();
             airNetwork = new Network(Regions.EUROPE, airplanes, airports, flights, queues);
+            helper = new DataHelper(airNetwork);  
+            airNetwork.Airports = helper.GetAllAirports();
+            airNetwork.Airplanes = helper.GetAllAirplanes();
+            airNetwork.Flights = helper.GetAllFlights();
+            queues  = new List<Queue>();
             painter = new Painter();
             //Airport arp1 = new Airport("Schiphol",100,p,2,arp1.landingQueue,arp1.takingOffQueue,arp1.problems,arp1.listOfFlights);
             //airNetwork.AddAirport("Germany", 100, new PointF(480,390), 2);
@@ -38,17 +37,6 @@ namespace Airtraffic_Simulator
             //airNetwork.AddAirport("Ukraine", 100, new PointF(780,380), 2);
             //airNetwork.AddAirport("Iceland", 100, new PointF(270,540), 3);
             //airNetwork.AddAirport("Spain", 100, new PointF(250,150), 1);
-
-            foreach (Airport a in airports)
-            {
-                airNetwork.AddAirport(a.Name, a.Capacity, a.Location, a.Lanes);
-
-            }
-
-            foreach (Airplane plane in airplanes)
-            {
-                airNetwork.AddAirplane(plane.Id, plane.Capacity, plane.Speed, plane.Fuel, plane.CurrentLocation);
-            }
 
             //Airport arp1 = new Airport("Schiphol", 100, p, 2, arp1.landingQueue, arp1.takingOffQueue, arp1.problems, arp1.listOfFlights);
             //airNetwork.AddAirport("Germany", 100, new Point(480, 390), 2);

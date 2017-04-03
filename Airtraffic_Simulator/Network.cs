@@ -11,9 +11,9 @@ namespace Airtraffic_Simulator
     {
         public Regions Region;
 
-        public List<Airplane> Airplanes { get; private set; }
-        public List<Airport> Airports { get; private set; }
-        public List<Flight> Flights { get; private set; }
+        public List<Airplane> Airplanes { get; set; }
+        public List<Airport> Airports { get; set; }
+        public List<Flight> Flights { get;  set; }
         public List<Queue> Queues { get; private set; }
 
         public Network(Regions region, List<Airplane> airplanes, List<Airport> airports, List<Flight> flights, List<Queue> Queues)
