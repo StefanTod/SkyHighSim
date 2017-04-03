@@ -81,8 +81,8 @@ namespace Airtraffic_Simulator
             double totaldistance = Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
             double currentdistance = Math.Sqrt(Math.Pow(xCurrent - x1, 2) + Math.Pow(yCurrent - y1, 2));
             double distancepassed = (20 * 30 / 60); // Distance = speed * time  --> speed = 20px/hour time = 30 minutes 
-            int A = (y2 - y1);
-            int B = (x2 - x1);
+            double A = (y2 - y1);
+            double B = (x2 - x1);
 
             int xNew;
             int yNew;
