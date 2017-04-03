@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace Airtraffic_Simulator
     {
         public Status Status { get; private set; }
         public Flight Flight { get; set; }
-        public Point CurrentLocation { get; set; }
+        public PointF CurrentLocation { get; set; }
         public Bitmap Image { get; set; }
         public string Id { get; private set; }
         public int Capacity { get; private set; }
@@ -35,15 +36,17 @@ namespace Airtraffic_Simulator
                 case Status.LANDED:
                     //if check flight timing then we take off
                     // check if lanes are free
-                    if(Flight.DepartureAirport.LanesTaken < Flight.DepartureAirport.Lanes) {
+                    if (Flight.DepartureAirport.LanesTaken < Flight.DepartureAirport.Lanes)
+                    {
                         Status = Status.TAKINGOFF;
                         break;
                     }
-                    else {
+                    else
+                    {
                         //add to queue to take off
-                       break;
+                        break;
                     }
-                    
+
                 case Status.INAIR:
                     UpdateMovement();
                     break;
@@ -63,20 +66,20 @@ namespace Airtraffic_Simulator
                         // remove plane from airport 
                         counterTicks = 0;
                         // release lane
-                        
+
                     }
                     break;
             }
         }
         public void UpdateMovement()
         {
-            int x1 = this.Flight.DepartureAirport.Location.X;
-            int x2 = this.Flight.DestinationAirport.Location.X;
-            int y1 = this.Flight.DepartureAirport.Location.Y;
-            int y2 = this.Flight.DestinationAirport.Location.Y;
+            float x1 = this.Flight.DepartureAirport.Location.X;
+            float x2 = this.Flight.DestinationAirport.Location.X;
+            float y1 = this.Flight.DepartureAirport.Location.Y;
+            float y2 = this.Flight.DestinationAirport.Location.Y;
 
-            int xCurrent = this.CurrentLocation.X;
-            int yCurrent = this.CurrentLocation.Y;
+            float xCurrent = this.CurrentLocation.X;
+            float yCurrent = this.CurrentLocation.Y;
             // calculations of movement
             double totaldistance = Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
             double currentdistance = Math.Sqrt(Math.Pow(xCurrent - x1, 2) + Math.Pow(yCurrent - y1, 2));
@@ -84,50 +87,95 @@ namespace Airtraffic_Simulator
             double A = (y2 - y1);
             double B = (x2 - x1);
 
-            int xNew;
-            int yNew;
-            if(B!=0 && A!=0) // calculate new point based on distance passed and current location
+            float xNew;
+            float yNew;
+            if (B != 0 && A != 0) // calculate new point based on distance passed and current location
             {
                 double slope = A / B;
                 double k = distancepassed / Math.Sqrt(1 + Math.Pow(slope, 2));
-                if(B<0)
+                if (B < 0)
                 {
                     k = -k;
                 }
-                xNew = (int)Math.Round(xCurrent + k * 1);
+                xNew = (float)(xCurrent + k * 1);
+                
                 k = Math.Abs(k);
-                if(A<0)
+                if (A < 0)
                 {
                     k = -k;
                 }
-                yNew = (int)Math.Round(yCurrent + k * Math.Abs(slope));
+                yNew = (float)(yCurrent + k * Math.Abs(slope));
             }
-            else if (A==0) //then y stays the same, add distance/substract distance to x
+            else if (A == 0) //then y stays the same, add distance/substract distance to x
             {
-                if(B<0)
+                if (B < 0)
                 {
                     distancepassed = -distancepassed;
                 }
-                xNew = (int)Math.Round(distancepassed) + xCurrent;
+                xNew = (float)(distancepassed + xCurrent);
                 yNew = yCurrent;
             }
             else //x stays the same, add distance/substract distance to y
             {
-                if(A<0)
+                if (A < 0)
                 {
                     distancepassed = -distancepassed;
                 }
                 xNew = xCurrent;
-                yNew = (int)Math.Round(distancepassed) + yCurrent;
+                yNew = (float)distancepassed + yCurrent;
             }
-            if(totaldistance < currentdistance + distancepassed)
+            if (totaldistance < currentdistance + distancepassed)
             {
                 xNew = this.Flight.DestinationAirport.Location.X;
                 yNew = this.Flight.DestinationAirport.Location.Y;
                 this.Status = Status.LANDING;
             }
-            this.CurrentLocation = new Point(xNew, yNew);
-           
-         }
+            this.CurrentLocation = new PointF(xNew, yNew);
+        }
+
+        public void AddFlight(Flight f)
+        {
+            this.Flight = f;
+            this.CurrentLocation = f.DepartureAirport.Location;
+
+            float x1 = this.Flight.DepartureAirport.Location.X;
+            float x2 = this.Flight.DestinationAirport.Location.X;
+            float y1 = this.Flight.DepartureAirport.Location.Y;
+            float y2 = this.Flight.DestinationAirport.Location.Y;
+
+
+
+            float xDiff = x1 - x2;
+            float yDiff = y1 - y2;
+            float rotationAngle = (float)Math.Atan2(yDiff, xDiff) * (float)(180 + 60/ Math.PI);
+            //create an empty Bitmap image
+            Bitmap bmp = new Bitmap(Image.Width, Image.Height);
+
+            //turn the Bitmap into a Graphics object
+            Graphics gfx = Graphics.FromImage(bmp);
+
+            //now we set the rotation point to the center of our image
+            gfx.TranslateTransform((float)bmp.Width / 2, (float)bmp.Height / 2);
+
+            //now rotate the image
+            gfx.RotateTransform(rotationAngle);
+
+            gfx.TranslateTransform(-(float)bmp.Width / 2, -(float)bmp.Height / 2);
+
+            //set the InterpolationMode to HighQualityBicubic so to ensure a high
+            //quality image once it is transformed to the specified size
+            gfx.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+            //now draw our new image onto the graphics object
+            gfx.DrawImage(Image, new Point(0, 0));
+
+            //dispose of our Graphics object
+            gfx.Dispose();
+
+            //return the image
+            Image = bmp;
+        }
+
+
     }
 }

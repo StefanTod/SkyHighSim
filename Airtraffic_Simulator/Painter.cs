@@ -44,12 +44,12 @@ namespace Airtraffic_Simulator
             if(airplaneToDraw.Status != Status.LANDED && airplaneToDraw.Status != Status.LANDED)
             {
                 gr.DrawImage(airplaneToDraw.Image, airplaneToDraw.CurrentLocation);
-                //gr.DrawEllipse(Pens.Red, airplaneToDraw.CurrentLocation.X, airplaneToDraw.CurrentLocation.Y, 20, 20);
+                gr.DrawEllipse(Pens.Red, airplaneToDraw.CurrentLocation.X, airplaneToDraw.CurrentLocation.Y, 20, 20);
             }
         }
         public void DrawAirport(Graphics gr,Airport airportToDraw)
         {
-            gr.DrawImage(airportToDraw.Image, new Point(airportToDraw.Location.X-7,airportToDraw.Location.Y-7));
+            gr.DrawImage(airportToDraw.Image, new PointF(airportToDraw.Location.X-7,airportToDraw.Location.Y-7));
         }
         public void DrawFlightPath(Graphics gr,Flight flightToDraw)
         {
