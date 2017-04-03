@@ -136,7 +136,6 @@ namespace Airtraffic_Simulator
         public void AddFlight(Flight f)
         {
             this.Flight = f;
-            this.CurrentLocation = f.DepartureAirport.Location;
 
             float x1 = this.Flight.DepartureAirport.Location.X;
             float x2 = this.Flight.DestinationAirport.Location.X;

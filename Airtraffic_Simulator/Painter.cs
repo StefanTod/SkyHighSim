@@ -26,10 +26,10 @@ namespace Airtraffic_Simulator
             {
                 this.DrawAirport(gr,a);
             }
-            foreach(Flight f in n.Flights)
-            {
-                this.DrawFlightPath(gr,f);
-            }
+            //foreach(Flight f in n.Flights)
+            //{
+            //    this.DrawFlightPath(gr,f);
+            //}
         }
 
         public void RedrawAirplanes(Graphics gr,Network n)
@@ -44,7 +44,7 @@ namespace Airtraffic_Simulator
             if(airplaneToDraw.Status != Status.LANDED && airplaneToDraw.Status != Status.LANDED)
             {
                 gr.DrawImage(airplaneToDraw.Image, airplaneToDraw.CurrentLocation);
-                gr.DrawEllipse(Pens.Red, airplaneToDraw.CurrentLocation.X, airplaneToDraw.CurrentLocation.Y, 20, 20);
+                //gr.DrawEllipse(Pens.Red, airplaneToDraw.CurrentLocation.X, airplaneToDraw.CurrentLocation.Y, 20, 20);
             }
         }
         public void DrawAirport(Graphics gr,Airport airportToDraw)
@@ -53,7 +53,7 @@ namespace Airtraffic_Simulator
         }
         public void DrawFlightPath(Graphics gr,Flight flightToDraw)
         {
-            gr.DrawLine(Pens.Yellow, flightToDraw.DepartureAirport.Location, flightToDraw.DestinationAirport.Location);
+            //gr.DrawLine(Pens.Yellow, new PointF(flightToDraw.DepartureAirport.Location.X + 7,flightToDraw.DepartureAirport.Location.Y + 7), new PointF(flightToDraw.DestinationAirport.Location.X + 7,flightToDraw.DestinationAirport.Location.Y+7));
         }
     }
 }
