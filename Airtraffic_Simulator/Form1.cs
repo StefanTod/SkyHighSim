@@ -53,11 +53,7 @@ namespace Airtraffic_Simulator
         private void timer_Tick(object sender, EventArgs e)
         {         
             panelDrawing.Invalidate();
-            foreach (Airplane a in airNetwork.Airplanes)
-            {
-                a.UpdateMovement();
-            }
-            painter.DrawNetwork(gr, airNetwork);
+            
             //call painter
         }
         private void btStart_Click(object sender, EventArgs e)
@@ -78,7 +74,14 @@ namespace Airtraffic_Simulator
             btUpdate.Visible = true;
         }
 
-   
+        private void panelDrawing_Paint(object sender, PaintEventArgs e)
+        {
+            foreach (Airplane a in airNetwork.Airplanes)
+            {
+                a.UpdateMovement();
+            }
+            painter.DrawNetwork(e.Graphics, airNetwork);
+        }
     }
 }
 

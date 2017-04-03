@@ -48,6 +48,9 @@
     <Compile Include="AirplaneCargo.cs" />
     <Compile Include="AirplanePassanger.cs" />
     <Compile Include="Airport.cs" />
+    <Compile Include="DrawingPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Flight.cs" />
     <Compile Include="FlightCargo.cs" />
     <Compile Include="FlightPassenger.cs" />

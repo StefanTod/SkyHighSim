@@ -66,7 +66,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.btUpdate = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.panelDrawing = new System.Windows.Forms.Panel();
+            this.panelDrawing = new Airtraffic_Simulator.DrawingPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelNameLocation.SuspendLayout();
@@ -544,12 +544,13 @@
             this.panelDrawing.Name = "panelDrawing";
             this.panelDrawing.Size = new System.Drawing.Size(1064, 621);
             this.panelDrawing.TabIndex = 12;
+            this.panelDrawing.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDrawing_Paint);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 682);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.panelDrawing);
             this.Controls.Add(this.btUpdate);
             this.Controls.Add(this.panelAdvanced);
@@ -617,7 +618,7 @@
         private System.Windows.Forms.Button btUpdate;
         private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.Panel panelDrawing;
+        private DrawingPanel panelDrawing;
     }
 }
 
