@@ -19,12 +19,13 @@ namespace Airtraffic_Simulator
         public double Speed { get; private set; }
         public double Fuel { get; private set; }
         private int counterTicks = 0;
-        public Airplane(string id, int capacity, double speed, double fuel)
+        public Airplane(string id, int capacity, double speed, double fuel, PointF currentLocation)
         {
             this.Id = id;
             this.Capacity = capacity;
             this.Speed = speed;
             this.Fuel = fuel;
+            this.CurrentLocation = currentLocation;
             this.Image = new Bitmap(Airtraffic_Simulator.Properties.Resources.airplane_flying);
             this.Image = new Bitmap(Image, 25, 25);
 

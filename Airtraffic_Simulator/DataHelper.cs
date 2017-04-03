@@ -33,7 +33,7 @@ namespace Airtraffic_Simulator
                 MySqlDataReader reader = command.ExecuteReader();
 
                 String name;
-                Point location;
+                PointF location;
                 int capacity, nrOfLanes;
 
                 while (reader.Read())
@@ -41,7 +41,7 @@ namespace Airtraffic_Simulator
                     name = Convert.ToString(reader["Name"]);
                     capacity = Convert.ToInt32(reader["Capacity"]);
                     string[] s = reader["Location"].ToString().Split(',');
-                    location = new Point(Convert.ToInt32(s[0]), Convert.ToInt32(s[1]));
+                    location = new PointF((float)Convert.ToDouble(s[0]), (float)Convert.ToDouble(s[1]));
                     nrOfLanes = Convert.ToInt32(reader["NbOfLanes"]);
 
                     tempAirports.Add(new Airport(name, capacity, location, nrOfLanes));
@@ -50,7 +50,7 @@ namespace Airtraffic_Simulator
             }
             catch (Exception)
             {
-                MessageBox.Show("error while loading the airports");
+                MessageBox.Show("Error while loading the airports");
             }
             finally
             {
@@ -58,5 +58,50 @@ namespace Airtraffic_Simulator
             }
             return tempAirports;
         }
+
+
+        public List<Airplane> GetAllAirplanes()
+        {
+            String sql = "SELECT * FROM airplane";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+
+            List<Airplane> tempAirplanes = new List<Airplane>();
+
+
+            try
+            {
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+
+                String  id;
+                PointF location;
+                double speed, fuel;
+                int capacity;
+
+                while (reader.Read())
+                {
+                    id = Convert.ToString(reader["idAirplane"]);
+                    capacity = Convert.ToInt32(reader["Capacity"]);
+                    speed = Convert.ToDouble(reader["Speed"]);
+                    fuel = Convert.ToDouble(reader["Fuel"]);
+                    string[] s = reader["Location"].ToString().Split(',');
+                    location = new PointF((float)Convert.ToDouble(s[0]), (float)Convert.ToDouble(s[1]));
+
+                    tempAirplanes.Add(new Airplane(id, capacity, speed, fuel, location));
+                    
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error while loading the airplanes");
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return tempAirplanes;
+        }
+
     }
 }
