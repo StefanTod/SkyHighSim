@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Airtraffic_Simulator.Airplane">
+    <Position X="2" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAQEAAAAAAAAAAAAAAgHAAAAABAAAgAAAAQAgAA=</HashCode>
+      <FileName>Airplane.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Network" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Airtraffic_Simulator.AirplaneCargo">
+    <Position X="1.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AirplaneCargo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Airtraffic_Simulator.AirplanePassanger">
+    <Position X="3" Y="10.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AirplanePassanger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Airtraffic_Simulator.Airport">
+    <Position X="10" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAMAAAAIAAAQCBAACABAAEAACQAIAAAA=</HashCode>
+      <FileName>Airport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Airtraffic_Simulator.DrawingPanel" Collapsed="true">
+    <Position X="13.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DrawingPanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Airtraffic_Simulator.Flight">
+    <Position X="6.5" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACEABAAAAAAAIAAAAAEAAAAAAAAAAAAAAAAAQAEAA=</HashCode>
+      <FileName>Flight.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Network" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Airtraffic_Simulator.FlightCargo">
+    <Position X="5.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FlightCargo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Airtraffic_Simulator.FlightPassenger">
+    <Position X="7.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FlightPassenger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Airtraffic_Simulator.Form1" Collapsed="true">
+    <Position X="13.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>8wSQClACACEAwBAkEADBAABCJEEAIBBgACQAQQhwAgI=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Airtraffic_Simulator.Network">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAgCAAAiAAQAAAAACAAAAAAQQABAEAQBCAAAAAACAA=</HashCode>
+      <FileName>Network.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Airtraffic_Simulator.Painter" Collapsed="true">
+    <Position X="13.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAACAAAAAAAIAAAAAAAAAAAAAAAAAAAJAAAAAAA=</HashCode>
+      <FileName>Painter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Airtraffic_Simulator.Problem">
+    <Position X="10.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAACAAIAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Problem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Airport" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Airtraffic_Simulator.Program" Collapsed="true">
+    <Position X="13.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Airtraffic_Simulator.Queue">
+    <Position X="10.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Queue.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Network" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Airtraffic_Simulator.Properties.Resources" Collapsed="true">
+    <Position X="13.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAABEAAAAQABAgAAACAAAAAAAII=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Airtraffic_Simulator.Properties.Settings" Collapsed="true">
+    <Position X="13.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Airtraffic_Simulator.Regions" Collapsed="true">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Regions.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Airtraffic_Simulator.Status">
+    <Position X="0.5" Y="5.75" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAgIAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Status.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
