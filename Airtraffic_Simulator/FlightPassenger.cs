@@ -8,7 +8,7 @@ namespace Airtraffic_Simulator
 {
    public class FlightPassenger:Flight
     {
-       private int nrOfPassengers;
+       public int nrOfPassengers;
 
        public FlightPassenger(String Id, Airport DepartureAirport, Airport DestinationAirport,
            TimeSpan EstimatedDuration, DateTime DepartureTime, DateTime ArrivalTime,int NrOfPassengers) 

@@ -18,6 +18,7 @@ namespace Airtraffic_Simulator
         public int Capacity { get; private set; }
         public double Speed { get; private set; }
         public double Fuel { get; private set; }
+        public Rectangle CoverArea { get; set; }
         private int counterTicks = 0;
         public Airplane(string id, int capacity, double speed, double fuel, PointF currentLocation)
         {
@@ -28,6 +29,7 @@ namespace Airtraffic_Simulator
             this.CurrentLocation = currentLocation;
             this.Image = new Bitmap(Airtraffic_Simulator.Properties.Resources.airplane_flying);
             this.Image = new Bitmap(Image, 25, 25);
+           
 
         }
         public void Update()
@@ -50,6 +52,7 @@ namespace Airtraffic_Simulator
 
                 case Status.INAIR:
                     UpdateMovement();
+
                     break;
                 case Status.LANDING:
                     counterTicks++;
@@ -134,6 +137,7 @@ namespace Airtraffic_Simulator
                     this.Status = Status.LANDING;
                 }
                 this.CurrentLocation = new PointF(xNew, yNew);
+                this.CoverArea = new Rectangle(Convert.ToInt32(CurrentLocation.X), Convert.ToInt32(CurrentLocation.Y), 25, 25);
             }
         }
 

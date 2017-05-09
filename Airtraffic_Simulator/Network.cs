@@ -112,6 +112,19 @@ namespace Airtraffic_Simulator
             }
             return null;
         }
+        public Airplane GetAirplane(Point p)
+        {
+            foreach (Airplane c in Airplanes)
+            {
+                // 1 by 1 cause the method doesnt work with point
+                if (c.CoverArea.IntersectsWith(new Rectangle(p.X, p.Y, 1, 1)))
+                {
+                    return c;
+                }
+                
+            }
+            return null;
+        }
 
     }
 }

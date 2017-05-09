@@ -8,7 +8,7 @@ namespace Airtraffic_Simulator
 {
   public class FlightCargo:Flight
     {
-      private int cargoWeight;
+      public int cargoWeight;
       public FlightCargo(String Id, Airport DepartureAirport, Airport DestinationAirport,
            TimeSpan EstimatedDuration, DateTime DepartureTime, DateTime ArrivalTime, int CargoWeight)
             :base(Id,DepartureAirport,DestinationAirport,EstimatedDuration,DepartureTime,ArrivalTime)

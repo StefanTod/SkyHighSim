@@ -19,7 +19,7 @@ namespace Airtraffic_Simulator
         Network airNetwork;
         Painter painter;
         Graphics gr;
-
+        private Airplane selectedAirplane;
         DataHelper helper;
         public Form1()
         {
@@ -114,6 +114,50 @@ namespace Airtraffic_Simulator
         {
             timer.Interval = 100;
         }
+     
+        private void SelectAirplane(Point clickedLocation)
+        {
+            Airplane selectedAirplane = airNetwork.GetAirplane(clickedLocation);
+            if (selectedAirplane != null)
+            {
+                this.selectedAirplane = selectedAirplane;
+                    // Update the panel with airplane info
+                    UpdatePanel();
+                    panelDrawing.Invalidate();
+            }
+        }
+        private void UpdatePanel()
+        {
+            //if(selectedAirplane is AirplanePassanger){
+
+            //    if(selectedAirplane.Flight is FlightPassenger)
+            //    {
+            //            lbNrOfPsngs.Text = ((FlightPassenger)selectedAirplane.Flight).nrOfPassengers.ToString();
+            //    }
+            //}
+            lbCapacity.Text=selectedAirplane.Capacity.ToString();
+            lbFlightNumber.Text=selectedAirplane.Flight.Id.ToString();
+            lbFuel.Text=selectedAirplane.Fuel.ToString();
+            lbPlaneLocation.Text=selectedAirplane.CurrentLocation.ToString();
+            lbPlaneName.Text=selectedAirplane.Id.ToString();
+            lbDepartureTime.Text=selectedAirplane.Flight.DepartureTime.ToString();
+            lbArrivalTime.Text=selectedAirplane.Flight.ArrivalTime.ToString();
+            
+            //lbNrOfPsngs.Visible = true;
+            lbCapacity.Visible=true;
+            lbFlightNumber.Visible = true;
+            lbFuel.Visible = true;
+            lbPlaneLocation.Visible = true;
+            lbPlaneName.Visible = true;
+            lbDepartureTime.Visible = true;
+            lbArrivalTime.Visible=true;
+        }
+
+        private void panelDrawing_MouseUp(object sender, MouseEventArgs e)
+        {
+            SelectAirplane(e.Location);
+        }
+
     }
 }
 

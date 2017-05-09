@@ -25,6 +25,7 @@ namespace Airtraffic_Simulator
             this.EstimatedDuration = estimatedDuration;
             this.DepartureTime = departureTime;
             this.ArrivalTime = arrivalTime;
+          
         }
     }
 }
