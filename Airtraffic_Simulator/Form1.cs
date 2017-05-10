@@ -143,6 +143,8 @@ namespace Airtraffic_Simulator
             lbDepartureTime.Text=selectedAirplane.Flight.DepartureTime.ToString();
             lbArrivalTime.Text=selectedAirplane.Flight.ArrivalTime.ToString();
             
+
+
             //lbNrOfPsngs.Visible = true;
             lbCapacity.Visible=true;
             lbFlightNumber.Visible = true;
@@ -157,7 +159,6 @@ namespace Airtraffic_Simulator
         {
             SelectAirplane(e.Location);
         }
-
     }
 }
 

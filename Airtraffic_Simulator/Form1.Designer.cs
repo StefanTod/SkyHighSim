@@ -229,6 +229,7 @@
             this.lbPlaneLocation.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lbPlaneLocation.Location = new System.Drawing.Point(86, 54);
             this.lbPlaneLocation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbPlaneLocation.MaximumSize = new System.Drawing.Size(95, 0);
             this.lbPlaneLocation.Name = "lbPlaneLocation";
             this.lbPlaneLocation.Size = new System.Drawing.Size(82, 34);
             this.lbPlaneLocation.TabIndex = 8;
@@ -240,7 +241,7 @@
             this.lbPlaneName.AutoSize = true;
             this.lbPlaneName.Enabled = false;
             this.lbPlaneName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.lbPlaneName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbPlaneName.ForeColor = System.Drawing.Color.White;
             this.lbPlaneName.Location = new System.Drawing.Point(86, 11);
             this.lbPlaneName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbPlaneName.Name = "lbPlaneName";
@@ -308,7 +309,7 @@
             this.lbFlightNumber.AutoSize = true;
             this.lbFlightNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.lbFlightNumber.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbFlightNumber.Location = new System.Drawing.Point(111, 52);
+            this.lbFlightNumber.Location = new System.Drawing.Point(111, 51);
             this.lbFlightNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbFlightNumber.Name = "lbFlightNumber";
             this.lbFlightNumber.Size = new System.Drawing.Size(53, 17);
@@ -321,7 +322,7 @@
             this.lbCapacity.AutoSize = true;
             this.lbCapacity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.lbCapacity.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbCapacity.Location = new System.Drawing.Point(111, 36);
+            this.lbCapacity.Location = new System.Drawing.Point(111, 35);
             this.lbCapacity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbCapacity.Name = "lbCapacity";
             this.lbCapacity.Size = new System.Drawing.Size(35, 17);
@@ -334,7 +335,7 @@
             this.lbNrOfPsngs.AutoSize = true;
             this.lbNrOfPsngs.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.lbNrOfPsngs.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbNrOfPsngs.Location = new System.Drawing.Point(111, 19);
+            this.lbNrOfPsngs.Location = new System.Drawing.Point(111, 18);
             this.lbNrOfPsngs.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbNrOfPsngs.Name = "lbNrOfPsngs";
             this.lbNrOfPsngs.Size = new System.Drawing.Size(68, 17);
@@ -359,7 +360,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.label9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label9.Location = new System.Drawing.Point(9, 50);
+            this.label9.Location = new System.Drawing.Point(9, 49);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(112, 17);
@@ -371,7 +372,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.label8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label8.Location = new System.Drawing.Point(9, 33);
+            this.label8.Location = new System.Drawing.Point(9, 32);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(75, 17);
@@ -383,7 +384,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label7.Location = new System.Drawing.Point(9, 17);
+            this.label7.Location = new System.Drawing.Point(9, 16);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(98, 17);
@@ -408,8 +409,9 @@
             this.lbArrivalTime.AutoSize = true;
             this.lbArrivalTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.lbArrivalTime.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbArrivalTime.Location = new System.Drawing.Point(111, 35);
+            this.lbArrivalTime.Location = new System.Drawing.Point(99, 44);
             this.lbArrivalTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbArrivalTime.MaximumSize = new System.Drawing.Size(95, 0);
             this.lbArrivalTime.Name = "lbArrivalTime";
             this.lbArrivalTime.Size = new System.Drawing.Size(57, 17);
             this.lbArrivalTime.TabIndex = 13;
@@ -421,8 +423,9 @@
             this.lbDepartureTime.AutoSize = true;
             this.lbDepartureTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.lbDepartureTime.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbDepartureTime.Location = new System.Drawing.Point(111, 19);
+            this.lbDepartureTime.Location = new System.Drawing.Point(100, 7);
             this.lbDepartureTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbDepartureTime.MaximumSize = new System.Drawing.Size(95, 0);
             this.lbDepartureTime.Name = "lbDepartureTime";
             this.lbDepartureTime.Size = new System.Drawing.Size(63, 17);
             this.lbDepartureTime.TabIndex = 11;
@@ -434,10 +437,11 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label11.Location = new System.Drawing.Point(4, 35);
+            this.label11.Location = new System.Drawing.Point(4, 44);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.MaximumSize = new System.Drawing.Size(75, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(95, 17);
+            this.label11.Size = new System.Drawing.Size(60, 34);
             this.label11.TabIndex = 12;
             this.label11.Text = "Arrival time:";
             // 
@@ -446,10 +450,11 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.label15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label15.Location = new System.Drawing.Point(4, 19);
+            this.label15.Location = new System.Drawing.Point(3, 7);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.MaximumSize = new System.Drawing.Size(85, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(121, 17);
+            this.label15.Size = new System.Drawing.Size(81, 34);
             this.label15.TabIndex = 11;
             this.label15.Text = "Departure time:";
             // 
