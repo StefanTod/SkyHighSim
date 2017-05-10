@@ -80,6 +80,7 @@ namespace Airtraffic_Simulator
                 PointF location;
                 double speed, fuel;
                 int capacity;
+                string type;
                 
                 while (reader.Read())
                 {
@@ -89,8 +90,16 @@ namespace Airtraffic_Simulator
                     fuel = Convert.ToDouble(reader["Fuel"]);
                     string[] s = Convert.ToString(reader["Location"]).Split(',');
                     location = new PointF((float)Convert.ToDouble(s[0]), (float)Convert.ToDouble(s[1]));
-
-                    tempAirplanes.Add(new Airplane(id, capacity, speed, fuel, location));
+                    type = Convert.ToString(reader["Type"]);
+                    if (type == "Cargo")
+                    {
+                        tempAirplanes.Add(new AirplaneCargo(id, capacity, speed, fuel, location,type));
+                    }
+                    else if (type == "Passenger")
+                    {
+                        tempAirplanes.Add(new AirplanePassanger(id, capacity, speed, fuel, location, type));
+                    }
+                    
                     
                 }
 
@@ -108,7 +117,8 @@ namespace Airtraffic_Simulator
 
         public List<Flight>GetAllFlights()
         {
-            String sql = "SELECT `flight`.idFlight, `tf`.Name AS takingOff, `ar`.Name AS Arrival, `flight`.EstimatedDuration, `flight`.DepartureTime, `flight`.ArrivalTime, `airplane`.idAirplane FROM `flight` JOIN `airplane` ON(`flight`.Airplane_idAirplane=`airplane`.idAirplane) JOIN `airport` AS tf ON(`flight`.takesOffFrom=`tf`.idAirport) JOIN `airport` AS ar ON(`flight`.LandsTo=`ar`.idAirport);";
+           // String sql = "SELECT `flight`.idFlight, `tf`.Name AS takingOff, `ar`.Name AS Arrival, `flight`.EstimatedDuration, `flight`.DepartureTime, `flight`.ArrivalTime, `airplane`.idAirplane FROM `flight` JOIN `airplane` ON(`flight`.Airplane_idAirplane=`airplane`.idAirplane) JOIN `airport` AS tf ON(`flight`.takesOffFrom=`tf`.idAirport) JOIN `airport` AS ar ON(`flight`.LandsTo=`ar`.idAirport);";
+            String sql = "SELECT `flight`.idFlight, `tf`.Name AS takingOff, `ar`.Name AS Arrival, `flight`.EstimatedDuration, `flight`.DepartureTime, `flight`.ArrivalTime, `airplane`.idAirplane, `airplane`.Type, `flight`.NbOfPassengers, `flight`.CargoWeight FROM `flight` JOIN `airplane` ON(`flight`.Airplane_idAirplane=`airplane`.idAirplane) JOIN `airport` AS tf ON(`flight`.takesOffFrom=`tf`.idAirport) JOIN `airport` AS ar ON(`flight`.LandsTo=`ar`.idAirport)";
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             List<Flight> tempFlights = new List<Flight>();
@@ -127,7 +137,8 @@ namespace Airtraffic_Simulator
                 TimeSpan duration;
                 DateTime departureTime, arrivalTime;
                 Airplane airplane;
-
+                int cargoWeight;
+                int nrOfPasengers;
                 
 
                 while (reader.Read())

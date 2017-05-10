@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Airtraffic_Simulator
 {
-    public class Airplane
+    public abstract class Airplane
     {
         public Status Status { get; private set; }
         public Flight Flight { get; set; }
@@ -18,9 +18,12 @@ namespace Airtraffic_Simulator
         public int Capacity { get; private set; }
         public double Speed { get; private set; }
         public double Fuel { get; private set; }
+
         public Rectangle CoverArea { get; set; }
+        public string Type { get; set; }
+
         private int counterTicks = 0;
-        public Airplane(string id, int capacity, double speed, double fuel, PointF currentLocation)
+        public Airplane(string id, int capacity, double speed, double fuel, PointF currentLocation, string type)
         {
             this.Id = id;
             this.Capacity = capacity;
