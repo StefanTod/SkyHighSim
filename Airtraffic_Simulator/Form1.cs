@@ -145,6 +145,8 @@ namespace Airtraffic_Simulator
 
         private void btUpdate_Click(object sender, EventArgs e)
         {
+            if(selectedAirplane!=null)
+            { 
             selectedAirplane.ChangeFuel(Convert.ToInt32(nUDChangeFuel.Value));
             selectedAirplane.ChangeSpeed(Convert.ToInt32(nUDChangeSpeed.Value));
             string destination = tbChangeDestination.Text;
@@ -161,6 +163,7 @@ namespace Airtraffic_Simulator
             if(!found)
             {
                 MessageBox.Show("No such airport was found. Please enter another one");
+            }
             }
         }
     }
