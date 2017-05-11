@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2017 at 07:45 PM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.23
+-- Generation Time: May 11, 2017 at 12:03 PM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -31,44 +31,25 @@ CREATE TABLE `airplane` (
   `Capacity` int(11) DEFAULT NULL,
   `Speed` double DEFAULT NULL,
   `Fuel` double DEFAULT NULL,
-  `Location` varchar(10) COLLATE utf8_unicode_ci NOT NULL
+  `Location` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `Type` varchar(24) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `airplane`
 --
 
-INSERT INTO `airplane` (`idAirplane`, `Capacity`, `Speed`, `Fuel`, `Location`) VALUES
-(1, 100, 700, 3, '480,390'),
-(2, 150, 800, 6, '250,150'),
-(3, 90, 750, 7, '270,540'),
-(4, 85, 600, 4, '780,380'),
-(5, 50, 650, 10, '250,150'),
-(6, 150, 700, 3, '675,500'),
-(7, 90, 500, 9, '270,540'),
-(8, 200, 700, 10, '780,380'),
-(9, 120, 500, 5, '270,540'),
-(10, 90, 800, 15, '675,500');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `airplanecargo`
---
-
-CREATE TABLE `airplanecargo` (
-  `idAirplaneCargo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `airplanepassenger`
---
-
-CREATE TABLE `airplanepassenger` (
-  `idAirplanePassenger` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+INSERT INTO `airplane` (`idAirplane`, `Capacity`, `Speed`, `Fuel`, `Location`, `Type`) VALUES
+(1, 100, 700, 3, '480,390', 'Passenger'),
+(2, 150, 800, 6, '250,150', 'Passenger'),
+(3, 90, 750, 7, '270,540', 'Passenger'),
+(4, 85, 600, 4, '780,380', 'Passenger'),
+(5, 50, 650, 10, '250,150', 'Passenger'),
+(6, 150, 700, 3, '675,500', 'Cargo'),
+(7, 90, 500, 9, '270,540', 'Cargo'),
+(8, 200, 700, 10, '780,380', 'Cargo'),
+(9, 120, 500, 5, '270,540', 'Cargo'),
+(10, 90, 800, 15, '675,500', 'Cargo');
 
 -- --------------------------------------------------------
 
@@ -110,24 +91,25 @@ CREATE TABLE `flight` (
   `DepartureTime` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ArrivalTime` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Airplane_idAirplane` int(10) NOT NULL,
-  `takesOffFrom` int(10) NOT NULL
+  `takesOffFrom` int(10) NOT NULL,
+  `CargoWeight` int(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `flight`
 --
 
-INSERT INTO `flight` (`idFlight`, `LandsTo`, `NbOfPassengers`, `EstimatedDuration`, `DepartureTime`, `ArrivalTime`, `Airplane_idAirplane`, `takesOffFrom`) VALUES
-(1, 2, 50, '2017-03-01 02:00:00.00', '2017-03-01 13:00:00', '2017-03-01 15:00:00', 2, 1),
-(2, 3, 100, '2017-04-29 03:00:00.00', '2017-04-29 02:00:00', '2017-04-29 05:00:00', 1, 1),
-(3, 1, 150, '2017-04-08 10:00:00.00', '2017-04-08 06:00:00', '2017-04-08 16:00:00', 10, 2),
-(4, 3, 90, '2017-03-14 05:00:00.00', '2017-03-14 12:00:00', '2017-03-14 17:00:00', 6, 2),
-(5, 1, 120, '2017-03-17 04:00:00.00', '2017-03-17 14:00:00', '2017-03-17 18:00:00', 4, 3),
-(6, 4, 111, '2017-05-05 07:00:00.00', '2017-05-05 05:00:00', '2017-05-05 12:00:00', 8, 3),
-(7, 1, 150, '2017-04-08 03:00:00.00', '2017-04-08 13:00:00', '2017-04-08 16:00:00', 3, 4),
-(8, 2, 90, '2017-03-11 06:00:00.00', '2017-03-11 10:00:00', '2017-03-11 16:00:00', 9, 4),
-(9, 3, 120, '2017-04-17 06:00:00.00', '2017-04-17 14:00:00', '2017-04-17 20:00:00', 5, 5),
-(10, 4, 89, '2017-05-17 03:00:00.00', '2017-05-17 18:00:00', '2017-05-17 21:00:00', 2, 5);
+INSERT INTO `flight` (`idFlight`, `LandsTo`, `NbOfPassengers`, `EstimatedDuration`, `DepartureTime`, `ArrivalTime`, `Airplane_idAirplane`, `takesOffFrom`, `CargoWeight`) VALUES
+(1, 2, 50, '2017-03-01 02:00:00.00', '2017-03-01 13:00:00', '2017-03-01 15:00:00', 2, 1, NULL),
+(2, 3, 100, '2017-04-29 03:00:00.00', '2017-04-29 02:00:00', '2017-04-29 05:00:00', 1, 1, NULL),
+(3, 1, NULL, '2017-04-08 10:00:00.00', '2017-04-08 06:00:00', '2017-04-08 16:00:00', 10, 2, 80),
+(4, 3, NULL, '2017-03-14 05:00:00.00', '2017-03-14 12:00:00', '2017-03-14 17:00:00', 6, 2, 100),
+(5, 1, 80, '2017-03-17 04:00:00.00', '2017-03-17 14:00:00', '2017-03-17 18:00:00', 4, 3, NULL),
+(6, 4, NULL, '2017-05-05 07:00:00.00', '2017-05-05 05:00:00', '2017-05-05 12:00:00', 8, 3, 199),
+(7, 1, 76, '2017-04-08 03:00:00.00', '2017-04-08 13:00:00', '2017-04-08 16:00:00', 3, 4, NULL),
+(8, 2, NULL, '2017-03-11 06:00:00.00', '2017-03-11 10:00:00', '2017-03-11 16:00:00', 9, 4, 110),
+(9, 3, 47, '2017-04-17 06:00:00.00', '2017-04-17 14:00:00', '2017-04-17 20:00:00', 5, 5, NULL),
+(10, 4, 89, '2017-05-17 03:00:00.00', '2017-05-17 18:00:00', '2017-05-17 21:00:00', 2, 5, NULL);
 
 -- --------------------------------------------------------
 
@@ -172,18 +154,6 @@ ALTER TABLE `airplane`
   ADD PRIMARY KEY (`idAirplane`);
 
 --
--- Indexes for table `airplanecargo`
---
-ALTER TABLE `airplanecargo`
-  ADD PRIMARY KEY (`idAirplaneCargo`);
-
---
--- Indexes for table `airplanepassenger`
---
-ALTER TABLE `airplanepassenger`
-  ADD PRIMARY KEY (`idAirplanePassenger`);
-
---
 -- Indexes for table `airport`
 --
 ALTER TABLE `airport`
@@ -225,7 +195,7 @@ ALTER TABLE `airplane`
 -- AUTO_INCREMENT for table `airport`
 --
 ALTER TABLE `airport`
-  MODIFY `IdAirport` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `IdAirport` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `flight`
 --
@@ -256,14 +226,14 @@ ALTER TABLE `airport`
 --
 ALTER TABLE `flight`
   ADD CONSTRAINT `fk_Flight_Airplane1` FOREIGN KEY (`Airplane_idAirplane`) REFERENCES `airplane` (`idAirplane`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Flight_Airport` FOREIGN KEY (`LandsTo`) REFERENCES `airport` (`idAirport`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Flight_Airport1` FOREIGN KEY (`takesOffFrom`) REFERENCES `airport` (`idAirport`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Flight_Airport` FOREIGN KEY (`LandsTo`) REFERENCES `airport` (`IdAirport`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Flight_Airport1` FOREIGN KEY (`takesOffFrom`) REFERENCES `airport` (`IdAirport`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `problem`
 --
 ALTER TABLE `problem`
-  ADD CONSTRAINT `fk_Problem_Airport1` FOREIGN KEY (`Airport_idAirport`,`Airport_Region_idRegion`) REFERENCES `airport` (`idAirport`, `Region_idRegion`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Problem_Airport1` FOREIGN KEY (`Airport_idAirport`,`Airport_Region_idRegion`) REFERENCES `airport` (`IdAirport`, `Region_idRegion`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
