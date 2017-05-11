@@ -27,5 +27,15 @@ namespace Airtraffic_Simulator
             this.ArrivalTime = arrivalTime;
           
         }
+
+        /// <summary>
+        /// Changes destination Airport
+        /// </summary>
+        /// <param name="newDestination"></param>
+        public void ChangeDestination(Airport newDestination)
+        {
+            this.DestinationAirport = newDestination;
+        }
+        
     }
 }

@@ -117,7 +117,7 @@ namespace Airtraffic_Simulator
 
         public List<Flight>GetAllFlights()
         {
-           // String sql = "SELECT `flight`.idFlight, `tf`.Name AS takingOff, `ar`.Name AS Arrival, `flight`.EstimatedDuration, `flight`.DepartureTime, `flight`.ArrivalTime, `airplane`.idAirplane FROM `flight` JOIN `airplane` ON(`flight`.Airplane_idAirplane=`airplane`.idAirplane) JOIN `airport` AS tf ON(`flight`.takesOffFrom=`tf`.idAirport) JOIN `airport` AS ar ON(`flight`.LandsTo=`ar`.idAirport);";
+          
             String sql = "SELECT `flight`.idFlight, `tf`.Name AS takingOff, `ar`.Name AS Arrival, `flight`.EstimatedDuration, `flight`.DepartureTime, `flight`.ArrivalTime, `airplane`.idAirplane, `airplane`.Type, `flight`.NbOfPassengers, `flight`.CargoWeight FROM `flight` JOIN `airplane` ON(`flight`.Airplane_idAirplane=`airplane`.idAirplane) JOIN `airport` AS tf ON(`flight`.takesOffFrom=`tf`.idAirport) JOIN `airport` AS ar ON(`flight`.LandsTo=`ar`.idAirport)";
             MySqlCommand command = new MySqlCommand(sql, connection);
 
@@ -129,9 +129,7 @@ namespace Airtraffic_Simulator
                 connection.Open();
                 MySqlDataReader reader = command.ExecuteReader();
 
-               // public Flight(String id, Airport departureAirport, Airport destinationAirport,
-            //TimeSpan estimatedDuration, DateTime departureTime, DateTime arrivalTime)
-
+     
                 String id;
                 Airport destination, takingOff;
                 TimeSpan duration;
@@ -169,6 +167,7 @@ namespace Airtraffic_Simulator
                     nrOfPasengers = Convert.ToInt32(reader["NbOfPassengers"]);
                     cargoWeight = Convert.ToInt32(reader["CargoWeight"]);
 
+                    //Check whether the plane is a passenger or cargo plane and create a flight accordingly
                     if (typeAirplane == "Passenger")
                     {
                         FlightPassenger fp = new FlightPassenger(id, takingOff, destination, duration, departureTime, arrivalTime, nrOfPasengers);

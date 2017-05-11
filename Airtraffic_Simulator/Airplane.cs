@@ -18,10 +18,10 @@ namespace Airtraffic_Simulator
         public int Capacity { get; private set; }
         public double Speed { get; private set; }
         public double Fuel { get; private set; }
-
+        public bool Selected { get; set; } //Checks if the airplane is selected
         public Rectangle CoverArea { get; set; }
         public string Type { get; set; }
-
+        
         private int counterTicks = 0;
         public Airplane(string id, int capacity, double speed, double fuel, PointF currentLocation, string type)
         {
@@ -32,8 +32,6 @@ namespace Airtraffic_Simulator
             this.CurrentLocation = currentLocation;
             this.Image = new Bitmap(Airtraffic_Simulator.Properties.Resources.airplane_flying);
             this.Image = new Bitmap(Image, 25, 25);
-           
-
         }
         public void Update()
         {
@@ -141,6 +139,7 @@ namespace Airtraffic_Simulator
                 }
                 this.CurrentLocation = new PointF(xNew, yNew);
                 this.CoverArea = new Rectangle(Convert.ToInt32(CurrentLocation.X), Convert.ToInt32(CurrentLocation.Y), 25, 25);
+                
             }
         }
 
@@ -196,6 +195,23 @@ namespace Airtraffic_Simulator
         private double toDegree(double angle)
         {
             return angle * (180.0 / Math.PI);
+        }
+        /// <summary>
+        /// Changes the fuel of the airplane (Does not affect the simulation yet)
+        /// </summary>
+        /// <param name="newFuel"></param>
+        public void ChangeFuel(int newFuel)
+        {
+            this.Fuel = newFuel;
+        }
+
+        /// <summary>
+        /// Changes the speed of the airplane (Doesn't affect the simulation yet)
+        /// </summary>
+        /// <param name="newSpeed"></param>
+        public void ChangeSpeed(int newSpeed)
+        {
+            this.Speed = newSpeed;
         }
     }
 }
