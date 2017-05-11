@@ -139,6 +139,7 @@ namespace Airtraffic_Simulator
                 Airplane airplane;
                 int cargoWeight;
                 int nrOfPasengers;
+                string typeAirplane;
                 
 
                 while (reader.Read())
@@ -164,13 +165,21 @@ namespace Airtraffic_Simulator
                     arrivalTime = new DateTime(Convert.ToInt32(s2a[0]), Convert.ToInt32(s2a[1]), Convert.ToInt32(s2a[2]), Convert.ToInt32(s2b[0]), Convert.ToInt32(s2b[1]), Convert.ToInt32(s2b[2]));
 
                     airplane = Network.FindAirplane(Convert.ToString(reader["idAirplane"]));
-                    Flight f = new Flight(id, takingOff, destination, duration, departureTime, arrivalTime);
-                    airplane.AddFlight(f);
-                    tempFlights.Add(f);
-                   
+                    typeAirplane = Convert.ToString(reader["Type"]);
+                    nrOfPasengers = Convert.ToInt32(reader["NbOfPassengers"]);
+                    cargoWeight = Convert.ToInt32(reader["CargoWeight"]);
 
-                   
-
+                    if (typeAirplane == "Passenger")
+                    {
+                        FlightPassenger fp = new FlightPassenger(id, takingOff, destination, duration, departureTime, arrivalTime, nrOfPasengers);
+                        airplane.AddFlight(fp);
+                        tempFlights.Add(fp);
+                    }
+                    else {
+                        FlightCargo fc = new FlightCargo(id, takingOff, destination, duration, departureTime, arrivalTime, cargoWeight);
+                        airplane.AddFlight(fc);
+                        tempFlights.Add(fc);
+                    }
                 }
 
             }

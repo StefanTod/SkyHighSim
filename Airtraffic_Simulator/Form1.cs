@@ -128,13 +128,6 @@ namespace Airtraffic_Simulator
         }
         private void UpdatePanel()
         {
-            //if(selectedAirplane is AirplanePassanger){
-
-            //    if(selectedAirplane.Flight is FlightPassenger)
-            //    {
-            //            lbNrOfPsngs.Text = ((FlightPassenger)selectedAirplane.Flight).nrOfPassengers.ToString();
-            //    }
-            //}
             lbCapacity.Text=selectedAirplane.Capacity.ToString();
             lbFlightNumber.Text=selectedAirplane.Flight.Id.ToString();
             lbFuel.Text=selectedAirplane.Fuel.ToString();
@@ -142,10 +135,22 @@ namespace Airtraffic_Simulator
             lbPlaneName.Text=selectedAirplane.Id.ToString();
             lbDepartureTime.Text=selectedAirplane.Flight.DepartureTime.ToString();
             lbArrivalTime.Text=selectedAirplane.Flight.ArrivalTime.ToString();
-            
+
+            if (selectedAirplane is AirplanePassanger)
+            {
+                lbCargoWeight.Text = "-";
+                lbNrOfPsngs.Text = ((FlightPassenger)selectedAirplane.Flight).nrOfPassengers.ToString();
+                lbNrOfPsngs.Visible = true;
+            }
+            else
+            {
+                lbNrOfPsngs.Text = "-";
+                lbCargoWeight.Text = ((FlightCargo)selectedAirplane.Flight).cargoWeight.ToString();
+                lbCargoWeight.Visible = true;
+            }
 
 
-            //lbNrOfPsngs.Visible = true;
+                //lbNrOfPsngs.Visible = true;
             lbCapacity.Visible=true;
             lbFlightNumber.Visible = true;
             lbFuel.Visible = true;
@@ -158,6 +163,21 @@ namespace Airtraffic_Simulator
         private void panelDrawing_MouseUp(object sender, MouseEventArgs e)
         {
             SelectAirplane(e.Location);
+        }
+
+        private void btUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelAdvanced_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelTime_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
