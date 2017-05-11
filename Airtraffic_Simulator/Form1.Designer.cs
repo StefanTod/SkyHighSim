@@ -462,13 +462,14 @@
             // 
             this.panelAdvanced.BackColor = System.Drawing.Color.SteelBlue;
             this.panelAdvanced.Controls.Add(this.label14);
+            this.panelAdvanced.Controls.Add(this.btUpdate);
             this.panelAdvanced.Controls.Add(this.label13);
             this.panelAdvanced.Controls.Add(this.label12);
             this.panelAdvanced.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panelAdvanced.Location = new System.Drawing.Point(9, 501);
             this.panelAdvanced.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelAdvanced.Name = "panelAdvanced";
-            this.panelAdvanced.Size = new System.Drawing.Size(251, 128);
+            this.panelAdvanced.Size = new System.Drawing.Size(251, 153);
             this.panelAdvanced.TabIndex = 9;
             this.panelAdvanced.Visible = false;
             this.panelAdvanced.Paint += new System.Windows.Forms.PaintEventHandler(this.panelAdvanced_Paint);
@@ -478,7 +479,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.label14.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label14.Location = new System.Drawing.Point(5, 55);
+            this.label14.Location = new System.Drawing.Point(3, 86);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(176, 20);
             this.label14.TabIndex = 16;
@@ -489,7 +490,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.label13.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label13.Location = new System.Drawing.Point(5, 34);
+            this.label13.Location = new System.Drawing.Point(5, 50);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(115, 20);
             this.label13.TabIndex = 15;
@@ -511,7 +512,7 @@
             this.btUpdate.BackColor = System.Drawing.Color.LightSeaGreen;
             this.btUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.btUpdate.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btUpdate.Location = new System.Drawing.Point(9, 745);
+            this.btUpdate.Location = new System.Drawing.Point(3, 50);
             this.btUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btUpdate.Name = "btUpdate";
             this.btUpdate.Size = new System.Drawing.Size(251, 57);
@@ -567,7 +568,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1360, 828);
             this.Controls.Add(this.panelDrawing);
-            this.Controls.Add(this.btUpdate);
             this.Controls.Add(this.panelAdvanced);
             this.Controls.Add(this.btAdvanced);
             this.Controls.Add(this.panelTime);
