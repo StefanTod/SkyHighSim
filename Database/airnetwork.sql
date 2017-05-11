@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
--- https://www.phpmyadmin.net/
+-- version 4.5.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2017 at 10:49 AM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Generation Time: May 11, 2017 at 01:03 PM
+-- Server version: 5.7.11
+-- PHP Version: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -74,8 +74,8 @@ INSERT INTO `airport` (`IdAirport`, `Name`, `Capacity`, `Location`, `NbOfLanes`,
 (1, 'Germany', 100, '480,390', 2, 1),
 (2, 'Bulgaria', 100, '675,500', 4, 1),
 (3, 'Ukraine', 100, '780,380', 2, 1),
-(4, 'Iceland', 100, '270,540', 3, 1),
-(5, 'Spain', 100, '250,150', 1, 1);
+(4, 'Spain', 100, '270,540', 3, 1),
+(5, 'Iceland', 100, '250,150', 1, 1);
 
 -- --------------------------------------------------------
 
