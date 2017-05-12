@@ -118,7 +118,8 @@ namespace Airtraffic_Simulator
         public List<Flight>GetAllFlights()
         {
           
-            String sql = "SELECT `flight`.idFlight, `tf`.Name AS takingOff, `ar`.Name AS Arrival, `flight`.EstimatedDuration, `flight`.DepartureTime, `flight`.ArrivalTime, `airplane`.idAirplane, `airplane`.Type, `flight`.NbOfPassengers, `flight`.CargoWeight FROM `flight` JOIN `airplane` ON(`flight`.Airplane_idAirplane=`airplane`.idAirplane) JOIN `airport` AS tf ON(`flight`.takesOffFrom=`tf`.idAirport) JOIN `airport` AS ar ON(`flight`.LandsTo=`ar`.idAirport)";
+            //String sql = "SELECT `flight`.idFlight, `tf`.Name AS takingOff, `ar`.Name AS Arrival, `flight`.EstimatedDuration, `flight`.DepartureTime, `flight`.ArrivalTime, `airplane`.idAirplane, `airplane`.Type, `flight`.NbOfPassengers, `flight`.CargoWeight FROM `flight` JOIN `airplane` ON(`flight`.Airplane_idAirplane=`airplane`.idAirplane) JOIN `airport` AS tf ON(`flight`.takesOffFrom=`tf`.idAirport) JOIN `airport` AS ar ON(`flight`.LandsTo=`ar`.idAirport)";
+            String sql = "SELECT `flight`.idFlight, `tf`.Name AS takingOff, `ar`.Name AS Arrival, `flight`.EstimatedDuration, `flight`.DepartureTime, `flight`.ArrivalTime, `airplane`.idAirplane, `airplane`.Type, `flight`.`Loaded` FROM `flight` JOIN `airplane` ON(`flight`.Airplane_idAirplane=`airplane`.idAirplane) JOIN `airport` AS tf ON(`flight`.takesOffFrom=`tf`.idAirport) JOIN `airport` AS ar ON(`flight`.LandsTo=`ar`.idAirport)";
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             List<Flight> tempFlights = new List<Flight>();
@@ -135,9 +136,8 @@ namespace Airtraffic_Simulator
                 TimeSpan duration;
                 DateTime departureTime, arrivalTime;
                 Airplane airplane;
-                int cargoWeight;
-                int nrOfPasengers;
                 string typeAirplane;
+                int loaded;
                 
 
                 while (reader.Read())
@@ -164,18 +164,18 @@ namespace Airtraffic_Simulator
 
                     airplane = Network.FindAirplane(Convert.ToString(reader["idAirplane"]));
                     typeAirplane = Convert.ToString(reader["Type"]);
-                    nrOfPasengers = Convert.ToInt32(reader["NbOfPassengers"]);
-                    cargoWeight = Convert.ToInt32(reader["CargoWeight"]);
+                    loaded = Convert.ToInt32(reader["Loaded"]);
+                    
 
                     //Check whether the plane is a passenger or cargo plane and create a flight accordingly
                     if (typeAirplane == "Passenger")
                     {
-                        FlightPassenger fp = new FlightPassenger(id, takingOff, destination, duration, departureTime, arrivalTime, nrOfPasengers);
+                        FlightPassenger fp = new FlightPassenger(id, takingOff, destination, duration, departureTime, arrivalTime, loaded);
                         airplane.AddFlight(fp);
                         tempFlights.Add(fp);
                     }
                     else {
-                        FlightCargo fc = new FlightCargo(id, takingOff, destination, duration, departureTime, arrivalTime, cargoWeight);
+                        FlightCargo fc = new FlightCargo(id, takingOff, destination, duration, departureTime, arrivalTime, loaded);
                         airplane.AddFlight(fc);
                         tempFlights.Add(fc);
                     }

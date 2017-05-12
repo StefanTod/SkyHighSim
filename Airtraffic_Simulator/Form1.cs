@@ -118,10 +118,11 @@ namespace Airtraffic_Simulator
             if (selectedAirplane is AirplanePassanger)
             {
                 lbCargoWeight.Text = "-";
+                lbCargoWeight.Visible = true;
                 lbNrOfPsngs.Text = ((FlightPassenger)selectedAirplane.Flight).nrOfPassengers.ToString();
                 lbNrOfPsngs.Visible = true;
             }
-            else
+            else 
             {
                 lbNrOfPsngs.Text = "-";
                 lbCargoWeight.Text = ((FlightCargo)selectedAirplane.Flight).cargoWeight.ToString();
@@ -135,6 +136,7 @@ namespace Airtraffic_Simulator
             lbPlaneName.Visible = true;
             lbDepartureTime.Visible = true;
             lbArrivalTime.Visible=true;
+            
         }
 
         private void panelDrawing_MouseUp(object sender, MouseEventArgs e)

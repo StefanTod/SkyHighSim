@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2017 at 01:03 PM
--- Server version: 5.7.11
--- PHP Version: 5.6.19
+-- Generation Time: May 12, 2017 at 11:07 AM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -86,30 +86,29 @@ INSERT INTO `airport` (`IdAirport`, `Name`, `Capacity`, `Location`, `NbOfLanes`,
 CREATE TABLE `flight` (
   `idFlight` int(10) NOT NULL,
   `LandsTo` int(10) NOT NULL,
-  `NbOfPassengers` int(11) DEFAULT '0',
   `EstimatedDuration` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
   `DepartureTime` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ArrivalTime` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Airplane_idAirplane` int(10) NOT NULL,
   `takesOffFrom` int(10) NOT NULL,
-  `CargoWeight` int(6) DEFAULT '0'
+  `Loaded` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `flight`
 --
 
-INSERT INTO `flight` (`idFlight`, `LandsTo`, `NbOfPassengers`, `EstimatedDuration`, `DepartureTime`, `ArrivalTime`, `Airplane_idAirplane`, `takesOffFrom`, `CargoWeight`) VALUES
-(1, 2, 50, '2017-03-01 02:00:00.00', '2017-03-01 13:00:00', '2017-03-01 15:00:00', 2, 1, 0),
-(2, 3, 100, '2017-04-29 03:00:00.00', '2017-04-29 02:00:00', '2017-04-29 05:00:00', 1, 1, 0),
-(3, 1, 0, '2017-04-08 10:00:00.00', '2017-04-08 06:00:00', '2017-04-08 16:00:00', 10, 2, 80),
-(4, 3, 0, '2017-03-14 05:00:00.00', '2017-03-14 12:00:00', '2017-03-14 17:00:00', 6, 2, 100),
-(5, 1, 80, '2017-03-17 04:00:00.00', '2017-03-17 14:00:00', '2017-03-17 18:00:00', 4, 3, 0),
-(6, 4, 0, '2017-05-05 07:00:00.00', '2017-05-05 05:00:00', '2017-05-05 12:00:00', 8, 3, 199),
-(7, 1, 76, '2017-04-08 03:00:00.00', '2017-04-08 13:00:00', '2017-04-08 16:00:00', 3, 4, 0),
-(8, 2, 0, '2017-03-11 06:00:00.00', '2017-03-11 10:00:00', '2017-03-11 16:00:00', 9, 4, 110),
-(9, 3, 47, '2017-04-17 06:00:00.00', '2017-04-17 14:00:00', '2017-04-17 20:00:00', 5, 5, 0),
-(10, 4, 89, '2017-05-17 03:00:00.00', '2017-05-17 18:00:00', '2017-05-17 21:00:00', 2, 5, 0);
+INSERT INTO `flight` (`idFlight`, `LandsTo`, `EstimatedDuration`, `DepartureTime`, `ArrivalTime`, `Airplane_idAirplane`, `takesOffFrom`, `Loaded`) VALUES
+(1, 2, '2017-03-01 02:00:00.00', '2017-03-01 13:00:00', '2017-03-01 15:00:00', 2, 1, 50),
+(2, 3, '2017-04-29 03:00:00.00', '2017-04-29 02:00:00', '2017-04-29 05:00:00', 1, 1, 100),
+(3, 1, '2017-04-08 10:00:00.00', '2017-04-08 06:00:00', '2017-04-08 16:00:00', 10, 2, 80),
+(4, 3, '2017-03-14 05:00:00.00', '2017-03-14 12:00:00', '2017-03-14 17:00:00', 6, 2, 100),
+(5, 1, '2017-03-17 04:00:00.00', '2017-03-17 14:00:00', '2017-03-17 18:00:00', 4, 3, 80),
+(6, 4, '2017-05-05 07:00:00.00', '2017-05-05 05:00:00', '2017-05-05 12:00:00', 8, 3, 199),
+(7, 1, '2017-04-08 03:00:00.00', '2017-04-08 13:00:00', '2017-04-08 16:00:00', 3, 4, 76),
+(8, 2, '2017-03-11 06:00:00.00', '2017-03-11 10:00:00', '2017-03-11 16:00:00', 9, 4, 110),
+(9, 3, '2017-04-17 06:00:00.00', '2017-04-17 14:00:00', '2017-04-17 20:00:00', 5, 5, 47),
+(10, 4, '2017-05-17 03:00:00.00', '2017-05-17 18:00:00', '2017-05-17 21:00:00', 2, 5, 89);
 
 -- --------------------------------------------------------
 
