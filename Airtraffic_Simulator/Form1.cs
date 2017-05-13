@@ -149,23 +149,22 @@ namespace Airtraffic_Simulator
         {
             if(selectedAirplane!=null)
             { 
-            selectedAirplane.ChangeFuel(Convert.ToInt32(nUDChangeFuel.Value));
-            selectedAirplane.ChangeSpeed(Convert.ToInt32(nUDChangeSpeed.Value));
-            string destination = tbChangeDestination.Text;
-            bool found = false;
-            foreach(Airport a in airNetwork.Airports)
-            {
-                if(a.Name==destination)
+                selectedAirplane.ChangeFuel(Convert.ToInt32(nUDChangeFuel.Value));
+                selectedAirplane.ChangeSpeed(Convert.ToInt32(nUDChangeSpeed.Value));
+                string destination = tbChangeDestination.Text;
+                bool found = false;
+                foreach(Airport a in airNetwork.Airports)
                 {
-                    selectedAirplane.Flight.ChangeDestination(a);
-                    selectedAirplane.UpdateMovement();
-                    found = true;
+                    if(a.Name.ToUpper()==destination.ToUpper())
+                    {
+                        selectedAirplane.ChangeRoute(selectedAirplane.CurrentLocation, a.Location);
+                        found = true;
+                    }
                 }
-            }
-            if(!found)
-            {
-                MessageBox.Show("No such airport was found. Please enter another one");
-            }
+                if(!found)
+                {
+                    MessageBox.Show("No such airport was found. Please enter another one");
+                }
             }
         }
     }

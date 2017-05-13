@@ -21,6 +21,8 @@ namespace Airtraffic_Simulator
         public bool Selected { get; set; } //Checks if the airplane is selected
         public Rectangle CoverArea { get; set; }
         public string Type { get; set; }
+        private PointF DepartureLocation;
+        private PointF DestinationLocation;
         
         private int counterTicks = 0;
         public Airplane(string id, int capacity, double speed, double fuel, PointF currentLocation, string type)
@@ -30,8 +32,7 @@ namespace Airtraffic_Simulator
             this.Speed = speed;
             this.Fuel = fuel;
             this.CurrentLocation = currentLocation;
-            this.Image = new Bitmap(Airtraffic_Simulator.Properties.Resources.airplane_flying);
-            this.Image = new Bitmap(Image, 25, 25);
+            this.Image = GlobalVariables.AirplaneInFlight;
         }
         public void Update()
         {
@@ -80,10 +81,10 @@ namespace Airtraffic_Simulator
         {
             if (this.Flight != null)
             {
-                float x1 = this.Flight.DepartureAirport.Location.X;
-                float x2 = this.Flight.DestinationAirport.Location.X;
-                float y1 = this.Flight.DepartureAirport.Location.Y;
-                float y2 = this.Flight.DestinationAirport.Location.Y;
+                float x1 = this.DepartureLocation.X;
+                float x2 = this.DestinationLocation.X;
+                float y1 = this.DepartureLocation.Y;
+                float y2 = this.DestinationLocation.Y;
 
                 float xCurrent = this.CurrentLocation.X;
                 float yCurrent = this.CurrentLocation.Y;
@@ -133,8 +134,8 @@ namespace Airtraffic_Simulator
                 }
                 if (totaldistance < currentdistance + distancepassed)
                 {
-                    xNew = this.Flight.DestinationAirport.Location.X;
-                    yNew = this.Flight.DestinationAirport.Location.Y;
+                    xNew = this.DestinationLocation.X;
+                    yNew = this.DestinationLocation.Y;
                     this.Status = Status.LANDING;
                 }
                 this.CurrentLocation = new PointF(xNew, yNew);
@@ -146,17 +147,25 @@ namespace Airtraffic_Simulator
         public void AddFlight(Flight f)
         {
             this.Flight = f;
+            this.ChangeRoute(this.Flight.DepartureAirport.Location, this.Flight.DestinationAirport.Location);
+        }
 
-            float x1 = this.Flight.DepartureAirport.Location.X;
-            float x2 = this.Flight.DestinationAirport.Location.X;
-            float y1 = this.Flight.DepartureAirport.Location.Y;
-            float y2 = this.Flight.DestinationAirport.Location.Y;
-
-
+        public void ChangeRoute(PointF start,PointF end)
+        {
+            this.DepartureLocation = start;
+            this.DestinationLocation = end;
+            this.TransformImage();
+        }
+        private void TransformImage()
+        {
+            float x1 = this.DepartureLocation.X;
+            float x2 = this.DestinationLocation.X;
+            float y1 = this.DepartureLocation.Y;
+            float y2 = this.DestinationLocation.Y;
 
             float xDiff = x1 - x2;
             float yDiff = y1 - y2;
-           // float rotationAngle = (float)Math.Atan2(yDiff, xDiff) * (float)(240/ Math.PI);
+            // float rotationAngle = (float)Math.Atan2(yDiff, xDiff) * (float)(240/ Math.PI);
 
             float rotationAngle = (float)toDegree((float)Math.Atan2(yDiff, xDiff)) + 180;
             if (rotationAngle < 0)
@@ -183,7 +192,7 @@ namespace Airtraffic_Simulator
             gfx.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
             //now draw our new image onto the graphics object
-            gfx.DrawImage(Image, new Point(0, 0));
+            gfx.DrawImage(GlobalVariables.AirplaneInFlight, new Point(0, 0));
 
             //dispose of our Graphics object
             gfx.Dispose();
