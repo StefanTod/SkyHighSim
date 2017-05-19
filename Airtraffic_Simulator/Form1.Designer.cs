@@ -539,6 +539,8 @@
             // 
             // tbChangeDestination
             // 
+            this.tbChangeDestination.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.tbChangeDestination.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbChangeDestination.Location = new System.Drawing.Point(6, 108);
             this.tbChangeDestination.Name = "tbChangeDestination";
             this.tbChangeDestination.Size = new System.Drawing.Size(177, 20);
