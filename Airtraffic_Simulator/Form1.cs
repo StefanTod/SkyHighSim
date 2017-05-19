@@ -114,10 +114,7 @@ namespace Airtraffic_Simulator
             tbChangeDestination.Text = selectedAirplane.Flight.DestinationAirport.Name.ToString();
             nUDChangeSpeed.Text = selectedAirplane.Speed.ToString();
             nUDChangeFuel.Text = selectedAirplane.Fuel.ToString();
-            foreach(Airport a in airNetwork.Airports)
-            {
-                tbChangeDestination.AutoCompleteCustomSource.Add(a.Name);
-            }
+
             if (selectedAirplane is AirplanePassanger)
             {
                 lbCargoWeight.Text = "-";
@@ -146,7 +143,6 @@ namespace Airtraffic_Simulator
         {
             SelectAirplane(e.Location);
             Invalidate();
-            
         }
 
         private void btUpdate_Click(object sender, EventArgs e)
