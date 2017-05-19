@@ -18,9 +18,7 @@ namespace Airtraffic_Simulator
         public int Capacity { get; private set; }
         public double Speed { get; private set; }
         public double Fuel { get; private set; }
-        public bool Selected { get; set; } //Checks if the airplane is selected
         public Rectangle CoverArea { get; set; }
-        public string Type { get; set; }
         private PointF DepartureLocation;
         private PointF DestinationLocation;
         

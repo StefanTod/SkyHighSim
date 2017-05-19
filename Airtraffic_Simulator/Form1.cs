@@ -31,8 +31,11 @@ namespace Airtraffic_Simulator
             airNetwork.Flights = helper.GetAllFlights();
             queues  = new List<Queue>();
             painter = new Painter();
+            selectedAirplane = null;
             gr = this.panelDrawing.CreateGraphics();
             Invalidate();
+            
+
         }
         
 
@@ -44,28 +47,17 @@ namespace Airtraffic_Simulator
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            string temp = lbPlaneName.Text;
-            foreach (Airplane a in airNetwork.Airplanes)
+            
+             foreach (Airplane a in airNetwork.Airplanes)
             {
-                //Check if the airplane is selected
-                if (a.Id == temp)
-                {
-                    a.Selected = true;
-                }
-                else
-                {
-                    a.Selected = false;
-                }
                 a.Update();
             }
-            panelDrawing.Invalidate();
-            
-
-            //call painter
+             panelDrawing.Invalidate();
+   
         }
         private void btStart_Click(object sender, EventArgs e)
         {
-            painter.DrawNetwork(gr,airNetwork);
+            painter.DrawNetwork(gr,airNetwork,selectedAirplane);
             timer.Interval = 500;
             StartSimulation();
 
@@ -84,7 +76,8 @@ namespace Airtraffic_Simulator
 
         private void panelDrawing_Paint(object sender, PaintEventArgs e)
         {
-            painter.DrawNetwork(e.Graphics, airNetwork);
+            painter.DrawNetwork(e.Graphics, airNetwork, selectedAirplane);
+            
         }
 
         private void btFastForward_Click(object sender, EventArgs e)
@@ -142,7 +135,16 @@ namespace Airtraffic_Simulator
         private void panelDrawing_MouseUp(object sender, MouseEventArgs e)
         {
             SelectAirplane(e.Location);
-            Invalidate();
+            string temp = lbPlaneName.Text;
+
+            foreach (Airplane a in airNetwork.Airplanes)
+            {
+                if (a.Id == temp)
+                {
+                    selectedAirplane = a;
+                }
+            }
+               panelDrawing.Invalidate();
         }
 
         private void btUpdate_Click(object sender, EventArgs e)
@@ -167,6 +169,8 @@ namespace Airtraffic_Simulator
                 }
             }
         }
+
+       
     }
 }
 
