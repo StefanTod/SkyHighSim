@@ -72,6 +72,10 @@ namespace Airtraffic_Simulator
         {
             panelAdvanced.Visible = true;
             btUpdate.Visible = true;
+                foreach (Airport a in airNetwork.Airports)
+                {
+                    tbChangeDestination.AutoCompleteCustomSource.Add(a.Name);
+                }
         }
 
         private void panelDrawing_Paint(object sender, PaintEventArgs e)

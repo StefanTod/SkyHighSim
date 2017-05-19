@@ -539,6 +539,8 @@
             // 
             // tbChangeDestination
             // 
+            this.tbChangeDestination.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.tbChangeDestination.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbChangeDestination.Location = new System.Drawing.Point(6, 108);
             this.tbChangeDestination.Name = "tbChangeDestination";
             this.tbChangeDestination.Size = new System.Drawing.Size(177, 20);
@@ -610,7 +612,6 @@
             this.panelDrawing.Size = new System.Drawing.Size(1064, 621);
             this.panelDrawing.TabIndex = 12;
             this.panelDrawing.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDrawing_Paint);
-       
             this.panelDrawing.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelDrawing_MouseUp);
             // 
             // Form1
