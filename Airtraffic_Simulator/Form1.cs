@@ -12,24 +12,18 @@ namespace Airtraffic_Simulator
 {
     public partial class Form1 : Form
     {
-        List<Airplane> airplanes;
-        List<Airport> airports;
-        List<Flight> flights;
-        List<Queue> queues;
         Network airNetwork;
         Painter painter;
-        Graphics gr;
         private Airplane selectedAirplane;
         DataHelper helper;
         public Form1()
         {
             InitializeComponent();
-            airNetwork = new Network(Regions.EUROPE, airplanes, airports, flights, queues);
+            airNetwork = new Network(Regions.EUROPE);
             helper = new DataHelper(airNetwork);  
-            airNetwork.Airports = helper.GetAllAirports();
+            airNetwork.Airports = helper.GetAllAirports(); //consider sending the Airports of airNetwork as a parameter into GetAllAirports instead of assigning it as reference
             airNetwork.Airplanes = helper.GetAllAirplanes();
             airNetwork.Flights = helper.GetAllFlights();
-            queues  = new List<Queue>();
             painter = new Painter();
             selectedAirplane = null;
             this.panelDrawing.Paint -=panelDrawing_Paint;

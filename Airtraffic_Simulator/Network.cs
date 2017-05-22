@@ -16,7 +16,7 @@ namespace Airtraffic_Simulator
         public List<Flight> Flights { get;  set; }
         public List<Queue> Queues { get; private set; }
 
-        public Network(Regions region, List<Airplane> airplanes, List<Airport> airports, List<Flight> flights, List<Queue> Queues)
+        public Network(Regions region)
         {
             this.Region = region;
             this.Airplanes = new List<Airplane>();
