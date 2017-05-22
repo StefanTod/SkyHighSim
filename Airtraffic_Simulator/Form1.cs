@@ -32,12 +32,15 @@ namespace Airtraffic_Simulator
             queues  = new List<Queue>();
             painter = new Painter();
             selectedAirplane = null;
-            gr = this.panelDrawing.CreateGraphics();
-            Invalidate();
-            
-
+            this.panelDrawing.Paint -=panelDrawing_Paint;
+            this.panelDrawing.Paint += new PaintEventHandler(DrawNetwork);
+            this.Invalidate();
+            this.panelDrawing.Paint +=panelDrawing_Paint;
         }
-        
+        private void DrawNetwork(object sender, PaintEventArgs e)
+        {
+            painter.DrawNetwork(e.Graphics, airNetwork);
+        }
 
         private void StartSimulation()
         {
@@ -47,20 +50,16 @@ namespace Airtraffic_Simulator
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            
-             foreach (Airplane a in airNetwork.Airplanes)
+            foreach (Airplane a in airNetwork.Airplanes)
             {
                 a.Update();
             }
-             panelDrawing.Invalidate();
-   
+            panelDrawing.Invalidate();
         }
         private void btStart_Click(object sender, EventArgs e)
         {
-            painter.DrawNetwork(gr,airNetwork,selectedAirplane);
             timer.Interval = 500;
             StartSimulation();
-
         }
 
         private void btStop_Click(object sender, EventArgs e)
@@ -80,8 +79,7 @@ namespace Airtraffic_Simulator
 
         private void panelDrawing_Paint(object sender, PaintEventArgs e)
         {
-            painter.DrawNetwork(e.Graphics, airNetwork, selectedAirplane);
-            
+            painter.RedrawAirplanes(e.Graphics, airNetwork, selectedAirplane);
         }
 
         private void btFastForward_Click(object sender, EventArgs e)

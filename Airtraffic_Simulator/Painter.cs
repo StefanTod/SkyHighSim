@@ -10,9 +10,12 @@ namespace Airtraffic_Simulator
     class Painter
     {
 
-        public void DrawNetwork(Graphics gr, Network n, Airplane selectedAirplane)
+        public void DrawNetwork(Graphics gr, Network n)
         {
-            this.RedrawAirplanes(gr, n, selectedAirplane);
+            foreach(Airplane a in n.Airplanes)
+            {
+                this.DrawAirplane(gr, a, false);
+            }
 
             foreach (Airport a in n.Airports)
             {
