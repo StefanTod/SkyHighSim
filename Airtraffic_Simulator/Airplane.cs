@@ -10,7 +10,7 @@ namespace Airtraffic_Simulator
 {
     public abstract class Airplane
     {
-        public Status Status { get; private set; }
+        public Status PlaneStatus { get; private set; }
         public Flight Flight { get; set; }
         public PointF CurrentLocation { get; set; }
         public Bitmap Image { get; set; }
@@ -34,45 +34,52 @@ namespace Airtraffic_Simulator
         }
         public void Update()
         {
-            switch (this.Status)
+            if (this.Flight != null)
             {
-                case Status.LANDED:
-                    //if check flight timing then we take off
-                    // check if lanes are free
-                    if (Flight.DepartureAirport.LanesTaken < Flight.DepartureAirport.Lanes)
-                    {
-                        Status = Status.TAKINGOFF;
+                switch (this.PlaneStatus)
+                {
+                    case Status.TOTAKEOFF:
+                        //if check flight timing then we take off
+                        // check if lanes are free
+                        if (Flight.DepartureAirport.LanesTaken < Flight.DepartureAirport.Lanes)
+                        {
+                            PlaneStatus = Status.TAKINGOFF;
+                            break;
+                        }
+                        else
+                        {
+                            //add to queue to take off
+                            break;
+                        }
+
+                    case Status.INAIR:
+                        UpdateMovement();
                         break;
-                    }
-                    else
-                    {
-                        //add to queue to take off
+                    case Status.CIRCLING:
+                        //call Circle method
                         break;
-                    }
+                    case Status.LANDING:
+                        counterTicks++;
+                        if (counterTicks >= 2)
+                        {
+                            PlaneStatus = Status.LANDED;
+                            this.Flight.DestinationAirport.FreeLane();
+                        }
+                        break;
+                    case Status.LANDED:
+                        break;
+                    case Status.TAKINGOFF:
+                        counterTicks++;
+                        if (counterTicks >= 2)
+                        {
+                            PlaneStatus = Status.INAIR;
+                            // remove plane from airport 
+                            counterTicks = 0;
+                            // release lane
 
-                case Status.INAIR:
-                    UpdateMovement();
-
-                    break;
-                case Status.LANDING:
-                    counterTicks++;
-                    if (counterTicks >= 2)
-                    {
-                        Status = Status.LANDED;
-                        //add plane into destination airport
-                    }
-                    break;
-                case Status.TAKINGOFF:
-                    counterTicks++;
-                    if (counterTicks >= 2)
-                    {
-                        Status = Status.INAIR;
-                        // remove plane from airport 
-                        counterTicks = 0;
-                        // release lane
-
-                    }
-                    break;
+                        }
+                        break;
+                }
             }
         }
         public void UpdateMovement()
@@ -134,7 +141,16 @@ namespace Airtraffic_Simulator
                 {
                     xNew = this.DestinationLocation.X;
                     yNew = this.DestinationLocation.Y;
-                    this.Status = Status.LANDING;
+
+                    //plane has arrived and must request perimission -> be added to the queue or occupy a lane
+                    if(this.Flight.DestinationAirport.RequestLandingPermission(this))
+                    {
+                        this.PlaneStatus = Status.LANDING;
+                    }
+                    else
+                    {
+                        this.PlaneStatus = Status.CIRCLING;
+                    }
                 }
                 this.CurrentLocation = new PointF(xNew, yNew);
                 this.CoverArea = new Rectangle(Convert.ToInt32(CurrentLocation.X), Convert.ToInt32(CurrentLocation.Y), 25, 25);

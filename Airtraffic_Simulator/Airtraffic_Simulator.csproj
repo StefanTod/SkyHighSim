@@ -67,6 +67,7 @@
     <Compile Include="GlobalVariables.cs" />
     <Compile Include="Network.cs" />
     <Compile Include="Painter.cs" />
+    <Compile Include="PriorityQueue.cs" />
     <Compile Include="Problem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

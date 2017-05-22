@@ -8,9 +8,11 @@ namespace Airtraffic_Simulator
 {
     public enum Status
     {
+        TOTAKEOFF,
         TAKINGOFF,
         INAIR,
         LANDING,
-        LANDED
+        LANDED,
+        CIRCLING
     }
 }

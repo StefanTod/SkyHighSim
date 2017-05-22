@@ -42,7 +42,7 @@ namespace Airtraffic_Simulator
         public void DrawAirplane(Graphics gr, Airplane airplaneToDraw, bool isSelected)
         {
             Pen penToDraw = new Pen(Color.Transparent, 1);
-            if (airplaneToDraw.Status != Status.LANDED)
+            if (airplaneToDraw.PlaneStatus != Status.LANDED)
             {
                 if (isSelected)
                 {

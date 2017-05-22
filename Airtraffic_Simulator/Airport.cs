@@ -17,7 +17,7 @@ namespace Airtraffic_Simulator
         public Bitmap Image { get; private set; }
         public string Name { get; private set; }
 
-        public int Lanes { get; private set; }
+        public readonly int Lanes;
         public int LanesTaken { get;  private set; }
         public int Capacity { get; private set; }
 
@@ -41,10 +41,36 @@ namespace Airtraffic_Simulator
             
         }
 
-
-        public bool RemoveFromQueue(Airplane p)
+        public bool RequestLandingPermission(Airplane a)
         {
-            return true;
+            if(LanesTaken<Lanes)
+            {
+                LanesTaken++;
+                //set status to landing --> free lane
+                return true;
+            }
+            else
+            {
+                LandingQueue.AddPlaneToQueue(a);
+                //plane has to circle until it is removed from the queue.
+                return false;
+            }
+        }
+
+        public void RemoveFromQueue()
+        {
+            Airplane airplaneToLand = LandingQueue.DequeueHighestPriority();
+            if (airplaneToLand != null)
+            {
+                LanesTaken++;
+                //airplaneToLand set status to landing
+            }
+        }
+
+        public void FreeLane()
+        {
+            LanesTaken--;
+            RemoveFromQueue();
         }
 
 
