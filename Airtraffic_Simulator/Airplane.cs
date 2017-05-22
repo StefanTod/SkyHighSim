@@ -56,7 +56,7 @@ namespace Airtraffic_Simulator
                         UpdateMovement();
                         break;
                     case Status.CIRCLING:
-                        //call Circle method
+                        this.CircleAroundAirport();
                         break;
                     case Status.LANDING:
                         counterTicks++;
@@ -76,13 +76,20 @@ namespace Airtraffic_Simulator
                             // remove plane from airport 
                             counterTicks = 0;
                             // release lane
-
                         }
                         break;
                 }
             }
         }
-        public void UpdateMovement()
+        private void CircleAroundAirport()
+        {
+
+        }
+        public void SetStatusToLanding()
+        {
+            this.PlaneStatus = Status.LANDING;
+        }
+        private void UpdateMovement()
         {
             if (this.Flight != null)
             {

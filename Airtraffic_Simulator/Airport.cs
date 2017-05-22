@@ -35,7 +35,7 @@ namespace Airtraffic_Simulator
             this.Image = new Bitmap(Image, 25, 25);
         }
 
-        
+        //method might be useless
         public void AddToQueue(Airplane p)
         {
             
@@ -63,7 +63,7 @@ namespace Airtraffic_Simulator
             if (airplaneToLand != null)
             {
                 LanesTaken++;
-                //airplaneToLand set status to landing
+                airplaneToLand.SetStatusToLanding();
             }
         }
 
