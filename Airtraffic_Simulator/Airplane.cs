@@ -60,7 +60,7 @@ namespace Airtraffic_Simulator
                         break;
                     case Status.LANDING:
                         counterTicks++;
-                        if (counterTicks >= 2)
+                        if (counterTicks >= 30)
                         {
                             PlaneStatus = Status.LANDED;
                             this.Flight.DestinationAirport.FreeLane();
