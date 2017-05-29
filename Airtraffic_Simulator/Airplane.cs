@@ -12,7 +12,7 @@ namespace Airtraffic_Simulator
     {
         public Status PlaneStatus { get; private set; }
         public Flight Flight { get; set; }
-        public PointF CurrentLocation { get; set; }
+        public PointF CurrentLocation { get; private set; }
         public Bitmap Image { get; set; }
         public string Id { get; private set; }
         public int Capacity { get; private set; }
@@ -83,7 +83,38 @@ namespace Airtraffic_Simulator
         }
         private void CircleAroundAirport()
         {
+            float xCurrent = this.CurrentLocation.X;
+            float yCurrent = this.CurrentLocation.Y;
+            float xDestination = this.DestinationLocation.X;
+            float yDestination = this.DestinationLocation.Y;
+            PointF dest;
+            float xDiff = 8;
+            float yDiff = 8;
 
+            if (xCurrent<=xDestination && yCurrent<=yDestination)
+            {
+                dest = new PointF(this.CurrentLocation.X, this.CurrentLocation.Y + 2 * yDiff);
+                this.TransformImage(this.CurrentLocation, dest);
+                this.CurrentLocation = dest;
+            }
+            else if (xCurrent > xDestination && yCurrent > yDestination)
+            {
+                dest = new PointF(this.CurrentLocation.X, this.CurrentLocation.Y - 2 * yDiff);
+                this.TransformImage(this.CurrentLocation, dest);
+                this.CurrentLocation = dest;
+            }
+            else if (xCurrent <= xDestination && yCurrent > yDestination)
+            {
+                dest = new PointF(this.CurrentLocation.X + 2 * xDiff, this.CurrentLocation.Y);
+                this.TransformImage(this.CurrentLocation, dest);
+                this.CurrentLocation = dest;
+            }
+            else
+            {
+                dest = new PointF(this.CurrentLocation.X - 2 * xDiff, this.CurrentLocation.Y);
+                this.TransformImage(this.CurrentLocation, dest);
+                this.CurrentLocation = dest;
+            }
         }
         public void SetStatusToLanding()
         {
@@ -146,18 +177,19 @@ namespace Airtraffic_Simulator
                 }
                 if (totaldistance < currentdistance + distancepassed)
                 {
-                    xNew = this.DestinationLocation.X;
-                    yNew = this.DestinationLocation.Y;
-
                     //plane has arrived and must request perimission -> be added to the queue or occupy a lane
-                    if(this.Flight.DestinationAirport.RequestLandingPermission(this))
-                    {
-                        this.PlaneStatus = Status.LANDING;
-                    }
-                    else
-                    {
+                    //if(this.flight.destinationairport.requestlandingpermission(this))
+                    //{
+                    //   this.setstatustolanding();
+                    //   xnew = this.destinationlocation.x;
+                    //   ynew = this.destinationlocation.y;
+                    //}
+                    //else
+                    //{
                         this.PlaneStatus = Status.CIRCLING;
-                    }
+                        xNew = this.CurrentLocation.X;
+                        yNew = this.CurrentLocation.Y;
+                    //}
                 }
                 this.CurrentLocation = new PointF(xNew, yNew);
                 this.CoverArea = new Rectangle(Convert.ToInt32(CurrentLocation.X), Convert.ToInt32(CurrentLocation.Y), 25, 25);
@@ -175,14 +207,14 @@ namespace Airtraffic_Simulator
         {
             this.DepartureLocation = start;
             this.DestinationLocation = end;
-            this.TransformImage();
+            this.TransformImage(start,end);
         }
-        private void TransformImage()
+        private void TransformImage(PointF start,PointF end)
         {
-            float x1 = this.DepartureLocation.X;
-            float x2 = this.DestinationLocation.X;
-            float y1 = this.DepartureLocation.Y;
-            float y2 = this.DestinationLocation.Y;
+            float x1 = start.X;
+            float x2 = end.X;
+            float y1 = start.Y;
+            float y2 = end.Y;
 
             float xDiff = x1 - x2;
             float yDiff = y1 - y2;
