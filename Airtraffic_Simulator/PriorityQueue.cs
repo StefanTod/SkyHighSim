@@ -224,6 +224,11 @@ namespace Airtraffic_Simulator
 
         #region Heap operations
 
+        public List<KeyValuePair<TPriority, TValue>> GetHeap()
+        {
+            return _baseHeap;
+        }
+
         private void ExchangeElements(int pos1, int pos2)
         {
             KeyValuePair<TPriority, TValue> val = _baseHeap[pos1];
@@ -275,7 +280,6 @@ namespace Airtraffic_Simulator
             // heapify
             HeapifyFromBeginningToEnd(0);
         }
-
         private void HeapifyFromBeginningToEnd(int pos)
         {
             if (pos >= _baseHeap.Count) return;

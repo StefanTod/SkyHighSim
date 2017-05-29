@@ -204,7 +204,10 @@ namespace Airtraffic_Simulator
         {
             this.DepartureLocation = start;
             this.DestinationLocation = end;
-            this.PlaneStatus = Status.INAIR;
+            if(PlaneStatus != Status.TOTAKEOFF)
+            {
+                PlaneStatus = Status.INAIR;
+            }
             this.TransformImage(start,end);
         }
         private void TransformImage(PointF start,PointF end)

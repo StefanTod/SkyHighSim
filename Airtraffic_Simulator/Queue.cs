@@ -16,6 +16,26 @@ namespace Airtraffic_Simulator
             pQueue = new PriorityQueue<int, Airplane>(new MaxQueueComparer());
         }
 
+        public void ChangePriority(int newValue,Airplane airplaneToChange)
+        {
+            bool found = false;
+            for (int i = 0 ; i < pQueue.GetHeap().Count && !found ;i++ )
+            {
+                if (pQueue.GetHeap()[i].Value.Id.Equals(airplaneToChange.Id))
+                {
+                    pQueue.GetHeap()[i] = new KeyValuePair<int, Airplane>(newValue, pQueue.GetHeap()[i].Value);
+                    while (i > 0 && pQueue.GetHeap()[(i - 1) / 2].Key < pQueue.GetHeap()[i].Key)
+                    {
+                        KeyValuePair<int, Airplane> temp = pQueue.GetHeap()[i];
+                        pQueue.GetHeap()[i] = pQueue.GetHeap()[(i - 1) / 2];
+                        pQueue.GetHeap()[(i - 1) / 2] = temp;
+                        i = (i - 1) / 2;
+                    }
+                    found = true;
+                }
+                
+            }
+        }
         public void AddPlaneToQueue(Airplane airplane)
         {
             pQueue.Enqueue(this.CalculatePriority(airplane), airplane);
