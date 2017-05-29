@@ -95,26 +95,23 @@ namespace Airtraffic_Simulator
             {
                 dest = new PointF(this.CurrentLocation.X, this.CurrentLocation.Y + 2 * yDiff);
                 this.TransformImage(this.CurrentLocation, dest);
-                this.CurrentLocation = dest;
             }
             else if (xCurrent > xDestination && yCurrent > yDestination)
             {
                 dest = new PointF(this.CurrentLocation.X, this.CurrentLocation.Y - 2 * yDiff);
                 this.TransformImage(this.CurrentLocation, dest);
-                this.CurrentLocation = dest;
             }
             else if (xCurrent <= xDestination && yCurrent > yDestination)
             {
                 dest = new PointF(this.CurrentLocation.X + 2 * xDiff, this.CurrentLocation.Y);
                 this.TransformImage(this.CurrentLocation, dest);
-                this.CurrentLocation = dest;
             }
             else
             {
                 dest = new PointF(this.CurrentLocation.X - 2 * xDiff, this.CurrentLocation.Y);
                 this.TransformImage(this.CurrentLocation, dest);
-                this.CurrentLocation = dest;
             }
+            this.CurrentLocation = new PointF(dest.X, dest.Y);
         }
         public void SetStatusToLanding()
         {
@@ -207,6 +204,7 @@ namespace Airtraffic_Simulator
         {
             this.DepartureLocation = start;
             this.DestinationLocation = end;
+            this.PlaneStatus = Status.INAIR;
             this.TransformImage(start,end);
         }
         private void TransformImage(PointF start,PointF end)
