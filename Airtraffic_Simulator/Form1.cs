@@ -104,7 +104,7 @@ namespace Airtraffic_Simulator
             nUDChangeSpeed.Text = selectedAirplane.Speed.ToString();
             nUDChangeFuel.Text = selectedAirplane.Fuel.ToString();
 
-            if (selectedAirplane is AirplanePassanger)
+            if (selectedAirplane is AirplanePassenger)
             {
                 lbCargoWeight.Text = "-";
                 lbCargoWeight.Visible = true;

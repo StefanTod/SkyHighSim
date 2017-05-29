@@ -93,11 +93,11 @@ namespace Airtraffic_Simulator
                     type = Convert.ToString(reader["Type"]);
                     if (type == "Cargo")
                     {
-                        tempAirplanes.Add(new AirplaneCargo(id, capacity, speed, fuel, location,type));
+                        tempAirplanes.Add(new AirplaneCargo(id, capacity, speed, fuel, location));
                     }
                     else if (type == "Passenger")
                     {
-                        tempAirplanes.Add(new AirplanePassanger(id, capacity, speed, fuel, location, type));
+                        tempAirplanes.Add(new AirplanePassenger(id, capacity, speed, fuel, location));
                     }
                     
                     

@@ -43,14 +43,14 @@ namespace Airtraffic_Simulator
             Flights.Remove(flightToRemove);
             return true;
         }
-        public void AddPassengerAirplane(string id,int capacity, double speed, double fuel, PointF location,string type)
+        public void AddPassengerAirplane(string id,int capacity, double speed, double fuel, PointF location)
         {
-                AirplanePassanger airplane = new AirplanePassanger(id, capacity, speed, fuel, location, type);
+                AirplanePassenger airplane = new AirplanePassenger(id, capacity, speed, fuel, location);
                 Airplanes.Add(airplane);     
         }
-        public void AddCargoAirplane(string id, int capacity, double speed, double fuel, PointF location, string type)
+        public void AddCargoAirplane(string id, int capacity, double speed, double fuel, PointF location)
         {
-            AirplaneCargo airplane = new AirplaneCargo(id, capacity, speed, fuel, location, type);
+            AirplaneCargo airplane = new AirplaneCargo(id, capacity, speed, fuel, location);
             Airplanes.Add(airplane);
         }
         public bool RemoveAirplane(string id)

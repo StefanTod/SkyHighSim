@@ -49,7 +49,7 @@
   <ItemGroup>
     <Compile Include="AiplaneCargo.cs" />
     <Compile Include="Airplane.cs" />
-    <Compile Include="AirplanePassanger.cs" />
+    <Compile Include="AirplanePassenger.cs" />
     <Compile Include="Airport.cs" />
     <Compile Include="DataHelper.cs" />
     <Compile Include="DrawingPanel.cs">

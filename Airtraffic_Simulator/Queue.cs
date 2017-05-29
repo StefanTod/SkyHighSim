@@ -53,7 +53,7 @@ namespace Airtraffic_Simulator
              * 
              */
 
-            if(airplane is AirplanePassanger) { priority += 2; }
+            if(airplane is AirplanePassenger) { priority += 2; }
             if(airplane.Fuel < 10)
             {
                 priority += 1;

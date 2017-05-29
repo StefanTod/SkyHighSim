@@ -23,7 +23,7 @@ namespace Airtraffic_Simulator
         private PointF DestinationLocation;
         
         private int counterTicks = 0;
-        public Airplane(string id, int capacity, double speed, double fuel, PointF currentLocation, string type)
+        public Airplane(string id, int capacity, double speed, double fuel, PointF currentLocation)
         {
             this.Id = id;
             this.Capacity = capacity;
@@ -172,21 +172,21 @@ namespace Airtraffic_Simulator
                     xNew = xCurrent;
                     yNew = (float)distancepassed + yCurrent;
                 }
-                if (totaldistance < currentdistance + distancepassed)
+                if (totaldistance < currentdistance + distancepassed) 
                 {
                     //plane has arrived and must request perimission -> be added to the queue or occupy a lane
-                    //if(this.flight.destinationairport.requestlandingpermission(this))
-                    //{
-                    //   this.setstatustolanding();
-                    //   xnew = this.destinationlocation.x;
-                    //   ynew = this.destinationlocation.y;
-                    //}
-                    //else
-                    //{
+                    if(this.Flight.DestinationAirport.RequestLandingPermission(this))
+                    {
+                       this.SetStatusToLanding();
+                       xNew = this.DestinationLocation.X;
+                       yNew = this.DestinationLocation.Y;
+                    }
+                    else
+                    {
                         this.PlaneStatus = Status.CIRCLING;
                         xNew = this.CurrentLocation.X;
                         yNew = this.CurrentLocation.Y;
-                    //}
+                    }
                 }
                 this.CurrentLocation = new PointF(xNew, yNew);
                 this.CoverArea = new Rectangle(Convert.ToInt32(CurrentLocation.X), Convert.ToInt32(CurrentLocation.Y), 25, 25);

@@ -9,7 +9,8 @@ namespace Airtraffic_Simulator
 {
     public class AirplaneCargo : Airplane
     {
-         public AirplaneCargo(string id, int capacity, double speed, double fuel, PointF currentLocation, string type ) : base(id, capacity, speed, fuel,currentLocation, "Cargo")
+         public AirplaneCargo(string id, int capacity, double speed, double fuel, PointF currentLocation) 
+             : base(id, capacity, speed, fuel,currentLocation)
         {
         }
     }
