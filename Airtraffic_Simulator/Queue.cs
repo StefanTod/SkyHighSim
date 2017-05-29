@@ -38,8 +38,42 @@ namespace Airtraffic_Simulator
         }
         private int CalculatePriority(Airplane airplane)
         {
+            int priority = 0;
             //Calculation logic
-            return 5;
+            /*  Priority list of points (Total points: 10)
+             *  
+             *  Max points for a passanger plane: 10
+             *  Max points for a cargo plan: 8
+             *  
+             *  Is passanger plane - 2 points
+             *  Low Fuel - max 3 points
+             *  Passangers/Cargo - max 2 points 
+             *  Travel time - max 1 point
+             *  Is budget company - max 2 poitns
+             * 
+             */
+
+            if(airplane is AirplanePassanger) { priority += 2; }
+            if(airplane.Fuel < 10)
+            {
+                priority += 1;
+                if(airplane.Fuel <= 5) { priority += 2; }
+            }
+            int filled = 0;
+            if (airplane.Flight is FlightPassenger) {
+                filled = ((FlightPassenger)airplane.Flight).nrOfPassengers;
+            }
+            else
+            {
+                filled = ((FlightCargo)airplane.Flight).cargoWeight;
+            }
+            double percentage = filled / airplane.Capacity * 100;
+            if(percentage<30)
+            {
+                priority += 2;
+            }
+
+            return priority;
         }
 
         private class MaxQueueComparer : IComparer<int>
