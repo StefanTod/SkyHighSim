@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2017 at 11:07 AM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- Generation Time: May 29, 2017 at 09:57 PM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.6.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -49,7 +49,11 @@ INSERT INTO `airplane` (`idAirplane`, `Capacity`, `Speed`, `Fuel`, `Location`, `
 (7, 90, 500, 9, '270,540', 'Cargo'),
 (8, 200, 700, 10, '780,380', 'Cargo'),
 (9, 120, 500, 5, '270,540', 'Cargo'),
-(10, 90, 800, 15, '675,500', 'Cargo');
+(10, 90, 800, 15, '675,500', 'Cargo'),
+(11, 60, 400, 20, '270, 540', 'Cargo'),
+(12, 50, 300, 40, '780,380', 'Passenger'),
+(13, 30, 200, 50, '480,390', 'Cargo'),
+(14, 10, 500, 50, '250,150', 'Passenger');
 
 -- --------------------------------------------------------
 
@@ -72,7 +76,7 @@ CREATE TABLE `airport` (
 
 INSERT INTO `airport` (`IdAirport`, `Name`, `Capacity`, `Location`, `NbOfLanes`, `Region_idRegion`) VALUES
 (1, 'Germany', 100, '480,390', 2, 1),
-(2, 'Bulgaria', 100, '675,500', 4, 1),
+(2, 'Bulgaria', 100, '675,500', 1, 1),
 (3, 'Ukraine', 100, '780,380', 2, 1),
 (4, 'Spain', 100, '270,540', 3, 1),
 (5, 'Iceland', 100, '250,150', 1, 1);
@@ -106,9 +110,14 @@ INSERT INTO `flight` (`idFlight`, `LandsTo`, `EstimatedDuration`, `DepartureTime
 (5, 1, '2017-03-17 04:00:00.00', '2017-03-17 14:00:00', '2017-03-17 18:00:00', 4, 3, 80),
 (6, 4, '2017-05-05 07:00:00.00', '2017-05-05 05:00:00', '2017-05-05 12:00:00', 8, 3, 199),
 (7, 1, '2017-04-08 03:00:00.00', '2017-04-08 13:00:00', '2017-04-08 16:00:00', 3, 4, 76),
-(8, 2, '2017-03-11 06:00:00.00', '2017-03-11 10:00:00', '2017-03-11 16:00:00', 9, 4, 110),
+(8, 3, '2017-03-11 06:00:00.00', '2017-03-11 10:00:00', '2017-03-11 16:00:00', 9, 4, 110),
 (9, 3, '2017-04-17 06:00:00.00', '2017-04-17 14:00:00', '2017-04-17 20:00:00', 5, 5, 47),
-(10, 4, '2017-05-17 03:00:00.00', '2017-05-17 18:00:00', '2017-05-17 21:00:00', 2, 5, 89);
+(10, 4, '2017-05-17 03:00:00.00', '2017-05-17 18:00:00', '2017-05-17 21:00:00', 2, 5, 89),
+(11, 2, '2017-03-01 02:00:00.00', '2017-03-01 13:00:00', '2017-03-01 15:00:00', 11, 4, 50),
+(12, 2, '2017-04-29 03:00:00.00', '2017-04-29 02:00:00', '2017-04-29 05:00:00', 12, 3, 40),
+(13, 4, '2017-04-08 10:00:00.00', '2017-04-08 06:00:00', '2017-04-08 16:00:00', 13, 1, 20),
+(14, 2, '2017-03-14 05:00:00.00', '2017-03-14 12:00:00', '2017-03-14 17:00:00', 14, 5, 5),
+(15, 5, '2017-03-14 05:00:00.00', '2017-03-14 12:00:00', '2017-03-14 17:00:00', 7, 4, 54);
 
 -- --------------------------------------------------------
 
@@ -189,7 +198,7 @@ ALTER TABLE `region`
 -- AUTO_INCREMENT for table `airplane`
 --
 ALTER TABLE `airplane`
-  MODIFY `idAirplane` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idAirplane` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `airport`
 --
@@ -199,7 +208,7 @@ ALTER TABLE `airport`
 -- AUTO_INCREMENT for table `flight`
 --
 ALTER TABLE `flight`
-  MODIFY `idFlight` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idFlight` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `problem`
 --
