@@ -94,23 +94,20 @@ namespace Airtraffic_Simulator
             if (xCurrent<=xDestination && yCurrent<=yDestination)
             {
                 dest = new PointF(this.CurrentLocation.X, this.CurrentLocation.Y + 2 * yDiff);
-                this.TransformImage(this.CurrentLocation, dest);
             }
             else if (xCurrent > xDestination && yCurrent > yDestination)
             {
                 dest = new PointF(this.CurrentLocation.X, this.CurrentLocation.Y - 2 * yDiff);
-                this.TransformImage(this.CurrentLocation, dest);
             }
             else if (xCurrent <= xDestination && yCurrent > yDestination)
             {
                 dest = new PointF(this.CurrentLocation.X + 2 * xDiff, this.CurrentLocation.Y);
-                this.TransformImage(this.CurrentLocation, dest);
             }
             else
             {
                 dest = new PointF(this.CurrentLocation.X - 2 * xDiff, this.CurrentLocation.Y);
-                this.TransformImage(this.CurrentLocation, dest);
             }
+            this.TransformImage(this.CurrentLocation, dest);
             this.CurrentLocation = new PointF(dest.X, dest.Y);
         }
         public void SetStatusToLanding()
@@ -177,7 +174,7 @@ namespace Airtraffic_Simulator
                     //plane has arrived and must request perimission -> be added to the queue or occupy a lane
                     if(this.Flight.DestinationAirport.RequestLandingPermission(this))
                     {
-                       this.SetStatusToLanding();
+                        this.PlaneStatus = Status.LANDING;
                        xNew = this.DestinationLocation.X;
                        yNew = this.DestinationLocation.Y;
                     }
