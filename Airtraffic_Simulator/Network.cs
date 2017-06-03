@@ -130,6 +130,31 @@ namespace Airtraffic_Simulator
             }
             return null;
         }
-
+        public int nextAvailableAirplaneId()
+        {
+            int id = 0;
+            for (int i = 0; i < Airplanes.Count; i++)
+            {
+                if (Convert.ToInt32(Airplanes[i].Id) > id)
+                {
+                    id = Convert.ToInt32(Airplanes[i].Id);
+                    id++;
+                }
+            }
+            return id;
+        }
+        public int nextAvailableFlightId()
+        {
+            int id = 0;
+            for (int i = 0; i < Flights.Count; i++)
+            {
+                if (Convert.ToInt32(Flights[i].Id) > id)
+                {
+                    id = Convert.ToInt32(Flights[i].Id);
+                    id++;
+                }
+            }
+            return id;
+        }
     }
 }
