@@ -9,7 +9,9 @@ namespace Airtraffic_Simulator
 {
     class Painter
     {
-
+        Pen transperentPen = new Pen(Color.Transparent, 1);
+        Pen redPen = new Pen(Color.Red, 1);
+        
         public void DrawNetwork(Graphics gr, Network n)
         {
             foreach(Airplane a in n.Airplanes)
@@ -42,10 +44,6 @@ namespace Airtraffic_Simulator
         public void DrawAirplane(Graphics gr, Airplane airplaneToDraw, bool isSelected)
         {
             //Pen penToDraw = new Pen(Color.Transparent, 1);
-            Pen transperentPen = new Pen(Color.Transparent, 1);
-            Pen redPen = new Pen(Color.Red, 1);
-
-
             if (airplaneToDraw.PlaneStatus != Status.LANDED)
             {
                 if (isSelected)
