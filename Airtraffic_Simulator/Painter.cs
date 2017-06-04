@@ -11,6 +11,7 @@ namespace Airtraffic_Simulator
     {
         Pen transperentPen = new Pen(Color.Transparent, 1);
         Pen redPen = new Pen(Color.Red, 1);
+        //Pen penToDraw = new Pen(Color.Transparent, 1);
         
         public void DrawNetwork(Graphics gr, Network n)
         {
@@ -44,14 +45,15 @@ namespace Airtraffic_Simulator
         public void DrawAirplane(Graphics gr, Airplane airplaneToDraw, bool isSelected)
         {
             //Pen penToDraw = new Pen(Color.Transparent, 1);
+            Pen penToDraw = transperentPen;
             if (airplaneToDraw.PlaneStatus != Status.LANDED)
             {
                 if (isSelected)
                 {
                     //penToDraw = new Pen(Color.Red, 1);
-                    gr.DrawRectangle(redPen, airplaneToDraw.CoverArea);
+                    penToDraw = redPen;
                 }
-                gr.DrawRectangle(transperentPen, airplaneToDraw.CoverArea);
+                gr.DrawRectangle(penToDraw, airplaneToDraw.CoverArea);
                 gr.DrawImage(airplaneToDraw.Image, airplaneToDraw.CurrentLocation);
             }
         }
