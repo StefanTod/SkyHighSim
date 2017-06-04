@@ -41,14 +41,19 @@ namespace Airtraffic_Simulator
 
         public void DrawAirplane(Graphics gr, Airplane airplaneToDraw, bool isSelected)
         {
-            Pen penToDraw = new Pen(Color.Transparent, 1);
+            //Pen penToDraw = new Pen(Color.Transparent, 1);
+            Pen transperentPen = new Pen(Color.Transparent, 1);
+            Pen redPen = new Pen(Color.Red, 1);
+
+
             if (airplaneToDraw.PlaneStatus != Status.LANDED)
             {
                 if (isSelected)
                 {
-                    penToDraw = new Pen(Color.Red, 1);
+                    //penToDraw = new Pen(Color.Red, 1);
+                    gr.DrawRectangle(redPen, airplaneToDraw.CoverArea);
                 }
-                gr.DrawRectangle(penToDraw, airplaneToDraw.CoverArea);
+                gr.DrawRectangle(transperentPen, airplaneToDraw.CoverArea);
                 gr.DrawImage(airplaneToDraw.Image, airplaneToDraw.CurrentLocation);
             }
         }
