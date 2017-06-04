@@ -24,7 +24,9 @@ namespace Airtraffic_Simulator
 
         public List<Airport> GetAllAirports()
         {
-            String sql = "SELECT * FROM airport";
+           // String sql = "SELECT * FROM airport";
+            //String sql = "SELECT * FROM `airport` WHERE Region_idRegion = " + this.Network.Region.ToString();
+            String sql = "SELECT * FROM `airport` JOIN `region` ON (`airport`.Region_idRegion = `region`.idRegion) WHERE `region`.Name = '" + this.Network.Region.ToString() +  "';";
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             List<Airport> tempAirports = new List<Airport>();
@@ -65,7 +67,8 @@ namespace Airtraffic_Simulator
 
         public List<Airplane> GetAllAirplanes()
         {
-            String sql = "SELECT * FROM airplane";
+           // String sql = "SELECT * FROM airplane";
+            String sql = "SELECT airplane.idAirplane, airplane.Capacity, airplane.Speed, airplane.Fuel, airplane.Location, airplane.Type, region.Name FROM `airplane` JOIN flight ON (airplane.idAirplane = flight.Airplane_idAirplane) JOIN airport ON (flight.LandsTo = airport.IdAirport)" + "JOIN region ON (airport.Region_idRegion = region.idRegion) WHERE `region`.Name = '" + this.Network.Region.ToString() +  "';";
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             List<Airplane> tempAirplanes = new List<Airplane>();
@@ -119,7 +122,8 @@ namespace Airtraffic_Simulator
         {
           
             //String sql = "SELECT `flight`.idFlight, `tf`.Name AS takingOff, `ar`.Name AS Arrival, `flight`.EstimatedDuration, `flight`.DepartureTime, `flight`.ArrivalTime, `airplane`.idAirplane, `airplane`.Type, `flight`.NbOfPassengers, `flight`.CargoWeight FROM `flight` JOIN `airplane` ON(`flight`.Airplane_idAirplane=`airplane`.idAirplane) JOIN `airport` AS tf ON(`flight`.takesOffFrom=`tf`.idAirport) JOIN `airport` AS ar ON(`flight`.LandsTo=`ar`.idAirport)";
-            String sql = "SELECT `flight`.idFlight, `tf`.Name AS takingOff, `ar`.Name AS Arrival, `flight`.EstimatedDuration, `flight`.DepartureTime, `flight`.ArrivalTime, `airplane`.idAirplane, `airplane`.Type, `flight`.`Loaded` FROM `flight` JOIN `airplane` ON(`flight`.Airplane_idAirplane=`airplane`.idAirplane) JOIN `airport` AS tf ON(`flight`.takesOffFrom=`tf`.idAirport) JOIN `airport` AS ar ON(`flight`.LandsTo=`ar`.idAirport)";
+            //String sql = "SELECT `flight`.idFlight, `tf`.Name AS takingOff, `ar`.Name AS Arrival, `flight`.EstimatedDuration, `flight`.DepartureTime, `flight`.ArrivalTime, `airplane`.idAirplane, `airplane`.Type, `flight`.`Loaded` FROM `flight` JOIN `airplane` ON(`flight`.Airplane_idAirplane=`airplane`.idAirplane) JOIN `airport` AS tf ON(`flight`.takesOffFrom=`tf`.idAirport) JOIN `airport` AS ar ON(`flight`.LandsTo=`ar`.idAirport)";
+            String sql = "SELECT `flight`.idFlight, `tf`.Name AS takingOff, `ar`.Name AS Arrival, `flight`.EstimatedDuration, `flight`.DepartureTime, `flight`.ArrivalTime, `airplane`.idAirplane, `airplane`.Type, `flight`.`Loaded` FROM `flight` JOIN `airplane` ON(`flight`.Airplane_idAirplane=`airplane`.idAirplane) JOIN `airport` AS tf ON(`flight`.takesOffFrom=`tf`.idAirport) JOIN `airport` AS ar ON(`flight`.LandsTo=`ar`.idAirport) JOIN region ON (tf.Region_idRegion = region.idRegion) WHERE `region`.Name = '" + this.Network.Region.ToString() + "';";
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             List<Flight> tempFlights = new List<Flight>();
@@ -184,7 +188,7 @@ namespace Airtraffic_Simulator
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show("Error while loading the flights");
             }
             finally
             {

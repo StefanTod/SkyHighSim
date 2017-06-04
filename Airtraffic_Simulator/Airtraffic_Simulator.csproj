@@ -64,6 +64,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRegions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRegions.Designer.cs">
+      <DependentUpon>FormRegions.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlobalVariables.cs" />
     <Compile Include="Network.cs" />
     <Compile Include="Painter.cs" />
@@ -81,6 +87,9 @@
     <Compile Include="Status.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRegions.resx">
+      <DependentUpon>FormRegions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -123,6 +132,7 @@
     <Content Include="Resources\airplane_landed.png" />
     <Content Include="Resources\airplane_landing.png" />
     <Content Include="Resources\airplane_takingOff.png" />
+    <None Include="Resources\australia.PNG" />
     <Content Include="Resources\Cargo_plane_icon-512.png" />
     <Content Include="Resources\plane-icon.jpg" />
     <Content Include="Resources\planeObjectIcon.png" />

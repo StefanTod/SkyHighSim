@@ -16,10 +16,12 @@ namespace Airtraffic_Simulator
         Painter painter;
         private Airplane selectedAirplane;
         DataHelper helper;
-        public Form1()
+
+
+        public Form1(Regions region)
         {
             InitializeComponent();
-            airNetwork = new Network(Regions.EUROPE);
+            airNetwork = new Network(region);
             helper = new DataHelper(airNetwork);  
             airNetwork.Airports = helper.GetAllAirports(); //consider sending the Airports of airNetwork as a parameter into GetAllAirports instead of assigning it as reference
             airNetwork.Airplanes = helper.GetAllAirplanes();
@@ -30,6 +32,11 @@ namespace Airtraffic_Simulator
             this.panelDrawing.Paint += new PaintEventHandler(DrawNetwork);
             this.Invalidate();
             this.panelDrawing.Paint +=panelDrawing_Paint;
+
+            if (region == Regions.AUSTRALIA)
+            {
+                this.panelDrawing.BackgroundImage = Properties.Resources.australia;
+            }
         }
         private void DrawNetwork(object sender, PaintEventArgs e)
         {

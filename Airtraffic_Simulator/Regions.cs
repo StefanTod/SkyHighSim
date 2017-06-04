@@ -9,7 +9,7 @@ namespace Airtraffic_Simulator
     public enum Regions
     {
         EUROPE,
-        AFRICA,
-        NORTHAMERICA
+        AUSTRALIA
+        
     }
 }
