@@ -73,6 +73,16 @@ namespace Airtraffic_Simulator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap airplane_cargo {
+            get {
+                object obj = ResourceManager.GetObject("airplane_cargo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap airplane_flying {
             get {
                 object obj = ResourceManager.GetObject("airplane_flying", resourceCulture);

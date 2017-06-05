@@ -12,6 +12,7 @@ namespace Airtraffic_Simulator
          public AirplaneCargo(string id, int capacity, double speed, double fuel, PointF currentLocation) 
              : base(id, capacity, speed, fuel,currentLocation)
         {
+            this.Image = GlobalVariables.AirplaneCargo;
         }
     }
 }

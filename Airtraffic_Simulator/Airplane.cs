@@ -30,7 +30,7 @@ namespace Airtraffic_Simulator
             this.Speed = speed;
             this.Fuel = fuel;
             this.CurrentLocation = currentLocation;
-            this.Image = GlobalVariables.AirplaneInFlight;
+            //this.Image = GlobalVariables.AirplaneCargo;
             this.PlaneStatus = Status.TOTAKEOFF;
         }
         public void Update()
@@ -254,7 +254,7 @@ namespace Airtraffic_Simulator
             gfx.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
             //now draw our new image onto the graphics object
-            gfx.DrawImage(GlobalVariables.AirplaneInFlight, new Point(0, 0));
+            gfx.DrawImage(this.Image, new Point(0, 0));
 
             //dispose of our Graphics object
             gfx.Dispose();

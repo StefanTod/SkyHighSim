@@ -10,6 +10,7 @@ namespace Airtraffic_Simulator
     //All images should be initialized here and classes should reference these objects.
     public static class GlobalVariables
     {
-       public static Bitmap AirplaneInFlight = new Bitmap(Airtraffic_Simulator.Properties.Resources.airplane_flying,25,25);
+       public static Bitmap AirplanePassenger = new Bitmap(Airtraffic_Simulator.Properties.Resources.airplane_flying,25,25);
+       public static Bitmap AirplaneCargo = new Bitmap(Airtraffic_Simulator.Properties.Resources.airplane_cargo, 25, 25);
     }
 }

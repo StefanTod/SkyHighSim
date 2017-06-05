@@ -129,6 +129,7 @@
     <None Include="Resources\airplane_inQueue.png" />
     <Content Include="MySql.Data.dll" />
     <Content Include="Resources\Airplane.png" />
+    <Content Include="Resources\airplane_cargo.png" />
     <Content Include="Resources\airplane_landed.png" />
     <Content Include="Resources\airplane_landing.png" />
     <Content Include="Resources\airplane_takingOff.png" />
