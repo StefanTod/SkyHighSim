@@ -180,18 +180,21 @@ namespace Airtraffic_Simulator
                 selectedAirplane.ChangeFuel(Convert.ToInt32(nUDChangeFuel.Value));
                 selectedAirplane.ChangeSpeed(Convert.ToInt32(nUDChangeSpeed.Value));
                 string destination = tbChangeDestination.Text;
-                bool found = false;
-                foreach(Airport a in airNetwork.Airports)
+                if (!destination.ToUpper().Equals(selectedAirplane.Flight.DestinationAirport.Name.ToUpper()))
                 {
-                    if(a.Name.ToUpper()==destination.ToUpper())
+                    bool found = false;
+                    foreach (Airport a in airNetwork.Airports)
                     {
-                        selectedAirplane.ChangeRoute(selectedAirplane.CurrentLocation, a.Location);
-                        found = true;
+                        if (a.Name.ToUpper() == destination.ToUpper())
+                        {
+                            selectedAirplane.ChangeRoute(selectedAirplane.CurrentLocation, a.Location);
+                            found = true;
+                        }
                     }
-                }
-                if(!found)
-                {
-                    MessageBox.Show("No such airport was found. Please enter another one");
+                    if (!found)
+                    {
+                        MessageBox.Show("No such airport was found. Please enter another one");
+                    }
                 }
             }
         }
@@ -236,10 +239,6 @@ namespace Airtraffic_Simulator
             {
                 tb_auto_origin.AutoCompleteCustomSource.Add(a.Name);
                 tb_auto_dest.AutoCompleteCustomSource.Add(a.Name);
-            }
-            foreach (Airport a in airNetwork.Airports)
-            {
-                
             }
         }
 

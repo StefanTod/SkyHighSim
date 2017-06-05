@@ -31,6 +31,7 @@ namespace Airtraffic_Simulator
             this.Fuel = fuel;
             this.CurrentLocation = currentLocation;
             this.Image = GlobalVariables.AirplaneInFlight;
+            this.PlaneStatus = Status.TOTAKEOFF;
         }
         public void Update()
         {
@@ -109,6 +110,7 @@ namespace Airtraffic_Simulator
             }
             this.TransformImage(this.CurrentLocation, dest);
             this.CurrentLocation = new PointF(dest.X, dest.Y);
+            this.ConsumeFuelForDistance(4);
         }
         public void SetStatusToLanding()
         {
@@ -128,7 +130,7 @@ namespace Airtraffic_Simulator
                 // calculations of movement
                 double totaldistance = Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
                 double currentdistance = Math.Sqrt(Math.Pow(xCurrent - x1, 2) + Math.Pow(yCurrent - y1, 2));
-                double distancepassed = (20 * 30 / 60); // Distance = speed * time  --> speed = 20px/hour time = 30 minutes 
+                double distancepassed = ((this.Speed/6)*30/60); // Distance = speed * time  --> speed = 20px/hour time = 30 minutes 
                 double A = (y2 - y1);
                 double B = (x2 - x1);
 
@@ -187,8 +189,17 @@ namespace Airtraffic_Simulator
                 }
                 this.CurrentLocation = new PointF(xNew, yNew);
                 this.CoverArea = new Rectangle(Convert.ToInt32(CurrentLocation.X), Convert.ToInt32(CurrentLocation.Y), 25, 25);
-                
+                this.ConsumeFuelForDistance(distancepassed);
             }
+        }
+
+        private void ConsumeFuelForDistance(double distance)
+        {
+            //distance is in pixels (assumption: 1 pixel = 6 km)
+            //average fuel consumption - 12 liters / km
+            //total amount is divided by 1000 since fuel is in tons
+            double fuelConsumed = ((distance * 6) * 12) / 1000;
+            this.Fuel -= fuelConsumed;
         }
 
         public void AddFlight(Flight f)
