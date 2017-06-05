@@ -66,7 +66,6 @@
             this.panelAdvanced = new System.Windows.Forms.Panel();
             this.nUDChangeSpeed = new System.Windows.Forms.NumericUpDown();
             this.nUDChangeFuel = new System.Windows.Forms.NumericUpDown();
-            this.tbChangeDestination = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -88,8 +87,6 @@
             this.btn_create_plane = new System.Windows.Forms.Button();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.lb_load = new System.Windows.Forms.Label();
-            this.tb_auto_dest = new System.Windows.Forms.TextBox();
-            this.tb_auto_origin = new System.Windows.Forms.TextBox();
             this.lb_destination = new System.Windows.Forms.Label();
             this.lb_origin = new System.Windows.Forms.Label();
             this.label_flight = new System.Windows.Forms.Label();
@@ -105,6 +102,9 @@
             this.rb_cargo = new System.Windows.Forms.RadioButton();
             this.rb_passanger = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cbChangeDestination = new System.Windows.Forms.ComboBox();
+            this.cb_auto_orig = new System.Windows.Forms.ComboBox();
+            this.cb_auto_dest = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelNameLocation.SuspendLayout();
@@ -550,9 +550,9 @@
             // panelAdvanced
             // 
             this.panelAdvanced.BackColor = System.Drawing.Color.SteelBlue;
+            this.panelAdvanced.Controls.Add(this.cbChangeDestination);
             this.panelAdvanced.Controls.Add(this.nUDChangeSpeed);
             this.panelAdvanced.Controls.Add(this.nUDChangeFuel);
-            this.panelAdvanced.Controls.Add(this.tbChangeDestination);
             this.panelAdvanced.Controls.Add(this.label14);
             this.panelAdvanced.Controls.Add(this.label13);
             this.panelAdvanced.Controls.Add(this.label12);
@@ -577,15 +577,6 @@
             this.nUDChangeFuel.Name = "nUDChangeFuel";
             this.nUDChangeFuel.Size = new System.Drawing.Size(177, 20);
             this.nUDChangeFuel.TabIndex = 20;
-            // 
-            // tbChangeDestination
-            // 
-            this.tbChangeDestination.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.tbChangeDestination.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.tbChangeDestination.Location = new System.Drawing.Point(6, 108);
-            this.tbChangeDestination.Name = "tbChangeDestination";
-            this.tbChangeDestination.Size = new System.Drawing.Size(177, 20);
-            this.tbChangeDestination.TabIndex = 19;
             // 
             // label14
             // 
@@ -751,11 +742,11 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.cb_auto_dest);
+            this.tabPage1.Controls.Add(this.cb_auto_orig);
             this.tabPage1.Controls.Add(this.btn_create_plane);
             this.tabPage1.Controls.Add(this.numericUpDown4);
             this.tabPage1.Controls.Add(this.lb_load);
-            this.tabPage1.Controls.Add(this.tb_auto_dest);
-            this.tabPage1.Controls.Add(this.tb_auto_origin);
             this.tabPage1.Controls.Add(this.lb_destination);
             this.tabPage1.Controls.Add(this.lb_origin);
             this.tabPage1.Controls.Add(this.label_flight);
@@ -791,7 +782,7 @@
             // 
             // numericUpDown4
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(47, 190);
+            this.numericUpDown4.Location = new System.Drawing.Point(44, 190);
             this.numericUpDown4.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -810,38 +801,17 @@
             // lb_load
             // 
             this.lb_load.AutoSize = true;
-            this.lb_load.Location = new System.Drawing.Point(10, 192);
+            this.lb_load.Location = new System.Drawing.Point(7, 192);
             this.lb_load.Name = "lb_load";
             this.lb_load.Size = new System.Drawing.Size(31, 13);
             this.lb_load.TabIndex = 30;
             this.lb_load.Text = "Load";
             this.lb_load.Visible = false;
             // 
-            // tb_auto_dest
-            // 
-            this.tb_auto_dest.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.tb_auto_dest.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.tb_auto_dest.Location = new System.Drawing.Point(88, 166);
-            this.tb_auto_dest.Name = "tb_auto_dest";
-            this.tb_auto_dest.Size = new System.Drawing.Size(100, 20);
-            this.tb_auto_dest.TabIndex = 29;
-            this.tb_auto_dest.Visible = false;
-            this.tb_auto_dest.TextChanged += new System.EventHandler(this.tb_auto_dest_TextChanged);
-            // 
-            // tb_auto_origin
-            // 
-            this.tb_auto_origin.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.tb_auto_origin.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.tb_auto_origin.Location = new System.Drawing.Point(88, 144);
-            this.tb_auto_origin.Name = "tb_auto_origin";
-            this.tb_auto_origin.Size = new System.Drawing.Size(100, 20);
-            this.tb_auto_origin.TabIndex = 22;
-            this.tb_auto_origin.Visible = false;
-            // 
             // lb_destination
             // 
             this.lb_destination.AutoSize = true;
-            this.lb_destination.Location = new System.Drawing.Point(9, 169);
+            this.lb_destination.Location = new System.Drawing.Point(6, 169);
             this.lb_destination.Name = "lb_destination";
             this.lb_destination.Size = new System.Drawing.Size(60, 13);
             this.lb_destination.TabIndex = 28;
@@ -851,7 +821,7 @@
             // lb_origin
             // 
             this.lb_origin.AutoSize = true;
-            this.lb_origin.Location = new System.Drawing.Point(9, 147);
+            this.lb_origin.Location = new System.Drawing.Point(6, 147);
             this.lb_origin.Name = "lb_origin";
             this.lb_origin.Size = new System.Drawing.Size(37, 13);
             this.lb_origin.TabIndex = 27;
@@ -991,19 +961,52 @@
             this.tabPage2.Text = "Airport";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // cbChangeDestination
+            // 
+            this.cbChangeDestination.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbChangeDestination.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbChangeDestination.FormattingEnabled = true;
+            this.cbChangeDestination.Location = new System.Drawing.Point(4, 108);
+            this.cbChangeDestination.Name = "cbChangeDestination";
+            this.cbChangeDestination.Size = new System.Drawing.Size(178, 21);
+            this.cbChangeDestination.TabIndex = 22;
+            // 
+            // cb_auto_orig
+            // 
+            this.cb_auto_orig.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cb_auto_orig.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cb_auto_orig.FormattingEnabled = true;
+            this.cb_auto_orig.Location = new System.Drawing.Point(68, 139);
+            this.cb_auto_orig.Name = "cb_auto_orig";
+            this.cb_auto_orig.Size = new System.Drawing.Size(121, 21);
+            this.cb_auto_orig.TabIndex = 33;
+            this.cb_auto_orig.Visible = false;
+            // 
+            // cb_auto_dest
+            // 
+            this.cb_auto_dest.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cb_auto_dest.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cb_auto_dest.FormattingEnabled = true;
+            this.cb_auto_dest.Location = new System.Drawing.Point(68, 163);
+            this.cb_auto_dest.Name = "cb_auto_dest";
+            this.cb_auto_dest.Size = new System.Drawing.Size(121, 21);
+            this.cb_auto_dest.TabIndex = 34;
+            this.cb_auto_dest.Visible = false;
+            this.cb_auto_dest.TextChanged += new System.EventHandler(this.cb_auto_dest_TextChanged_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 679);
+            this.Controls.Add(this.tc_create);
+            this.Controls.Add(this.btAdvanced);
             this.Controls.Add(this.panelDrawing);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.btAdvanced);
             this.Controls.Add(this.panelTime);
             this.Controls.Add(this.panelDetails);
             this.Controls.Add(this.panelNameLocation);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.tc_create);
             this.Controls.Add(this.panelAdvanced);
             this.Controls.Add(this.btUpdate);
             this.MainMenuStrip = this.menuStrip1;
@@ -1082,7 +1085,6 @@
         private DrawingPanel panelDrawing;
         private System.Windows.Forms.Label lbCargoWeight;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox tbChangeDestination;
         private System.Windows.Forms.NumericUpDown nUDChangeSpeed;
         private System.Windows.Forms.NumericUpDown nUDChangeFuel;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -1115,8 +1117,9 @@
         private System.Windows.Forms.Button btn_create_plane;
         private System.Windows.Forms.NumericUpDown numericUpDown4;
         private System.Windows.Forms.Label lb_load;
-        private System.Windows.Forms.TextBox tb_auto_dest;
-        private System.Windows.Forms.TextBox tb_auto_origin;
+        private System.Windows.Forms.ComboBox cbChangeDestination;
+        private System.Windows.Forms.ComboBox cb_auto_dest;
+        private System.Windows.Forms.ComboBox cb_auto_orig;
     }
 }
 

@@ -76,10 +76,7 @@ namespace Airtraffic_Simulator
                 {
                     panelAdvanced.Visible = true;
                     btUpdate.Visible = true;
-                    foreach (Airport a in airNetwork.Airports)
-                    {
-                        tbChangeDestination.AutoCompleteCustomSource.Add(a.Name);
-                    }
+                    autoCompleteAirport(cbChangeDestination);
                 }
                 else
                 {
@@ -92,10 +89,7 @@ namespace Airtraffic_Simulator
                 tc_create.Visible = false;
                 panelAdvanced.Visible = true;
                 btUpdate.Visible = true;
-                foreach (Airport a in airNetwork.Airports)
-                {
-                    tbChangeDestination.AutoCompleteCustomSource.Add(a.Name);
-                }
+                autoCompleteAirport(cbChangeDestination);
             }
 
 
@@ -130,7 +124,7 @@ namespace Airtraffic_Simulator
             lbPlaneName.Text=selectedAirplane.Id.ToString();
             lbDepartureTime.Text=selectedAirplane.Flight.DepartureTime.ToString();
             lbArrivalTime.Text=selectedAirplane.Flight.ArrivalTime.ToString();
-            tbChangeDestination.Text = selectedAirplane.Flight.DestinationAirport.Name.ToString();
+            cbChangeDestination.Text = selectedAirplane.Flight.DestinationAirport.Name.ToString();
             nUDChangeSpeed.Text = selectedAirplane.Speed.ToString();
             nUDChangeFuel.Text = selectedAirplane.Fuel.ToString();
 
@@ -179,7 +173,7 @@ namespace Airtraffic_Simulator
             { 
                 selectedAirplane.ChangeFuel(Convert.ToInt32(nUDChangeFuel.Value));
                 selectedAirplane.ChangeSpeed(Convert.ToInt32(nUDChangeSpeed.Value));
-                string destination = tbChangeDestination.Text;
+                string destination = cbChangeDestination.Text;
                 if (!destination.ToUpper().Equals(selectedAirplane.Flight.DestinationAirport.Name.ToUpper()))
                 {
                     bool found = false;
@@ -217,8 +211,8 @@ namespace Airtraffic_Simulator
             label_flight.Visible = false;
             lb_origin.Visible = false;
             lb_destination.Visible = false;
-            tb_auto_origin.Visible = false;
-            tb_auto_dest.Visible = false;
+            cb_auto_orig.Visible = false;
+            cb_auto_dest.Visible = false;
             nud_blk_amount.Visible = false;
             lb_blk_amount.Visible = false;
             lb_load.Visible = false;
@@ -233,13 +227,10 @@ namespace Airtraffic_Simulator
             nud_capacity.Visible = true;
             nud_fuel.Visible = true;
             nud_speed.Visible = true;
-            
 
-            foreach (Airport a in airNetwork.Airports)
-            {
-                tb_auto_origin.AutoCompleteCustomSource.Add(a.Name);
-                tb_auto_dest.AutoCompleteCustomSource.Add(a.Name);
-            }
+
+            autoCompleteAirport(cb_auto_orig);
+            autoCompleteAirport(cb_auto_dest);
         }
 
         private void numericUpDown3_ValueChanged(object sender, EventArgs e)
@@ -249,8 +240,8 @@ namespace Airtraffic_Simulator
                 label_flight.Visible = true;
                 lb_origin.Visible = true;
                 lb_destination.Visible = true;
-                tb_auto_origin.Visible = true;
-                tb_auto_dest.Visible = true;
+                cb_auto_orig.Visible = true;
+                cb_auto_dest.Visible = true;
 
             }
         }
@@ -268,13 +259,6 @@ namespace Airtraffic_Simulator
                 lb_blk_amount.Visible = false;
             }
         }
-        private void tb_auto_dest_TextChanged(object sender, EventArgs e)
-        {
-            lb_load.Visible = true;
-            numericUpDown4.Visible = true;
-            btn_create_plane.Visible = true;
-
-        }
 
         private void btn_create_plane_Click(object sender, EventArgs e)
         {
@@ -291,8 +275,8 @@ namespace Airtraffic_Simulator
             int id_plane = airNetwork.nextAvailableAirplaneId();
 
             //Flight properties
-            string origin_countryName = tb_auto_origin.Text;
-            string destination_countryName = tb_auto_dest.Text;
+            string origin_countryName = cb_auto_orig.Text;
+            string destination_countryName = cb_auto_dest.Text;
 
             //Find the next ID for the flight
             int id_flight = airNetwork.nextAvailableFlightId();
@@ -379,6 +363,22 @@ namespace Airtraffic_Simulator
                 }
             }
         }   
+
+        private void autoCompleteAirport(ComboBox comboBox)
+        {
+            foreach (Airport a in airNetwork.Airports)
+            {
+                comboBox.AutoCompleteCustomSource.Add(a.Name);
+                comboBox.Items.Add(a.Name);
+            }
+        }
+
+        private void cb_auto_dest_TextChanged_1(object sender, EventArgs e)
+        {
+            lb_load.Visible = true;
+            numericUpDown4.Visible = true;
+            btn_create_plane.Visible = true;
+        }
     }
 }
 
