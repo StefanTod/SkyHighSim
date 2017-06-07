@@ -125,6 +125,8 @@
     <None Include="Resources\17690445_1295816210486897_1577073800_n.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\selectedAirrport.png" />
+    <Content Include="Resources\selectedplanes.png" />
     <None Include="Resources\airplane_flying.png" />
     <None Include="Resources\airplane_inQueue.png" />
     <Content Include="MySql.Data.dll" />

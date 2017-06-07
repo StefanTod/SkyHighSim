@@ -163,6 +163,26 @@ namespace Airtraffic_Simulator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap selectedAirrport {
+            get {
+                object obj = ResourceManager.GetObject("selectedAirrport", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap selectedplanes {
+            get {
+                object obj = ResourceManager.GetObject("selectedplanes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap аirport {
             get {
                 object obj = ResourceManager.GetObject("аirport", resourceCulture);

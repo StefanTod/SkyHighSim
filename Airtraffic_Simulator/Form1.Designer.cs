@@ -30,13 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.tbSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.searchBtn = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btFastForward = new System.Windows.Forms.Button();
             this.btStop = new System.Windows.Forms.Button();
             this.btStart = new System.Windows.Forms.Button();
@@ -74,10 +72,7 @@
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,9 +99,18 @@
             this.rb_cargo = new System.Windows.Forms.RadioButton();
             this.rb_passanger = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.rbTo = new System.Windows.Forms.RadioButton();
+            this.rbFrom = new System.Windows.Forms.RadioButton();
+            this.cbSearch = new System.Windows.Forms.ComboBox();
+            this.lbBack = new System.Windows.Forms.Label();
+            this.lbBack2 = new System.Windows.Forms.Label();
+            this.lblSearch = new System.Windows.Forms.Label();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelDrawing = new Airtraffic_Simulator.DrawingPanel();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelNameLocation.SuspendLayout();
             this.panelDetails.SuspendLayout();
             this.panelTime.SuspendLayout();
@@ -121,16 +125,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_capacity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_speed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_blk_amount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tbSearch
-            // 
-            this.tbSearch.Location = new System.Drawing.Point(151, 16);
-            this.tbSearch.Margin = new System.Windows.Forms.Padding(2);
-            this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(158, 20);
-            this.tbSearch.TabIndex = 0;
-            this.tbSearch.Text = "Search...";
             // 
             // label1
             // 
@@ -149,68 +145,66 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(386, 12);
+            this.label2.Location = new System.Drawing.Point(260, 11);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 24);
+            this.label2.Size = new System.Drawing.Size(72, 24);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Airports";
+            this.label2.Text = "Flights";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(494, 14);
+            this.label3.Location = new System.Drawing.Point(361, 11);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 24);
+            this.label3.Size = new System.Drawing.Size(72, 24);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Airplanes";
+            this.label3.Text = "Airport";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel1.Controls.Add(this.lblSearch);
+            this.panel1.Controls.Add(this.lbBack2);
+            this.panel1.Controls.Add(this.cbSearch);
+            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.searchBtn);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.btFastForward);
             this.panel1.Controls.Add(this.btStop);
             this.panel1.Controls.Add(this.btStart);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.tbSearch);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.rbTo);
+            this.panel1.Controls.Add(this.rbFrom);
+            this.panel1.Controls.Add(this.lbBack);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(9, 10);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(960, 49);
+            this.panel1.Size = new System.Drawing.Size(1257, 49);
             this.panel1.TabIndex = 4;
             // 
             // searchBtn
             // 
-            this.searchBtn.Location = new System.Drawing.Point(314, 13);
+            this.searchBtn.Location = new System.Drawing.Point(612, 11);
             this.searchBtn.Name = "searchBtn";
             this.searchBtn.Size = new System.Drawing.Size(67, 28);
             this.searchBtn.TabIndex = 8;
             this.searchBtn.Text = "Search";
             this.searchBtn.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(895, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(63, 45);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
+            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
             // btFastForward
             // 
             this.btFastForward.BackColor = System.Drawing.Color.Khaki;
             this.btFastForward.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.btFastForward.Location = new System.Drawing.Point(752, 9);
+            this.btFastForward.Location = new System.Drawing.Point(844, 9);
             this.btFastForward.Margin = new System.Windows.Forms.Padding(2);
             this.btFastForward.Name = "btFastForward";
             this.btFastForward.Size = new System.Drawing.Size(116, 32);
@@ -223,7 +217,7 @@
             // 
             this.btStop.BackColor = System.Drawing.Color.OrangeRed;
             this.btStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.btStop.Location = new System.Drawing.Point(683, 9);
+            this.btStop.Location = new System.Drawing.Point(775, 9);
             this.btStop.Margin = new System.Windows.Forms.Padding(2);
             this.btStop.Name = "btStop";
             this.btStop.Size = new System.Drawing.Size(65, 32);
@@ -236,7 +230,7 @@
             // 
             this.btStart.BackColor = System.Drawing.Color.LimeGreen;
             this.btStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.btStart.Location = new System.Drawing.Point(614, 9);
+            this.btStart.Location = new System.Drawing.Point(706, 9);
             this.btStart.Margin = new System.Windows.Forms.Padding(2);
             this.btStart.Name = "btStart";
             this.btStart.Size = new System.Drawing.Size(65, 32);
@@ -250,7 +244,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(472, 11);
+            this.label4.Location = new System.Drawing.Point(339, 8);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(18, 26);
@@ -669,37 +663,10 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
             // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
-            this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.newToolStripMenuItem.Text = "&New";
-            // 
-            // openToolStripMenuItem
-            // 
-            this.openToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripMenuItem.Image")));
-            this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.openToolStripMenuItem.Text = "&Open";
-            // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
             this.toolStripSeparator.Size = new System.Drawing.Size(143, 6);
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem.Image")));
-            this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.saveToolStripMenuItem.Text = "&Save";
             // 
             // toolStripSeparator1
             // 
@@ -1029,6 +996,122 @@
             this.tabPage2.Text = "Airport";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // rbTo
+            // 
+            this.rbTo.AutoSize = true;
+            this.rbTo.Checked = true;
+            this.rbTo.ForeColor = System.Drawing.Color.Cornsilk;
+            this.rbTo.Location = new System.Drawing.Point(337, 17);
+            this.rbTo.Name = "rbTo";
+            this.rbTo.Size = new System.Drawing.Size(41, 17);
+            this.rbTo.TabIndex = 9;
+            this.rbTo.TabStop = true;
+            this.rbTo.Text = "To:";
+            this.rbTo.UseVisualStyleBackColor = true;
+            this.rbTo.Visible = false;
+            // 
+            // rbFrom
+            // 
+            this.rbFrom.AutoSize = true;
+            this.rbFrom.ForeColor = System.Drawing.Color.Cornsilk;
+            this.rbFrom.Location = new System.Drawing.Point(384, 17);
+            this.rbFrom.Name = "rbFrom";
+            this.rbFrom.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.rbFrom.Size = new System.Drawing.Size(51, 17);
+            this.rbFrom.TabIndex = 10;
+            this.rbFrom.TabStop = true;
+            this.rbFrom.Text = "From:";
+            this.rbFrom.UseVisualStyleBackColor = true;
+            this.rbFrom.Visible = false;
+            // 
+            // cbSearch
+            // 
+            this.cbSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbSearch.FormattingEnabled = true;
+            this.cbSearch.Location = new System.Drawing.Point(441, 14);
+            this.cbSearch.Name = "cbSearch";
+            this.cbSearch.Size = new System.Drawing.Size(165, 21);
+            this.cbSearch.TabIndex = 35;
+            this.cbSearch.Text = "Airport Name";
+            this.cbSearch.SelectedIndexChanged += new System.EventHandler(this.cbSearch_SelectedIndexChanged);
+            // 
+            // lbBack
+            // 
+            this.lbBack.AutoSize = true;
+            this.lbBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.lbBack.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbBack.Location = new System.Drawing.Point(292, 10);
+            this.lbBack.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbBack.Name = "lbBack";
+            this.lbBack.Size = new System.Drawing.Size(25, 26);
+            this.lbBack.TabIndex = 36;
+            this.lbBack.Text = "<";
+            this.lbBack.Visible = false;
+            this.lbBack.Click += new System.EventHandler(this.label16_Click);
+            // 
+            // lbBack2
+            // 
+            this.lbBack2.AutoSize = true;
+            this.lbBack2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.lbBack2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbBack2.Location = new System.Drawing.Point(213, 11);
+            this.lbBack2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbBack2.Name = "lbBack2";
+            this.lbBack2.Size = new System.Drawing.Size(25, 26);
+            this.lbBack2.TabIndex = 37;
+            this.lbBack2.Text = "<";
+            this.lbBack2.Visible = false;
+            this.lbBack2.Click += new System.EventHandler(this.lbBack2_Click);
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.lblSearch.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblSearch.Location = new System.Drawing.Point(440, 10);
+            this.lblSearch.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(0, 24);
+            this.lblSearch.TabIndex = 38;
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
+            this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.newToolStripMenuItem.Text = "&New";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripMenuItem.Image")));
+            this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.openToolStripMenuItem.Text = "&Open";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem.Image")));
+            this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.saveToolStripMenuItem.Text = "&Save";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(987, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(63, 45);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // panelDrawing
             // 
             this.panelDrawing.BackgroundImage = global::Airtraffic_Simulator.Properties.Resources.europemap;
@@ -1064,7 +1147,6 @@
             this.Text = "SkyHighSim";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelNameLocation.ResumeLayout(false);
             this.panelNameLocation.PerformLayout();
             this.panelDetails.ResumeLayout(false);
@@ -1085,14 +1167,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_capacity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_speed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_blk_amount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -1167,6 +1248,12 @@
         private System.Windows.Forms.ComboBox cbChangeDestination;
         private System.Windows.Forms.ComboBox cb_auto_dest;
         private System.Windows.Forms.ComboBox cb_auto_orig;
+        private System.Windows.Forms.RadioButton rbTo;
+        private System.Windows.Forms.RadioButton rbFrom;
+        private System.Windows.Forms.ComboBox cbSearch;
+        private System.Windows.Forms.Label lbBack;
+        private System.Windows.Forms.Label lbBack2;
+        private System.Windows.Forms.Label lblSearch;
     }
 }
 

@@ -14,7 +14,7 @@ namespace Airtraffic_Simulator
         public Queue TakingOffQueue { get; private set; }
         public List<Problem> Problems { get; private set; }
         public List<Flight> listOfFlights { get; private set; }
-        public Bitmap Image { get; private set; }
+        public Bitmap Image { get; set; }
         public string Name { get; private set; }
 
         public readonly int Lanes;
