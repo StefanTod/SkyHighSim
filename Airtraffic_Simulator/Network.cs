@@ -25,13 +25,10 @@ namespace Airtraffic_Simulator
             this.Queues = new List<Queue>();
         }
 
-        public void AddFlight(String Id, Airport DepartureAirport, Airport DestinationAirport,
-           TimeSpan EstimatedDuration, DateTime DepartureTime, DateTime ArrivalTime)
+        public void AddFlight(Flight f)
         {
-            Flight f = new Flight(Id, DepartureAirport, DestinationAirport, EstimatedDuration, DepartureTime, ArrivalTime);
             Flights.Add(f);
         }
-
 
         public bool RemoveFlight(String id)
         {
@@ -43,16 +40,12 @@ namespace Airtraffic_Simulator
             Flights.Remove(flightToRemove);
             return true;
         }
-        public void AddPassengerAirplane(string id,int capacity, double speed, double fuel, PointF location)
+
+        public void AddAirplane(Airplane airplane)
         {
-                AirplanePassenger airplane = new AirplanePassenger(id, capacity, speed, fuel, location);
                 Airplanes.Add(airplane);     
         }
-        public void AddCargoAirplane(string id, int capacity, double speed, double fuel, PointF location)
-        {
-            AirplaneCargo airplane = new AirplaneCargo(id, capacity, speed, fuel, location);
-            Airplanes.Add(airplane);
-        }
+
         public bool RemoveAirplane(string id)
         {
             Airplane airplaneToRemove = this.FindAirplane(id);

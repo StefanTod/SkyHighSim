@@ -64,6 +64,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.btAdvanced = new System.Windows.Forms.Button();
             this.panelAdvanced = new System.Windows.Forms.Panel();
+            this.cbChangeDestination = new System.Windows.Forms.ComboBox();
             this.nUDChangeSpeed = new System.Windows.Forms.NumericUpDown();
             this.nUDChangeFuel = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
@@ -71,7 +72,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.btUpdate = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.panelDrawing = new Airtraffic_Simulator.DrawingPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,6 +84,8 @@
             this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tc_create = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.cb_auto_dest = new System.Windows.Forms.ComboBox();
+            this.cb_auto_orig = new System.Windows.Forms.ComboBox();
             this.btn_create_plane = new System.Windows.Forms.Button();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.lb_load = new System.Windows.Forms.Label();
@@ -102,9 +104,7 @@
             this.rb_cargo = new System.Windows.Forms.RadioButton();
             this.rb_passanger = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.cbChangeDestination = new System.Windows.Forms.ComboBox();
-            this.cb_auto_orig = new System.Windows.Forms.ComboBox();
-            this.cb_auto_dest = new System.Windows.Forms.ComboBox();
+            this.panelDrawing = new Airtraffic_Simulator.DrawingPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelNameLocation.SuspendLayout();
@@ -564,6 +564,16 @@
             this.panelAdvanced.TabIndex = 9;
             this.panelAdvanced.Visible = false;
             // 
+            // cbChangeDestination
+            // 
+            this.cbChangeDestination.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbChangeDestination.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbChangeDestination.FormattingEnabled = true;
+            this.cbChangeDestination.Location = new System.Drawing.Point(4, 108);
+            this.cbChangeDestination.Name = "cbChangeDestination";
+            this.cbChangeDestination.Size = new System.Drawing.Size(178, 21);
+            this.cbChangeDestination.TabIndex = 22;
+            // 
             // nUDChangeSpeed
             // 
             this.nUDChangeSpeed.Location = new System.Drawing.Point(5, 26);
@@ -633,18 +643,6 @@
             // 
             this.timer.Interval = 500;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
-            // panelDrawing
-            // 
-            this.panelDrawing.BackgroundImage = global::Airtraffic_Simulator.Properties.Resources.europemap;
-            this.panelDrawing.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelDrawing.Location = new System.Drawing.Point(202, 60);
-            this.panelDrawing.Margin = new System.Windows.Forms.Padding(2);
-            this.panelDrawing.Name = "panelDrawing";
-            this.panelDrawing.Size = new System.Drawing.Size(1064, 621);
-            this.panelDrawing.TabIndex = 12;
-            this.panelDrawing.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDrawing_Paint);
-            this.panelDrawing.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelDrawing_MouseUp);
             // 
             // menuStrip1
             // 
@@ -719,7 +717,7 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.customizeToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // customizeToolStripMenuItem
@@ -769,6 +767,30 @@
             this.tabPage1.Text = "Airplane";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // cb_auto_dest
+            // 
+            this.cb_auto_dest.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cb_auto_dest.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cb_auto_dest.FormattingEnabled = true;
+            this.cb_auto_dest.Location = new System.Drawing.Point(68, 163);
+            this.cb_auto_dest.Name = "cb_auto_dest";
+            this.cb_auto_dest.Size = new System.Drawing.Size(121, 21);
+            this.cb_auto_dest.TabIndex = 34;
+            this.cb_auto_dest.Visible = false;
+            this.cb_auto_dest.TextChanged += new System.EventHandler(this.cb_auto_dest_TextChanged_1);
+            // 
+            // cb_auto_orig
+            // 
+            this.cb_auto_orig.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cb_auto_orig.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cb_auto_orig.FormattingEnabled = true;
+            this.cb_auto_orig.Location = new System.Drawing.Point(68, 139);
+            this.cb_auto_orig.Name = "cb_auto_orig";
+            this.cb_auto_orig.Size = new System.Drawing.Size(121, 21);
+            this.cb_auto_orig.TabIndex = 33;
+            this.cb_auto_orig.Visible = false;
+            this.cb_auto_orig.SelectedIndexChanged += new System.EventHandler(this.cb_auto_orig_SelectedIndexChanged);
+            // 
             // btn_create_plane
             // 
             this.btn_create_plane.Location = new System.Drawing.Point(94, 190);
@@ -792,7 +814,7 @@
             this.numericUpDown4.Size = new System.Drawing.Size(41, 20);
             this.numericUpDown4.TabIndex = 31;
             this.numericUpDown4.Value = new decimal(new int[] {
-            350,
+            150,
             0,
             0,
             0});
@@ -841,18 +863,48 @@
             // nud_fuel
             // 
             this.nud_fuel.Location = new System.Drawing.Point(104, 104);
+            this.nud_fuel.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.nud_fuel.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nud_fuel.Name = "nud_fuel";
             this.nud_fuel.Size = new System.Drawing.Size(73, 20);
             this.nud_fuel.TabIndex = 25;
+            this.nud_fuel.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nud_fuel.Visible = false;
             this.nud_fuel.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
             // 
             // nud_capacity
             // 
             this.nud_capacity.Location = new System.Drawing.Point(104, 58);
+            this.nud_capacity.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nud_capacity.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nud_capacity.Name = "nud_capacity";
             this.nud_capacity.Size = new System.Drawing.Size(73, 20);
             this.nud_capacity.TabIndex = 24;
+            this.nud_capacity.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nud_capacity.Visible = false;
             // 
             // lb_fuel
@@ -888,9 +940,24 @@
             // nud_speed
             // 
             this.nud_speed.Location = new System.Drawing.Point(104, 81);
+            this.nud_speed.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.nud_speed.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nud_speed.Name = "nud_speed";
             this.nud_speed.Size = new System.Drawing.Size(73, 20);
             this.nud_speed.TabIndex = 20;
+            this.nud_speed.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nud_speed.Visible = false;
             // 
             // nud_blk_amount
@@ -942,6 +1009,7 @@
             // rb_passanger
             // 
             this.rb_passanger.AutoSize = true;
+            this.rb_passanger.Checked = true;
             this.rb_passanger.Location = new System.Drawing.Point(5, 6);
             this.rb_passanger.Name = "rb_passanger";
             this.rb_passanger.Size = new System.Drawing.Size(75, 17);
@@ -961,38 +1029,17 @@
             this.tabPage2.Text = "Airport";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // cbChangeDestination
+            // panelDrawing
             // 
-            this.cbChangeDestination.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbChangeDestination.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbChangeDestination.FormattingEnabled = true;
-            this.cbChangeDestination.Location = new System.Drawing.Point(4, 108);
-            this.cbChangeDestination.Name = "cbChangeDestination";
-            this.cbChangeDestination.Size = new System.Drawing.Size(178, 21);
-            this.cbChangeDestination.TabIndex = 22;
-            // 
-            // cb_auto_orig
-            // 
-            this.cb_auto_orig.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cb_auto_orig.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cb_auto_orig.FormattingEnabled = true;
-            this.cb_auto_orig.Location = new System.Drawing.Point(68, 139);
-            this.cb_auto_orig.Name = "cb_auto_orig";
-            this.cb_auto_orig.Size = new System.Drawing.Size(121, 21);
-            this.cb_auto_orig.TabIndex = 33;
-            this.cb_auto_orig.Visible = false;
-            // 
-            // cb_auto_dest
-            // 
-            this.cb_auto_dest.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cb_auto_dest.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cb_auto_dest.FormattingEnabled = true;
-            this.cb_auto_dest.Location = new System.Drawing.Point(68, 163);
-            this.cb_auto_dest.Name = "cb_auto_dest";
-            this.cb_auto_dest.Size = new System.Drawing.Size(121, 21);
-            this.cb_auto_dest.TabIndex = 34;
-            this.cb_auto_dest.Visible = false;
-            this.cb_auto_dest.TextChanged += new System.EventHandler(this.cb_auto_dest_TextChanged_1);
+            this.panelDrawing.BackgroundImage = global::Airtraffic_Simulator.Properties.Resources.europemap;
+            this.panelDrawing.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelDrawing.Location = new System.Drawing.Point(202, 60);
+            this.panelDrawing.Margin = new System.Windows.Forms.Padding(2);
+            this.panelDrawing.Name = "panelDrawing";
+            this.panelDrawing.Size = new System.Drawing.Size(1064, 621);
+            this.panelDrawing.TabIndex = 12;
+            this.panelDrawing.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDrawing_Paint);
+            this.panelDrawing.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelDrawing_MouseUp);
             // 
             // Form1
             // 
