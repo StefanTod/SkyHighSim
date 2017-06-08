@@ -55,9 +55,13 @@ namespace Airtraffic_Simulator
         {
             foreach (Airplane a in airNetwork.Airplanes)
             {
-                a.Update();
+                //if (a.Flight.DepartureTime.Equals(GlobalVariables.globalTime))
+                //{
+                    a.Update();
+                //}
             }
             panelDrawing.Invalidate();
+            GlobalVariables.globalTime = GlobalVariables.globalTime.AddMinutes(30);
         }
         private void btStart_Click(object sender, EventArgs e)
         {
@@ -93,16 +97,12 @@ namespace Airtraffic_Simulator
                 btUpdate.Visible = true;
                 autoCompleteAirport(cbChangeDestination);
             }
-
-
         }
 
         private void panelDrawing_Paint(object sender, PaintEventArgs e)
         {
             painter.RedrawAirports(e.Graphics, airNetwork, selectedAirport);
             painter.RedrawAirplanes(e.Graphics, airNetwork, selectedAirplane);
-           
-            
         }
 
         private void btFastForward_Click(object sender, EventArgs e)
@@ -184,7 +184,6 @@ namespace Airtraffic_Simulator
             lbPlaneName.Visible = true;
             lbDepartureTime.Visible = true;
             lbArrivalTime.Visible=true;
-            
         }
 
         private void panelDrawing_MouseUp(object sender, MouseEventArgs e)
@@ -200,7 +199,6 @@ namespace Airtraffic_Simulator
                         if (a.Id == temp)
                         {
                             selectedAirplane = a;
-
                         }
                     }
                 }
@@ -489,8 +487,6 @@ namespace Airtraffic_Simulator
             nud_fuel.Value = 1;
             cb_auto_orig.ResetText();
             cb_auto_dest.ResetText();
-
-
         }
      
         private void autoCompleteAirport(ComboBox comboBox)
@@ -587,11 +583,7 @@ namespace Airtraffic_Simulator
                         }
                     }
                 }
-          
-            
             }
-
-
         }
 
         private void label2_Click(object sender, EventArgs e)
