@@ -123,6 +123,20 @@ namespace Airtraffic_Simulator
             }
             return null;
         }
+
+        public Airport GetAirport(Point p)
+        {
+            foreach (Airport a in Airports)
+            {
+                if (a.CoverArea.IntersectsWith(new Rectangle(p.X, p.Y, 1, 1)))
+                {
+                    return a;
+                }
+            }
+            return null;
+        }
+
+
         public int nextAvailableAirplaneId()
         {
             int id = 0;

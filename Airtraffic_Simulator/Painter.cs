@@ -10,7 +10,7 @@ namespace Airtraffic_Simulator
     class Painter
     {
         Pen transperentPen = new Pen(Color.Transparent, 1);
-        Pen redPen = new Pen(Color.Red, 1);
+        Pen redPen = new Pen(Color.Red, 2);
         //Pen penToDraw = new Pen(Color.Transparent, 1);
         
         public void DrawNetwork(Graphics gr, Network n)
@@ -22,7 +22,7 @@ namespace Airtraffic_Simulator
 
             foreach (Airport a in n.Airports)
             {
-                this.DrawAirport(gr, a);
+                this.DrawAirport(gr, a, false);
             }
         }
 
@@ -42,15 +42,31 @@ namespace Airtraffic_Simulator
             }
         }
 
+        public void RedrawAirports(Graphics gr, Network n, Airport selectedAirport)
+        {
+            foreach (Airport a in n.Airports)
+            {
+                bool selected = false;
+                if (selectedAirport != null)
+                {
+                    if (selectedAirport.Name == a.Name)
+                    {
+                        selected = true;
+                    }
+                }
+                this.DrawAirport(gr, a, selected);
+            }
+        }
+
         public void DrawAirplane(Graphics gr, Airplane airplaneToDraw, bool isSelected)
         {
-            //Pen penToDraw = new Pen(Color.Transparent, 1);
+            
             Pen penToDraw = transperentPen;
             if (airplaneToDraw.PlaneStatus != Status.LANDED)
             {
                 if (isSelected)
                 {
-                    //penToDraw = new Pen(Color.Red, 1);
+                    
                     penToDraw = redPen;
                 }
                 gr.DrawRectangle(penToDraw, airplaneToDraw.CoverArea);
@@ -59,9 +75,17 @@ namespace Airtraffic_Simulator
         }
 
 
-        public void DrawAirport(Graphics gr, Airport airportToDraw)
+        public void DrawAirport(Graphics gr, Airport airportToDraw, bool isSelected)
         {
-            gr.DrawImage(airportToDraw.Image, new PointF(airportToDraw.Location.X - 7, airportToDraw.Location.Y - 7));
+            Pen penToDraw = transperentPen;
+            if (isSelected)
+            {
+                 penToDraw = redPen;
+            }
+
+            gr.DrawRectangle(penToDraw, airportToDraw.CoverArea);
+            //gr.DrawImage(airportToDraw.Image, new PointF(airportToDraw.Location.X - 7, airportToDraw.Location.Y - 7));
+            gr.DrawImage(airportToDraw.Image, airportToDraw.Location);
         }
 
 

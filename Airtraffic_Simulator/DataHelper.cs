@@ -186,7 +186,7 @@ namespace Airtraffic_Simulator
                 }
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 MessageBox.Show("Error while loading the flights");
             }

@@ -15,6 +15,7 @@ namespace Airtraffic_Simulator
         Network airNetwork;
         Painter painter;
         private Airplane selectedAirplane;
+        private Airport selectedAirport;
         DataHelper helper;
         string search = null;
 
@@ -28,6 +29,7 @@ namespace Airtraffic_Simulator
             airNetwork.Flights = helper.GetAllFlights();
             painter = new Painter();
             selectedAirplane = null;
+            selectedAirport = null;
             this.panelDrawing.Paint -=panelDrawing_Paint;
             this.panelDrawing.Paint += new PaintEventHandler(DrawNetwork);
             this.Invalidate();
@@ -97,7 +99,10 @@ namespace Airtraffic_Simulator
 
         private void panelDrawing_Paint(object sender, PaintEventArgs e)
         {
+            painter.RedrawAirports(e.Graphics, airNetwork, selectedAirport);
             painter.RedrawAirplanes(e.Graphics, airNetwork, selectedAirplane);
+           
+            
         }
 
         private void btFastForward_Click(object sender, EventArgs e)
@@ -115,32 +120,62 @@ namespace Airtraffic_Simulator
                     panelDrawing.Invalidate();
             }
         }
+
+        private void SelectAirport(Point clickedLocation)
+        {
+            this.selectedAirport = airNetwork.GetAirport(clickedLocation);
+            if (selectedAirport != null)
+            {
+                // Update the panels with airplane info
+                UpdatePanel();
+                panelDrawing.Invalidate();
+            }
+        }
+        
+
         private void UpdatePanel()
         {
-            lbCapacity.Text=selectedAirplane.Capacity.ToString();
-            lbFlightNumber.Text=selectedAirplane.Flight.Id.ToString();
-            lbFuel.Text=selectedAirplane.Fuel.ToString();
-            lbPlaneLocation.Text=selectedAirplane.CurrentLocation.ToString();
-            lbPlaneName.Text=selectedAirplane.Id.ToString();
-            lbDepartureTime.Text=selectedAirplane.Flight.DepartureTime.ToString();
-            lbArrivalTime.Text=selectedAirplane.Flight.ArrivalTime.ToString();
-            cbChangeDestination.Text = selectedAirplane.Flight.DestinationAirport.Name.ToString();
-            nUDChangeSpeed.Text = selectedAirplane.Speed.ToString();
-            nUDChangeFuel.Text = selectedAirplane.Fuel.ToString();
+            if (selectedAirplane != null)
+            {
+                lbCapacity.Text = selectedAirplane.Capacity.ToString();
+                lbFlightNumber.Text = selectedAirplane.Flight.Id.ToString();
+                lbFuel.Text = selectedAirplane.Fuel.ToString();
+                lbPlaneLocation.Text = selectedAirplane.CurrentLocation.ToString();
+                lbPlaneName.Text = selectedAirplane.Id.ToString();
+                lbDepartureTime.Text = selectedAirplane.Flight.DepartureTime.ToString();
+                lbArrivalTime.Text = selectedAirplane.Flight.ArrivalTime.ToString();
+                cbChangeDestination.Text = selectedAirplane.Flight.DestinationAirport.Name.ToString();
+                nUDChangeSpeed.Text = selectedAirplane.Speed.ToString();
+                nUDChangeFuel.Text = selectedAirplane.Fuel.ToString();
 
-            if (selectedAirplane is AirplanePassenger)
-            {
-                lbCargoWeight.Text = "-";
-                lbCargoWeight.Visible = true;
-                lbNrOfPsngs.Text = ((FlightPassenger)selectedAirplane.Flight).nrOfPassengers.ToString();
-                lbNrOfPsngs.Visible = true;
+                if (selectedAirplane is AirplanePassenger)
+                {
+                    lbCargoWeight.Text = "-";
+                    lbCargoWeight.Visible = true;
+                    lbNrOfPsngs.Text = ((FlightPassenger)selectedAirplane.Flight).nrOfPassengers.ToString();
+                    lbNrOfPsngs.Visible = true;
+                }
+                else
+                {
+                    lbNrOfPsngs.Text = "-";
+                    lbCargoWeight.Text = ((FlightCargo)selectedAirplane.Flight).cargoWeight.ToString();
+                    lbCargoWeight.Visible = true;
+                }
             }
-            else 
+
+            if (selectedAirport != null)
             {
+                lbPlaneName.Text = selectedAirport.Name.ToString();
+                lbPlaneLocation.Text = selectedAirport.Location.ToString();
+                lbCapacity.Text = selectedAirport.Capacity.ToString();
                 lbNrOfPsngs.Text = "-";
-                lbCargoWeight.Text = ((FlightCargo)selectedAirplane.Flight).cargoWeight.ToString();
-                lbCargoWeight.Visible = true;
+                lbCargoWeight.Text = "-";
+                lbFlightNumber.Text = "-";
+                lbFuel.Text = "-";
+                lbDepartureTime.Text = "-";
+                lbArrivalTime.Text = "-";
             }
+           
             //Make all labels visible
             lbCapacity.Visible=true;
             lbFlightNumber.Visible = true;
@@ -154,16 +189,34 @@ namespace Airtraffic_Simulator
 
         private void panelDrawing_MouseUp(object sender, MouseEventArgs e)
         {
-            SelectAirplane(e.Location);
-            string temp = lbPlaneName.Text;
+            selectedAirplane = null;
+            selectedAirport = null;
+            string temp;
+                if (airNetwork.GetAirplane(e.Location) != null) {
+                    SelectAirplane(e.Location);
+                    temp = lbPlaneName.Text;
+                    foreach (Airplane a in airNetwork.Airplanes)
+                    {
+                        if (a.Id == temp)
+                        {
+                            selectedAirplane = a;
 
-            foreach (Airplane a in airNetwork.Airplanes)
-            {
-                if (a.Id == temp)
-                {
-                    selectedAirplane = a;
+                        }
+                    }
                 }
-            }
+               if (airNetwork.GetAirport(e.Location) != null)
+                {
+                    SelectAirport(e.Location);
+                    temp = lbPlaneName.Text;
+
+                    foreach (Airport a in airNetwork.Airports)
+                    {
+                        if (a.Name == temp)
+                        {
+                            selectedAirport = a;
+                        }
+                    }
+                }
                panelDrawing.Invalidate();
         }
 
