@@ -72,9 +72,9 @@ namespace Airtraffic_Simulator
             Airports.Remove(airportToRemove);
             return true;
         }
-        public void AddProblem(Airport a, int id, string type, TimeSpan duration)
+        public void AddProblem(Airport a,string type, TimeSpan duration)
         {
-            a.CreateProblem(id, type, duration);
+            a.CreateProblem(type, duration);
         }
 
         public Flight FindFlight(string id)

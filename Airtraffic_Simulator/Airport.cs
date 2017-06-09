@@ -78,9 +78,9 @@ namespace Airtraffic_Simulator
         }
 
 
-        public void CreateProblem(int id, string type, TimeSpan duration)
+        public void CreateProblem(string type, TimeSpan duration)
         {
-            Problem problem = new Problem(id, type, duration);
+            Problem problem = new Problem(type, duration);
             Problems.Add(problem);
         }
     }

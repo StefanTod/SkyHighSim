@@ -232,7 +232,7 @@ namespace Airtraffic_Simulator
                     {
                         if (a.Name.ToUpper() == destination.ToUpper())
                         {
-                            selectedAirplane.ChangeRoute(selectedAirplane.CurrentLocation, a.Location);
+                            selectedAirplane.ChangeRoute(selectedAirplane.CurrentLocation, a);
                             found = true;
                         }
                     }
@@ -246,15 +246,15 @@ namespace Airtraffic_Simulator
 
         private void customizeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (panelAdvanced.Visible)
-            {
-                panelAdvanced.Visible = false;
-                tc_create.Visible = true;
-            }
-            else
-            {
-                tc_create.Visible = true;
-            }
+            //if (panelAdvanced.Visible)
+            //{
+            //    panelAdvanced.Visible = false;
+            //    tc_create.Visible = true;
+            //}
+            //else
+            //{
+            //    tc_create.Visible = true;
+            //}
         }
 
         private void rb_passanger_CheckedChanged(object sender, EventArgs e)
@@ -350,18 +350,9 @@ namespace Airtraffic_Simulator
             //Bulk properties
             int bulkAmount = Convert.ToInt32(nud_blk_amount.Value);
 
-            //Search Airport from airport list
-            foreach (Airport a in airNetwork.Airports)
-            {
-                if (origin_countryName == a.Name)
-                {
-                    origin_airport = a;
-                }
-                if (destination_countryName == a.Name)
-                {
-                    destination_airport = a;
-                }
-            }
+
+            origin_airport = returnAirportObject(origin_countryName);
+            origin_airport = returnAirportObject(destination_countryName);
 
               if(origin_airport != null && destination_airport != null)
             {
@@ -551,8 +542,8 @@ namespace Airtraffic_Simulator
                                     {
                                         if (a.Flight==f)
                                         {
-                                            a.Image=GlobalVariables.selectedAirplane;
-                                            a.ChangeRoute(a.CurrentLocation,f.DestinationAirport.Location);
+                                            a.ChangeIcon(GlobalVariables.selectedAirplane);
+                                            
                                         }
                                     }
                                 }
@@ -571,8 +562,7 @@ namespace Airtraffic_Simulator
                                     {
                                         if (a.Flight == f)
                                         {
-                                            a.Image = GlobalVariables.selectedAirplane;
-                                            a.ChangeRoute(a.CurrentLocation, f.DestinationAirport.Location);
+                                            a.ChangeIcon(GlobalVariables.selectedAirplane);
                                         }
                                     }
                                 }
@@ -647,11 +637,11 @@ namespace Airtraffic_Simulator
                         {
                             if(a is AirplaneCargo)
                             {
-                                a.Image = GlobalVariables.AirplaneCargo;
+                                a.ChangeIcon(GlobalVariables.AirplaneCargo);
                             }
                             if (a is AirplanePassenger)
                             {
-                                a.Image = GlobalVariables.AirplanePassenger;
+                                a.ChangeIcon(GlobalVariables.AirplanePassenger);
                             }
                         }
                     }
@@ -661,6 +651,46 @@ namespace Airtraffic_Simulator
             cbSearch.Visible = true;
             lblSearch.ResetText();
 
+        }
+
+        private void airplaneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (panelAdvanced.Visible)
+            {
+                panelAdvanced.Visible = false;
+                tc_create.Visible = true;
+                autoCompleteAirport(cb_problem_airport);
+            }
+            else
+            {
+                tc_create.Visible = true;
+            }
+        }
+
+        private void btn_problem_create_Click(object sender, EventArgs e)
+        {
+            //Problem properties
+            string target_airport = cb_problem_airport.Text;
+            string problem_type = tb_problem_desc.Text;
+            TimeSpan problem_duration = new TimeSpan(Convert.ToInt16(nud_prob_day.Value), Convert.ToInt16(nud_prob_hour.Value), Convert.ToInt16(nud_prob_min.Value),0);
+            Airport target_airport_object = returnAirportObject(target_airport);
+            //Problem object
+            airNetwork.AddProblem(target_airport_object,problem_type, problem_duration);
+
+            //Assign and create problem
+        }
+
+        private Airport returnAirportObject(string airport_Name)
+        {
+            //Search Airport from airport list
+            foreach (Airport a in airNetwork.Airports)
+            {
+                if (airport_Name == a.Name)
+                {
+                    return a;
+                }
+            }
+            return null;
         }
     }
 }
