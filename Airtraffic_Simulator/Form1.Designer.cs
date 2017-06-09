@@ -34,11 +34,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblSearch = new System.Windows.Forms.Label();
+            this.lbBack2 = new System.Windows.Forms.Label();
+            this.cbSearch = new System.Windows.Forms.ComboBox();
             this.searchBtn = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btFastForward = new System.Windows.Forms.Button();
             this.btStop = new System.Windows.Forms.Button();
             this.btStart = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.rbTo = new System.Windows.Forms.RadioButton();
+            this.rbFrom = new System.Windows.Forms.RadioButton();
+            this.lbBack = new System.Windows.Forms.Label();
             this.panelNameLocation = new System.Windows.Forms.Panel();
             this.lbPlaneLocation = new System.Windows.Forms.Label();
             this.lbPlaneName = new System.Windows.Forms.Label();
@@ -60,7 +67,6 @@
             this.lbDepartureTime = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.btAdvanced = new System.Windows.Forms.Button();
             this.panelAdvanced = new System.Windows.Forms.Panel();
             this.cbChangeDestination = new System.Windows.Forms.ComboBox();
             this.nUDChangeSpeed = new System.Windows.Forms.NumericUpDown();
@@ -72,7 +78,10 @@
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,18 +108,9 @@
             this.rb_cargo = new System.Windows.Forms.RadioButton();
             this.rb_passanger = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.rbTo = new System.Windows.Forms.RadioButton();
-            this.rbFrom = new System.Windows.Forms.RadioButton();
-            this.cbSearch = new System.Windows.Forms.ComboBox();
-            this.lbBack = new System.Windows.Forms.Label();
-            this.lbBack2 = new System.Windows.Forms.Label();
-            this.lblSearch = new System.Windows.Forms.Label();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelDrawing = new Airtraffic_Simulator.DrawingPanel();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelNameLocation.SuspendLayout();
             this.panelDetails.SuspendLayout();
             this.panelTime.SuspendLayout();
@@ -125,7 +125,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_capacity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_speed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_blk_amount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -190,6 +189,43 @@
             this.panel1.Size = new System.Drawing.Size(1257, 49);
             this.panel1.TabIndex = 4;
             // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.lblSearch.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblSearch.Location = new System.Drawing.Point(440, 10);
+            this.lblSearch.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(0, 24);
+            this.lblSearch.TabIndex = 38;
+            // 
+            // lbBack2
+            // 
+            this.lbBack2.AutoSize = true;
+            this.lbBack2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.lbBack2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbBack2.Location = new System.Drawing.Point(213, 11);
+            this.lbBack2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbBack2.Name = "lbBack2";
+            this.lbBack2.Size = new System.Drawing.Size(25, 26);
+            this.lbBack2.TabIndex = 37;
+            this.lbBack2.Text = "<";
+            this.lbBack2.Visible = false;
+            this.lbBack2.Click += new System.EventHandler(this.lbBack2_Click);
+            // 
+            // cbSearch
+            // 
+            this.cbSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbSearch.FormattingEnabled = true;
+            this.cbSearch.Location = new System.Drawing.Point(441, 14);
+            this.cbSearch.Name = "cbSearch";
+            this.cbSearch.Size = new System.Drawing.Size(165, 21);
+            this.cbSearch.TabIndex = 35;
+            this.cbSearch.Text = "Airport Name";
+            this.cbSearch.SelectedIndexChanged += new System.EventHandler(this.cbSearch_SelectedIndexChanged);
+            // 
             // searchBtn
             // 
             this.searchBtn.Location = new System.Drawing.Point(612, 11);
@@ -199,6 +235,28 @@
             this.searchBtn.Text = "Search";
             this.searchBtn.UseVisualStyleBackColor = true;
             this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label4.Location = new System.Drawing.Point(339, 8);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(18, 26);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "|";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(987, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(63, 45);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
             // btFastForward
             // 
@@ -239,17 +297,47 @@
             this.btStart.UseVisualStyleBackColor = false;
             this.btStart.Click += new System.EventHandler(this.btStart_Click);
             // 
-            // label4
+            // rbTo
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(339, 8);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(18, 26);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "|";
+            this.rbTo.AutoSize = true;
+            this.rbTo.Checked = true;
+            this.rbTo.ForeColor = System.Drawing.Color.Cornsilk;
+            this.rbTo.Location = new System.Drawing.Point(337, 17);
+            this.rbTo.Name = "rbTo";
+            this.rbTo.Size = new System.Drawing.Size(41, 17);
+            this.rbTo.TabIndex = 9;
+            this.rbTo.TabStop = true;
+            this.rbTo.Text = "To:";
+            this.rbTo.UseVisualStyleBackColor = true;
+            this.rbTo.Visible = false;
+            // 
+            // rbFrom
+            // 
+            this.rbFrom.AutoSize = true;
+            this.rbFrom.ForeColor = System.Drawing.Color.Cornsilk;
+            this.rbFrom.Location = new System.Drawing.Point(384, 17);
+            this.rbFrom.Name = "rbFrom";
+            this.rbFrom.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.rbFrom.Size = new System.Drawing.Size(51, 17);
+            this.rbFrom.TabIndex = 10;
+            this.rbFrom.TabStop = true;
+            this.rbFrom.Text = "From:";
+            this.rbFrom.UseVisualStyleBackColor = true;
+            this.rbFrom.Visible = false;
+            // 
+            // lbBack
+            // 
+            this.lbBack.AutoSize = true;
+            this.lbBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.lbBack.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbBack.Location = new System.Drawing.Point(292, 10);
+            this.lbBack.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbBack.Name = "lbBack";
+            this.lbBack.Size = new System.Drawing.Size(25, 26);
+            this.lbBack.TabIndex = 36;
+            this.lbBack.Text = "<";
+            this.lbBack.Visible = false;
+            this.lbBack.Click += new System.EventHandler(this.label16_Click);
             // 
             // panelNameLocation
             // 
@@ -527,20 +615,6 @@
             this.label15.TabIndex = 11;
             this.label15.Text = "Departure time:";
             // 
-            // btAdvanced
-            // 
-            this.btAdvanced.BackColor = System.Drawing.Color.Orange;
-            this.btAdvanced.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.btAdvanced.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btAdvanced.Location = new System.Drawing.Point(7, 372);
-            this.btAdvanced.Margin = new System.Windows.Forms.Padding(2);
-            this.btAdvanced.Name = "btAdvanced";
-            this.btAdvanced.Size = new System.Drawing.Size(188, 32);
-            this.btAdvanced.TabIndex = 8;
-            this.btAdvanced.Text = "Advanced options";
-            this.btAdvanced.UseVisualStyleBackColor = false;
-            this.btAdvanced.Click += new System.EventHandler(this.btAdvanced_Click);
-            // 
             // panelAdvanced
             // 
             this.panelAdvanced.BackColor = System.Drawing.Color.SteelBlue;
@@ -551,7 +625,7 @@
             this.panelAdvanced.Controls.Add(this.label13);
             this.panelAdvanced.Controls.Add(this.label12);
             this.panelAdvanced.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panelAdvanced.Location = new System.Drawing.Point(7, 407);
+            this.panelAdvanced.Location = new System.Drawing.Point(7, 376);
             this.panelAdvanced.Margin = new System.Windows.Forms.Padding(2);
             this.panelAdvanced.Name = "panelAdvanced";
             this.panelAdvanced.Size = new System.Drawing.Size(188, 134);
@@ -623,7 +697,7 @@
             this.btUpdate.BackColor = System.Drawing.Color.LightSeaGreen;
             this.btUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.btUpdate.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btUpdate.Location = new System.Drawing.Point(5, 545);
+            this.btUpdate.Location = new System.Drawing.Point(5, 514);
             this.btUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.btUpdate.Name = "btUpdate";
             this.btUpdate.Size = new System.Drawing.Size(188, 46);
@@ -663,10 +737,37 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
             // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
+            this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.newToolStripMenuItem.Text = "&New";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripMenuItem.Image")));
+            this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.openToolStripMenuItem.Text = "&Open";
+            // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
             this.toolStripSeparator.Size = new System.Drawing.Size(143, 6);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem.Image")));
+            this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.saveToolStripMenuItem.Text = "&Save";
             // 
             // toolStripSeparator1
             // 
@@ -696,8 +797,8 @@
             // 
             // tc_create
             // 
-            this.tc_create.Controls.Add(this.tabPage1);
             this.tc_create.Controls.Add(this.tabPage2);
+            this.tc_create.Controls.Add(this.tabPage1);
             this.tc_create.Location = new System.Drawing.Point(0, 407);
             this.tc_create.Name = "tc_create";
             this.tc_create.SelectedIndex = 0;
@@ -780,11 +881,6 @@
             this.numericUpDown4.Name = "numericUpDown4";
             this.numericUpDown4.Size = new System.Drawing.Size(41, 20);
             this.numericUpDown4.TabIndex = 31;
-            this.numericUpDown4.Value = new decimal(new int[] {
-            150,
-            0,
-            0,
-            0});
             this.numericUpDown4.Visible = false;
             // 
             // lb_load
@@ -829,49 +925,39 @@
             // 
             // nud_fuel
             // 
+            this.nud_fuel.Increment = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             this.nud_fuel.Location = new System.Drawing.Point(104, 104);
             this.nud_fuel.Maximum = new decimal(new int[] {
             500,
             0,
             0,
             0});
-            this.nud_fuel.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.nud_fuel.Name = "nud_fuel";
             this.nud_fuel.Size = new System.Drawing.Size(73, 20);
             this.nud_fuel.TabIndex = 25;
-            this.nud_fuel.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.nud_fuel.Visible = false;
             this.nud_fuel.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
             // 
             // nud_capacity
             // 
+            this.nud_capacity.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.nud_capacity.Location = new System.Drawing.Point(104, 58);
             this.nud_capacity.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
-            this.nud_capacity.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.nud_capacity.Name = "nud_capacity";
             this.nud_capacity.Size = new System.Drawing.Size(73, 20);
             this.nud_capacity.TabIndex = 24;
-            this.nud_capacity.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.nud_capacity.Visible = false;
             // 
             // lb_fuel
@@ -906,25 +992,20 @@
             // 
             // nud_speed
             // 
-            this.nud_speed.Location = new System.Drawing.Point(104, 81);
-            this.nud_speed.Maximum = new decimal(new int[] {
-            500,
+            this.nud_speed.Increment = new decimal(new int[] {
+            50,
             0,
             0,
             0});
-            this.nud_speed.Minimum = new decimal(new int[] {
-            1,
+            this.nud_speed.Location = new System.Drawing.Point(104, 81);
+            this.nud_speed.Maximum = new decimal(new int[] {
+            1000,
             0,
             0,
             0});
             this.nud_speed.Name = "nud_speed";
             this.nud_speed.Size = new System.Drawing.Size(73, 20);
             this.nud_speed.TabIndex = 20;
-            this.nud_speed.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.nud_speed.Visible = false;
             // 
             // nud_blk_amount
@@ -969,19 +1050,17 @@
             this.rb_cargo.Name = "rb_cargo";
             this.rb_cargo.Size = new System.Drawing.Size(53, 17);
             this.rb_cargo.TabIndex = 1;
-            this.rb_cargo.TabStop = true;
             this.rb_cargo.Text = "Cargo";
             this.rb_cargo.UseVisualStyleBackColor = true;
+            this.rb_cargo.CheckedChanged += new System.EventHandler(this.rb_cargo_CheckedChanged);
             // 
             // rb_passanger
             // 
             this.rb_passanger.AutoSize = true;
-            this.rb_passanger.Checked = true;
             this.rb_passanger.Location = new System.Drawing.Point(5, 6);
             this.rb_passanger.Name = "rb_passanger";
             this.rb_passanger.Size = new System.Drawing.Size(75, 17);
             this.rb_passanger.TabIndex = 0;
-            this.rb_passanger.TabStop = true;
             this.rb_passanger.Text = "Passanger";
             this.rb_passanger.UseVisualStyleBackColor = true;
             this.rb_passanger.CheckedChanged += new System.EventHandler(this.rb_passanger_CheckedChanged);
@@ -995,122 +1074,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Airport";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // rbTo
-            // 
-            this.rbTo.AutoSize = true;
-            this.rbTo.Checked = true;
-            this.rbTo.ForeColor = System.Drawing.Color.Cornsilk;
-            this.rbTo.Location = new System.Drawing.Point(337, 17);
-            this.rbTo.Name = "rbTo";
-            this.rbTo.Size = new System.Drawing.Size(41, 17);
-            this.rbTo.TabIndex = 9;
-            this.rbTo.TabStop = true;
-            this.rbTo.Text = "To:";
-            this.rbTo.UseVisualStyleBackColor = true;
-            this.rbTo.Visible = false;
-            // 
-            // rbFrom
-            // 
-            this.rbFrom.AutoSize = true;
-            this.rbFrom.ForeColor = System.Drawing.Color.Cornsilk;
-            this.rbFrom.Location = new System.Drawing.Point(384, 17);
-            this.rbFrom.Name = "rbFrom";
-            this.rbFrom.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.rbFrom.Size = new System.Drawing.Size(51, 17);
-            this.rbFrom.TabIndex = 10;
-            this.rbFrom.TabStop = true;
-            this.rbFrom.Text = "From:";
-            this.rbFrom.UseVisualStyleBackColor = true;
-            this.rbFrom.Visible = false;
-            // 
-            // cbSearch
-            // 
-            this.cbSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbSearch.FormattingEnabled = true;
-            this.cbSearch.Location = new System.Drawing.Point(441, 14);
-            this.cbSearch.Name = "cbSearch";
-            this.cbSearch.Size = new System.Drawing.Size(165, 21);
-            this.cbSearch.TabIndex = 35;
-            this.cbSearch.Text = "Airport Name";
-            this.cbSearch.SelectedIndexChanged += new System.EventHandler(this.cbSearch_SelectedIndexChanged);
-            // 
-            // lbBack
-            // 
-            this.lbBack.AutoSize = true;
-            this.lbBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.lbBack.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbBack.Location = new System.Drawing.Point(292, 10);
-            this.lbBack.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbBack.Name = "lbBack";
-            this.lbBack.Size = new System.Drawing.Size(25, 26);
-            this.lbBack.TabIndex = 36;
-            this.lbBack.Text = "<";
-            this.lbBack.Visible = false;
-            this.lbBack.Click += new System.EventHandler(this.label16_Click);
-            // 
-            // lbBack2
-            // 
-            this.lbBack2.AutoSize = true;
-            this.lbBack2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.lbBack2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbBack2.Location = new System.Drawing.Point(213, 11);
-            this.lbBack2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbBack2.Name = "lbBack2";
-            this.lbBack2.Size = new System.Drawing.Size(25, 26);
-            this.lbBack2.TabIndex = 37;
-            this.lbBack2.Text = "<";
-            this.lbBack2.Visible = false;
-            this.lbBack2.Click += new System.EventHandler(this.lbBack2_Click);
-            // 
-            // lblSearch
-            // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.lblSearch.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblSearch.Location = new System.Drawing.Point(440, 10);
-            this.lblSearch.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(0, 24);
-            this.lblSearch.TabIndex = 38;
-            // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
-            this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.newToolStripMenuItem.Text = "&New";
-            // 
-            // openToolStripMenuItem
-            // 
-            this.openToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripMenuItem.Image")));
-            this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.openToolStripMenuItem.Text = "&Open";
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem.Image")));
-            this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.saveToolStripMenuItem.Text = "&Save";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(987, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(63, 45);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
             // 
             // panelDrawing
             // 
@@ -1129,14 +1092,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 679);
-            this.Controls.Add(this.tc_create);
-            this.Controls.Add(this.btAdvanced);
             this.Controls.Add(this.panelDrawing);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panelTime);
             this.Controls.Add(this.panelDetails);
             this.Controls.Add(this.panelNameLocation);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.tc_create);
             this.Controls.Add(this.panelAdvanced);
             this.Controls.Add(this.btUpdate);
             this.MainMenuStrip = this.menuStrip1;
@@ -1147,6 +1109,7 @@
             this.Text = "SkyHighSim";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelNameLocation.ResumeLayout(false);
             this.panelNameLocation.PerformLayout();
             this.panelDetails.ResumeLayout(false);
@@ -1167,7 +1130,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_capacity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_speed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_blk_amount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1202,7 +1164,6 @@
         private System.Windows.Forms.Label lbArrivalTime;
         private System.Windows.Forms.Label lbDepartureTime;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button btAdvanced;
         private System.Windows.Forms.Panel panelAdvanced;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
