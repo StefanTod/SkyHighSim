@@ -13,14 +13,15 @@ namespace Airtraffic_Simulator
         public Status PlaneStatus { get; private set; }
         public Flight Flight { get; set; }
         public PointF CurrentLocation { get; private set; }
-        public Bitmap Image { get; set; }
+        public Bitmap Image { get; protected set; }
+        protected Bitmap DefaultImage; //Default image is used for the calculation of the image transform since it uses the angle of the original image
         public string Id { get; private set; }
         public int Capacity { get; private set; }
         public double Speed { get; private set; }
         public double Fuel { get; private set; }
         public Rectangle CoverArea { get; set; }
         private PointF DepartureLocation;
-        private PointF DestinationLocation;
+        private Airport DestinationAirport;
         
         private int counterTicks = 0;
         public Airplane(string id, int capacity, double speed, double fuel, PointF currentLocation)
@@ -32,6 +33,13 @@ namespace Airtraffic_Simulator
             this.CurrentLocation = currentLocation;
             //this.Image = GlobalVariables.AirplaneCargo;
             this.PlaneStatus = Status.TOTAKEOFF;
+        }
+
+        public void ChangeIcon(Bitmap icon)
+        {
+            this.Image = icon;
+            this.DefaultImage = icon;
+            this.TransformImage(this.DepartureLocation, this.DestinationAirport.Location);
         }
         public void Update()
         {
@@ -64,7 +72,7 @@ namespace Airtraffic_Simulator
                         if (counterTicks >= 30)
                         {
                             PlaneStatus = Status.LANDED;
-                            this.Flight.DestinationAirport.FreeLane();
+                            this.DestinationAirport.FreeLane();
                         }
                         break;
                     case Status.LANDED:
@@ -86,8 +94,8 @@ namespace Airtraffic_Simulator
         {
             float xCurrent = this.CurrentLocation.X;
             float yCurrent = this.CurrentLocation.Y;
-            float xDestination = this.DestinationLocation.X;
-            float yDestination = this.DestinationLocation.Y;
+            float xDestination = this.DestinationAirport.Location.X;
+            float yDestination = this.DestinationAirport.Location.Y;
             PointF dest;
             float xDiff = 8;
             float yDiff = 8;
@@ -121,9 +129,9 @@ namespace Airtraffic_Simulator
             if (this.Flight != null)
             {
                 float x1 = this.DepartureLocation.X;
-                float x2 = this.DestinationLocation.X;
+                float x2 = this.DestinationAirport.Location.X;
                 float y1 = this.DepartureLocation.Y;
-                float y2 = this.DestinationLocation.Y;
+                float y2 = this.DestinationAirport.Location.Y;
 
                 float xCurrent = this.CurrentLocation.X;
                 float yCurrent = this.CurrentLocation.Y;
@@ -174,11 +182,11 @@ namespace Airtraffic_Simulator
                 if (totaldistance < currentdistance + distancepassed) 
                 {
                     //plane has arrived and must request perimission -> be added to the queue or occupy a lane
-                    if(this.Flight.DestinationAirport.RequestLandingPermission(this))
+                    if(this.DestinationAirport.RequestLandingPermission(this))
                     {
                         this.PlaneStatus = Status.LANDING;
-                       xNew = this.DestinationLocation.X;
-                       yNew = this.DestinationLocation.Y;
+                       xNew = this.DestinationAirport.Location.X;
+                       yNew = this.DestinationAirport.Location.Y;
                     }
                     else
                     {
@@ -205,18 +213,18 @@ namespace Airtraffic_Simulator
         public void AddFlight(Flight f)
         {
             this.Flight = f;
-            this.ChangeRoute(this.Flight.DepartureAirport.Location, this.Flight.DestinationAirport.Location);
+            this.ChangeRoute(this.Flight.DepartureAirport.Location, this.Flight.DestinationAirport);
         }
 
-        public void ChangeRoute(PointF start,PointF end)
+        public void ChangeRoute(PointF departureLoc,Airport destination)
         {
-            this.DepartureLocation = start;
-            this.DestinationLocation = end;
+            this.DepartureLocation = departureLoc;
+            this.DestinationAirport = destination;
             if(PlaneStatus != Status.TOTAKEOFF)
             {
                 PlaneStatus = Status.INAIR;
             }
-            this.TransformImage(start,end);
+            this.TransformImage(departureLoc, destination.Location);
         }
         private void TransformImage(PointF start,PointF end)
         {
@@ -254,7 +262,7 @@ namespace Airtraffic_Simulator
             gfx.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
             //now draw our new image onto the graphics object
-            gfx.DrawImage(this.Image, new Point(0, 0));
+            gfx.DrawImage(this.DefaultImage, new Point(0, 0));
 
             //dispose of our Graphics object
             gfx.Dispose();

@@ -13,6 +13,7 @@ namespace Airtraffic_Simulator
             : base(id, capacity, speed, fuel, currentLocation)
         {
             this.Image = GlobalVariables.AirplanePassenger;
+            this.DefaultImage = this.Image;
         }
     }
 }

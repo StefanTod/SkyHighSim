@@ -232,7 +232,7 @@ namespace Airtraffic_Simulator
                     {
                         if (a.Name.ToUpper() == destination.ToUpper())
                         {
-                            selectedAirplane.ChangeRoute(selectedAirplane.CurrentLocation, a.Location);
+                            selectedAirplane.ChangeRoute(selectedAirplane.CurrentLocation, a);
                             found = true;
                         }
                     }
@@ -551,8 +551,8 @@ namespace Airtraffic_Simulator
                                     {
                                         if (a.Flight==f)
                                         {
-                                            a.Image=GlobalVariables.selectedAirplane;
-                                            a.ChangeRoute(a.CurrentLocation,f.DestinationAirport.Location);
+                                            a.ChangeIcon(GlobalVariables.selectedAirplane);
+                                            
                                         }
                                     }
                                 }
@@ -571,8 +571,7 @@ namespace Airtraffic_Simulator
                                     {
                                         if (a.Flight == f)
                                         {
-                                            a.Image = GlobalVariables.selectedAirplane;
-                                            a.ChangeRoute(a.CurrentLocation, f.DestinationAirport.Location);
+                                            a.ChangeIcon(GlobalVariables.selectedAirplane);
                                         }
                                     }
                                 }
@@ -647,11 +646,11 @@ namespace Airtraffic_Simulator
                         {
                             if(a is AirplaneCargo)
                             {
-                                a.Image = GlobalVariables.AirplaneCargo;
+                                a.ChangeIcon(GlobalVariables.AirplaneCargo);
                             }
                             if (a is AirplanePassenger)
                             {
-                                a.Image = GlobalVariables.AirplanePassenger;
+                                a.ChangeIcon(GlobalVariables.AirplanePassenger);
                             }
                         }
                     }
