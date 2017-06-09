@@ -19,12 +19,12 @@ namespace Airtraffic_Simulator
         }
 
         private void btnEurope_Click(object sender, EventArgs e)
-        {
-            this.Hide();
+        {           
             f1 = new Form1(Regions.EUROPE);
-            f1.ShowDialog();
-
-            this.Close();   
+            f1.Show();
+            this.Hide(); 
+           
+                       
         }
 
         private void btnAustralia_Click(object sender, EventArgs e)

@@ -18,12 +18,10 @@ namespace Airtraffic_Simulator
         private Airport selectedAirport;
         DataHelper helper;
         string search = null;
-        bool created;
 
         public Form1(Regions region)
         {
             InitializeComponent();
-            created = false;
             airNetwork = new Network(region);
             helper = new DataHelper(airNetwork);  
             airNetwork.Airports = helper.GetAllAirports(); //consider sending the Airports of airNetwork as a parameter into GetAllAirports instead of assigning it as reference
@@ -120,20 +118,6 @@ namespace Airtraffic_Simulator
                     // Update the panels with airplane info
                     UpdatePanel();
                     panelDrawing.Invalidate();
-                if (!tc_create.Visible)
-                {
-
-                        panelAdvanced.Visible = true;
-                        btUpdate.Visible = true;
-                        autoCompleteAirport(cbChangeDestination);
-                }
-                else
-                {
-                    tc_create.Visible = false;
-                    panelAdvanced.Visible = true;
-                    btUpdate.Visible = true;
-                    autoCompleteAirport(cbChangeDestination);
-                }
             }
         }
 
@@ -142,8 +126,7 @@ namespace Airtraffic_Simulator
             this.selectedAirport = airNetwork.GetAirport(clickedLocation);
             if (selectedAirport != null)
             {
-                panelAdvanced.Visible = false;
-                // Update the panels with airport info
+                // Update the panels with airplane info
                 UpdatePanel();
                 panelDrawing.Invalidate();
             }
@@ -392,25 +375,16 @@ namespace Airtraffic_Simulator
                         if (rb_passanger.Checked)
                         {
                             if (capacity > loaded)
-                            {  
-                                if(speed>0 && fuel>0)
+                            {  //Adding a passanger Airplane and Flight
+                               //Creating the plane and flight                      
+                                flight = new FlightPassenger(id_flight.ToString(), origin_airport, destination_airport, estimatedDuration, currentTime, currentTime + estimatedDuration, loaded);
+                                airplane = new AirplanePassenger(id_plane.ToString(), capacity, speed, fuel, origin_airport.Location);
+                                if (flight != null && airplane != null)
                                 {
-                                    //Adding a passanger Airplane and Flight
-                                    //Creating the plane and flight                      
-                                    flight = new FlightPassenger(id_flight.ToString(), origin_airport, destination_airport, estimatedDuration, currentTime, currentTime + estimatedDuration, loaded);
-                                    airplane = new AirplanePassenger(id_plane.ToString(), capacity, speed, fuel, origin_airport.Location);
-                                    if (flight != null && airplane != null)
-                                    {
-                                        //Adding the flight to the network
-                                        airNetwork.Airplanes.Add(airplane);
-                                        //Adding the plane to the flight
-                                        airplane.AddFlight(flight);
-                                        created = true;
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Please make sure that both speed and fuel have value bigger than 0");
+                                    //Adding the flight to the network
+                                    airNetwork.Airplanes.Add(airplane);
+                                    //Adding the plane to the flight
+                                    airplane.AddFlight(flight);
                                 }
                             }
                             else
@@ -424,24 +398,16 @@ namespace Airtraffic_Simulator
                             {
                                 if (capacity > loaded)
                                 {
-                                    if (speed > 0 && fuel > 0)
+                                    // Adding a cargo Airplane and Flight
+                                    //Creating the plane and flight                      
+                                    flight = new FlightCargo(id_flight.ToString(), origin_airport, destination_airport, estimatedDuration, currentTime, currentTime + estimatedDuration, loaded);
+                                    airplane = new AirplaneCargo(id_plane.ToString(), capacity, speed, fuel, origin_airport.Location);
+                                    if (flight != null && airplane != null)
                                     {
-                                        // Adding a cargo Airplane and Flight
-                                        //Creating the plane and flight                      
-                                        flight = new FlightCargo(id_flight.ToString(), origin_airport, destination_airport, estimatedDuration, currentTime, currentTime + estimatedDuration, loaded);
-                                        airplane = new AirplaneCargo(id_plane.ToString(), capacity, speed, fuel, origin_airport.Location);
-                                        if (flight != null && airplane != null)
-                                        {
-                                            //Adding the flight to the network
-                                            airNetwork.Airplanes.Add(airplane);
-                                            //Adding the plane to the flight
-                                            airplane.AddFlight(flight);
-                                            created = true;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Please make sure that both speed and fuel have value bigger than 0");
+                                        //Adding the flight to the network
+                                        airNetwork.Airplanes.Add(airplane);
+                                        //Adding the plane to the flight
+                                        airplane.AddFlight(flight);
                                     }
                                 }
                                 else
@@ -461,24 +427,16 @@ namespace Airtraffic_Simulator
                     {
                         if (capacity > loaded)
                         {
-                            if (speed > 0 && fuel > 0)
+                            //Adding a passanger Airplane and Flight
+                            //Creating the plane and flight                      
+                            flight = new FlightPassenger(id_flight.ToString(), origin_airport, destination_airport, estimatedDuration, currentTime, currentTime + estimatedDuration, loaded);
+                            airplane = new AirplanePassenger(id_plane.ToString(), capacity, speed, fuel, origin_airport.Location);
+                            if (flight != null && airplane != null)
                             {
-                                //Adding a passanger Airplane and Flight
-                                //Creating the plane and flight                      
-                                flight = new FlightPassenger(id_flight.ToString(), origin_airport, destination_airport, estimatedDuration, currentTime, currentTime + estimatedDuration, loaded);
-                                airplane = new AirplanePassenger(id_plane.ToString(), capacity, speed, fuel, origin_airport.Location);
-                                if (flight != null && airplane != null)
-                                {
-                                    //Adding the flight to the network
-                                    airNetwork.Airplanes.Add(airplane);
-                                    //Adding the plane to the flight
-                                    airplane.AddFlight(flight);
-                                    created = true;
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Please make sure that both speed and fuel have value bigger than 0");
+                                //Adding the flight to the network
+                                airNetwork.Airplanes.Add(airplane);
+                                //Adding the plane to the flight
+                                airplane.AddFlight(flight);
                             }
                         }
                         else
@@ -492,26 +450,17 @@ namespace Airtraffic_Simulator
                         {
                             if (capacity > loaded)
                             {
-                                if (speed > 0 && fuel > 0)
+                                // Adding a cargo Airplane and Flight
+                                //Creating the plane and flight                      
+                                flight = new FlightCargo(id_flight.ToString(), origin_airport, destination_airport, estimatedDuration, currentTime, currentTime + estimatedDuration, loaded);
+                                airplane = new AirplaneCargo(id_plane.ToString(), capacity, speed, fuel, origin_airport.Location);
+                                if (flight != null && airplane != null)
                                 {
-                                    // Adding a cargo Airplane and Flight
-                                    //Creating the plane and flight                      
-                                    flight = new FlightCargo(id_flight.ToString(), origin_airport, destination_airport, estimatedDuration, currentTime, currentTime + estimatedDuration, loaded);
-                                    airplane = new AirplaneCargo(id_plane.ToString(), capacity, speed, fuel, origin_airport.Location);
-                                    if (flight != null && airplane != null)
-                                    {
-                                        //Adding the flight to the network
-                                        airNetwork.Airplanes.Add(airplane);
-                                        //Adding the plane to the flight
-                                        airplane.AddFlight(flight);
-                                        created = true;
-                                    }
+                                    //Adding the flight to the network
+                                    airNetwork.Airplanes.Add(airplane);
+                                    //Adding the plane to the flight
+                                    airplane.AddFlight(flight);
                                 }
-                                else
-                                {
-                                    MessageBox.Show("Please make sure that both speed and fuel have value bigger than 0");
-                                }
-                            
                             }
                             else
                             {
@@ -526,21 +475,16 @@ namespace Airtraffic_Simulator
             {
                 MessageBox.Show("Please select both origin and destination airports");
             }
-            if (created == true)
-            {
-                MessageBox.Show("Successfully created!");
-                panelDrawing.Invalidate();
-            }
-            created = false;
             autoCompleteAirport(cb_auto_orig);
             autoCompleteAirport(cb_auto_dest);
+            MessageBox.Show("Airplane created!");
             resetAllBoxes();
         }
         private void resetAllBoxes()
         {
-            nud_capacity.Value = 0;
-            nud_speed.Value = 0;
-            nud_fuel.Value = 0;
+            nud_capacity.Value = 1;
+            nud_speed.Value = 1;
+            nud_fuel.Value = 1;
             cb_auto_orig.ResetText();
             cb_auto_dest.ResetText();
         }
@@ -717,36 +661,6 @@ namespace Airtraffic_Simulator
             cbSearch.Visible = true;
             lblSearch.ResetText();
 
-        }
-
-        private void rb_cargo_CheckedChanged(object sender, EventArgs e)
-        {
-            nud_blk_amount.Visible = false;
-            lb_blk_amount.Visible = false;
-            //lb_load.Visible = false;
-            //numericUpDown4.Visible = false;
-            //btn_create_plane.Visible = false;
-            cb_bulkCreate.Checked = false;
-
-            lb_load.Visible = true;
-            numericUpDown4.Visible = true;
-            btn_create_plane.Visible = true;
-            label_flight.Visible = true;
-            lb_origin.Visible = true;
-            lb_destination.Visible = true;
-            cb_auto_orig.Visible = true;
-            cb_auto_dest.Visible = true;
-            cb_bulkCreate.Visible = true;
-            lb_capacity.Visible = true;
-            lb_speed.Visible = true;
-            lb_fuel.Visible = true;
-            nud_capacity.Visible = true;
-            nud_fuel.Visible = true;
-            nud_speed.Visible = true;
-
-
-            autoCompleteAirport(cb_auto_orig);
-            autoCompleteAirport(cb_auto_dest);
         }
     }
 }
