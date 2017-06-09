@@ -32,20 +32,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblSearch = new System.Windows.Forms.Label();
             this.lbBack2 = new System.Windows.Forms.Label();
             this.cbSearch = new System.Windows.Forms.ComboBox();
             this.searchBtn = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btFastForward = new System.Windows.Forms.Button();
             this.btStop = new System.Windows.Forms.Button();
             this.btStart = new System.Windows.Forms.Button();
-            this.rbTo = new System.Windows.Forms.RadioButton();
-            this.rbFrom = new System.Windows.Forms.RadioButton();
-            this.lbBack = new System.Windows.Forms.Label();
             this.panelNameLocation = new System.Windows.Forms.Panel();
             this.lbPlaneLocation = new System.Windows.Forms.Label();
             this.lbPlaneName = new System.Windows.Forms.Label();
@@ -123,6 +118,8 @@
             this.cb_problem_airport = new System.Windows.Forms.ComboBox();
             this.lb_problem_select_name = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.cbTo = new System.Windows.Forms.CheckBox();
+            this.cbFrom = new System.Windows.Forms.CheckBox();
             this.panelDrawing = new Airtraffic_Simulator.DrawingPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -164,44 +161,27 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(260, 11);
+            this.label2.Location = new System.Drawing.Point(234, 10);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 24);
             this.label2.TabIndex = 2;
             this.label2.Text = "Flights";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(361, 11);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 24);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Airport";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel1.Controls.Add(this.cbFrom);
+            this.panel1.Controls.Add(this.cbTo);
             this.panel1.Controls.Add(this.lblSearch);
             this.panel1.Controls.Add(this.lbBack2);
             this.panel1.Controls.Add(this.cbSearch);
-            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.searchBtn);
-            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.btFastForward);
             this.panel1.Controls.Add(this.btStop);
             this.panel1.Controls.Add(this.btStart);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.rbTo);
-            this.panel1.Controls.Add(this.rbFrom);
-            this.panel1.Controls.Add(this.lbBack);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(9, 10);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
@@ -225,7 +205,7 @@
             this.lbBack2.AutoSize = true;
             this.lbBack2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.lbBack2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbBack2.Location = new System.Drawing.Point(213, 11);
+            this.lbBack2.Location = new System.Drawing.Point(188, 9);
             this.lbBack2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbBack2.Name = "lbBack2";
             this.lbBack2.Size = new System.Drawing.Size(25, 26);
@@ -248,25 +228,13 @@
             // 
             // searchBtn
             // 
-            this.searchBtn.Location = new System.Drawing.Point(612, 11);
+            this.searchBtn.Location = new System.Drawing.Point(612, 10);
             this.searchBtn.Name = "searchBtn";
             this.searchBtn.Size = new System.Drawing.Size(67, 28);
             this.searchBtn.TabIndex = 8;
             this.searchBtn.Text = "Search";
             this.searchBtn.UseVisualStyleBackColor = true;
             this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(339, 8);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(18, 26);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "|";
             // 
             // pictureBox1
             // 
@@ -282,7 +250,7 @@
             // 
             this.btFastForward.BackColor = System.Drawing.Color.Khaki;
             this.btFastForward.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.btFastForward.Location = new System.Drawing.Point(844, 9);
+            this.btFastForward.Location = new System.Drawing.Point(844, 10);
             this.btFastForward.Margin = new System.Windows.Forms.Padding(2);
             this.btFastForward.Name = "btFastForward";
             this.btFastForward.Size = new System.Drawing.Size(116, 32);
@@ -295,7 +263,7 @@
             // 
             this.btStop.BackColor = System.Drawing.Color.OrangeRed;
             this.btStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.btStop.Location = new System.Drawing.Point(775, 9);
+            this.btStop.Location = new System.Drawing.Point(775, 10);
             this.btStop.Margin = new System.Windows.Forms.Padding(2);
             this.btStop.Name = "btStop";
             this.btStop.Size = new System.Drawing.Size(65, 32);
@@ -308,7 +276,7 @@
             // 
             this.btStart.BackColor = System.Drawing.Color.LimeGreen;
             this.btStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.btStart.Location = new System.Drawing.Point(706, 9);
+            this.btStart.Location = new System.Drawing.Point(706, 10);
             this.btStart.Margin = new System.Windows.Forms.Padding(2);
             this.btStart.Name = "btStart";
             this.btStart.Size = new System.Drawing.Size(65, 32);
@@ -316,48 +284,6 @@
             this.btStart.Text = "START";
             this.btStart.UseVisualStyleBackColor = false;
             this.btStart.Click += new System.EventHandler(this.btStart_Click);
-            // 
-            // rbTo
-            // 
-            this.rbTo.AutoSize = true;
-            this.rbTo.Checked = true;
-            this.rbTo.ForeColor = System.Drawing.Color.Cornsilk;
-            this.rbTo.Location = new System.Drawing.Point(337, 17);
-            this.rbTo.Name = "rbTo";
-            this.rbTo.Size = new System.Drawing.Size(41, 17);
-            this.rbTo.TabIndex = 9;
-            this.rbTo.TabStop = true;
-            this.rbTo.Text = "To:";
-            this.rbTo.UseVisualStyleBackColor = true;
-            this.rbTo.Visible = false;
-            // 
-            // rbFrom
-            // 
-            this.rbFrom.AutoSize = true;
-            this.rbFrom.ForeColor = System.Drawing.Color.Cornsilk;
-            this.rbFrom.Location = new System.Drawing.Point(384, 17);
-            this.rbFrom.Name = "rbFrom";
-            this.rbFrom.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.rbFrom.Size = new System.Drawing.Size(51, 17);
-            this.rbFrom.TabIndex = 10;
-            this.rbFrom.TabStop = true;
-            this.rbFrom.Text = "From:";
-            this.rbFrom.UseVisualStyleBackColor = true;
-            this.rbFrom.Visible = false;
-            // 
-            // lbBack
-            // 
-            this.lbBack.AutoSize = true;
-            this.lbBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.lbBack.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbBack.Location = new System.Drawing.Point(292, 10);
-            this.lbBack.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbBack.Name = "lbBack";
-            this.lbBack.Size = new System.Drawing.Size(25, 26);
-            this.lbBack.TabIndex = 36;
-            this.lbBack.Text = "<";
-            this.lbBack.Visible = false;
-            this.lbBack.Click += new System.EventHandler(this.label16_Click);
             // 
             // panelNameLocation
             // 
@@ -647,6 +573,7 @@
             this.btAdvanced.TabIndex = 8;
             this.btAdvanced.Text = "Advanced options";
             this.btAdvanced.UseVisualStyleBackColor = false;
+            this.btAdvanced.Visible = false;
             this.btAdvanced.Click += new System.EventHandler(this.btAdvanced_Click);
             // 
             // panelAdvanced
@@ -659,7 +586,7 @@
             this.panelAdvanced.Controls.Add(this.label13);
             this.panelAdvanced.Controls.Add(this.label12);
             this.panelAdvanced.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panelAdvanced.Location = new System.Drawing.Point(7, 407);
+            this.panelAdvanced.Location = new System.Drawing.Point(7, 376);
             this.panelAdvanced.Margin = new System.Windows.Forms.Padding(2);
             this.panelAdvanced.Name = "panelAdvanced";
             this.panelAdvanced.Size = new System.Drawing.Size(188, 134);
@@ -751,7 +678,7 @@
             this.btUpdate.BackColor = System.Drawing.Color.LightSeaGreen;
             this.btUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.btUpdate.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btUpdate.Location = new System.Drawing.Point(5, 545);
+            this.btUpdate.Location = new System.Drawing.Point(5, 514);
             this.btUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.btUpdate.Name = "btUpdate";
             this.btUpdate.Size = new System.Drawing.Size(188, 46);
@@ -1246,6 +1173,30 @@
             this.lb_problem_select_name.TabIndex = 0;
             this.lb_problem_select_name.Text = "Select Airport";
             // 
+            // cbTo
+            // 
+            this.cbTo.AutoSize = true;
+            this.cbTo.ForeColor = System.Drawing.Color.Cornsilk;
+            this.cbTo.Location = new System.Drawing.Point(335, 16);
+            this.cbTo.Name = "cbTo";
+            this.cbTo.Size = new System.Drawing.Size(42, 17);
+            this.cbTo.TabIndex = 39;
+            this.cbTo.Text = "To:";
+            this.cbTo.UseVisualStyleBackColor = true;
+            this.cbTo.CheckedChanged += new System.EventHandler(this.cbTo_CheckedChanged);
+            // 
+            // cbFrom
+            // 
+            this.cbFrom.AutoSize = true;
+            this.cbFrom.ForeColor = System.Drawing.Color.Cornsilk;
+            this.cbFrom.Location = new System.Drawing.Point(383, 16);
+            this.cbFrom.Name = "cbFrom";
+            this.cbFrom.Size = new System.Drawing.Size(52, 17);
+            this.cbFrom.TabIndex = 40;
+            this.cbFrom.Text = "From:";
+            this.cbFrom.UseVisualStyleBackColor = true;
+            this.cbFrom.CheckedChanged += new System.EventHandler(this.cbFrom_CheckedChanged);
+            // 
             // panelDrawing
             // 
             this.panelDrawing.BackgroundImage = global::Airtraffic_Simulator.Properties.Resources.europemap;
@@ -1316,9 +1267,7 @@
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panelNameLocation;
         private System.Windows.Forms.Label lbPlaneLocation;
         private System.Windows.Forms.Label lbPlaneName;
@@ -1388,10 +1337,7 @@
         private System.Windows.Forms.ComboBox cbChangeDestination;
         private System.Windows.Forms.ComboBox cb_auto_dest;
         private System.Windows.Forms.ComboBox cb_auto_orig;
-        private System.Windows.Forms.RadioButton rbTo;
-        private System.Windows.Forms.RadioButton rbFrom;
         private System.Windows.Forms.ComboBox cbSearch;
-        private System.Windows.Forms.Label lbBack;
         private System.Windows.Forms.Label lbBack2;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.ToolStripMenuItem airplaneToolStripMenuItem;
@@ -1408,6 +1354,8 @@
         private System.Windows.Forms.Label lb_problem_desc_name;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.Button btn_problem_create;
+        private System.Windows.Forms.CheckBox cbFrom;
+        private System.Windows.Forms.CheckBox cbTo;
     }
 }
 

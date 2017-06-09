@@ -17,24 +17,23 @@ namespace Airtraffic_Simulator
         private Airplane selectedAirplane;
         private Airport selectedAirport;
         DataHelper helper;
-        string search = null;
 
         public Form1(Regions region)
         {
             InitializeComponent();
             airNetwork = new Network(region);
-            helper = new DataHelper(airNetwork);  
+            helper = new DataHelper(airNetwork);
             airNetwork.Airports = helper.GetAllAirports(); //consider sending the Airports of airNetwork as a parameter into GetAllAirports instead of assigning it as reference
             airNetwork.Airplanes = helper.GetAllAirplanes();
             airNetwork.Flights = helper.GetAllFlights();
             painter = new Painter();
             selectedAirplane = null;
             selectedAirport = null;
-            this.panelDrawing.Paint -=panelDrawing_Paint;
+            this.panelDrawing.Paint -= panelDrawing_Paint;
             this.panelDrawing.Paint += new PaintEventHandler(DrawNetwork);
             this.Invalidate();
-            this.panelDrawing.Paint +=panelDrawing_Paint;
-
+            this.panelDrawing.Paint += panelDrawing_Paint;
+            autoCompleteAirport(cbSearch);
             if (region == Regions.AUSTRALIA)
             {
                 this.panelDrawing.BackgroundImage = Properties.Resources.australia;
@@ -57,7 +56,7 @@ namespace Airtraffic_Simulator
             {
                 //if (a.Flight.DepartureTime.Equals(GlobalVariables.globalTime))
                 //{
-                    a.Update();
+                a.Update();
                 //}
             }
             panelDrawing.Invalidate();
@@ -77,7 +76,7 @@ namespace Airtraffic_Simulator
         private void btAdvanced_Click(object sender, EventArgs e)
         {
             if (!tc_create.Visible) {
-                
+
                 if (!panelAdvanced.Visible)
                 {
                     panelAdvanced.Visible = true;
@@ -109,20 +108,24 @@ namespace Airtraffic_Simulator
         {
             timer.Interval = 100;
         }
-     
+
         private void SelectAirplane(Point clickedLocation)
         {
+            panelAdvanced.Visible = true;
+            btUpdate.Visible = true;
             this.selectedAirplane = airNetwork.GetAirplane(clickedLocation);
             if (selectedAirplane != null)
             {
-                    // Update the panels with airplane info
-                    UpdatePanel();
-                    panelDrawing.Invalidate();
+                // Update the panels with airplane info
+                UpdatePanel();
+                panelDrawing.Invalidate();
             }
         }
 
         private void SelectAirport(Point clickedLocation)
         {
+            btUpdate.Visible = false;
+            panelAdvanced.Visible = false;
             this.selectedAirport = airNetwork.GetAirport(clickedLocation);
             if (selectedAirport != null)
             {
@@ -131,7 +134,7 @@ namespace Airtraffic_Simulator
                 panelDrawing.Invalidate();
             }
         }
-        
+
 
         private void UpdatePanel()
         {
@@ -175,15 +178,15 @@ namespace Airtraffic_Simulator
                 lbDepartureTime.Text = "-";
                 lbArrivalTime.Text = "-";
             }
-           
+
             //Make all labels visible
-            lbCapacity.Visible=true;
+            lbCapacity.Visible = true;
             lbFlightNumber.Visible = true;
             lbFuel.Visible = true;
             lbPlaneLocation.Visible = true;
             lbPlaneName.Visible = true;
             lbDepartureTime.Visible = true;
-            lbArrivalTime.Visible=true;
+            lbArrivalTime.Visible = true;
         }
 
         private void panelDrawing_MouseUp(object sender, MouseEventArgs e)
@@ -191,37 +194,37 @@ namespace Airtraffic_Simulator
             selectedAirplane = null;
             selectedAirport = null;
             string temp;
-                if (airNetwork.GetAirplane(e.Location) != null) {
-                    SelectAirplane(e.Location);
-                    temp = lbPlaneName.Text;
-                    foreach (Airplane a in airNetwork.Airplanes)
-                    {
-                        if (a.Id == temp)
-                        {
-                            selectedAirplane = a;
-                        }
-                    }
-                }
-               if (airNetwork.GetAirport(e.Location) != null)
+            if (airNetwork.GetAirplane(e.Location) != null) {
+                SelectAirplane(e.Location);
+                temp = lbPlaneName.Text;
+                foreach (Airplane a in airNetwork.Airplanes)
                 {
-                    SelectAirport(e.Location);
-                    temp = lbPlaneName.Text;
-
-                    foreach (Airport a in airNetwork.Airports)
+                    if (a.Id == temp)
                     {
-                        if (a.Name == temp)
-                        {
-                            selectedAirport = a;
-                        }
+                        selectedAirplane = a;
                     }
                 }
-               panelDrawing.Invalidate();
+            }
+            if (airNetwork.GetAirport(e.Location) != null)
+            {
+                SelectAirport(e.Location);
+                temp = lbPlaneName.Text;
+
+                foreach (Airport a in airNetwork.Airports)
+                {
+                    if (a.Name == temp)
+                    {
+                        selectedAirport = a;
+                    }
+                }
+            }
+            panelDrawing.Invalidate();
         }
 
         private void btUpdate_Click(object sender, EventArgs e)
         {
-            if(selectedAirplane!=null)
-            { 
+            if (selectedAirplane != null)
+            {
                 selectedAirplane.ChangeFuel(Convert.ToInt32(nUDChangeFuel.Value));
                 selectedAirplane.ChangeSpeed(Convert.ToInt32(nUDChangeSpeed.Value));
                 string destination = cbChangeDestination.Text;
@@ -285,7 +288,7 @@ namespace Airtraffic_Simulator
 
         private void numericUpDown3_ValueChanged(object sender, EventArgs e)
         {
-            if(nud_capacity.Value > 0 && nud_speed.Value > 0)
+            if (nud_capacity.Value > 0 && nud_speed.Value > 0)
             {
                 label_flight.Visible = true;
                 lb_origin.Visible = true;
@@ -329,7 +332,7 @@ namespace Airtraffic_Simulator
             //Flight properties
             string origin_countryName = cb_auto_orig.Text;
             string destination_countryName = cb_auto_dest.Text;
-            int loaded =Convert.ToInt32(numericUpDown4.Value);
+            int loaded = Convert.ToInt32(numericUpDown4.Value);
 
             //Find the next ID for the flight
             int id_flight = airNetwork.nextAvailableFlightId();
@@ -345,13 +348,13 @@ namespace Airtraffic_Simulator
             origin_airport = returnAirportObject(origin_countryName);
             destination_airport = returnAirportObject(destination_countryName);
 
-              if(origin_airport != null && destination_airport != null)
+            if (origin_airport != null && destination_airport != null)
             {
                 //Check if it should be a bulk create
                 if (cb_bulkCreate.Checked)
                 {
                     if (speed > 0 && fuel > 0)
-                    { 
+                    {
                         for (int i = 0; i < bulkAmount; i++)
                         {
                             id_flight++;
@@ -394,65 +397,65 @@ namespace Airtraffic_Simulator
                                 MessageBox.Show("There is more cargo on the plane than the capacity would allow!");
                             }
                         }
-                       }
+                    }
                     else
                     {
                         MessageBox.Show("Please make sure both speed and fuel are more than 0");
                     }
                     if (created)
                     {
-                        MessageBox.Show(bulkAmount +" airplanes from " + origin_countryName + " to " + destination_countryName + " were succesffully created!");
+                        MessageBox.Show(bulkAmount + " airplanes from " + origin_countryName + " to " + destination_countryName + " were succesffully created!");
                         resetAllBoxes();
                         panelDrawing.Invalidate();
                     }
                 }
                 else //Proceed with a single airplane creation
                 {
-                            if (capacity > loaded)
+                    if (capacity > loaded)
+                    {
+                        if (speed > 0 && fuel > 0)
+                        {
+                            if (rb_cargo.Checked)
                             {
-                                if(speed>0 && fuel>0)
-                                {
-                                    if (rb_cargo.Checked)
-                                      {
-                                        // Adding a cargo Airplane and Flight
-                                        //Creating the plane and flight                      
-                                         flight = new FlightCargo(id_flight.ToString(), origin_airport, destination_airport, estimatedDuration, currentTime, currentTime + estimatedDuration, loaded);
-                                         airplane = new AirplaneCargo(id_plane.ToString(), capacity, speed, fuel, origin_airport.Location);
-                                      }
-                                   else if(rb_passanger.Checked)
-                                           {
-                                             //Adding a passanger Airplane and Flight
-                                             //Creating the plane and flight                      
-                                             flight = new FlightPassenger(id_flight.ToString(), origin_airport, destination_airport, estimatedDuration, currentTime, currentTime + estimatedDuration, loaded);
-                                             airplane = new AirplanePassenger(id_plane.ToString(), capacity, speed, fuel, origin_airport.Location);
-                                           }
+                                // Adding a cargo Airplane and Flight
+                                //Creating the plane and flight                      
+                                flight = new FlightCargo(id_flight.ToString(), origin_airport, destination_airport, estimatedDuration, currentTime, currentTime + estimatedDuration, loaded);
+                                airplane = new AirplaneCargo(id_plane.ToString(), capacity, speed, fuel, origin_airport.Location);
+                            }
+                            else if (rb_passanger.Checked)
+                            {
+                                //Adding a passanger Airplane and Flight
+                                //Creating the plane and flight                      
+                                flight = new FlightPassenger(id_flight.ToString(), origin_airport, destination_airport, estimatedDuration, currentTime, currentTime + estimatedDuration, loaded);
+                                airplane = new AirplanePassenger(id_plane.ToString(), capacity, speed, fuel, origin_airport.Location);
+                            }
 
-                                if (flight != null && airplane != null)
-                                    {
-                                        created = true;
-                                        //Adding the flight to the network
-                                        airNetwork.Airplanes.Add(airplane);
-                                        //Adding the plane to the flight
-                                        airplane.AddFlight(flight);
-                                    }
-                                }
-                                else //If speed is <=0
-                                {
-                                    MessageBox.Show("Please make sure both speed and fuel are more than 0");
-                                }
-                            }
-                            else
+                            if (flight != null && airplane != null)
                             {
-                                MessageBox.Show("There is more cargo on the plane than the capacity would allow!");
+                                created = true;
+                                //Adding the flight to the network
+                                airNetwork.Airplanes.Add(airplane);
+                                //Adding the plane to the flight
+                                airplane.AddFlight(flight);
                             }
+                        }
+                        else //If speed is <=0
+                        {
+                            MessageBox.Show("Please make sure both speed and fuel are more than 0");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("There is more cargo on the plane than the capacity would allow!");
+                    }
                     if (created)
                     {
-                        MessageBox.Show("Airplane from " + origin_countryName +" to "+destination_countryName + " was succesffully created!");
+                        MessageBox.Show("Airplane from " + origin_countryName + " to " + destination_countryName + " was succesffully created!");
                         resetAllBoxes();
                         panelDrawing.Invalidate();
                     }
                 }
-                }
+            }
             else
             {
                 MessageBox.Show("Please select both origin and destination airports");
@@ -469,7 +472,7 @@ namespace Airtraffic_Simulator
             cb_auto_orig.ResetText();
             cb_auto_dest.ResetText();
         }
-     
+
         private void autoCompleteAirport(ComboBox comboBox)
         {
             comboBox.Items.Clear();
@@ -497,84 +500,87 @@ namespace Airtraffic_Simulator
             cb_auto_dest.Items.Remove(airport);
         }
 
-
         private void searchBtn_Click(object sender, EventArgs e)
         {
+            Airport tempairport = null;
+            lbBack2.Visible = true;
             string airname = cbSearch.Text;
-            if (search != null)
-            { 
-            if(search=="Airport")
+            foreach (Airport a in airNetwork.Airports)
             {
-                foreach (Airport a in airNetwork.Airports)
+                if (a.Name == airname)
                 {
-                    if (a.Name == airname)
-                    {
-                        a.Image = GlobalVariables.selectedAirport;
-                    }
+                    tempairport = a;
                 }
-                    searchBtn.Visible = false;
-                    cbSearch.Visible = false;
-                    lblSearch.Text = airname;
-             }
-                else
+            }
+            if(tempairport!=null)
+            { 
+            if (cbFrom.Checked)
+            {
+                foreach (Airplane a in airNetwork.Airplanes)
                 {
-                    if(search=="Flight")
+                    foreach (Flight f in airNetwork.Flights)
                     {
-                        if(rbFrom.Checked)
+                        if (f.DepartureAirport.Name == airname)
                         {
-                           
-                                foreach (Airplane a in airNetwork.Airplanes)
-                                {
-                                   
-                                    foreach (Flight f in airNetwork.Flights)
-                                    {
-                                    if (f.DepartureAirport.Name == airname)
-                                    {
-                                        if (a.Flight==f)
-                                        {
-                                            a.ChangeIcon(GlobalVariables.selectedAirplane);
-                                            
-                                        }
-                                    }
-                                }
-                            }
-                            searchBtn.Visible = false;
-                            cbSearch.Visible = false;
-                            lblSearch.Text = airname;
-                        }
-                        if(rbTo.Checked)
-                        {
-                            foreach (Flight f in airNetwork.Flights)
+                            if (a.Flight == f)
                             {
-                                if (f.DestinationAirport.Name == airname)
-                                {
-                                    foreach (Airplane a in airNetwork.Airplanes)
-                                    {
-                                        if (a.Flight == f)
-                                        {
-                                            a.ChangeIcon(GlobalVariables.selectedAirplane);
-                                        }
-                                    }
-                                }
+                                f.DepartureAirport.ChangeIcon(GlobalVariables.selectedAirport);
+                                a.ChangeIcon(GlobalVariables.selectedAirplane);
                             }
-                            searchBtn.Visible = false;
-                            cbSearch.Visible = false;
-                            lblSearch.Text = airname;
                         }
                     }
                 }
             }
-        }
+            if (cbTo.Checked)
+            {
+                foreach (Flight f in airNetwork.Flights)
+                {
+                    if (f.DestinationAirport.Name == airname)
+                    {
+                        foreach (Airplane a in airNetwork.Airplanes)
+                        {
+                            if (a.Flight == f)
+                            {
+                                f.DestinationAirport.ChangeIcon(GlobalVariables.selectedAirport);
+                                a.ChangeIcon(GlobalVariables.selectedAirplane);
+                            }
+                        }
+                    }
+                }
+            }
+            if (cbTo.Checked && cbFrom.Checked && tempairport != null)
+            {
+                tempairport.ChangeIcon(GlobalVariables.selectedAirport);
+                foreach (Airplane a in airNetwork.Airplanes)
+                {
+                    foreach (Flight f in airNetwork.Flights)
+                    {
+                        if (f.DepartureAirport.Name == airname || f.DestinationAirport.Name == airname)
+                        {
+                            if (a.Flight == f)
+                            {
+                                a.ChangeIcon(GlobalVariables.selectedAirplane);
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-            search = "Flight";
-            autoCompleteAirport(cbSearch);
-            rbFrom.Visible = true;
-            rbTo.Visible = true;
-            lbBack2.Visible = true;
-            label4.Visible = false;
-            label3.Visible = false;
+                            }
+
+                        }
+                    }
+                }
+            }
+        
+            if(!cbTo.Checked && !cbFrom.Checked && tempairport!=null)
+            {
+                tempairport.ChangeIcon(GlobalVariables.selectedAirport);
+            }
+            panelDrawing.Invalidate();
+            searchBtn.Visible = false;
+            cbSearch.Visible = false;
+            lblSearch.Text = airname;
+            }
+            else
+            {
+                MessageBox.Show("No such airport");
+            }
         }
 
         private void cbSearch_SelectedIndexChanged(object sender, EventArgs e)
@@ -582,66 +588,7 @@ namespace Airtraffic_Simulator
             cbSearch.ResetText();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-            search = "Airport";
-            autoCompleteAirport(cbSearch);
-            label2.Visible = false;
-            label4.Visible = false;
-            lbBack.Visible = true;
-        }
 
-        private void label16_Click(object sender, EventArgs e)
-        {
-            lbBack.Visible = false;
-            label2.Visible = true;
-            label4.Visible = true;
-            cbSearch.Text = "Airport Name";
-            foreach (Airport a in airNetwork.Airports)
-            {
-                if (a.Name == lblSearch.Text)
-                {
-                    a.Image = GlobalVariables.airport;
-                }
-            }
-            lblSearch.ResetText();
-            searchBtn.Visible = true;
-            cbSearch.Visible = true;
-        }
-
-        private void lbBack2_Click(object sender, EventArgs e)
-        {
-            cbSearch.Text = "Airport Name";
-            lbBack2.Visible = false;
-            label3.Visible = true;
-            label4.Visible = true;
-            rbFrom.Visible = false;
-            rbTo.Visible = false;
-            foreach (Flight f in airNetwork.Flights)
-            {
-                if (f.DestinationAirport.Name == lblSearch.Text || f.DepartureAirport.Name==lblSearch.Text)
-                {
-                    foreach (Airplane a in airNetwork.Airplanes)
-                    {
-                        if (a.Flight == f)
-                        {
-                            if(a is AirplaneCargo)
-                            {
-                                a.ChangeIcon(GlobalVariables.AirplaneCargo);
-                            }
-                            if (a is AirplanePassenger)
-                            {
-                                a.ChangeIcon(GlobalVariables.AirplanePassenger);
-                            }
-                        }
-                    }
-                }
-            }
-            searchBtn.Visible = true;
-            cbSearch.Visible = true;
-            lblSearch.ResetText();
-
-        }
 
         private void airplaneToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -705,6 +652,129 @@ namespace Airtraffic_Simulator
             nud_speed.Visible = true;
             autoCompleteAirport(cb_auto_orig);
             autoCompleteAirport(cb_auto_dest);
+        }
+
+        private void defaultPicturePlanes()
+        {
+            foreach (Flight f in airNetwork.Flights)
+            {
+                if (f.DestinationAirport.Name == lblSearch.Text || f.DepartureAirport.Name == lblSearch.Text)
+                {
+                    foreach (Airplane a in airNetwork.Airplanes)
+                    {
+                        if (a.Flight == f)
+                        {
+                            if (a is AirplaneCargo)
+                            {
+                                a.ChangeIcon(GlobalVariables.AirplaneCargo);
+                            }
+                            if (a is AirplanePassenger)
+                            {
+                                a.ChangeIcon(GlobalVariables.AirplanePassenger);
+                            }
+                        }
+                    }
+                }
+            }
+            panelDrawing.Invalidate();
+        }
+
+        private void lbBack2_Click(object sender, EventArgs e)
+        {
+            cbSearch.Text = "Airport Name";
+            lbBack2.Visible = false;
+            foreach(Airport a in airNetwork.Airports)
+            {
+                if(a.Name == lblSearch.Text)
+                {
+                    a.ChangeIcon(GlobalVariables.airport);
+                }
+            }
+            defaultPicturePlanes();
+            searchBtn.Visible = true;
+            cbSearch.Visible = true;
+            lblSearch.ResetText();
+        }
+
+        private void cbTo_CheckedChanged(object sender, EventArgs e)
+        {
+            defaultPicturePlanes();
+            if (cbTo.Checked)
+            {
+                foreach (Flight f in airNetwork.Flights)
+                {
+
+                    if (f.DestinationAirport.Name == lblSearch.Text)
+                    {
+                        foreach (Airplane a in airNetwork.Airplanes)
+                        {
+                            if (a.Flight == f)
+                            {
+                                a.ChangeIcon(GlobalVariables.selectedAirplane);
+                            }
+                        }
+                    }
+                }
+                panelDrawing.Invalidate();
+            }
+            if (cbFrom.Checked)
+            {
+                foreach (Airplane a in airNetwork.Airplanes)
+                {
+                    foreach (Flight f in airNetwork.Flights)
+                    {
+                        if (f.DepartureAirport.Name == lblSearch.Text)
+                        {
+                            if (a.Flight == f)
+                            {
+                                a.ChangeIcon(GlobalVariables.selectedAirplane);
+                            }
+                        }
+                    }
+                }
+                panelDrawing.Invalidate();
+            }
+        }
+
+        private void cbFrom_CheckedChanged(object sender, EventArgs e)
+        {
+            defaultPicturePlanes();
+            if (cbFrom.Checked)
+            {
+                foreach (Airplane a in airNetwork.Airplanes)
+                {
+                    foreach (Flight f in airNetwork.Flights)
+                    {
+                        if (f.DepartureAirport.Name == lblSearch.Text)
+                        {
+                            if (a.Flight == f)
+                            {
+                                a.ChangeIcon(GlobalVariables.selectedAirplane);
+                            }
+                        }
+                    }
+                }
+                panelDrawing.Invalidate();
+            }
+            if (cbTo.Checked)
+            {
+                foreach (Flight f in airNetwork.Flights)
+                {
+
+                    if (f.DestinationAirport.Name == lblSearch.Text)
+                    {
+                        foreach (Airplane a in airNetwork.Airplanes)
+                        {
+                            if (a.Flight == f)
+                            {
+                                a.ChangeIcon(GlobalVariables.selectedAirplane);
+                            }
+                        }
+                    }
+                }
+                panelDrawing.Invalidate();
+            }
+
         }
     }
 }
