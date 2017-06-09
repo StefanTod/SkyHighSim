@@ -259,18 +259,9 @@ namespace Airtraffic_Simulator
 
         private void rb_passanger_CheckedChanged(object sender, EventArgs e)
         {
-            //label_flight.Visible = false;
-            //lb_origin.Visible = false;
-            //lb_destination.Visible = false;
-            //cb_auto_orig.Visible = false;
-            //cb_auto_dest.Visible = false;
             nud_blk_amount.Visible = false;
             lb_blk_amount.Visible = false;
-            //lb_load.Visible = false;
-            //numericUpDown4.Visible = false;
-            //btn_create_plane.Visible = false;
             cb_bulkCreate.Checked = false;
-
             lb_load.Visible = true;
             numericUpDown4.Visible = true;
             btn_create_plane.Visible = true;
@@ -319,8 +310,10 @@ namespace Airtraffic_Simulator
             }
         }
 
+        bool created;
         private void btn_create_plane_Click(object sender, EventArgs e)
         {
+            created = false;
             //Time Helpers
             TimeSpan estimatedDuration = new TimeSpan(02, 25, 00);
             DateTime currentTime = DateTime.Now;
@@ -349,108 +342,51 @@ namespace Airtraffic_Simulator
 
             //Bulk properties
             int bulkAmount = Convert.ToInt32(nud_blk_amount.Value);
-
-
             origin_airport = returnAirportObject(origin_countryName);
-            origin_airport = returnAirportObject(destination_countryName);
+            destination_airport = returnAirportObject(destination_countryName);
 
               if(origin_airport != null && destination_airport != null)
             {
                 //Check if it should be a bulk create
                 if (cb_bulkCreate.Checked)
                 {
-                    for (int i = 0; i < bulkAmount; i++)
-                    {
-                        id_flight++;
-                        id_plane++;
-                        if (rb_passanger.Checked)
+                    if (speed > 0 && fuel > 0)
+                    { 
+                        for (int i = 0; i < bulkAmount; i++)
                         {
+                            id_flight++;
+                            id_plane++;
                             if (capacity > loaded)
-                            {  //Adding a passanger Airplane and Flight
-                               //Creating the plane and flight                      
-                                flight = new FlightPassenger(id_flight.ToString(), origin_airport, destination_airport, estimatedDuration, currentTime, currentTime + estimatedDuration, loaded);
-                                airplane = new AirplanePassenger(id_plane.ToString(), capacity, speed, fuel, origin_airport.Location);
-                                if (flight != null && airplane != null)
-                                {
-                                    //Adding the flight to the network
-                                    airNetwork.Airplanes.Add(airplane);
-                                    //Adding the plane to the flight
-                                    airplane.AddFlight(flight);
-                                }
-                            }
-                            else
                             {
-                                MessageBox.Show("There is more passengers on the plane than the capacity would allow!");
-                            }
-                        }
-                        else
-                        {
-                            if (rb_cargo.Checked)
-                            {
-                                if (capacity > loaded)
+                                if (speed > 0 && fuel > 0)
                                 {
-                                    // Adding a cargo Airplane and Flight
-                                    //Creating the plane and flight                      
-                                    flight = new FlightCargo(id_flight.ToString(), origin_airport, destination_airport, estimatedDuration, currentTime, currentTime + estimatedDuration, loaded);
-                                    airplane = new AirplaneCargo(id_plane.ToString(), capacity, speed, fuel, origin_airport.Location);
+                                    if (rb_cargo.Checked)
+                                    {
+                                        // Adding a cargo Airplane and Flight
+                                        //Creating the plane and flight                      
+                                        flight = new FlightCargo(id_flight.ToString(), origin_airport, destination_airport, estimatedDuration, currentTime, currentTime + estimatedDuration, loaded);
+                                        airplane = new AirplaneCargo(id_plane.ToString(), capacity, speed, fuel, origin_airport.Location);
+                                    }
+                                    else if (rb_passanger.Checked)
+                                    {
+                                        //Adding a passanger Airplane and Flight
+                                        //Creating the plane and flight                      
+                                        flight = new FlightPassenger(id_flight.ToString(), origin_airport, destination_airport, estimatedDuration, currentTime, currentTime + estimatedDuration, loaded);
+                                        airplane = new AirplanePassenger(id_plane.ToString(), capacity, speed, fuel, origin_airport.Location);
+                                    }
+
                                     if (flight != null && airplane != null)
                                     {
+                                        created = true;
                                         //Adding the flight to the network
                                         airNetwork.Airplanes.Add(airplane);
                                         //Adding the plane to the flight
                                         airplane.AddFlight(flight);
                                     }
                                 }
-                                else
+                                else //If speed is <=0
                                 {
-                                    MessageBox.Show("There is more cargo on the plane than the capacity would allow!");
-                                }
-
-                            }
-                        }
-              
-                    }
-
-                }
-                else //Proceed with a single airplane creation
-                {
-                    if (rb_passanger.Checked)
-                    {
-                        if (capacity > loaded)
-                        {
-                            //Adding a passanger Airplane and Flight
-                            //Creating the plane and flight                      
-                            flight = new FlightPassenger(id_flight.ToString(), origin_airport, destination_airport, estimatedDuration, currentTime, currentTime + estimatedDuration, loaded);
-                            airplane = new AirplanePassenger(id_plane.ToString(), capacity, speed, fuel, origin_airport.Location);
-                            if (flight != null && airplane != null)
-                            {
-                                //Adding the flight to the network
-                                airNetwork.Airplanes.Add(airplane);
-                                //Adding the plane to the flight
-                                airplane.AddFlight(flight);
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("There is more passengers on the plane than the capacity would allow!");
-                        }
-                    }
-                    else
-                    {
-                        if (rb_cargo.Checked)
-                        {
-                            if (capacity > loaded)
-                            {
-                                // Adding a cargo Airplane and Flight
-                                //Creating the plane and flight                      
-                                flight = new FlightCargo(id_flight.ToString(), origin_airport, destination_airport, estimatedDuration, currentTime, currentTime + estimatedDuration, loaded);
-                                airplane = new AirplaneCargo(id_plane.ToString(), capacity, speed, fuel, origin_airport.Location);
-                                if (flight != null && airplane != null)
-                                {
-                                    //Adding the flight to the network
-                                    airNetwork.Airplanes.Add(airplane);
-                                    //Adding the plane to the flight
-                                    airplane.AddFlight(flight);
+                                    MessageBox.Show("Please make sure both speed and fuel are more than 0");
                                 }
                             }
                             else
@@ -458,24 +394,78 @@ namespace Airtraffic_Simulator
                                 MessageBox.Show("There is more cargo on the plane than the capacity would allow!");
                             }
                         }
+                       }
+                    else
+                    {
+                        MessageBox.Show("Please make sure both speed and fuel are more than 0");
                     }
-
+                    if (created)
+                    {
+                        MessageBox.Show(bulkAmount +" airplanes from " + origin_countryName + " to " + destination_countryName + " were succesffully created!");
+                        resetAllBoxes();
+                        panelDrawing.Invalidate();
+                    }
                 }
-            }
+                else //Proceed with a single airplane creation
+                {
+                            if (capacity > loaded)
+                            {
+                                if(speed>0 && fuel>0)
+                                {
+                                    if (rb_cargo.Checked)
+                                      {
+                                        // Adding a cargo Airplane and Flight
+                                        //Creating the plane and flight                      
+                                         flight = new FlightCargo(id_flight.ToString(), origin_airport, destination_airport, estimatedDuration, currentTime, currentTime + estimatedDuration, loaded);
+                                         airplane = new AirplaneCargo(id_plane.ToString(), capacity, speed, fuel, origin_airport.Location);
+                                      }
+                                   else if(rb_passanger.Checked)
+                                           {
+                                             //Adding a passanger Airplane and Flight
+                                             //Creating the plane and flight                      
+                                             flight = new FlightPassenger(id_flight.ToString(), origin_airport, destination_airport, estimatedDuration, currentTime, currentTime + estimatedDuration, loaded);
+                                             airplane = new AirplanePassenger(id_plane.ToString(), capacity, speed, fuel, origin_airport.Location);
+                                           }
+
+                                if (flight != null && airplane != null)
+                                    {
+                                        created = true;
+                                        //Adding the flight to the network
+                                        airNetwork.Airplanes.Add(airplane);
+                                        //Adding the plane to the flight
+                                        airplane.AddFlight(flight);
+                                    }
+                                }
+                                else //If speed is <=0
+                                {
+                                    MessageBox.Show("Please make sure both speed and fuel are more than 0");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("There is more cargo on the plane than the capacity would allow!");
+                            }
+                    if (created)
+                    {
+                        MessageBox.Show("Airplane from " + origin_countryName +" to "+destination_countryName + " was succesffully created!");
+                        resetAllBoxes();
+                        panelDrawing.Invalidate();
+                    }
+                }
+                }
             else
             {
                 MessageBox.Show("Please select both origin and destination airports");
             }
             autoCompleteAirport(cb_auto_orig);
             autoCompleteAirport(cb_auto_dest);
-            MessageBox.Show("Airplane created!");
-            resetAllBoxes();
         }
         private void resetAllBoxes()
         {
-            nud_capacity.Value = 1;
-            nud_speed.Value = 1;
-            nud_fuel.Value = 1;
+            nud_capacity.Value = 0;
+            nud_speed.Value = 0;
+            nud_fuel.Value = 0;
+            numericUpDown4.Value = 0;
             cb_auto_orig.ResetText();
             cb_auto_dest.ResetText();
         }
@@ -691,6 +681,30 @@ namespace Airtraffic_Simulator
                 }
             }
             return null;
+        }
+
+        private void rb_cargo_CheckedChanged(object sender, EventArgs e)
+        {
+            nud_blk_amount.Visible = false;
+            lb_blk_amount.Visible = false;
+            cb_bulkCreate.Checked = false;
+            lb_load.Visible = true;
+            numericUpDown4.Visible = true;
+            btn_create_plane.Visible = true;
+            label_flight.Visible = true;
+            lb_origin.Visible = true;
+            lb_destination.Visible = true;
+            cb_auto_orig.Visible = true;
+            cb_auto_dest.Visible = true;
+            cb_bulkCreate.Visible = true;
+            lb_capacity.Visible = true;
+            lb_speed.Visible = true;
+            lb_fuel.Visible = true;
+            nud_capacity.Visible = true;
+            nud_fuel.Visible = true;
+            nud_speed.Visible = true;
+            autoCompleteAirport(cb_auto_orig);
+            autoCompleteAirport(cb_auto_dest);
         }
     }
 }

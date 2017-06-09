@@ -87,6 +87,9 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.airplaneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.airportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.problemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tc_create = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.cb_auto_dest = new System.Windows.Forms.ComboBox();
@@ -109,21 +112,18 @@
             this.rb_cargo = new System.Windows.Forms.RadioButton();
             this.rb_passanger = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panelDrawing = new Airtraffic_Simulator.DrawingPanel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.airplaneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.airportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.problemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lb_problem_select_name = new System.Windows.Forms.Label();
-            this.cb_problem_airport = new System.Windows.Forms.ComboBox();
-            this.lb_problem_desc_name = new System.Windows.Forms.Label();
-            this.tb_problem_desc = new System.Windows.Forms.TextBox();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.nud_prob_day = new System.Windows.Forms.NumericUpDown();
-            this.nud_prob_hour = new System.Windows.Forms.NumericUpDown();
-            this.nud_prob_min = new System.Windows.Forms.NumericUpDown();
-            this.lb_prob_Time_desc = new System.Windows.Forms.Label();
             this.btn_problem_create = new System.Windows.Forms.Button();
+            this.lb_prob_Time_desc = new System.Windows.Forms.Label();
+            this.nud_prob_min = new System.Windows.Forms.NumericUpDown();
+            this.nud_prob_hour = new System.Windows.Forms.NumericUpDown();
+            this.nud_prob_day = new System.Windows.Forms.NumericUpDown();
+            this.tb_problem_desc = new System.Windows.Forms.TextBox();
+            this.lb_problem_desc_name = new System.Windows.Forms.Label();
+            this.cb_problem_airport = new System.Windows.Forms.ComboBox();
+            this.lb_problem_select_name = new System.Windows.Forms.Label();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.panelDrawing = new Airtraffic_Simulator.DrawingPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelNameLocation.SuspendLayout();
@@ -141,10 +141,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_speed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_blk_amount)).BeginInit();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_prob_day)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_prob_hour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_prob_min)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_prob_hour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_prob_day)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -678,14 +678,34 @@
             // 
             // nUDChangeSpeed
             // 
+            this.nUDChangeSpeed.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.nUDChangeSpeed.Location = new System.Drawing.Point(5, 26);
+            this.nUDChangeSpeed.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.nUDChangeSpeed.Name = "nUDChangeSpeed";
             this.nUDChangeSpeed.Size = new System.Drawing.Size(177, 20);
             this.nUDChangeSpeed.TabIndex = 21;
             // 
             // nUDChangeFuel
             // 
+            this.nUDChangeFuel.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.nUDChangeFuel.Location = new System.Drawing.Point(6, 69);
+            this.nUDChangeFuel.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.nUDChangeFuel.Name = "nUDChangeFuel";
             this.nUDChangeFuel.Size = new System.Drawing.Size(177, 20);
             this.nUDChangeFuel.TabIndex = 20;
@@ -819,7 +839,7 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.customizeToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // customizeToolStripMenuItem
@@ -829,9 +849,28 @@
             this.airportToolStripMenuItem,
             this.problemToolStripMenuItem});
             this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.customizeToolStripMenuItem.Text = "&Create";
             this.customizeToolStripMenuItem.Click += new System.EventHandler(this.customizeToolStripMenuItem_Click);
+            // 
+            // airplaneToolStripMenuItem
+            // 
+            this.airplaneToolStripMenuItem.Name = "airplaneToolStripMenuItem";
+            this.airplaneToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.airplaneToolStripMenuItem.Text = "Airplane";
+            this.airplaneToolStripMenuItem.Click += new System.EventHandler(this.airplaneToolStripMenuItem_Click);
+            // 
+            // airportToolStripMenuItem
+            // 
+            this.airportToolStripMenuItem.Name = "airportToolStripMenuItem";
+            this.airportToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.airportToolStripMenuItem.Text = "Airport";
+            // 
+            // problemToolStripMenuItem
+            // 
+            this.problemToolStripMenuItem.Name = "problemToolStripMenuItem";
+            this.problemToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.problemToolStripMenuItem.Text = "Problem";
             // 
             // tc_create
             // 
@@ -920,11 +959,6 @@
             this.numericUpDown4.Name = "numericUpDown4";
             this.numericUpDown4.Size = new System.Drawing.Size(41, 20);
             this.numericUpDown4.TabIndex = 31;
-            this.numericUpDown4.Value = new decimal(new int[] {
-            150,
-            0,
-            0,
-            0});
             this.numericUpDown4.Visible = false;
             // 
             // lb_load
@@ -969,49 +1003,39 @@
             // 
             // nud_fuel
             // 
-            this.nud_fuel.Location = new System.Drawing.Point(104, 104);
-            this.nud_fuel.Maximum = new decimal(new int[] {
-            500,
+            this.nud_fuel.Increment = new decimal(new int[] {
+            20,
             0,
             0,
             0});
-            this.nud_fuel.Minimum = new decimal(new int[] {
-            1,
+            this.nud_fuel.Location = new System.Drawing.Point(104, 104);
+            this.nud_fuel.Maximum = new decimal(new int[] {
+            1000,
             0,
             0,
             0});
             this.nud_fuel.Name = "nud_fuel";
             this.nud_fuel.Size = new System.Drawing.Size(73, 20);
             this.nud_fuel.TabIndex = 25;
-            this.nud_fuel.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.nud_fuel.Visible = false;
             this.nud_fuel.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
             // 
             // nud_capacity
             // 
+            this.nud_capacity.Increment = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             this.nud_capacity.Location = new System.Drawing.Point(104, 58);
             this.nud_capacity.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
-            this.nud_capacity.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.nud_capacity.Name = "nud_capacity";
             this.nud_capacity.Size = new System.Drawing.Size(73, 20);
             this.nud_capacity.TabIndex = 24;
-            this.nud_capacity.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.nud_capacity.Visible = false;
             // 
             // lb_fuel
@@ -1046,25 +1070,20 @@
             // 
             // nud_speed
             // 
-            this.nud_speed.Location = new System.Drawing.Point(104, 81);
-            this.nud_speed.Maximum = new decimal(new int[] {
-            500,
+            this.nud_speed.Increment = new decimal(new int[] {
+            20,
             0,
             0,
             0});
-            this.nud_speed.Minimum = new decimal(new int[] {
-            1,
+            this.nud_speed.Location = new System.Drawing.Point(104, 81);
+            this.nud_speed.Maximum = new decimal(new int[] {
+            1000,
             0,
             0,
             0});
             this.nud_speed.Name = "nud_speed";
             this.nud_speed.Size = new System.Drawing.Size(73, 20);
             this.nud_speed.TabIndex = 20;
-            this.nud_speed.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.nud_speed.Visible = false;
             // 
             // nud_blk_amount
@@ -1109,19 +1128,17 @@
             this.rb_cargo.Name = "rb_cargo";
             this.rb_cargo.Size = new System.Drawing.Size(53, 17);
             this.rb_cargo.TabIndex = 1;
-            this.rb_cargo.TabStop = true;
             this.rb_cargo.Text = "Cargo";
             this.rb_cargo.UseVisualStyleBackColor = true;
+            this.rb_cargo.CheckedChanged += new System.EventHandler(this.rb_cargo_CheckedChanged);
             // 
             // rb_passanger
             // 
             this.rb_passanger.AutoSize = true;
-            this.rb_passanger.Checked = true;
             this.rb_passanger.Location = new System.Drawing.Point(5, 6);
             this.rb_passanger.Name = "rb_passanger";
             this.rb_passanger.Size = new System.Drawing.Size(75, 17);
             this.rb_passanger.TabIndex = 0;
-            this.rb_passanger.TabStop = true;
             this.rb_passanger.Text = "Passanger";
             this.rb_passanger.UseVisualStyleBackColor = true;
             this.rb_passanger.CheckedChanged += new System.EventHandler(this.rb_passanger_CheckedChanged);
@@ -1135,18 +1152,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Airport";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // panelDrawing
-            // 
-            this.panelDrawing.BackgroundImage = global::Airtraffic_Simulator.Properties.Resources.europemap;
-            this.panelDrawing.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelDrawing.Location = new System.Drawing.Point(202, 60);
-            this.panelDrawing.Margin = new System.Windows.Forms.Padding(2);
-            this.panelDrawing.Name = "panelDrawing";
-            this.panelDrawing.Size = new System.Drawing.Size(1064, 621);
-            this.panelDrawing.TabIndex = 12;
-            this.panelDrawing.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDrawing_Paint);
-            this.panelDrawing.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelDrawing_MouseUp);
             // 
             // tabPage3
             // 
@@ -1166,33 +1171,61 @@
             this.tabPage3.Text = "Problem";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // airplaneToolStripMenuItem
+            // btn_problem_create
             // 
-            this.airplaneToolStripMenuItem.Name = "airplaneToolStripMenuItem";
-            this.airplaneToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.airplaneToolStripMenuItem.Text = "Airplane";
-            this.airplaneToolStripMenuItem.Click += new System.EventHandler(this.airplaneToolStripMenuItem_Click);
+            this.btn_problem_create.Location = new System.Drawing.Point(6, 184);
+            this.btn_problem_create.Name = "btn_problem_create";
+            this.btn_problem_create.Size = new System.Drawing.Size(99, 23);
+            this.btn_problem_create.TabIndex = 8;
+            this.btn_problem_create.Text = "Create Problem";
+            this.btn_problem_create.UseVisualStyleBackColor = true;
+            this.btn_problem_create.Click += new System.EventHandler(this.btn_problem_create_Click);
             // 
-            // airportToolStripMenuItem
+            // lb_prob_Time_desc
             // 
-            this.airportToolStripMenuItem.Name = "airportToolStripMenuItem";
-            this.airportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.airportToolStripMenuItem.Text = "Airport";
+            this.lb_prob_Time_desc.AutoSize = true;
+            this.lb_prob_Time_desc.Location = new System.Drawing.Point(4, 110);
+            this.lb_prob_Time_desc.Name = "lb_prob_Time_desc";
+            this.lb_prob_Time_desc.Size = new System.Drawing.Size(150, 13);
+            this.lb_prob_Time_desc.TabIndex = 7;
+            this.lb_prob_Time_desc.Text = "Days          Hours        Minutes";
             // 
-            // problemToolStripMenuItem
+            // nud_prob_min
             // 
-            this.problemToolStripMenuItem.Name = "problemToolStripMenuItem";
-            this.problemToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.problemToolStripMenuItem.Text = "Problem";
+            this.nud_prob_min.Location = new System.Drawing.Point(115, 129);
+            this.nud_prob_min.Name = "nud_prob_min";
+            this.nud_prob_min.Size = new System.Drawing.Size(48, 20);
+            this.nud_prob_min.TabIndex = 6;
             // 
-            // lb_problem_select_name
+            // nud_prob_hour
             // 
-            this.lb_problem_select_name.AutoSize = true;
-            this.lb_problem_select_name.Location = new System.Drawing.Point(4, 6);
-            this.lb_problem_select_name.Name = "lb_problem_select_name";
-            this.lb_problem_select_name.Size = new System.Drawing.Size(70, 13);
-            this.lb_problem_select_name.TabIndex = 0;
-            this.lb_problem_select_name.Text = "Select Airport";
+            this.nud_prob_hour.Location = new System.Drawing.Point(61, 129);
+            this.nud_prob_hour.Name = "nud_prob_hour";
+            this.nud_prob_hour.Size = new System.Drawing.Size(48, 20);
+            this.nud_prob_hour.TabIndex = 5;
+            // 
+            // nud_prob_day
+            // 
+            this.nud_prob_day.Location = new System.Drawing.Point(7, 129);
+            this.nud_prob_day.Name = "nud_prob_day";
+            this.nud_prob_day.Size = new System.Drawing.Size(48, 20);
+            this.nud_prob_day.TabIndex = 4;
+            // 
+            // tb_problem_desc
+            // 
+            this.tb_problem_desc.Location = new System.Drawing.Point(6, 73);
+            this.tb_problem_desc.Name = "tb_problem_desc";
+            this.tb_problem_desc.Size = new System.Drawing.Size(179, 20);
+            this.tb_problem_desc.TabIndex = 3;
+            // 
+            // lb_problem_desc_name
+            // 
+            this.lb_problem_desc_name.AutoSize = true;
+            this.lb_problem_desc_name.Location = new System.Drawing.Point(6, 53);
+            this.lb_problem_desc_name.Name = "lb_problem_desc_name";
+            this.lb_problem_desc_name.Size = new System.Drawing.Size(92, 13);
+            this.lb_problem_desc_name.TabIndex = 2;
+            this.lb_problem_desc_name.Text = "Provide a problem";
             // 
             // cb_problem_airport
             // 
@@ -1204,68 +1237,32 @@
             this.cb_problem_airport.Size = new System.Drawing.Size(121, 21);
             this.cb_problem_airport.TabIndex = 1;
             // 
-            // lb_problem_desc_name
+            // lb_problem_select_name
             // 
-            this.lb_problem_desc_name.AutoSize = true;
-            this.lb_problem_desc_name.Location = new System.Drawing.Point(6, 53);
-            this.lb_problem_desc_name.Name = "lb_problem_desc_name";
-            this.lb_problem_desc_name.Size = new System.Drawing.Size(92, 13);
-            this.lb_problem_desc_name.TabIndex = 2;
-            this.lb_problem_desc_name.Text = "Provide a problem";
+            this.lb_problem_select_name.AutoSize = true;
+            this.lb_problem_select_name.Location = new System.Drawing.Point(4, 6);
+            this.lb_problem_select_name.Name = "lb_problem_select_name";
+            this.lb_problem_select_name.Size = new System.Drawing.Size(70, 13);
+            this.lb_problem_select_name.TabIndex = 0;
+            this.lb_problem_select_name.Text = "Select Airport";
             // 
-            // tb_problem_desc
+            // panelDrawing
             // 
-            this.tb_problem_desc.Location = new System.Drawing.Point(6, 73);
-            this.tb_problem_desc.Name = "tb_problem_desc";
-            this.tb_problem_desc.Size = new System.Drawing.Size(179, 20);
-            this.tb_problem_desc.TabIndex = 3;
-            // 
-            // nud_prob_day
-            // 
-            this.nud_prob_day.Location = new System.Drawing.Point(7, 129);
-            this.nud_prob_day.Name = "nud_prob_day";
-            this.nud_prob_day.Size = new System.Drawing.Size(48, 20);
-            this.nud_prob_day.TabIndex = 4;
-            // 
-            // nud_prob_hour
-            // 
-            this.nud_prob_hour.Location = new System.Drawing.Point(61, 129);
-            this.nud_prob_hour.Name = "nud_prob_hour";
-            this.nud_prob_hour.Size = new System.Drawing.Size(48, 20);
-            this.nud_prob_hour.TabIndex = 5;
-            // 
-            // nud_prob_min
-            // 
-            this.nud_prob_min.Location = new System.Drawing.Point(115, 129);
-            this.nud_prob_min.Name = "nud_prob_min";
-            this.nud_prob_min.Size = new System.Drawing.Size(48, 20);
-            this.nud_prob_min.TabIndex = 6;
-            // 
-            // lb_prob_Time_desc
-            // 
-            this.lb_prob_Time_desc.AutoSize = true;
-            this.lb_prob_Time_desc.Location = new System.Drawing.Point(4, 110);
-            this.lb_prob_Time_desc.Name = "lb_prob_Time_desc";
-            this.lb_prob_Time_desc.Size = new System.Drawing.Size(150, 13);
-            this.lb_prob_Time_desc.TabIndex = 7;
-            this.lb_prob_Time_desc.Text = "Days          Hours        Minutes";
-            // 
-            // btn_problem_create
-            // 
-            this.btn_problem_create.Location = new System.Drawing.Point(6, 184);
-            this.btn_problem_create.Name = "btn_problem_create";
-            this.btn_problem_create.Size = new System.Drawing.Size(99, 23);
-            this.btn_problem_create.TabIndex = 8;
-            this.btn_problem_create.Text = "Create Problem";
-            this.btn_problem_create.UseVisualStyleBackColor = true;
-            this.btn_problem_create.Click += new System.EventHandler(this.btn_problem_create_Click);
+            this.panelDrawing.BackgroundImage = global::Airtraffic_Simulator.Properties.Resources.europemap;
+            this.panelDrawing.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelDrawing.Location = new System.Drawing.Point(202, 60);
+            this.panelDrawing.Margin = new System.Windows.Forms.Padding(2);
+            this.panelDrawing.Name = "panelDrawing";
+            this.panelDrawing.Size = new System.Drawing.Size(1064, 621);
+            this.panelDrawing.TabIndex = 12;
+            this.panelDrawing.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDrawing_Paint);
+            this.panelDrawing.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelDrawing_MouseUp);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 679);
-            this.Controls.Add(this.tc_create);
             this.Controls.Add(this.btAdvanced);
             this.Controls.Add(this.panelDrawing);
             this.Controls.Add(this.menuStrip1);
@@ -1275,6 +1272,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelAdvanced);
             this.Controls.Add(this.btUpdate);
+            this.Controls.Add(this.tc_create);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(1280, 718);
@@ -1306,10 +1304,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_blk_amount)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_prob_day)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_prob_hour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_prob_min)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_prob_hour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_prob_day)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
