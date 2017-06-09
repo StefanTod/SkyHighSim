@@ -673,9 +673,9 @@ namespace Airtraffic_Simulator
             string target_airport = cb_problem_airport.Text;
             string problem_type = tb_problem_desc.Text;
             TimeSpan problem_duration = new TimeSpan(Convert.ToInt16(nud_prob_day.Value), Convert.ToInt16(nud_prob_hour.Value), Convert.ToInt16(nud_prob_min.Value),0);
-            Airport target_airport_object = returnAirportObject(target_airport)
+            Airport target_airport_object = returnAirportObject(target_airport);
             //Problem object
-            airNetwork.AddProblem(problem_type, problem_duration);
+            airNetwork.AddProblem(target_airport_object,problem_type, problem_duration);
 
             //Assign and create problem
         }
