@@ -111,6 +111,7 @@ namespace Airtraffic_Simulator
 
         private void SelectAirplane(Point clickedLocation)
         {
+            tc_create.Visible = false;
             panelAdvanced.Visible = true;
             btUpdate.Visible = true;
             this.selectedAirplane = airNetwork.GetAirplane(clickedLocation);

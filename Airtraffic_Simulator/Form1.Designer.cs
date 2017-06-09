@@ -33,6 +33,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbFrom = new System.Windows.Forms.CheckBox();
+            this.cbTo = new System.Windows.Forms.CheckBox();
             this.lblSearch = new System.Windows.Forms.Label();
             this.lbBack2 = new System.Windows.Forms.Label();
             this.cbSearch = new System.Windows.Forms.ComboBox();
@@ -118,8 +120,6 @@
             this.cb_problem_airport = new System.Windows.Forms.ComboBox();
             this.lb_problem_select_name = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.cbTo = new System.Windows.Forms.CheckBox();
-            this.cbFrom = new System.Windows.Forms.CheckBox();
             this.panelDrawing = new Airtraffic_Simulator.DrawingPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -188,6 +188,30 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1257, 49);
             this.panel1.TabIndex = 4;
+            // 
+            // cbFrom
+            // 
+            this.cbFrom.AutoSize = true;
+            this.cbFrom.ForeColor = System.Drawing.Color.Cornsilk;
+            this.cbFrom.Location = new System.Drawing.Point(383, 16);
+            this.cbFrom.Name = "cbFrom";
+            this.cbFrom.Size = new System.Drawing.Size(52, 17);
+            this.cbFrom.TabIndex = 40;
+            this.cbFrom.Text = "From:";
+            this.cbFrom.UseVisualStyleBackColor = true;
+            this.cbFrom.CheckedChanged += new System.EventHandler(this.cbFrom_CheckedChanged);
+            // 
+            // cbTo
+            // 
+            this.cbTo.AutoSize = true;
+            this.cbTo.ForeColor = System.Drawing.Color.Cornsilk;
+            this.cbTo.Location = new System.Drawing.Point(335, 16);
+            this.cbTo.Name = "cbTo";
+            this.cbTo.Size = new System.Drawing.Size(42, 17);
+            this.cbTo.TabIndex = 39;
+            this.cbTo.Text = "To:";
+            this.cbTo.UseVisualStyleBackColor = true;
+            this.cbTo.CheckedChanged += new System.EventHandler(this.cbTo_CheckedChanged);
             // 
             // lblSearch
             // 
@@ -804,7 +828,7 @@
             this.tc_create.Controls.Add(this.tabPage1);
             this.tc_create.Controls.Add(this.tabPage2);
             this.tc_create.Controls.Add(this.tabPage3);
-            this.tc_create.Location = new System.Drawing.Point(0, 407);
+            this.tc_create.Location = new System.Drawing.Point(0, 373);
             this.tc_create.Name = "tc_create";
             this.tc_create.SelectedIndex = 0;
             this.tc_create.Size = new System.Drawing.Size(200, 245);
@@ -1173,30 +1197,6 @@
             this.lb_problem_select_name.TabIndex = 0;
             this.lb_problem_select_name.Text = "Select Airport";
             // 
-            // cbTo
-            // 
-            this.cbTo.AutoSize = true;
-            this.cbTo.ForeColor = System.Drawing.Color.Cornsilk;
-            this.cbTo.Location = new System.Drawing.Point(335, 16);
-            this.cbTo.Name = "cbTo";
-            this.cbTo.Size = new System.Drawing.Size(42, 17);
-            this.cbTo.TabIndex = 39;
-            this.cbTo.Text = "To:";
-            this.cbTo.UseVisualStyleBackColor = true;
-            this.cbTo.CheckedChanged += new System.EventHandler(this.cbTo_CheckedChanged);
-            // 
-            // cbFrom
-            // 
-            this.cbFrom.AutoSize = true;
-            this.cbFrom.ForeColor = System.Drawing.Color.Cornsilk;
-            this.cbFrom.Location = new System.Drawing.Point(383, 16);
-            this.cbFrom.Name = "cbFrom";
-            this.cbFrom.Size = new System.Drawing.Size(52, 17);
-            this.cbFrom.TabIndex = 40;
-            this.cbFrom.Text = "From:";
-            this.cbFrom.UseVisualStyleBackColor = true;
-            this.cbFrom.CheckedChanged += new System.EventHandler(this.cbFrom_CheckedChanged);
-            // 
             // panelDrawing
             // 
             this.panelDrawing.BackgroundImage = global::Airtraffic_Simulator.Properties.Resources.europemap;
@@ -1214,16 +1214,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 679);
-            this.Controls.Add(this.btAdvanced);
             this.Controls.Add(this.panelDrawing);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panelTime);
             this.Controls.Add(this.panelDetails);
             this.Controls.Add(this.panelNameLocation);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panelAdvanced);
             this.Controls.Add(this.btUpdate);
             this.Controls.Add(this.tc_create);
+            this.Controls.Add(this.panelAdvanced);
+            this.Controls.Add(this.btAdvanced);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(1280, 718);
