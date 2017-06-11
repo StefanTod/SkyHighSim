@@ -472,6 +472,10 @@ namespace Airtraffic_Simulator
             numericUpDown4.Value = 0;
             cb_auto_orig.ResetText();
             cb_auto_dest.ResetText();
+
+            tbAirportName.ResetText();
+            numUpDownAirportCapacity.Value = 0;
+            numUpDownNrOfLanes.Value = 0;
         }
 
         private void autoCompleteAirport(ComboBox comboBox)
@@ -777,6 +781,67 @@ namespace Airtraffic_Simulator
             }
 
         }
+
+        bool airportCreated;
+
+        private void btCreateAirport_Click(object sender, EventArgs e)
+        {
+            airportCreated = false;
+
+            //Airport properties
+            string airportName = tbAirportName.Text;
+            int airportCapacity = Convert.ToInt32(numUpDownAirportCapacity.Value);
+            int numberOfLanes = Convert.ToInt32(numUpDownNrOfLanes.Value);
+            PointF location = new PointF(1,1);
+
+            //initializing Airport objects to be passed
+            Airport airportToBeCreated = null;
+
+            //Bulk properties
+            int bulkAmount = Convert.ToInt32(numUpDownBulk.Value);
+            
+            if (checkBoxBulk.Checked)
+            {
+                for (int i = 0; i < bulkAmount; i++)
+                {
+                    airportToBeCreated = new Airport(airportName, airportCapacity, location, numberOfLanes);
+                }
+
+                if (airportToBeCreated != null)
+                {
+                    airportCreated = true;
+                    airNetwork.Airports.Add(airportToBeCreated);
+                }
+
+                if (airportCreated)
+                {
+                    MessageBox.Show(bulkAmount + "airports were succesfully created!");
+                    resetAllBoxes();
+                    panelDrawing.Invalidate();
+                }
+            }
+            else
+            {
+                airportToBeCreated = new Airport(airportName, airportCapacity, location, numberOfLanes);
+
+                if (airportToBeCreated != null)
+                {
+                    airportCreated = true;
+                    airNetwork.Airports.Add(airportToBeCreated);
+                }
+
+                if (airportCreated)
+                {
+                    MessageBox.Show("airport " + airportName + " was succesfully created!");
+                    resetAllBoxes();
+                    panelDrawing.Invalidate();
+                }
+            }
+
+
+        }
+
+       
     }
 }
 
