@@ -18,6 +18,8 @@ namespace Airtraffic_Simulator
         private Airport selectedAirport;
         DataHelper helper;
 
+        private int X, Y;
+
         public Form1(Regions region)
         {
             InitializeComponent();
@@ -192,6 +194,9 @@ namespace Airtraffic_Simulator
 
         private void panelDrawing_MouseUp(object sender, MouseEventArgs e)
         {
+            X = e.X;
+            Y = e.Y;
+            tbLocation.Text = Convert.ToString("X: " + X + " " + "Y: " + Y);
             selectedAirplane = null;
             selectedAirport = null;
             string temp;
@@ -476,6 +481,7 @@ namespace Airtraffic_Simulator
             tbAirportName.ResetText();
             numUpDownAirportCapacity.Value = 0;
             numUpDownNrOfLanes.Value = 0;
+            tbLocation.Text = "CLick on the map";
         }
 
         private void autoCompleteAirport(ComboBox comboBox)
@@ -606,8 +612,40 @@ namespace Airtraffic_Simulator
             else
             {
                 tc_create.Visible = true;
+                tc_create.SelectedTab = tabPage1;
             }
         }
+
+        private void airportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (panelAdvanced.Visible)
+            {
+                panelAdvanced.Visible = false;
+                tc_create.Visible = true;
+
+            }
+            else
+            {
+                tc_create.Visible = true;
+                tc_create.SelectedTab = tabPage2;
+            }
+        }
+
+        private void problemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (panelAdvanced.Visible)
+            {
+                panelAdvanced.Visible = false;
+                tc_create.Visible = true;
+
+            }
+            else
+            {
+                tc_create.Visible = true;
+                tc_create.SelectedTab = tabPage3;
+            }
+        }
+
 
         private void btn_problem_create_Click(object sender, EventArgs e)
         {
@@ -792,54 +830,40 @@ namespace Airtraffic_Simulator
             string airportName = tbAirportName.Text;
             int airportCapacity = Convert.ToInt32(numUpDownAirportCapacity.Value);
             int numberOfLanes = Convert.ToInt32(numUpDownNrOfLanes.Value);
-            PointF location = new PointF(1,1);
+           
+            PointF location = new PointF(X,Y);
 
-            //initializing Airport objects to be passed
+            //initializing Airport object to be passed
             Airport airportToBeCreated = null;
 
-            //Bulk properties
-            int bulkAmount = Convert.ToInt32(numUpDownBulk.Value);
+             
+
+              if (airportName != "" && airportCapacity > 0 && numberOfLanes > 0 && X != 0 && Y != 0)
+              {
+                  airportToBeCreated = new Airport(airportName, airportCapacity, location, numberOfLanes);
+                  airportCreated = true;
+                  airNetwork.Airports.Add(airportToBeCreated);
+              }
+
+              else
+              {
+                  MessageBox.Show("Please make sure that all the fields are filled in.");
+              }
+
+              if (airportCreated)
+              {
+                  MessageBox.Show("Airport " + airportName + " was succesfully created!");
+                  resetAllBoxes();
+                  panelDrawing.Invalidate();
+              }
+
+               
             
-            if (checkBoxBulk.Checked)
-            {
-                for (int i = 0; i < bulkAmount; i++)
-                {
-                    airportToBeCreated = new Airport(airportName, airportCapacity, location, numberOfLanes);
-                }
-
-                if (airportToBeCreated != null)
-                {
-                    airportCreated = true;
-                    airNetwork.Airports.Add(airportToBeCreated);
-                }
-
-                if (airportCreated)
-                {
-                    MessageBox.Show(bulkAmount + "airports were succesfully created!");
-                    resetAllBoxes();
-                    panelDrawing.Invalidate();
-                }
-            }
-            else
-            {
-                airportToBeCreated = new Airport(airportName, airportCapacity, location, numberOfLanes);
-
-                if (airportToBeCreated != null)
-                {
-                    airportCreated = true;
-                    airNetwork.Airports.Add(airportToBeCreated);
-                }
-
-                if (airportCreated)
-                {
-                    MessageBox.Show("airport " + airportName + " was succesfully created!");
-                    resetAllBoxes();
-                    panelDrawing.Invalidate();
-                }
-            }
-
 
         }
+
+       
+        
 
        
     }

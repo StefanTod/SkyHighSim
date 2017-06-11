@@ -115,9 +115,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.numUpDownAirportCapacity = new System.Windows.Forms.NumericUpDown();
-            this.numUpDownBulk = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.checkBoxBulk = new System.Windows.Forms.CheckBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btn_problem_create = new System.Windows.Forms.Button();
             this.lb_prob_Time_desc = new System.Windows.Forms.Label();
@@ -130,6 +127,8 @@
             this.lb_problem_select_name = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.btCreateAirport = new System.Windows.Forms.Button();
+            this.tbLocation = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.panelDrawing = new Airtraffic_Simulator.DrawingPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -150,7 +149,6 @@
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownNrOfLanes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownAirportCapacity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownBulk)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_prob_min)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_prob_hour)).BeginInit();
@@ -814,28 +812,30 @@
             this.airportToolStripMenuItem,
             this.problemToolStripMenuItem});
             this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.customizeToolStripMenuItem.Text = "&Create";
             this.customizeToolStripMenuItem.Click += new System.EventHandler(this.customizeToolStripMenuItem_Click);
             // 
             // airplaneToolStripMenuItem
             // 
             this.airplaneToolStripMenuItem.Name = "airplaneToolStripMenuItem";
-            this.airplaneToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.airplaneToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.airplaneToolStripMenuItem.Text = "Airplane";
             this.airplaneToolStripMenuItem.Click += new System.EventHandler(this.airplaneToolStripMenuItem_Click);
             // 
             // airportToolStripMenuItem
             // 
             this.airportToolStripMenuItem.Name = "airportToolStripMenuItem";
-            this.airportToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.airportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.airportToolStripMenuItem.Text = "Airport";
+            this.airportToolStripMenuItem.Click += new System.EventHandler(this.airportToolStripMenuItem_Click);
             // 
             // problemToolStripMenuItem
             // 
             this.problemToolStripMenuItem.Name = "problemToolStripMenuItem";
-            this.problemToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.problemToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.problemToolStripMenuItem.Text = "Problem";
+            this.problemToolStripMenuItem.Click += new System.EventHandler(this.problemToolStripMenuItem_Click);
             // 
             // tc_create
             // 
@@ -1110,6 +1110,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.tbLocation);
+            this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.btCreateAirport);
             this.tabPage2.Controls.Add(this.tbAirportName);
             this.tabPage2.Controls.Add(this.numUpDownNrOfLanes);
@@ -1117,9 +1119,6 @@
             this.tabPage2.Controls.Add(this.label16);
             this.tabPage2.Controls.Add(this.label18);
             this.tabPage2.Controls.Add(this.numUpDownAirportCapacity);
-            this.tabPage2.Controls.Add(this.numUpDownBulk);
-            this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.checkBoxBulk);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -1130,7 +1129,7 @@
             // 
             // tbAirportName
             // 
-            this.tbAirportName.Location = new System.Drawing.Point(85, 31);
+            this.tbAirportName.Location = new System.Drawing.Point(83, 8);
             this.tbAirportName.Name = "tbAirportName";
             this.tbAirportName.Size = new System.Drawing.Size(100, 20);
             this.tbAirportName.TabIndex = 34;
@@ -1142,7 +1141,7 @@
             0,
             0,
             0});
-            this.numUpDownNrOfLanes.Location = new System.Drawing.Point(113, 81);
+            this.numUpDownNrOfLanes.Location = new System.Drawing.Point(111, 58);
             this.numUpDownNrOfLanes.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1155,7 +1154,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(18, 83);
+            this.label19.Location = new System.Drawing.Point(16, 60);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(84, 13);
             this.label19.TabIndex = 32;
@@ -1164,7 +1163,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(18, 34);
+            this.label16.Location = new System.Drawing.Point(16, 11);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(68, 13);
             this.label16.TabIndex = 28;
@@ -1173,7 +1172,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(18, 57);
+            this.label18.Location = new System.Drawing.Point(16, 34);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(81, 13);
             this.label18.TabIndex = 27;
@@ -1186,7 +1185,7 @@
             0,
             0,
             0});
-            this.numUpDownAirportCapacity.Location = new System.Drawing.Point(113, 55);
+            this.numUpDownAirportCapacity.Location = new System.Drawing.Point(111, 32);
             this.numUpDownAirportCapacity.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1195,37 +1194,6 @@
             this.numUpDownAirportCapacity.Name = "numUpDownAirportCapacity";
             this.numUpDownAirportCapacity.Size = new System.Drawing.Size(73, 20);
             this.numUpDownAirportCapacity.TabIndex = 26;
-            // 
-            // numUpDownBulk
-            // 
-            this.numUpDownBulk.Location = new System.Drawing.Point(138, 7);
-            this.numUpDownBulk.Name = "numUpDownBulk";
-            this.numUpDownBulk.Size = new System.Drawing.Size(48, 20);
-            this.numUpDownBulk.TabIndex = 22;
-            this.numUpDownBulk.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(88, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "Amount: ";
-            // 
-            // checkBoxBulk
-            // 
-            this.checkBoxBulk.AutoSize = true;
-            this.checkBoxBulk.Location = new System.Drawing.Point(3, 8);
-            this.checkBoxBulk.Name = "checkBoxBulk";
-            this.checkBoxBulk.Size = new System.Drawing.Size(86, 17);
-            this.checkBoxBulk.TabIndex = 20;
-            this.checkBoxBulk.Text = "Bulk Create |";
-            this.checkBoxBulk.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
@@ -1322,13 +1290,30 @@
             // 
             // btCreateAirport
             // 
-            this.btCreateAirport.Location = new System.Drawing.Point(94, 107);
+            this.btCreateAirport.Location = new System.Drawing.Point(91, 110);
             this.btCreateAirport.Name = "btCreateAirport";
             this.btCreateAirport.Size = new System.Drawing.Size(92, 23);
             this.btCreateAirport.TabIndex = 35;
             this.btCreateAirport.Text = "Create Airport";
             this.btCreateAirport.UseVisualStyleBackColor = true;
             this.btCreateAirport.Click += new System.EventHandler(this.btCreateAirport_Click);
+            // 
+            // tbLocation
+            // 
+            this.tbLocation.Location = new System.Drawing.Point(95, 84);
+            this.tbLocation.Name = "tbLocation";
+            this.tbLocation.Size = new System.Drawing.Size(89, 20);
+            this.tbLocation.TabIndex = 37;
+            this.tbLocation.Text = "Click on the map";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 87);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(81, 13);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "Airport Location";
             // 
             // panelDrawing
             // 
@@ -1390,7 +1375,6 @@
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownNrOfLanes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownAirportCapacity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownBulk)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_prob_min)).EndInit();
@@ -1497,13 +1481,12 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.NumericUpDown numUpDownAirportCapacity;
-        private System.Windows.Forms.NumericUpDown numUpDownBulk;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox checkBoxBulk;
         private System.Windows.Forms.NumericUpDown numUpDownNrOfLanes;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox tbAirportName;
         private System.Windows.Forms.Button btCreateAirport;
+        private System.Windows.Forms.TextBox tbLocation;
+        private System.Windows.Forms.Label label4;
     }
 }
 
