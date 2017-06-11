@@ -812,28 +812,28 @@
             this.airportToolStripMenuItem,
             this.problemToolStripMenuItem});
             this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.customizeToolStripMenuItem.Text = "&Create";
             this.customizeToolStripMenuItem.Click += new System.EventHandler(this.customizeToolStripMenuItem_Click);
             // 
             // airplaneToolStripMenuItem
             // 
             this.airplaneToolStripMenuItem.Name = "airplaneToolStripMenuItem";
-            this.airplaneToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.airplaneToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.airplaneToolStripMenuItem.Text = "Airplane";
             this.airplaneToolStripMenuItem.Click += new System.EventHandler(this.airplaneToolStripMenuItem_Click);
             // 
             // airportToolStripMenuItem
             // 
             this.airportToolStripMenuItem.Name = "airportToolStripMenuItem";
-            this.airportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.airportToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.airportToolStripMenuItem.Text = "Airport";
             this.airportToolStripMenuItem.Click += new System.EventHandler(this.airportToolStripMenuItem_Click);
             // 
             // problemToolStripMenuItem
             // 
             this.problemToolStripMenuItem.Name = "problemToolStripMenuItem";
-            this.problemToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.problemToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.problemToolStripMenuItem.Text = "Problem";
             this.problemToolStripMenuItem.Click += new System.EventHandler(this.problemToolStripMenuItem_Click);
             // 
@@ -1136,11 +1136,6 @@
             // 
             // numUpDownNrOfLanes
             // 
-            this.numUpDownNrOfLanes.Increment = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
             this.numUpDownNrOfLanes.Location = new System.Drawing.Point(111, 58);
             this.numUpDownNrOfLanes.Maximum = new decimal(new int[] {
             1000,
@@ -1180,11 +1175,6 @@
             // 
             // numUpDownAirportCapacity
             // 
-            this.numUpDownAirportCapacity.Increment = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
             this.numUpDownAirportCapacity.Location = new System.Drawing.Point(111, 32);
             this.numUpDownAirportCapacity.Maximum = new decimal(new int[] {
             1000,
