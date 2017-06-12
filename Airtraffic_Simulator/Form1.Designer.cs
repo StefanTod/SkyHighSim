@@ -44,9 +44,11 @@
             this.btStop = new System.Windows.Forms.Button();
             this.btStart = new System.Windows.Forms.Button();
             this.panelNameLocation = new System.Windows.Forms.Panel();
-            this.lbPlaneLocation = new System.Windows.Forms.Label();
+            this.lbOrigin = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblDestination = new System.Windows.Forms.Label();
             this.lbPlaneName = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panelDetails = new System.Windows.Forms.Panel();
             this.lbCargoWeight = new System.Windows.Forms.Label();
@@ -109,6 +111,9 @@
             this.rb_cargo = new System.Windows.Forms.RadioButton();
             this.rb_passanger = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tbLocation = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btCreateAirport = new System.Windows.Forms.Button();
             this.tbAirportName = new System.Windows.Forms.TextBox();
             this.numUpDownNrOfLanes = new System.Windows.Forms.NumericUpDown();
             this.label19 = new System.Windows.Forms.Label();
@@ -126,9 +131,6 @@
             this.cb_problem_airport = new System.Windows.Forms.ComboBox();
             this.lb_problem_select_name = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.btCreateAirport = new System.Windows.Forms.Button();
-            this.tbLocation = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.panelDrawing = new Airtraffic_Simulator.DrawingPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -324,9 +326,11 @@
             // panelNameLocation
             // 
             this.panelNameLocation.BackColor = System.Drawing.Color.SteelBlue;
-            this.panelNameLocation.Controls.Add(this.lbPlaneLocation);
+            this.panelNameLocation.Controls.Add(this.lbOrigin);
+            this.panelNameLocation.Controls.Add(this.label20);
+            this.panelNameLocation.Controls.Add(this.label3);
+            this.panelNameLocation.Controls.Add(this.lblDestination);
             this.panelNameLocation.Controls.Add(this.lbPlaneName);
-            this.panelNameLocation.Controls.Add(this.label6);
             this.panelNameLocation.Controls.Add(this.label5);
             this.panelNameLocation.Location = new System.Drawing.Point(9, 63);
             this.panelNameLocation.Margin = new System.Windows.Forms.Padding(2);
@@ -334,19 +338,57 @@
             this.panelNameLocation.Size = new System.Drawing.Size(188, 98);
             this.panelNameLocation.TabIndex = 5;
             // 
-            // lbPlaneLocation
+            // lbOrigin
             // 
-            this.lbPlaneLocation.AutoSize = true;
-            this.lbPlaneLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.lbPlaneLocation.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbPlaneLocation.Location = new System.Drawing.Point(86, 54);
-            this.lbPlaneLocation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbPlaneLocation.MaximumSize = new System.Drawing.Size(95, 0);
-            this.lbPlaneLocation.Name = "lbPlaneLocation";
-            this.lbPlaneLocation.Size = new System.Drawing.Size(82, 34);
-            this.lbPlaneLocation.TabIndex = 8;
-            this.lbPlaneLocation.Text = "Location of \r\nthe plane";
-            this.lbPlaneLocation.Visible = false;
+            this.lbOrigin.AutoSize = true;
+            this.lbOrigin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.lbOrigin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbOrigin.Location = new System.Drawing.Point(71, 46);
+            this.lbOrigin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbOrigin.MaximumSize = new System.Drawing.Size(95, 0);
+            this.lbOrigin.Name = "lbOrigin";
+            this.lbOrigin.Size = new System.Drawing.Size(46, 17);
+            this.lbOrigin.TabIndex = 11;
+            this.lbOrigin.Text = "Origin";
+            this.lbOrigin.Visible = false;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label20.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label20.Location = new System.Drawing.Point(11, 46);
+            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(49, 17);
+            this.label20.TabIndex = 10;
+            this.label20.Text = "From:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.Location = new System.Drawing.Point(13, 65);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 17);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "To:";
+            // 
+            // lblDestination
+            // 
+            this.lblDestination.AutoSize = true;
+            this.lblDestination.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.lblDestination.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblDestination.Location = new System.Drawing.Point(71, 65);
+            this.lblDestination.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDestination.MaximumSize = new System.Drawing.Size(95, 0);
+            this.lblDestination.Name = "lblDestination";
+            this.lblDestination.Size = new System.Drawing.Size(79, 17);
+            this.lblDestination.TabIndex = 8;
+            this.lblDestination.Text = "Destination";
+            this.lblDestination.Visible = false;
             // 
             // lbPlaneName
             // 
@@ -361,18 +403,6 @@
             this.lbPlaneName.TabIndex = 6;
             this.lbPlaneName.Text = "Name of \r\nthe plane";
             this.lbPlaneName.Visible = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label6.Location = new System.Drawing.Point(4, 54);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(75, 17);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Location:";
             // 
             // label5
             // 
@@ -802,7 +832,7 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.customizeToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // customizeToolStripMenuItem
@@ -1127,6 +1157,33 @@
             this.tabPage2.Text = "Airport";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // tbLocation
+            // 
+            this.tbLocation.Location = new System.Drawing.Point(95, 84);
+            this.tbLocation.Name = "tbLocation";
+            this.tbLocation.Size = new System.Drawing.Size(89, 20);
+            this.tbLocation.TabIndex = 37;
+            this.tbLocation.Text = "Click on the map";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 87);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(81, 13);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "Airport Location";
+            // 
+            // btCreateAirport
+            // 
+            this.btCreateAirport.Location = new System.Drawing.Point(91, 110);
+            this.btCreateAirport.Name = "btCreateAirport";
+            this.btCreateAirport.Size = new System.Drawing.Size(92, 23);
+            this.btCreateAirport.TabIndex = 35;
+            this.btCreateAirport.Text = "Create Airport";
+            this.btCreateAirport.UseVisualStyleBackColor = true;
+            this.btCreateAirport.Click += new System.EventHandler(this.btCreateAirport_Click);
+            // 
             // tbAirportName
             // 
             this.tbAirportName.Location = new System.Drawing.Point(83, 8);
@@ -1278,33 +1335,6 @@
             this.lb_problem_select_name.TabIndex = 0;
             this.lb_problem_select_name.Text = "Select Airport";
             // 
-            // btCreateAirport
-            // 
-            this.btCreateAirport.Location = new System.Drawing.Point(91, 110);
-            this.btCreateAirport.Name = "btCreateAirport";
-            this.btCreateAirport.Size = new System.Drawing.Size(92, 23);
-            this.btCreateAirport.TabIndex = 35;
-            this.btCreateAirport.Text = "Create Airport";
-            this.btCreateAirport.UseVisualStyleBackColor = true;
-            this.btCreateAirport.Click += new System.EventHandler(this.btCreateAirport_Click);
-            // 
-            // tbLocation
-            // 
-            this.tbLocation.Location = new System.Drawing.Point(95, 84);
-            this.tbLocation.Name = "tbLocation";
-            this.tbLocation.Size = new System.Drawing.Size(89, 20);
-            this.tbLocation.TabIndex = 37;
-            this.tbLocation.Text = "Click on the map";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 87);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 13);
-            this.label4.TabIndex = 36;
-            this.label4.Text = "Airport Location";
-            // 
             // panelDrawing
             // 
             this.panelDrawing.BackgroundImage = global::Airtraffic_Simulator.Properties.Resources.europemap;
@@ -1381,9 +1411,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panelNameLocation;
-        private System.Windows.Forms.Label lbPlaneLocation;
+        private System.Windows.Forms.Label lblDestination;
         private System.Windows.Forms.Label lbPlaneName;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btFastForward;
@@ -1477,6 +1506,9 @@
         private System.Windows.Forms.Button btCreateAirport;
         private System.Windows.Forms.TextBox tbLocation;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbOrigin;
     }
 }
 

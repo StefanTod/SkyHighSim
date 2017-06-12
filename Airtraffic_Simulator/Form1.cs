@@ -128,6 +128,8 @@ namespace Airtraffic_Simulator
         private void SelectAirport(Point clickedLocation)
         {
             btUpdate.Visible = false;
+            lblDestination.Visible = false;
+            lbOrigin.Visible = false;
             panelAdvanced.Visible = false;
             this.selectedAirport = airNetwork.GetAirport(clickedLocation);
             if (selectedAirport != null)
@@ -143,10 +145,13 @@ namespace Airtraffic_Simulator
         {
             if (selectedAirplane != null)
             {
+                lbOrigin.Visible = true;
+                lbOrigin.Text = selectedAirplane.Flight.DepartureAirport.Name.ToString();
+                lblDestination.Text = selectedAirplane.Flight.DestinationAirport.Name.ToString();
                 lbCapacity.Text = selectedAirplane.Capacity.ToString();
                 lbFlightNumber.Text = selectedAirplane.Flight.Id.ToString();
                 lbFuel.Text = selectedAirplane.Fuel.ToString();
-                lbPlaneLocation.Text = selectedAirplane.CurrentLocation.ToString();
+               // lblDestination.Text = selectedAirplane.CurrentLocation.ToString();
                 lbPlaneName.Text = selectedAirplane.Id.ToString();
                 lbDepartureTime.Text = selectedAirplane.Flight.DepartureTime.ToString();
                 lbArrivalTime.Text = selectedAirplane.Flight.ArrivalTime.ToString();
@@ -172,7 +177,6 @@ namespace Airtraffic_Simulator
             if (selectedAirport != null)
             {
                 lbPlaneName.Text = selectedAirport.Name.ToString();
-                lbPlaneLocation.Text = selectedAirport.Location.ToString();
                 lbCapacity.Text = selectedAirport.Capacity.ToString();
                 lbNrOfPsngs.Text = "-";
                 lbCargoWeight.Text = "-";
@@ -186,7 +190,6 @@ namespace Airtraffic_Simulator
             lbCapacity.Visible = true;
             lbFlightNumber.Visible = true;
             lbFuel.Visible = true;
-            lbPlaneLocation.Visible = true;
             lbPlaneName.Visible = true;
             lbDepartureTime.Visible = true;
             lbArrivalTime.Visible = true;
@@ -596,7 +599,7 @@ namespace Airtraffic_Simulator
 
         private void cbSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cbSearch.ResetText();
+            //cbSearch.ResetText();
         }
 
 
