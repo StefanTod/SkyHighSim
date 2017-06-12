@@ -19,9 +19,9 @@ namespace Airtraffic_Simulator
         public int Capacity { get; private set; }
         public double Speed { get; private set; }
         public double Fuel { get; private set; }
-        public Rectangle CoverArea { get; set; }
+        public Rectangle CoverArea { get; private set; }
         private PointF DepartureLocation;
-        private Airport DestinationAirport;
+        public Airport DestinationAirport { get; private set; }
         
         private int counterTicks = 0;
         public Airplane(string id, int capacity, double speed, double fuel, PointF currentLocation)

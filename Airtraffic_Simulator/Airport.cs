@@ -85,7 +85,7 @@ namespace Airtraffic_Simulator
 
         public void CreateProblem(string type, TimeSpan duration)
         {
-            Problem problem = new Problem(type, duration);
+            Problem problem = new Problem(type, duration,GlobalVariables.globalTime);
             Problems.Add(problem);
         }
     }

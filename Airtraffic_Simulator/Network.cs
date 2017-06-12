@@ -75,6 +75,38 @@ namespace Airtraffic_Simulator
         public void AddProblem(Airport a,string type, TimeSpan duration)
         {
             a.CreateProblem(type, duration);
+            foreach(Airplane airplane in Airplanes)
+            {
+                //find all airplanes whose destination is the airport with the problem and reroute only those who are inair
+                if (airplane.PlaneStatus != Status.TOTAKEOFF)
+                {
+                    if (airplane.DestinationAirport.Name.ToUpper().Equals(a.Name.ToUpper()) && airplane.PlaneStatus == Status.INAIR)
+                    {
+                        RerouteAirplaneToNearestAirport(airplane);
+                    }
+                }
+            }
+        }
+
+        public void RerouteAirplaneToNearestAirport(Airplane airplaneToReroute)
+        {
+            PointF currentLoc = airplaneToReroute.CurrentLocation;
+            double minTotalDistance = 100000000000000;
+            Airport closestAirport = null;
+            foreach(Airport a in Airports)
+            {
+                //check only if the airport is not the one from the current destination
+                if(!(a.Name.ToUpper().Equals(airplaneToReroute.DestinationAirport.Name.ToUpper())))
+                {
+                    double totaldistance = Math.Sqrt(Math.Pow(a.Location.X - currentLoc.X, 2) + Math.Pow(a.Location.Y - currentLoc.Y, 2));
+                    if(totaldistance<minTotalDistance)
+                    {
+                        minTotalDistance = totaldistance;
+                        closestAirport = a;
+                    }
+                }
+            }
+            airplaneToReroute.ChangeRoute(currentLoc, closestAirport);
         }
 
         public Flight FindFlight(string id)

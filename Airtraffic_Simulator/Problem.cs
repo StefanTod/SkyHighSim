@@ -12,13 +12,14 @@ namespace Airtraffic_Simulator
         public int Id { get; private set; }
         public string Type { get; private set; }
         public TimeSpan Duration { get; private set; }
-        public Problem(string type, TimeSpan duration)
+        public DateTime StartingTime { get; private set; }
+        public Problem(string type, TimeSpan duration,DateTime startingTime)
         {
             nmbProblems += 1;
             this.Id = nmbProblems ;
             this.Type = type;
             this.Duration = duration;
-            
+            this.StartingTime = startingTime;        
         }
     }
 }
