@@ -831,6 +831,14 @@ namespace Airtraffic_Simulator
             int v = trackBar1.Maximum - trackBar1.Value;
             timer.Interval = v + 1;
         }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+            FormRegions formRegions = new FormRegions();
+            formRegions.ShowDialog();
+            this.Close();
+        }
     }
 }
 
