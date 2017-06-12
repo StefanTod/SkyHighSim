@@ -33,14 +33,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.cbFrom = new System.Windows.Forms.CheckBox();
             this.cbTo = new System.Windows.Forms.CheckBox();
             this.lblSearch = new System.Windows.Forms.Label();
             this.lbBack2 = new System.Windows.Forms.Label();
             this.cbSearch = new System.Windows.Forms.ComboBox();
             this.searchBtn = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btFastForward = new System.Windows.Forms.Button();
             this.btStop = new System.Windows.Forms.Button();
             this.btStart = new System.Windows.Forms.Button();
             this.panelNameLocation = new System.Windows.Forms.Panel();
@@ -132,8 +131,9 @@
             this.lb_problem_select_name = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panelDrawing = new Airtraffic_Simulator.DrawingPanel();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.panelNameLocation.SuspendLayout();
             this.panelDetails.SuspendLayout();
             this.panelTime.SuspendLayout();
@@ -185,14 +185,14 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.trackBar1);
             this.panel1.Controls.Add(this.cbFrom);
             this.panel1.Controls.Add(this.cbTo);
             this.panel1.Controls.Add(this.lblSearch);
             this.panel1.Controls.Add(this.lbBack2);
             this.panel1.Controls.Add(this.cbSearch);
             this.panel1.Controls.Add(this.searchBtn);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.btFastForward);
             this.panel1.Controls.Add(this.btStop);
             this.panel1.Controls.Add(this.btStart);
             this.panel1.Controls.Add(this.label1);
@@ -202,6 +202,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1257, 49);
             this.panel1.TabIndex = 4;
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.BackColor = System.Drawing.Color.Azure;
+            this.trackBar1.Location = new System.Drawing.Point(974, 3);
+            this.trackBar1.Maximum = 500;
+            this.trackBar1.Minimum = 1;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(269, 45);
+            this.trackBar1.TabIndex = 41;
+            this.trackBar1.Value = 1;
+            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
             // 
             // cbFrom
             // 
@@ -262,7 +274,6 @@
             this.cbSearch.Size = new System.Drawing.Size(165, 21);
             this.cbSearch.TabIndex = 35;
             this.cbSearch.Text = "Airport Name";
-            this.cbSearch.SelectedIndexChanged += new System.EventHandler(this.cbSearch_SelectedIndexChanged);
             // 
             // searchBtn
             // 
@@ -274,34 +285,11 @@
             this.searchBtn.UseVisualStyleBackColor = true;
             this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(987, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(63, 45);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btFastForward
-            // 
-            this.btFastForward.BackColor = System.Drawing.Color.Khaki;
-            this.btFastForward.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.btFastForward.Location = new System.Drawing.Point(844, 10);
-            this.btFastForward.Margin = new System.Windows.Forms.Padding(2);
-            this.btFastForward.Name = "btFastForward";
-            this.btFastForward.Size = new System.Drawing.Size(116, 32);
-            this.btFastForward.TabIndex = 7;
-            this.btFastForward.Text = "FAST FORWARD";
-            this.btFastForward.UseVisualStyleBackColor = false;
-            this.btFastForward.Click += new System.EventHandler(this.btFastForward_Click);
-            // 
             // btStop
             // 
             this.btStop.BackColor = System.Drawing.Color.OrangeRed;
             this.btStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.btStop.Location = new System.Drawing.Point(775, 10);
+            this.btStop.Location = new System.Drawing.Point(753, 10);
             this.btStop.Margin = new System.Windows.Forms.Padding(2);
             this.btStop.Name = "btStop";
             this.btStop.Size = new System.Drawing.Size(65, 32);
@@ -314,7 +302,7 @@
             // 
             this.btStart.BackColor = System.Drawing.Color.LimeGreen;
             this.btStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.btStart.Location = new System.Drawing.Point(706, 10);
+            this.btStart.Location = new System.Drawing.Point(684, 10);
             this.btStart.Margin = new System.Windows.Forms.Padding(2);
             this.btStart.Name = "btStart";
             this.btStart.Size = new System.Drawing.Size(65, 32);
@@ -832,7 +820,7 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.customizeToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // customizeToolStripMenuItem
@@ -844,7 +832,6 @@
             this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
             this.customizeToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.customizeToolStripMenuItem.Text = "&Create";
-            this.customizeToolStripMenuItem.Click += new System.EventHandler(this.customizeToolStripMenuItem_Click);
             // 
             // airplaneToolStripMenuItem
             // 
@@ -1347,6 +1334,17 @@
             this.panelDrawing.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDrawing_Paint);
             this.panelDrawing.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelDrawing_MouseUp);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(816, 15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(152, 20);
+            this.label6.TabIndex = 42;
+            this.label6.Text = "Simulation speed:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1370,7 +1368,7 @@
             this.Text = "SkyHighSim";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.panelNameLocation.ResumeLayout(false);
             this.panelNameLocation.PerformLayout();
             this.panelDetails.ResumeLayout(false);
@@ -1414,8 +1412,6 @@
         private System.Windows.Forms.Label lblDestination;
         private System.Windows.Forms.Label lbPlaneName;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btFastForward;
         private System.Windows.Forms.Button btStop;
         private System.Windows.Forms.Button btStart;
         private System.Windows.Forms.Panel panelDetails;
@@ -1509,6 +1505,8 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbOrigin;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.Label label6;
     }
 }
 

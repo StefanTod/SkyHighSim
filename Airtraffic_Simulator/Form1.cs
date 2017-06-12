@@ -17,7 +17,6 @@ namespace Airtraffic_Simulator
         private Airplane selectedAirplane;
         private Airport selectedAirport;
         DataHelper helper;
-
         private int X, Y;
 
         public Form1(Regions region)
@@ -105,12 +104,6 @@ namespace Airtraffic_Simulator
             painter.RedrawAirports(e.Graphics, airNetwork, selectedAirport);
             painter.RedrawAirplanes(e.Graphics, airNetwork, selectedAirplane);
         }
-
-        private void btFastForward_Click(object sender, EventArgs e)
-        {
-            timer.Interval = 100;
-        }
-
         private void SelectAirplane(Point clickedLocation)
         {
             tc_create.Visible = false;
@@ -139,8 +132,6 @@ namespace Airtraffic_Simulator
                 panelDrawing.Invalidate();
             }
         }
-
-
         private void UpdatePanel()
         {
             if (selectedAirplane != null)
@@ -255,20 +246,6 @@ namespace Airtraffic_Simulator
                 }
             }
         }
-
-        private void customizeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //if (panelAdvanced.Visible)
-            //{
-            //    panelAdvanced.Visible = false;
-            //    tc_create.Visible = true;
-            //}
-            //else
-            //{
-            //    tc_create.Visible = true;
-            //}
-        }
-
         private void rb_passanger_CheckedChanged(object sender, EventArgs e)
         {
             nud_blk_amount.Visible = false;
@@ -596,14 +573,6 @@ namespace Airtraffic_Simulator
                 MessageBox.Show("No such airport");
             }
         }
-
-        private void cbSearch_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //cbSearch.ResetText();
-        }
-
-
-
         private void airplaneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (panelAdvanced.Visible)
@@ -648,8 +617,6 @@ namespace Airtraffic_Simulator
                 tc_create.SelectedTab = tabPage3;
             }
         }
-
-
         private void btn_problem_create_Click(object sender, EventArgs e)
         {
             //Problem properties
@@ -839,8 +806,6 @@ namespace Airtraffic_Simulator
             //initializing Airport object to be passed
             Airport airportToBeCreated = null;
 
-             
-
               if (airportName != "" && airportCapacity > 0 && numberOfLanes > 0 && X != 0 && Y != 0)
               {
                   airportToBeCreated = new Airport(airportName, airportCapacity, location, numberOfLanes);
@@ -859,16 +824,13 @@ namespace Airtraffic_Simulator
                   resetAllBoxes();
                   panelDrawing.Invalidate();
               }
-
-               
-            
-
         }
 
-       
-        
-
-       
+        private void trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            int v = trackBar1.Maximum - trackBar1.Value;
+            timer.Interval = v + 1;
+        }
     }
 }
 
