@@ -131,10 +131,10 @@
             this.cb_problem_airport = new System.Windows.Forms.ComboBox();
             this.lb_problem_select_name = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panelDrawing = new Airtraffic_Simulator.DrawingPanel();
             this.label21 = new System.Windows.Forms.Label();
             this.lbTimeSpan = new System.Windows.Forms.Label();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.panelNameLocation.SuspendLayout();
@@ -227,7 +227,7 @@
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(269, 45);
             this.trackBar1.TabIndex = 41;
-            this.trackBar1.Value = 1;
+            this.trackBar1.Value = 500;
             this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
             // 
             // cbFrom
@@ -845,7 +845,7 @@
             this.airportToolStripMenuItem,
             this.problemToolStripMenuItem});
             this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.customizeToolStripMenuItem.Text = "&Create";
             // 
             // airplaneToolStripMenuItem
