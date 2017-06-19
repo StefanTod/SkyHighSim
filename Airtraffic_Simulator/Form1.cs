@@ -333,9 +333,15 @@ namespace Airtraffic_Simulator
             int bulkAmount = Convert.ToInt32(nud_blk_amount.Value);
             origin_airport = returnAirportObject(origin_countryName);
             destination_airport = returnAirportObject(destination_countryName);
-
+            
             if (origin_airport != null && destination_airport != null)
             {
+                //Check if there are problems in the airports
+                if (origin_airport.Problems.Count > 0 || destination_airport.Problems.Count > 0)
+                {
+                    MessageBox.Show("Airplane was not created since there was a problem in one of the airports.");
+                    return;
+                }
                 //Check if it should be a bulk create
                 if (cb_bulkCreate.Checked)
                 {

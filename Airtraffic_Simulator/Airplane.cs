@@ -45,22 +45,38 @@ namespace Airtraffic_Simulator
         {
             if (this.Flight != null)
             {
+                //Check if there are problems in either airports
+                //TODO Consider creating a status for the flight and setting it to cancelled.
                 switch (this.PlaneStatus)
                 {
                     case Status.TOTAKEOFF:
-                        //if check flight timing then we take off
-                        // check if lanes are free
-                        if (Flight.DepartureAirport.LanesTaken < Flight.DepartureAirport.Lanes)
+                        //Check if it is time to take off or the departure hour has passed 
+                        //TODO Consider what needs to happen in the case when the departure hour has passed
+                        // --> Skip TakingOff phase?
+                        if (Flight.DepartureAirport.Problems.Count > 0 || Flight.DestinationAirport.Problems.Count > 0)
                         {
-                            PlaneStatus = Status.TAKINGOFF;
-                            break;
+                            PlaneStatus = Status.LANDED;
+                            return;
+                        }
+                        if (this.Flight.DepartureTime.CompareTo(GlobalVariables.globalTime) == -1 || this.Flight.DepartureTime.CompareTo(GlobalVariables.globalTime) == 0)
+                        {
+                            //if check flight timing then we take off
+                            // check if lanes are free
+                            if (Flight.DepartureAirport.LanesTaken < Flight.DepartureAirport.Lanes)
+                            {
+                                PlaneStatus = Status.TAKINGOFF;
+                                break;
+                            }
+                            else
+                            {
+                                //add to queue to take off
+                                break;
+                            }
                         }
                         else
                         {
-                            //add to queue to take off
                             break;
                         }
-
                     case Status.INAIR:
                         UpdateMovement();
                         break;
@@ -78,11 +94,16 @@ namespace Airtraffic_Simulator
                     case Status.LANDED:
                         break;
                     case Status.TAKINGOFF:
+                        if (Flight.DepartureAirport.Problems.Count > 0 || Flight.DestinationAirport.Problems.Count > 0)
+                        {
+                            PlaneStatus = Status.LANDED;
+                            return;
+                        }
                         counterTicks++;
                         if (counterTicks >= 2)
                         {
                             PlaneStatus = Status.INAIR;
-                            // remove plane from airport 
+                            // remove plane from airport queue
                             counterTicks = 0;
                             // release lane
                         }
