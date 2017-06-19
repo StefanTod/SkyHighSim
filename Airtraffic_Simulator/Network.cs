@@ -14,15 +14,13 @@ namespace Airtraffic_Simulator
         public List<Airplane> Airplanes { get; set; }
         public List<Airport> Airports { get; set; }
         public List<Flight> Flights { get; set; }
-        public List<Queue> Queues { get; private set; }
 
         public Network(Regions region)
         {
             this.Region = region;
             this.Airplanes = new List<Airplane>();
             this.Airports = new List<Airport>();
-            this.Flights = new List<Flight>();
-            this.Queues = new List<Queue>();
+            this.Flights = new List<Flight>();  
         }
 
         public void AddFlight(Flight f)
