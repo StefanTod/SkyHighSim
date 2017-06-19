@@ -35,6 +35,7 @@ namespace Airtraffic_Simulator
             this.Invalidate();
             this.panelDrawing.Paint += panelDrawing_Paint;
             autoCompleteAirport(cbSearch);
+            autoCompleteAirport(cbChangeDestination);
             if (region == Regions.AUSTRALIA)
             {
                 this.panelDrawing.BackgroundImage = Properties.Resources.australia;
@@ -838,6 +839,7 @@ namespace Airtraffic_Simulator
 
               if (airportCreated)
               {
+                autoCompleteAirport(cbChangeDestination);
                 autoCompleteAirport(cbSearch);
                 autoCompleteAirport(cb_auto_orig);
                 autoCompleteAirport(cb_auto_dest);

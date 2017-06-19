@@ -66,7 +66,6 @@
             this.lbDepartureTime = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.btAdvanced = new System.Windows.Forms.Button();
             this.panelAdvanced = new System.Windows.Forms.Panel();
             this.cbChangeDestination = new System.Windows.Forms.ComboBox();
             this.nUDChangeSpeed = new System.Windows.Forms.NumericUpDown();
@@ -631,21 +630,6 @@
             this.label15.TabIndex = 11;
             this.label15.Text = "Departure time:";
             // 
-            // btAdvanced
-            // 
-            this.btAdvanced.BackColor = System.Drawing.Color.Orange;
-            this.btAdvanced.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.btAdvanced.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btAdvanced.Location = new System.Drawing.Point(7, 372);
-            this.btAdvanced.Margin = new System.Windows.Forms.Padding(2);
-            this.btAdvanced.Name = "btAdvanced";
-            this.btAdvanced.Size = new System.Drawing.Size(188, 32);
-            this.btAdvanced.TabIndex = 8;
-            this.btAdvanced.Text = "Advanced options";
-            this.btAdvanced.UseVisualStyleBackColor = false;
-            this.btAdvanced.Visible = false;
-            this.btAdvanced.Click += new System.EventHandler(this.btAdvanced_Click);
-            // 
             // panelAdvanced
             // 
             this.panelAdvanced.BackColor = System.Drawing.Color.SteelBlue;
@@ -872,9 +856,9 @@
             // 
             // tc_create
             // 
-            this.tc_create.Controls.Add(this.tabPage1);
             this.tc_create.Controls.Add(this.tabPage2);
             this.tc_create.Controls.Add(this.tabPage3);
+            this.tc_create.Controls.Add(this.tabPage1);
             this.tc_create.Location = new System.Drawing.Point(0, 373);
             this.tc_create.Name = "tc_create";
             this.tc_create.SelectedIndex = 0;
@@ -1406,7 +1390,6 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tc_create);
             this.Controls.Add(this.panelAdvanced);
-            this.Controls.Add(this.btAdvanced);
             this.Controls.Add(this.btUpdate);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -1479,7 +1462,6 @@
         private System.Windows.Forms.Label lbArrivalTime;
         private System.Windows.Forms.Label lbDepartureTime;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button btAdvanced;
         private System.Windows.Forms.Panel panelAdvanced;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
