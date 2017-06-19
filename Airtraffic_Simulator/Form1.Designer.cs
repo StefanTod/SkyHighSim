@@ -769,7 +769,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.toolsToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 730);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 667);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
             this.menuStrip1.TabIndex = 15;
@@ -1235,6 +1235,11 @@
             // 
             // numUpDownAirportCapacity
             // 
+            this.numUpDownAirportCapacity.Increment = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             this.numUpDownAirportCapacity.Location = new System.Drawing.Point(111, 32);
             this.numUpDownAirportCapacity.Maximum = new decimal(new int[] {
             1000,
@@ -1387,7 +1392,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 754);
+            this.ClientSize = new System.Drawing.Size(1264, 691);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelDrawing);
             this.Controls.Add(this.menuStrip1);
@@ -1395,14 +1400,14 @@
             this.Controls.Add(this.panelDetails);
             this.Controls.Add(this.panelNameLocation);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btUpdate);
             this.Controls.Add(this.tc_create);
             this.Controls.Add(this.panelAdvanced);
             this.Controls.Add(this.btAdvanced);
+            this.Controls.Add(this.btUpdate);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(1280, 792);
-            this.MinimumSize = new System.Drawing.Size(1280, 792);
+            this.MinimumSize = new System.Drawing.Size(1280, 726);
             this.Name = "Form1";
             this.Text = "SkyHighSim";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);

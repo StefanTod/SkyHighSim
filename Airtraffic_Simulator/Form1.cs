@@ -142,7 +142,7 @@ namespace Airtraffic_Simulator
         }
         private void UpdatePanel()
         {
-            if (selectedAirplane != null)
+            if (selectedAirplane != null && selectedAirplane.PlaneStatus != Status.LANDING)
             {
                 lbOrigin.Visible = true;
                 lbOrigin.Text = selectedAirplane.Flight.DepartureAirport.Name.ToString();
@@ -357,6 +357,7 @@ namespace Airtraffic_Simulator
                     {
                         for (int i = 0; i < bulkAmount; i++)
                         {
+                           
                             id_flight++;
                             id_plane++;
                             if (capacity > loaded)
@@ -834,7 +835,11 @@ namespace Airtraffic_Simulator
 
               if (airportCreated)
               {
-                  MessageBox.Show("Airport " + airportName + " was succesfully created!");
+                autoCompleteAirport(cbSearch);
+                autoCompleteAirport(cb_auto_orig);
+                autoCompleteAirport(cb_auto_dest);
+                autoCompleteAirport(cb_problem_airport);
+                MessageBox.Show("Airport " + airportName + " was succesfully created!");
                   resetAllBoxes();
                   panelDrawing.Invalidate();
               }
