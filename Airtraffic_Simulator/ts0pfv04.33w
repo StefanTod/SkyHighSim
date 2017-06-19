@@ -73,8 +73,7 @@ namespace Airtraffic_Simulator
         }
         private void btStart_Click(object sender, EventArgs e)
         {
-            int v = trackBar1.Maximum - trackBar1.Value;
-            timer.Interval = v + 1;
+            timer.Interval = trackBar1.Value;
             StartSimulation();
         }
 
@@ -143,7 +142,7 @@ namespace Airtraffic_Simulator
         }
         private void UpdatePanel()
         {
-            if (selectedAirplane != null && selectedAirplane.PlaneStatus != Status.LANDING)
+            if (selectedAirplane != null)
             {
                 lbOrigin.Visible = true;
                 lbOrigin.Text = selectedAirplane.Flight.DepartureAirport.Name.ToString();
@@ -358,7 +357,6 @@ namespace Airtraffic_Simulator
                     {
                         for (int i = 0; i < bulkAmount; i++)
                         {
-                           
                             id_flight++;
                             id_plane++;
                             if (capacity > loaded)
@@ -836,11 +834,7 @@ namespace Airtraffic_Simulator
 
               if (airportCreated)
               {
-                autoCompleteAirport(cbSearch);
-                autoCompleteAirport(cb_auto_orig);
-                autoCompleteAirport(cb_auto_dest);
-                autoCompleteAirport(cb_problem_airport);
-                MessageBox.Show("Airport " + airportName + " was succesfully created!");
+                  MessageBox.Show("Airport " + airportName + " was succesfully created!");
                   resetAllBoxes();
                   panelDrawing.Invalidate();
               }
@@ -851,6 +845,7 @@ namespace Airtraffic_Simulator
             toolTip1.SetToolTip(trackBar1, trackBar1.Value.ToString());
             int v = trackBar1.Maximum - trackBar1.Value;
             timer.Interval = v + 1;
+            Console.WriteLine(v);
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
