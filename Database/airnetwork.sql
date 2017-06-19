@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2017 at 05:44 PM
--- Server version: 10.1.9-MariaDB
--- PHP Version: 5.6.15
+-- Generation Time: Jun 19, 2017 at 03:25 PM
+-- Server version: 5.7.14
+-- PHP Version: 5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -80,11 +80,11 @@ CREATE TABLE `airport` (
 --
 
 INSERT INTO `airport` (`IdAirport`, `Name`, `Capacity`, `Location`, `NbOfLanes`, `Region_idRegion`) VALUES
-(1, 'Germany', 100, '480,390', 2, 1),
-(2, 'Bulgaria', 100, '675,500', 1, 1),
-(3, 'Ukraine', 100, '780,380', 2, 1),
-(4, 'Spain', 100, '270,540', 3, 1),
-(5, 'Iceland', 100, '250,150', 1, 1),
+(1, 'Berlin', 100, '480,390', 2, 1),
+(2, 'Sofia', 100, '675,500', 1, 1),
+(3, 'Kiev', 100, '780,380', 2, 1),
+(4, 'Madrid', 100, '270,540', 3, 1),
+(5, 'Reykjavik', 100, '250,150', 1, 1),
 (6, 'Sydney', 100, '880,480', 3, 2),
 (7, 'Melbourne', 100, '750,590', 6, 2),
 (8, 'Brisbane', 100, '915,340', 5, 2),
