@@ -13,7 +13,7 @@ namespace Airtraffic_Simulator
 
         public List<Airplane> Airplanes { get; set; }
         public List<Airport> Airports { get; set; }
-        public List<Flight> Flights { get;  set; }
+        public List<Flight> Flights { get; set; }
         public List<Queue> Queues { get; private set; }
 
         public Network(Regions region)
@@ -43,7 +43,7 @@ namespace Airtraffic_Simulator
 
         public void AddAirplane(Airplane airplane)
         {
-                Airplanes.Add(airplane);     
+            Airplanes.Add(airplane);
         }
 
         public bool RemoveAirplane(string id)
@@ -72,10 +72,10 @@ namespace Airtraffic_Simulator
             Airports.Remove(airportToRemove);
             return true;
         }
-        public void AddProblem(Airport a,string type, TimeSpan duration)
+        public void AddProblem(Airport a, string type, TimeSpan duration)
         {
             a.CreateProblem(type, duration);
-            foreach(Airplane airplane in Airplanes)
+            foreach (Airplane airplane in Airplanes)
             {
                 //find all airplanes whose destination is the airport with the problem and reroute only those who are inair
                 if (airplane.PlaneStatus != Status.TOTAKEOFF)
@@ -93,17 +93,18 @@ namespace Airtraffic_Simulator
             PointF currentLoc = airplaneToReroute.CurrentLocation;
             double minTotalDistance = 100000000000000;
             Airport closestAirport = null;
-            foreach(Airport a in Airports)
+            foreach (Airport a in Airports)
             {
-                //check only if the airport is not the one from the current destination
-                if(!(a.Name.ToUpper().Equals(airplaneToReroute.DestinationAirport.Name.ToUpper())))
+                //check only if the airport is not the one from the current destination and if there are no problems in the airport
+                if (!(a.Name.ToUpper().Equals(airplaneToReroute.DestinationAirport.Name.ToUpper())) && a.Problems.Count==0)
                 {
                     double totaldistance = Math.Sqrt(Math.Pow(a.Location.X - currentLoc.X, 2) + Math.Pow(a.Location.Y - currentLoc.Y, 2));
-                    if(totaldistance<minTotalDistance)
+                    if (totaldistance < minTotalDistance)
                     {
                         minTotalDistance = totaldistance;
                         closestAirport = a;
                     }
+
                 }
             }
             airplaneToReroute.ChangeRoute(currentLoc, closestAirport);
@@ -111,9 +112,9 @@ namespace Airtraffic_Simulator
 
         public Flight FindFlight(string id)
         {
-            foreach(Flight f in Flights)
+            foreach (Flight f in Flights)
             {
-                if(f.Id==id)
+                if (f.Id == id)
                 {
                     return f;
                 }
@@ -151,7 +152,7 @@ namespace Airtraffic_Simulator
                 {
                     return c;
                 }
-                
+
             }
             return null;
         }
