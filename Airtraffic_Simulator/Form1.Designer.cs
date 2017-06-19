@@ -132,6 +132,9 @@
             this.lb_problem_select_name = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panelDrawing = new Airtraffic_Simulator.DrawingPanel();
+            this.label21 = new System.Windows.Forms.Label();
+            this.lbTimeSpan = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.panelNameLocation.SuspendLayout();
@@ -156,6 +159,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_prob_hour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_prob_day)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.panelDrawing.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -218,7 +222,7 @@
             // 
             this.trackBar1.BackColor = System.Drawing.Color.Azure;
             this.trackBar1.Location = new System.Drawing.Point(974, 3);
-            this.trackBar1.Maximum = 500;
+            this.trackBar1.Maximum = 1000;
             this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(269, 45);
@@ -1337,6 +1341,8 @@
             // 
             this.panelDrawing.BackgroundImage = global::Airtraffic_Simulator.Properties.Resources.europemap;
             this.panelDrawing.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelDrawing.Controls.Add(this.label21);
+            this.panelDrawing.Controls.Add(this.lbTimeSpan);
             this.panelDrawing.Location = new System.Drawing.Point(202, 60);
             this.panelDrawing.Margin = new System.Windows.Forms.Padding(2);
             this.panelDrawing.Name = "panelDrawing";
@@ -1344,6 +1350,28 @@
             this.panelDrawing.TabIndex = 12;
             this.panelDrawing.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDrawing_Paint);
             this.panelDrawing.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelDrawing_MouseUp);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.Black;
+            this.label21.Location = new System.Drawing.Point(12, 14);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(147, 24);
+            this.label21.TabIndex = 1;
+            this.label21.Text = "Simulation time: ";
+            // 
+            // lbTimeSpan
+            // 
+            this.lbTimeSpan.AutoSize = true;
+            this.lbTimeSpan.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTimeSpan.ForeColor = System.Drawing.Color.Black;
+            this.lbTimeSpan.Location = new System.Drawing.Point(165, 14);
+            this.lbTimeSpan.Name = "lbTimeSpan";
+            this.lbTimeSpan.Size = new System.Drawing.Size(70, 24);
+            this.lbTimeSpan.TabIndex = 0;
+            this.lbTimeSpan.Text = "label21";
             // 
             // Form1
             // 
@@ -1400,6 +1428,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_prob_hour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_prob_day)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            this.panelDrawing.ResumeLayout(false);
+            this.panelDrawing.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1508,6 +1538,9 @@
         private System.Windows.Forms.Label lbOrigin;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbTimeSpan;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

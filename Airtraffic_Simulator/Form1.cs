@@ -39,6 +39,8 @@ namespace Airtraffic_Simulator
             {
                 this.panelDrawing.BackgroundImage = Properties.Resources.australia;
             }
+            GlobalVariables.globalTime = new DateTime(2017, 06, 8, 17, 0, 0);
+            lbTimeSpan.Text = GlobalVariables.globalTime.ToString();
         }
         private void DrawNetwork(object sender, PaintEventArgs e)
         {
@@ -62,6 +64,8 @@ namespace Airtraffic_Simulator
             }
             panelDrawing.Invalidate();
             GlobalVariables.globalTime = GlobalVariables.globalTime.AddMinutes(30);
+            lbTimeSpan.Text = GlobalVariables.globalTime.ToString();
+
         }
         private void btStart_Click(object sender, EventArgs e)
         {
@@ -828,6 +832,7 @@ namespace Airtraffic_Simulator
 
         private void trackBar1_ValueChanged(object sender, EventArgs e)
         {
+            toolTip1.SetToolTip(trackBar1, trackBar1.Value.ToString());
             int v = trackBar1.Maximum - trackBar1.Value;
             timer.Interval = v + 1;
         }
@@ -839,6 +844,8 @@ namespace Airtraffic_Simulator
             formRegions.ShowDialog();
             this.Close();
         }
+
+  
     }
 }
 
