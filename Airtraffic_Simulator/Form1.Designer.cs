@@ -111,10 +111,10 @@
             this.rb_cargo = new System.Windows.Forms.RadioButton();
             this.rb_passanger = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cb_airport_name = new System.Windows.Forms.ComboBox();
             this.tbLocation = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btCreateAirport = new System.Windows.Forms.Button();
-            this.tbAirportName = new System.Windows.Forms.TextBox();
             this.numUpDownNrOfLanes = new System.Windows.Forms.NumericUpDown();
             this.label19 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -836,7 +836,7 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.customizeToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // customizeToolStripMenuItem
@@ -881,6 +881,7 @@
             this.tc_create.Size = new System.Drawing.Size(200, 245);
             this.tc_create.TabIndex = 0;
             this.tc_create.Visible = false;
+            this.tc_create.SelectedIndexChanged += new System.EventHandler(this.tc_create_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -1143,10 +1144,10 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.cb_airport_name);
             this.tabPage2.Controls.Add(this.tbLocation);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.btCreateAirport);
-            this.tabPage2.Controls.Add(this.tbAirportName);
             this.tabPage2.Controls.Add(this.numUpDownNrOfLanes);
             this.tabPage2.Controls.Add(this.label19);
             this.tabPage2.Controls.Add(this.label16);
@@ -1159,6 +1160,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Airport";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // cb_airport_name
+            // 
+            this.cb_airport_name.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cb_airport_name.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cb_airport_name.FormattingEnabled = true;
+            this.cb_airport_name.Location = new System.Drawing.Point(88, 5);
+            this.cb_airport_name.Name = "cb_airport_name";
+            this.cb_airport_name.Size = new System.Drawing.Size(95, 21);
+            this.cb_airport_name.TabIndex = 38;
             // 
             // tbLocation
             // 
@@ -1186,13 +1197,6 @@
             this.btCreateAirport.Text = "Create Airport";
             this.btCreateAirport.UseVisualStyleBackColor = true;
             this.btCreateAirport.Click += new System.EventHandler(this.btCreateAirport_Click);
-            // 
-            // tbAirportName
-            // 
-            this.tbAirportName.Location = new System.Drawing.Point(83, 8);
-            this.tbAirportName.Name = "tbAirportName";
-            this.tbAirportName.Size = new System.Drawing.Size(100, 20);
-            this.tbAirportName.TabIndex = 34;
             // 
             // numUpDownNrOfLanes
             // 
@@ -1545,7 +1549,6 @@
         private System.Windows.Forms.NumericUpDown numUpDownAirportCapacity;
         private System.Windows.Forms.NumericUpDown numUpDownNrOfLanes;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox tbAirportName;
         private System.Windows.Forms.Button btCreateAirport;
         private System.Windows.Forms.TextBox tbLocation;
         private System.Windows.Forms.Label label4;
@@ -1558,6 +1561,7 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ComboBox cb_airport_name;
     }
 }
 

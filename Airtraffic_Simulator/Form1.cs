@@ -474,7 +474,7 @@ namespace Airtraffic_Simulator
             cb_auto_orig.ResetText();
             cb_auto_dest.ResetText();
 
-            tbAirportName.ResetText();
+            cb_airport_name.ResetText();
             numUpDownAirportCapacity.Value = 0;
             numUpDownNrOfLanes.Value = 0;
             tbLocation.Text = "CLick on the map";
@@ -595,7 +595,8 @@ namespace Airtraffic_Simulator
             {
                 panelAdvanced.Visible = false;
                 tc_create.Visible = true;
-                autoCompleteAirport(cb_problem_airport);
+                autoCompleteAirport(cb_auto_orig);
+                autoCompleteAirport(cb_auto_dest);
             }
             else
             {
@@ -610,7 +611,7 @@ namespace Airtraffic_Simulator
             {
                 panelAdvanced.Visible = false;
                 tc_create.Visible = true;
-
+                autoCompleteAirport(cb_airport_name);
             }
             else
             {
@@ -625,12 +626,13 @@ namespace Airtraffic_Simulator
             {
                 panelAdvanced.Visible = false;
                 tc_create.Visible = true;
-
+                autoCompleteAirport(cb_problem_airport);
             }
             else
             {
                 tc_create.Visible = true;
                 tc_create.SelectedTab = tabPage3;
+                autoCompleteAirport(cb_problem_airport);
             }
         }
         private void btn_problem_create_Click(object sender, EventArgs e)
@@ -813,7 +815,7 @@ namespace Airtraffic_Simulator
             airportCreated = false;
 
             //Airport properties
-            string airportName = tbAirportName.Text;
+            string airportName = cb_airport_name.Text;
             int airportCapacity = Convert.ToInt32(numUpDownAirportCapacity.Value);
             int numberOfLanes = Convert.ToInt32(numUpDownNrOfLanes.Value);
            
@@ -851,6 +853,24 @@ namespace Airtraffic_Simulator
             toolTip1.SetToolTip(trackBar1, trackBar1.Value.ToString());
             int v = trackBar1.Maximum - trackBar1.Value;
             timer.Interval = v + 1;
+        }
+
+        private void tc_create_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (tc_create.SelectedIndex)
+            {
+                case 0:
+                    autoCompleteAirport(cb_auto_orig);
+                    autoCompleteAirport(cb_auto_dest);
+                    break;
+                case 1:
+                    autoCompleteAirport(cb_airport_name);
+                    break;
+                case 2:
+                    autoCompleteAirport(cb_problem_airport);
+                    break;
+
+            }
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
