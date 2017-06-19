@@ -55,6 +55,12 @@ namespace Airtraffic_Simulator
 
         private void timer_Tick(object sender, EventArgs e)
         {
+            GlobalVariables.globalTime = GlobalVariables.globalTime.AddMinutes(30);
+            lbTimeSpan.Text = GlobalVariables.globalTime.ToString();
+            foreach(Airport airport in airNetwork.Airports)
+            {
+                airport.UpdateTimeOfProblems();
+            }
             foreach (Airplane a in airNetwork.Airplanes)
             {
                 //if (a.Flight.DepartureTime.Equals(GlobalVariables.globalTime))
@@ -63,8 +69,6 @@ namespace Airtraffic_Simulator
                 //}
             }
             panelDrawing.Invalidate();
-            GlobalVariables.globalTime = GlobalVariables.globalTime.AddMinutes(30);
-            lbTimeSpan.Text = GlobalVariables.globalTime.ToString();
 
         }
         private void btStart_Click(object sender, EventArgs e)
@@ -309,7 +313,7 @@ namespace Airtraffic_Simulator
             created = false;
             //Time Helpers
             TimeSpan estimatedDuration = new TimeSpan(02, 25, 00);
-            DateTime currentTime = DateTime.Now;
+            DateTime currentTime = GlobalVariables.globalTime;
 
             //Airplane properties
             int capacity = Convert.ToInt32(nud_capacity.Value);

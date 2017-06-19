@@ -836,7 +836,7 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.customizeToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // customizeToolStripMenuItem
@@ -1356,9 +1356,9 @@
             this.lbTimeSpan.ForeColor = System.Drawing.Color.White;
             this.lbTimeSpan.Location = new System.Drawing.Point(567, 15);
             this.lbTimeSpan.Name = "lbTimeSpan";
-            this.lbTimeSpan.Size = new System.Drawing.Size(101, 31);
+            this.lbTimeSpan.Size = new System.Drawing.Size(209, 31);
             this.lbTimeSpan.TabIndex = 0;
-            this.lbTimeSpan.Text = "label21";
+            this.lbTimeSpan.Text = "labelGlobalTime";
             // 
             // panel2
             // 
@@ -1376,6 +1376,7 @@
             this.panelDrawing.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelDrawing.Location = new System.Drawing.Point(199, 131);
             this.panelDrawing.Margin = new System.Windows.Forms.Padding(2);
+            this.panelDrawing.MinimumSize = new System.Drawing.Size(1064, 621);
             this.panelDrawing.Name = "panelDrawing";
             this.panelDrawing.Size = new System.Drawing.Size(1064, 621);
             this.panelDrawing.TabIndex = 12;
@@ -1400,8 +1401,8 @@
             this.Controls.Add(this.btAdvanced);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximumSize = new System.Drawing.Size(1280, 793);
-            this.MinimumSize = new System.Drawing.Size(1280, 720);
+            this.MaximumSize = new System.Drawing.Size(1280, 792);
+            this.MinimumSize = new System.Drawing.Size(1280, 792);
             this.Name = "Form1";
             this.Text = "SkyHighSim";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);

@@ -39,10 +39,21 @@ namespace Airtraffic_Simulator
 
         }
 
-        //method might be useless
-        public void AddToQueue(Airplane p)
+
+        /// <summary>
+        /// For each tick of the counter the problems need to be updated since they have a duration.
+        /// If their duration has expired they must be removed from the list.
+        /// </summary>
+        public void UpdateTimeOfProblems()
         {
-            
+            for (int i = 0; i < Problems.Count;i++ )
+            {
+                if(Problems[i].StartingTime.Add(Problems[i].Duration).CompareTo(GlobalVariables.globalTime)<1)
+                {
+                    Problems.RemoveAt(i);
+                    i--;
+                }
+            }
         }
 
         public void ChangeIcon(Bitmap newicon)
