@@ -132,9 +132,10 @@
             this.lb_problem_select_name = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.panelDrawing = new Airtraffic_Simulator.DrawingPanel();
             this.label21 = new System.Windows.Forms.Label();
             this.lbTimeSpan = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelDrawing = new Airtraffic_Simulator.DrawingPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.panelNameLocation.SuspendLayout();
@@ -159,7 +160,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_prob_hour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_prob_day)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            this.panelDrawing.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -768,7 +769,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.toolsToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 655);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 730);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
             this.menuStrip1.TabIndex = 15;
@@ -845,7 +846,7 @@
             this.airportToolStripMenuItem,
             this.problemToolStripMenuItem});
             this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.customizeToolStripMenuItem.Text = "&Create";
             // 
             // airplaneToolStripMenuItem
@@ -1337,13 +1338,43 @@
             this.lb_problem_select_name.TabIndex = 0;
             this.lb_problem_select_name.Text = "Select Airport";
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.White;
+            this.label21.Location = new System.Drawing.Point(359, 15);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(213, 31);
+            this.label21.TabIndex = 1;
+            this.label21.Text = "Simulation time: ";
+            // 
+            // lbTimeSpan
+            // 
+            this.lbTimeSpan.AutoSize = true;
+            this.lbTimeSpan.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTimeSpan.ForeColor = System.Drawing.Color.White;
+            this.lbTimeSpan.Location = new System.Drawing.Point(567, 15);
+            this.lbTimeSpan.Name = "lbTimeSpan";
+            this.lbTimeSpan.Size = new System.Drawing.Size(101, 31);
+            this.lbTimeSpan.TabIndex = 0;
+            this.lbTimeSpan.Text = "label21";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel2.Controls.Add(this.label21);
+            this.panel2.Controls.Add(this.lbTimeSpan);
+            this.panel2.Location = new System.Drawing.Point(202, 64);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1061, 62);
+            this.panel2.TabIndex = 16;
+            // 
             // panelDrawing
             // 
             this.panelDrawing.BackgroundImage = global::Airtraffic_Simulator.Properties.Resources.europemap;
             this.panelDrawing.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelDrawing.Controls.Add(this.label21);
-            this.panelDrawing.Controls.Add(this.lbTimeSpan);
-            this.panelDrawing.Location = new System.Drawing.Point(202, 60);
+            this.panelDrawing.Location = new System.Drawing.Point(199, 131);
             this.panelDrawing.Margin = new System.Windows.Forms.Padding(2);
             this.panelDrawing.Name = "panelDrawing";
             this.panelDrawing.Size = new System.Drawing.Size(1064, 621);
@@ -1351,33 +1382,12 @@
             this.panelDrawing.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDrawing_Paint);
             this.panelDrawing.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelDrawing_MouseUp);
             // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.Black;
-            this.label21.Location = new System.Drawing.Point(12, 14);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(147, 24);
-            this.label21.TabIndex = 1;
-            this.label21.Text = "Simulation time: ";
-            // 
-            // lbTimeSpan
-            // 
-            this.lbTimeSpan.AutoSize = true;
-            this.lbTimeSpan.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTimeSpan.ForeColor = System.Drawing.Color.Black;
-            this.lbTimeSpan.Location = new System.Drawing.Point(165, 14);
-            this.lbTimeSpan.Name = "lbTimeSpan";
-            this.lbTimeSpan.Size = new System.Drawing.Size(70, 24);
-            this.lbTimeSpan.TabIndex = 0;
-            this.lbTimeSpan.Text = "label21";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 679);
+            this.ClientSize = new System.Drawing.Size(1264, 754);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelDrawing);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panelTime);
@@ -1390,8 +1400,8 @@
             this.Controls.Add(this.btAdvanced);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximumSize = new System.Drawing.Size(1280, 718);
-            this.MinimumSize = new System.Drawing.Size(1280, 718);
+            this.MaximumSize = new System.Drawing.Size(1280, 793);
+            this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "Form1";
             this.Text = "SkyHighSim";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
@@ -1428,8 +1438,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_prob_hour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_prob_day)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            this.panelDrawing.ResumeLayout(false);
-            this.panelDrawing.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1541,6 +1551,7 @@
         private System.Windows.Forms.Label lbTimeSpan;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 
