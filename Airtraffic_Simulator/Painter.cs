@@ -10,7 +10,7 @@ namespace Airtraffic_Simulator
     class Painter
     {
         Pen transperentPen = new Pen(Color.Transparent, 1);
-        Pen redPen = new Pen(Color.Red, 2);
+        Pen greenPen = new Pen(Color.Green, 2);
         //Pen penToDraw = new Pen(Color.Transparent, 1);
         
         public void DrawNetwork(Graphics gr, Network n)
@@ -67,7 +67,7 @@ namespace Airtraffic_Simulator
                 if (isSelected)
                 {
                     
-                    penToDraw = redPen;
+                    penToDraw = greenPen;
                 }
                 gr.DrawRectangle(penToDraw, airplaneToDraw.CoverArea);
                 gr.DrawImage(airplaneToDraw.Image, airplaneToDraw.CurrentLocation);
@@ -80,7 +80,7 @@ namespace Airtraffic_Simulator
             Pen penToDraw = transperentPen;
             if (isSelected)
             {
-                 penToDraw = redPen;
+                 penToDraw = greenPen;
             }
 
             gr.DrawRectangle(penToDraw, airportToDraw.CoverArea);

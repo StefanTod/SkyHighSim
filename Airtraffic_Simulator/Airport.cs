@@ -52,6 +52,12 @@ namespace Airtraffic_Simulator
                 {
                     Problems.RemoveAt(i);
                     i--;
+                    if (Problems.Count == 0)
+                    {
+                        this.Image = new Bitmap(Airtraffic_Simulator.Properties.Resources.airportТerminal);
+                        this.Image = new Bitmap(Image, 25, 25);
+                        ChangeIcon(Image);
+                    }
                 }
             }
         }
@@ -98,6 +104,10 @@ namespace Airtraffic_Simulator
         {
             Problem problem = new Problem(type, duration,GlobalVariables.globalTime);
             Problems.Add(problem);
+
+            this.Image = new Bitmap(Airtraffic_Simulator.Properties.Resources.airportТerminalRestricted);
+            this.Image = new Bitmap(Image, 25, 25);
+            ChangeIcon(Image);
         }
     }
 }

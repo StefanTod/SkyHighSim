@@ -645,8 +645,6 @@ namespace Airtraffic_Simulator
             Airport target_airport_object = returnAirportObject(target_airport);
             //Problem object
             airNetwork.AddProblem(target_airport_object,problem_type, problem_duration);
-
-            //Assign and create problem
         }
 
         private Airport returnAirportObject(string airport_Name)
